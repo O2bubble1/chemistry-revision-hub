@@ -1,0 +1,58 @@
+@layer components {
+  .typeset {
+    --typeset-font-body: var(--font-sans);
+    --typeset-font-heading: var(--font-heading);
+    --typeset-size: 1rem;
+    --typeset-leading: 1.75;
+    --typeset-flow: 1.25em;
+    color: var(--foreground);
+    font-family: var(--typeset-font-body);
+    font-size: var(--typeset-size);
+    line-height: var(--typeset-leading);
+  }
+
+  .typeset :where(h1, h2, h3, h4) {
+    margin-block: calc(var(--typeset-flow) * 1.6) calc(var(--typeset-flow) * 0.55);
+    color: var(--foreground);
+    font-family: var(--typeset-font-heading);
+    font-weight: 650;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .typeset :where(h2) { font-size: 1.5em; }
+  .typeset :where(h3) { font-size: 1.2em; }
+  .typeset :where(p, ul, ol, blockquote, pre, figure, table, details) { margin-block: var(--typeset-flow); }
+  .typeset :where(ul, ol) { padding-inline-start: 1.5em; }
+  .typeset :where(li + li) { margin-block-start: 0.35em; }
+  .typeset :where(code) { border-radius: calc(var(--radius) * 0.6); background: var(--muted); padding: 0.1em 0.3em; font-family: ui-monospace, monospace; font-size: 0.9em; }
+  .typeset :where(pre) { overflow-x: auto; border-radius: var(--radius); background: var(--muted); padding: 1em; }
+  .typeset :where(pre code) { background: transparent; padding: 0; }
+  .typeset :where(a) { color: var(--primary); text-decoration: underline; text-underline-offset: 0.2em; }
+  .typeset-scroll { overflow-x: auto; }
+
+  .typeset-figure {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--muted);
+  }
+
+  .typeset-figure > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: min(75svh, 58rem);
+    object-fit: contain;
+    background: var(--background);
+  }
+
+  .typeset-figure-caption {
+    border-top: 1px solid var(--border);
+    padding: 0.625rem 0.875rem;
+    color: var(--muted-foreground);
+    font-size: 0.875em;
+    line-height: 1.4;
+  }
+  .typeset-docs { --typeset-size: 1rem; --typeset-flow: 1.5em; }
+}
