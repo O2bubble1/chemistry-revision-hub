@@ -616,7 +616,7 @@
             {
               "type": "quizLink",
               "label": "Open Chemistry quiz",
-              "targetId": "chemistry-easy"
+              "targetId": "chem-easy"
             }
           ]
         },
@@ -631,7 +631,7 @@
             {
               "type": "flashcardLink",
               "label": "Open Chemistry flashcards",
-              "targetId": "chemistry-cations"
+              "targetId": "c-cat"
             }
           ]
         },
@@ -975,7 +975,7 @@
             {
               "type": "quizLink",
               "label": "Open Physics quiz",
-              "targetId": "physics-easy"
+              "targetId": "phys-easy"
             }
           ]
         },
@@ -990,7 +990,7 @@
             {
               "type": "flashcardLink",
               "label": "Open Physics flashcards",
-              "targetId": "physics-kinematics"
+              "targetId": "k-def"
             }
           ]
         }

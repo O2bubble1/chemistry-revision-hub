@@ -46,3 +46,9 @@ test("uses locked subject for a new custom deck", async () => {
 
   expect(screen.getByLabelText("Deck subject")).toHaveValue("physics")
 })
+
+test("rejects an imported deck with no cards", async () => {
+ const { importDecks } = await import("@/features/flashcards/storage")
+
+ expect(() => importDecks(JSON.stringify({ decks: [{ id: "empty", subject: "chemistry", title: "Empty", cards: [] }] }))).toThrow("valid flashcard decks")
+})

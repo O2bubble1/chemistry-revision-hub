@@ -30,11 +30,11 @@ import {
 
 const builtInDecks: FlashcardDeck[] = content.decks
 
-export function FlashcardsPage({ initialSubject = "all" }: { initialSubject?: string }) {
+export function FlashcardsPage({ initialSubject = "all", initialDeckId }: { initialSubject?: string; initialDeckId?: string }) {
   const [customDecks, setCustomDecks] = useState(loadCustomDecks)
   const [subject, setSubject] = useState(initialSubject)
-  const [studying, setStudying] = useState<FlashcardDeck | null>(null)
-  const [cards, setCards] = useState<Flashcard[]>([])
+  const [studying, setStudying] = useState<FlashcardDeck | null>(() => builtInDecks.find((deck) => deck.id === initialDeckId) ?? null)
+  const [cards, setCards] = useState<Flashcard[]>(() => builtInDecks.find((deck) => deck.id === initialDeckId)?.cards ?? [])
   const [cardIndex, setCardIndex] = useState(0)
   const [missedCards, setMissedCards] = useState<Flashcard[]>([])
   const [reviewingMissed, setReviewingMissed] = useState(false)

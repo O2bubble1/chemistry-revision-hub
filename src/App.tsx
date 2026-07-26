@@ -59,6 +59,7 @@ function useNavigation() {
 export default function App() {
   const [navigation, select] = useNavigation()
   const [view, setView] = useState<View>("lesson")
+  const [toolTargetId, setToolTargetId] = useState<string>()
   const [theme, setTheme] = useState<Theme>(() => themeStore.read())
   const [mobileOpen, setMobileOpen] = useState(false)
   const subject = catalog.subjects.find((entry) => entry.id === navigation.subjectId) ?? catalog.subjects[0]!
@@ -79,9 +80,9 @@ export default function App() {
     setTheme(next)
   }
   const navigationList = (close?: () => void) => <nav aria-label="Topics" className="flex flex-col gap-1">{subject.lessons.map((topic) => <Button key={topic.id} variant={view === "lesson" && lesson.id === topic.id ? "secondary" : "ghost"} className="min-h-11 justify-start" aria-label={topic.title} title={topic.title} onClick={() => { chooseLesson(topic.id); close?.() }}>{sidebarLabel[topic.id] ?? topic.title}</Button>)}</nav>
-  const toolLinks = <div className="mb-8 flex flex-wrap gap-2">{subject.id === "chemistry" ? <Button variant="outline" onClick={() => setView("periodic")}><AtomIcon data-icon="inline-start" />Periodic table</Button> : null}<Button variant="outline" onClick={() => setView("quiz")}><HelpCircleIcon data-icon="inline-start" />Quiz</Button><Button variant="outline" onClick={() => setView("flashcards")}><LayersIcon data-icon="inline-start" />Flashcards</Button></div>
+  const toolLinks = <div className="mb-8 flex flex-wrap gap-2">{subject.id === "chemistry" ? <Button variant="outline" onClick={() => { setToolTargetId(undefined); setView("periodic") }}><AtomIcon data-icon="inline-start" />Periodic table</Button> : null}<Button variant="outline" onClick={() => { setToolTargetId(undefined); setView("quiz") }}><HelpCircleIcon data-icon="inline-start" />Quiz</Button><Button variant="outline" onClick={() => { setToolTargetId(undefined); setView("flashcards") }}><LayersIcon data-icon="inline-start" />Flashcards</Button></div>
   const archiveLink = <a className="mt-auto inline-flex min-h-11 items-center px-3 text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground" href={originalMaterialsUrl}>Original materials</a>
-  const content = view === "lesson" ? <><p className="mb-2 text-sm text-muted-foreground">{subject.title} / {lesson.title}</p><h1 className="mb-3 text-3xl font-semibold tracking-tight sm:text-4xl">{lesson.title}</h1><p className="mb-8 max-w-2xl text-lg text-muted-foreground">{lesson.summary}</p><LessonRenderer blocks={lesson.blocks} onToolLink={(type) => setView(type === "periodicTableLink" ? "periodic" : type === "quizLink" ? "quiz" : "flashcards")} /></> : view === "periodic" ? <PeriodicTablePage /> : view === "quiz" ? <QuizPage initialSubject={subject.id} /> : <FlashcardsPage initialSubject={subject.id} />
+  const content = view === "lesson" ? <><p className="mb-2 text-sm text-muted-foreground">{subject.title} / {lesson.title}</p><h1 className="mb-3 text-3xl font-semibold tracking-tight sm:text-4xl">{lesson.title}</h1><p className="mb-8 max-w-2xl text-lg text-muted-foreground">{lesson.summary}</p><LessonRenderer blocks={lesson.blocks} onToolLink={(type, targetId) => { setToolTargetId(targetId); setView(type === "periodicTableLink" ? "periodic" : type === "quizLink" ? "quiz" : "flashcards") }} /></> : view === "periodic" ? <PeriodicTablePage /> : view === "quiz" ? <QuizPage initialSubject={subject.id} initialQuizId={toolTargetId} /> : <FlashcardsPage initialSubject={subject.id} initialDeckId={toolTargetId} />
 
   return <div className="min-h-svh bg-background text-foreground">
     <header className="sticky top-0 z-10 border-b bg-background/95 backdrop-blur"><div className="flex min-h-16 items-center gap-3 px-4 lg:px-6">

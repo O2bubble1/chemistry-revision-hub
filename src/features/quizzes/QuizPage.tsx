@@ -42,10 +42,10 @@ function QuizEditor({ onSave, quiz: existingQuiz, triggerLabel = "Create custom 
     </DialogContent>
   </Dialog>
 }
-export function QuizPage({ initialSubject = "all" }: { initialSubject?: string }) {
+export function QuizPage({ initialSubject = "all", initialQuizId }: { initialSubject?: string; initialQuizId?: string }) {
   const [customQuizzes, setCustomQuizzes] = useState<Quiz[]>(readCustomQuizzes)
   const [subject, setSubject] = useState(initialSubject)
-  const [activeQuiz, setActiveQuiz] = useState<Quiz | null>(null)
+  const [activeQuiz, setActiveQuiz] = useState<Quiz | null>(() => builtInQuizzes.find((quiz) => quiz.id === initialQuizId) ?? null)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [selected, setSelected] = useState<number | null>(null)
   const [answers, setAnswers] = useState<number[]>([])

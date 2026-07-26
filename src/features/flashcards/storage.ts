@@ -7,7 +7,7 @@ const deckSchema = z.object({
   title: z.string(),
   recommended: z.boolean().optional(),
   custom: z.boolean().optional(),
-  cards: z.array(z.object({ front: z.string(), back: z.string() })),
+  cards: z.array(z.object({ front: z.string(), back: z.string() })).min(1),
 })
 
 export type Flashcard = z.infer<typeof deckSchema>["cards"][number]
