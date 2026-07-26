@@ -127,7 +127,11 @@
     }
   html {
     @apply font-sans;
-    }
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
 }
 
 @layer base {

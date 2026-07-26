@@ -142,7 +142,7 @@ export function FlashcardsPage({ initialSubject = "all", initialDeckId }: { init
 
   if (studying && card) {
     return (
-      <main className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 py-6 sm:py-10">
+      <section className="mx-auto flex w-full max-w-3xl flex-col gap-4 py-6 sm:py-10">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
             <p className="text-sm text-muted-foreground">{reviewingMissed ? "Review missed cards" : studying.title}</p>
@@ -170,12 +170,12 @@ export function FlashcardsPage({ initialSubject = "all", initialDeckId }: { init
             </CardFooter>
           )}
         </Card>
-      </main>
+      </section>
     )
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-6 sm:py-10">
+    <section className="mx-auto flex w-full max-w-5xl flex-col gap-6 py-6 sm:py-10">
       <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex flex-col gap-1">
           <p className="text-sm font-medium text-muted-foreground">Active recall</p>
@@ -228,6 +228,6 @@ export function FlashcardsPage({ initialSubject = "all", initialDeckId }: { init
           </form>
         </DialogContent>
       </Dialog>
-    </main>
+    </section>
   )
 }

@@ -23,11 +23,11 @@ test("includes complete salt preparation procedures", async () => {
   expect(screen.getByText(/Repeat without indicator/)).toBeVisible()
 })
 
-test("centers the final card in a three-item comparison", () => {
+test("keeps the final comparison card aligned with its grid", () => {
   const { container } = render(<LessonRenderer blocks={[{ type: "comparison", items: [{ title: "A", body: "First" }, { title: "B", body: "Second" }, { title: "C", body: "Third" }] }]} />)
 
   expect(container.querySelector("[data-comparison-grid]")).toHaveClass("sm:grid-cols-2", "items-start")
-  expect(container.querySelector("[data-comparison-item='2']")).toHaveClass("sm:col-span-2", "sm:justify-self-center", "sm:w-[calc(50%-0.5rem)]")
+  expect(container.querySelector("[data-comparison-item='2']")).not.toHaveClass("sm:col-span-2", "sm:justify-self-center")
 })
 
 test("renders lesson figures lazily with an accessible caption", () => {

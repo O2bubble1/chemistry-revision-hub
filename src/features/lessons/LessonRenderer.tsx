@@ -25,7 +25,7 @@ export function LessonRenderer({ blocks, onToolLink }: Props) {
           case "callout":
             return <Alert key={key}><AlertTitle>{block.title}</AlertTitle><AlertDescription><Markdown>{block.body}</Markdown></AlertDescription></Alert>
           case "comparison":
-            return <div key={key} data-comparison-grid className="grid items-start gap-4 sm:grid-cols-2">{block.items.map((item, itemIndex) => <Card key={item.title} data-comparison-item={itemIndex} className={block.items.length === 3 && itemIndex === 2 ? "sm:col-span-2 sm:w-[calc(50%-0.5rem)] sm:justify-self-center" : undefined}><CardHeader><CardTitle>{item.title}</CardTitle></CardHeader><CardContent><Markdown>{item.body}</Markdown></CardContent></Card>)}</div>
+            return <div key={key} data-comparison-grid className="grid items-start gap-4 sm:grid-cols-2">{block.items.map((item, itemIndex) => <Card key={item.title} data-comparison-item={itemIndex}><CardHeader><CardTitle>{item.title}</CardTitle></CardHeader><CardContent><Markdown>{item.body}</Markdown></CardContent></Card>)}</div>
           case "table":
             return <div key={key} className="typeset-scroll"><Table><TableHeader><TableRow>{block.headers.map((header) => <TableHead key={header}>{header}</TableHead>)}</TableRow></TableHeader><TableBody>{block.rows.map((row, rowIndex) => <TableRow key={rowIndex}>{row.map((cell, cellIndex) => <TableCell key={cellIndex}>{cell}</TableCell>)}</TableRow>)}</TableBody></Table></div>
           case "figure":
