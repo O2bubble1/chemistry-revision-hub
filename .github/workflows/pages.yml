@@ -6,8 +6,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
-
+  contents: write
 concurrency:
   group: pages-${{ github.ref }}
   cancel-in-progress: true
@@ -26,21 +25,25 @@ jobs:
       - run: bun run test
       - run: bun run validate-content
       - run: bun run build
-      - uses: actions/upload-pages-artifact@v3
-        if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
-        with:
-          path: dist
-
-  deploy:
-    if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+  publish-legacy-pages:
+    if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && github.actor != 'github-actions[bot]'
     needs: quality
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/checkout@v5
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - run: |
+          git rm -r --ignore-unmatch docs/assets docs/source-materials
+          git rm --ignore-unmatch docs/index.html docs/original-materials.html docs/vite.svg
+          cp -R dist/. docs/
+          git add docs
+          git diff --cached --quiet || (
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore: publish Pages site"
+            git push
+          )
