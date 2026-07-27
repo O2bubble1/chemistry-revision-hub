@@ -33,8 +33,67 @@
               "level": 2
             },
             {
+              "type": "heading",
+              "text": "Who dissolves in excess NaOH?",
+              "level": 3
+            },
+            {
               "type": "richText",
-              "markdown": "Who dissolves in excess NaOH?\n\nA–Z\n\nA = Al³⁺ Z = Zn²⁺\n\n\"A to Z\" — Al³⁺ and Zn²⁺ give a white ppt that dissolves in excess NaOH to form a colourless solution. Every other hydroxide stays insoluble in excess NaOH.\n\nWho dissolves in excess NH₃?\n\nZnCu\n\nZn²⁺ → colourless Cu²⁺ → DARK BLUE\n\n\"Zoo Creatures dissolve\" — Only Zn²⁺ and Cu²⁺ dissolve in excess NH₃. Cu²⁺ gives a stunning DARK BLUE solution — easiest to spot!\n\nColoured precipitates (not white)\n\nGRB\n\nG = Fe²⁺ (Green) R = Fe³⁺ (Red-brown) B = Cu²⁺ (Light blue)\n\n\"Get Rusty Blue\" — Fe²⁺ is Green (young iron), Fe³⁺ is Red-Brown (rusty iron), Cu²⁺ is Light Blue. Everything else is WHITE.\n\nCa²⁺ is the odd one out\n\nCa = NaOH ONLY\n\nWhite ppt with NaOH ✓ No ppt with NH₃ ✗\n\nCalcium is \"fussy\" — it only reacts with NaOH, not NH₃. Use this to distinguish Ca²⁺ from the other white-ppt ions.\n\nNH₄⁺ is special — no precipitate!\n\nNH₄⁺ → GAS\n\nNaOH + warm → NH₃ gas Turns moist red litmus BLUE\n\n\"Ammonium doesn't precipitate — it evaporates!\" Add NaOH and warm. Colourless, pungent gas turns moist red litmus paper blue = NH₄⁺ confirmed.\n\nGas Tests — 3 pairs\n\nSplint · Litmus · Bubble\n\nH₂ = lighted splint, POP O₂ = glowing splint relights\n\nNH₃ = red litmus → blue Cl₂ = blue litmus → red, bleached\n\nCO₂ = limewater white ppt SO₂ = KMnO₄ purple → colourless\n\nThink of gas tests as 3 pairs: splint tests (H₂, O₂), litmus tests (NH₃, Cl₂), and bubble-through tests (CO₂, SO₂).\n\nQuick-Fire Rules\n\nRule 1: A–Z dissolves in excess NaOH\n\nAl³⁺ and Zn²⁺ — white ppt first, then dissolves in excess NaOH to give a colourless solution.\n\nRule 2: Only Zn²⁺ dissolves in BOTH\n\nZn²⁺ dissolves in excess NaOH AND excess NH₃. Use this to distinguish Zn²⁺ from Al³⁺.\n\nRule 3: Cu²⁺ = Dark Blue in NH₃\n\nLight blue ppt first, then a dark blue solution in excess NH₃ — it's Cu²⁺. 100% guaranteed.\n\nRule 4: Strong vs weak alkali\n\nNaOH ionises completely: NaOH(aq) → Na⁺(aq) + OH⁻(aq). NH₃ ionises partially: NH₃(aq) + H₂O(l) ⇌ NH₄⁺(aq) + OH⁻(aq).\n\nRule 5: Acidify before Ag⁺ or Ba²⁺\n\nAnion tests involve acidification — add dilute nitric acid first so CO₃²⁻ and OH⁻ don't give false positive white precipitates.\n\nRule 6: Two tests give NH₃ gas\n\nNH₄⁺ + NaOH (warm) AND NO₃⁻ + NaOH + Al foil (warm) both evolve ammonia gas that turns moist red litmus paper blue."
+              "markdown": "A–Z\n\nA = Al³⁺ Z = Zn²⁺\n\n\"A to Z\" — Al³⁺ and Zn²⁺ give a white ppt that dissolves in excess NaOH to form a colourless solution. Every other hydroxide stays insoluble in excess NaOH."
+            },
+            {
+              "type": "heading",
+              "text": "Who dissolves in excess NH₃?",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "ZnCu\n\nZn²⁺ → colourless Cu²⁺ → DARK BLUE\n\n\"Zoo Creatures dissolve\" — Only Zn²⁺ and Cu²⁺ dissolve in excess NH₃. Cu²⁺ gives a stunning DARK BLUE solution — easiest to spot!"
+            },
+            {
+              "type": "heading",
+              "text": "Coloured precipitates (not white)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "GRB\n\nG = Fe²⁺ (Green) R = Fe³⁺ (Red-brown) B = Cu²⁺ (Light blue)\n\n\"Get Rusty Blue\" — Fe²⁺ is Green (young iron), Fe³⁺ is Red-Brown (rusty iron), Cu²⁺ is Light Blue. Everything else is WHITE."
+            },
+            {
+              "type": "heading",
+              "text": "Ca²⁺ is the odd one out",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Ca = NaOH ONLY\n\nWhite ppt with NaOH ✓ No ppt with NH₃ ✗\n\nCalcium is \"fussy\" — it only reacts with NaOH, not NH₃. Use this to distinguish Ca²⁺ from the other white-ppt ions."
+            },
+            {
+              "type": "heading",
+              "text": "NH₄⁺ is special — no precipitate!",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "NH₄⁺ → GAS\n\nNaOH + warm → NH₃ gas Turns moist red litmus BLUE\n\n\"Ammonium doesn't precipitate — it evaporates!\" Add NaOH and warm. Colourless, pungent gas turns moist red litmus paper blue = NH₄⁺ confirmed."
+            },
+            {
+              "type": "heading",
+              "text": "Gas Tests — 3 pairs",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Splint · Litmus · Bubble\n\nH₂ = lighted splint, POP O₂ = glowing splint relights\n\nNH₃ = red litmus → blue Cl₂ = blue litmus → red, bleached\n\nCO₂ = limewater white ppt SO₂ = KMnO₄ purple → colourless\n\nThink of gas tests as 3 pairs: splint tests (H₂, O₂), litmus tests (NH₃, Cl₂), and bubble-through tests (CO₂, SO₂)."
+            },
+            {
+              "type": "heading",
+              "text": "Quick-Fire Rules",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Rule 1: A–Z dissolves in excess NaOH\n\nAl³⁺ and Zn²⁺ — white ppt first, then dissolves in excess NaOH to give a colourless solution.\n\nRule 2: Only Zn²⁺ dissolves in BOTH\n\nZn²⁺ dissolves in excess NaOH AND excess NH₃. Use this to distinguish Zn²⁺ from Al³⁺.\n\nRule 3: Cu²⁺ = Dark Blue in NH₃\n\nLight blue ppt first, then a dark blue solution in excess NH₃ — it's Cu²⁺. 100% guaranteed.\n\nRule 4: Strong vs weak alkali\n\nNaOH ionises completely: NaOH(aq) → Na⁺(aq) + OH⁻(aq). NH₃ ionises partially: NH₃(aq) + H₂O(l) ⇌ NH₄⁺(aq) + OH⁻(aq).\n\nRule 5: Acidify before Ag⁺ or Ba²⁺\n\nAnion tests involve acidification — add dilute nitric acid first so CO₃²⁻ and OH⁻ don't give false positive white precipitates.\n\nRule 6: Two tests give NH₃ gas\n\nNH₄⁺ + NaOH (warm) AND NO₃⁻ + NaOH + Al foil (warm) both evolve ammonia gas that turns moist red litmus paper blue."
             }
           ]
         },
@@ -50,34 +109,44 @@
               "type": "table",
               "headers": [
                 "Cation",
-                "With NaOH",
-                "With excess NH₃"
+                "Add aqueous sodium hydroxide dropwise till in excess",
+                "Add aqueous ammonia dropwise till in excess"
               ],
               "rows": [
                 [
-                  "Al³⁺",
-                  "White precipitate; dissolves in excess",
-                  "White precipitate; insoluble"
+                  "Ammonium (NH₄⁺)",
+                  "No precipitate is produced. Colourless and pungent ammonia gas that turns moist red litmus paper blue is evolved when warmed.",
+                  "✗ No precipitate is produced."
                 ],
                 [
-                  "Zn²⁺",
-                  "White precipitate; dissolves in excess",
-                  "White precipitate; dissolves in excess"
+                  "Calcium (Ca²⁺)",
+                  "White precipitate of Ca(OH)₂, that is insoluble in excess NaOH(aq).",
+                  "✗ No precipitate is produced."
                 ],
                 [
-                  "Cu²⁺",
-                  "Light blue precipitate",
-                  "Light blue precipitate; dissolves to dark blue"
+                  "Aluminium (Al³⁺) ★ A–Z",
+                  "White precipitate of Al(OH)₃ is produced, which dissolves in excess NaOH(aq) to form a colourless solution.",
+                  "White precipitate of Al(OH)₃, that is insoluble in excess NH₃(aq)."
                 ],
                 [
-                  "Fe²⁺",
-                  "Green precipitate",
-                  "Green precipitate"
+                  "Zinc (Zn²⁺) ★ A–Z",
+                  "White precipitate of Zn(OH)₂ is produced, which dissolves in excess NaOH(aq) to form a colourless solution.",
+                  "White precipitate of Zn(OH)₂ is produced, which dissolves in excess NH₃(aq) to form a colourless solution."
                 ],
                 [
-                  "Fe³⁺",
-                  "Red-brown precipitate",
-                  "Red-brown precipitate"
+                  "Iron(II) (Fe²⁺)",
+                  "Green precipitate of Fe(OH)₂, that is insoluble in excess NaOH(aq).",
+                  "Green precipitate of Fe(OH)₂, that is insoluble in excess NH₃(aq)."
+                ],
+                [
+                  "Iron(III) (Fe³⁺)",
+                  "Red-brown precipitate of Fe(OH)₃, that is insoluble in excess NaOH(aq).",
+                  "Red-brown precipitate of Fe(OH)₃, that is insoluble in excess NH₃(aq)."
+                ],
+                [
+                  "Copper(II) (Cu²⁺)",
+                  "Light blue precipitate of Cu(OH)₂, that is insoluble in excess NaOH(aq).",
+                  "Light blue precipitate of Cu(OH)₂ is produced, which dissolves in excess NH₃(aq) to form a DARK BLUE solution."
                 ]
               ]
             },
@@ -107,8 +176,13 @@
               "level": 2
             },
             {
+              "type": "heading",
+              "text": "Ion equations",
+              "level": 3
+            },
+            {
               "type": "richText",
-              "markdown": "What's happening: Tests for cations involve alkalis (aqueous sodium hydroxide and aqueous ammonia), which ionise in water to produce hydroxide (OH⁻) ions. The hydroxide ions react with most metal cations to produce metal hydroxides.\n\nComplete ionisation of NaOH in water:\n\nNaOH(aq) → Na⁺(aq) + OH⁻(aq)\n\nPartial ionisation of NH₃ in water:\n\nNH₃(aq) + H₂O(l) ⇌ NH₄⁺(aq) + OH⁻(aq)\n\nIdentify cations based on: ① Formation of a precipitate (if any) when a few drops of alkali are added → ② Colour of the precipitate formed (if any) → ③ Solubility of the precipitate (if any) in excess alkali\n\nCation\n\nAdd aqueous sodium hydroxide dropwise till in excess\n\nAdd aqueous ammonia dropwise till in excess\n\nAmmonium (NH₄⁺)\n\nNo precipitate is produced. Colourless and pungent ammonia gas that turns moist red litmus paper blue is evolved when warmed.\n\n✗ No precipitate is produced.\n\nCalcium (Ca²⁺)\n\nWhite precipitate of Ca(OH)₂, that is insoluble in excess NaOH(aq).\n\n✗ No precipitate is produced.\n\nAluminium (Al³⁺) ★ A–Z\n\nWhite precipitate of Al(OH)₃ is produced, which dissolves in excess NaOH(aq) to form a colourless solution.\n\nWhite precipitate of Al(OH)₃, that is insoluble in excess NH₃(aq).\n\nZinc (Zn²⁺) ★ A–Z\n\nWhite precipitate of Zn(OH)₂ is produced, which dissolves in excess NaOH(aq) to form a colourless solution.\n\nWhite precipitate of Zn(OH)₂ is produced, which dissolves in excess NH₃(aq) to form a colourless solution.\n\nIron(II) (Fe²⁺)\n\nGreen precipitate of Fe(OH)₂, that is insoluble in excess NaOH(aq).\n\nGreen precipitate of Fe(OH)₂, that is insoluble in excess NH₃(aq).\n\nIron(III) (Fe³⁺)\n\nRed-brown precipitate of Fe(OH)₃, that is insoluble in excess NaOH(aq).\n\nRed-brown precipitate of Fe(OH)₃, that is insoluble in excess NH₃(aq).\n\nCopper(II) (Cu²⁺)\n\nLight blue precipitate of Cu(OH)₂, that is insoluble in excess NaOH(aq).\n\nLight blue precipitate of Cu(OH)₂ is produced, which dissolves in excess NH₃(aq) to form a DARK BLUE solution."
+              "markdown": "What's happening: Tests for cations involve alkalis (aqueous sodium hydroxide and aqueous ammonia), which ionise in water to produce hydroxide (OH⁻) ions. The hydroxide ions react with most metal cations to produce metal hydroxides.\n\nComplete ionisation of NaOH in water:\n\nNaOH(aq) → Na⁺(aq) + OH⁻(aq)\n\nPartial ionisation of NH₃ in water:\n\nNH₃(aq) + H₂O(l) ⇌ NH₄⁺(aq) + OH⁻(aq)\n\nIdentify cations based on: ① Formation of a precipitate (if any) when a few drops of alkali are added → ② Colour of the precipitate formed (if any) → ③ Solubility of the precipitate (if any) in excess alkali"
             }
           ]
         },
@@ -121,8 +195,13 @@
           ],
           "blocks": [
             {
+              "type": "heading",
+              "text": "Halides",
+              "level": 2
+            },
+            {
               "type": "richText",
-              "markdown": "## Halides\n\nAcidify with dilute nitric acid, then add aqueous silver nitrate:\n\n- chloride: white precipitate\n- bromide: cream precipitate\n- iodide: yellow precipitate"
+              "markdown": "Acidify with dilute nitric acid, then add aqueous silver nitrate:"
             },
             {
               "type": "callout",
@@ -147,8 +226,62 @@
               "level": 2
             },
             {
+              "type": "heading",
+              "text": "Anion tests",
+              "level": 3
+            },
+            {
               "type": "richText",
-              "markdown": "The approach: Tests for anions involve acidification, followed by evolution of gas or precipitation. Adding dilute nitric acid first removes CO₃²⁻ and OH⁻ that would give false positive white precipitates.\n\nAnionTestObservation\n\nCarbonate (CO₃²⁻)\n\nAdd dilute acid. Bubble gas through limewater (aqueous calcium hydroxide).\n\nEffervescence of a colourless and odourless gas is observed. White precipitate of CaCO₃ is produced when gas is bubbled through limewater.\n\nChloride (Cl⁻)\n\nAdd dilute nitric acid, then add aqueous silver nitrate.\n\nWhite precipitate of AgCl is produced.\n\nIodide (I⁻)\n\nAdd dilute nitric acid, then add aqueous silver nitrate.\n\nYellow precipitate of AgI is produced.\n\nSulfate (SO₄²⁻)\n\nAdd dilute nitric acid, then add aqueous barium nitrate.\n\nWhite precipitate of BaSO₄ is produced.\n\nNitrate (NO₃⁻)\n\nAdd aqueous sodium hydroxide and a small piece of aluminium foil. Warm the mixture.\n\nColourless and pungent ammonia gas that turns moist red litmus paper blue is evolved when warmed.\n\nDistinguishing Cl⁻ vs I⁻\n\nCl⁻ — Chloride\n\nDilute HNO₃ + AgNO₃(aq) → White ppt (AgCl)\n\nI⁻ — Iodide\n\nDilute HNO₃ + AgNO₃(aq) → Yellow ppt (AgI)\n\nSame reagent, different colour: Cl⁻ and I⁻ use the exact same test (dilute nitric acid, then aqueous silver nitrate). Only the precipitate colour tells them apart — white for chloride, yellow for iodide."
+              "markdown": "The approach: Tests for anions involve acidification, followed by evolution of gas or precipitation. Adding dilute nitric acid first removes CO₃²⁻ and OH⁻ that would give false positive white precipitates."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Anion",
+                "Test",
+                "Observation"
+              ],
+              "rows": [
+                [
+                  "Carbonate (CO₃²⁻)",
+                  "Add dilute acid. Bubble gas through limewater (aqueous calcium hydroxide).",
+                  "Effervescence of a colourless and odourless gas is observed. White precipitate of CaCO₃ is produced when gas is bubbled through limewater."
+                ],
+                [
+                  "Chloride (Cl⁻)",
+                  "Add dilute nitric acid, then add aqueous silver nitrate.",
+                  "White precipitate of AgCl is produced."
+                ],
+                [
+                  "Bromide",
+                  "Acidify with dilute nitric acid, then add aqueous silver nitrate.",
+                  "cream precipitate"
+                ],
+                [
+                  "Iodide (I⁻)",
+                  "Add dilute nitric acid, then add aqueous silver nitrate.",
+                  "Yellow precipitate of AgI is produced."
+                ],
+                [
+                  "Sulfate (SO₄²⁻)",
+                  "Add dilute nitric acid, then add aqueous barium nitrate.",
+                  "White precipitate of BaSO₄ is produced."
+                ],
+                [
+                  "Nitrate (NO₃⁻)",
+                  "Add aqueous sodium hydroxide and a small piece of aluminium foil. Warm the mixture.",
+                  "Colourless and pungent ammonia gas that turns moist red litmus paper blue is evolved when warmed."
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Distinguishing Cl⁻ vs I⁻",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Cl⁻ — Chloride\n\nDilute HNO₃ + AgNO₃(aq) → White ppt (AgCl)\n\nI⁻ — Iodide\n\nDilute HNO₃ + AgNO₃(aq) → Yellow ppt (AgI)\n\nSame reagent, different colour: Cl⁻ and I⁻ use the exact same test (dilute nitric acid, then aqueous silver nitrate). Only the precipitate colour tells them apart — white for chloride, yellow for iodide."
             }
           ]
         },
@@ -165,38 +298,38 @@
               "headers": [
                 "Gas",
                 "Test",
-                "Positive result"
+                "Observation"
               ],
               "rows": [
                 [
-                  "Hydrogen",
-                  "Lighted splint",
-                  "Squeaky pop"
+                  "Hydrogen (H₂)",
+                  "Place a lighted splint at the mouth of the test tube.",
+                  "Colourless and odourless gas extinguishes the lighted splint with a \"pop\" sound"
                 ],
                 [
-                  "Oxygen",
-                  "Glowing splint",
-                  "Relights"
+                  "Oxygen (O₂)",
+                  "Insert a glowing splint into the test tube.",
+                  "Colourless and odourless gas relights the glowing splint"
                 ],
                 [
-                  "Carbon dioxide",
-                  "Limewater",
-                  "Turns milky"
+                  "Carbon dioxide (CO₂)",
+                  "Bubble the gas through limewater (aqueous calcium hydroxide).",
+                  "Colourless and odourless gas produces a white precipitate of CaCO₃"
                 ],
                 [
-                  "Ammonia",
-                  "Damp red litmus",
-                  "Turns blue"
+                  "Ammonia (NH₃)",
+                  "Place a piece of moist red litmus paper at the mouth of the test tube.",
+                  "Colourless and pungent gas turns moist red litmus paper BLUE"
                 ],
                 [
-                  "Chlorine",
-                  "Damp blue litmus",
-                  "Red then bleached"
+                  "Chlorine (Cl₂)",
+                  "Place a piece of moist blue litmus paper at the mouth of the test tube.",
+                  "Yellow-green and pungent gas turns moist blue litmus paper red and eventually bleaches it"
                 ],
                 [
-                  "Sulfur dioxide",
-                  "Acidified KMnO₄",
-                  "Purple to colourless"
+                  "Sulfur dioxide (SO₂)",
+                  "Bubble the gas through aqueous acidified potassium manganate(VII).",
+                  "Colourless and pungent gas turns aqueous acidified KMnO₄ from purple to colourless"
                 ]
               ]
             },
@@ -217,8 +350,22 @@
               "level": 2
             },
             {
+              "type": "heading",
+              "text": "Gas memory groups",
+              "level": 3
+            },
+            {
               "type": "richText",
-              "markdown": "GasTestObservation\n\nHydrogen (H₂)\n\nPlace a lighted splint at the mouth of the test tube.\n\nColourless and odourless gas extinguishes the lighted splint with a \"pop\" sound\n\nOxygen (O₂)\n\nInsert a glowing splint into the test tube.\n\nColourless and odourless gas relights the glowing splint\n\nCarbon dioxide (CO₂)\n\nBubble the gas through limewater (aqueous calcium hydroxide).\n\nColourless and odourless gas produces a white precipitate of CaCO₃\n\nAmmonia (NH₃)\n\nPlace a piece of moist red litmus paper at the mouth of the test tube.\n\nColourless and pungent gas turns moist red litmus paper BLUE\n\nChlorine (Cl₂)\n\nPlace a piece of moist blue litmus paper at the mouth of the test tube.\n\nYellow-green and pungent gas turns moist blue litmus paper red and eventually bleaches it\n\nSulfur dioxide (SO₂)\n\nBubble the gas through aqueous acidified potassium manganate(VII).\n\nColourless and pungent gas turns aqueous acidified KMnO₄ from purple to colourless\n\nGas Memory Groups:\n\nSplint tests: H₂ (lighted splint, POP) | O₂ (glowing splint relights)\n\nLitmus tests: NH₃ (moist red → blue) | Cl₂ (moist blue → red, then bleached)\n\nBubble-through tests: CO₂ (limewater → white ppt) | SO₂ (acidified KMnO₄ → colourless)\n\nEasy Confusions\n\nNH₃ vs Cl₂\n\nBoth are pungent! NH₃ is colourless and turns moist RED litmus blue. Cl₂ is yellow-green and turns moist BLUE litmus red, then bleaches it.\n\nH₂ vs O₂\n\nBoth are colourless and odourless! H₂ uses a LIGHTED splint (pop sound). O₂ uses a GLOWING splint (relights).\n\nCO₂ vs SO₂\n\nBoth bubble-through tests! CO₂ is odourless (limewater → white ppt). SO₂ is pungent (KMnO₄ purple → colourless)."
+              "markdown": "Splint tests: H₂ (lighted splint, POP) | O₂ (glowing splint relights)\n\nLitmus tests: NH₃ (moist red → blue) | Cl₂ (moist blue → red, then bleached)\n\nBubble-through tests: CO₂ (limewater → white ppt) | SO₂ (acidified KMnO₄ → colourless)"
+            },
+            {
+              "type": "heading",
+              "text": "Easy Confusions",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "NH₃ vs Cl₂\n\nBoth are pungent! NH₃ is colourless and turns moist RED litmus blue. Cl₂ is yellow-green and turns moist BLUE litmus red, then bleaches it.\n\nH₂ vs O₂\n\nBoth are colourless and odourless! H₂ uses a LIGHTED splint (pop sound). O₂ uses a GLOWING splint (relights).\n\nCO₂ vs SO₂\n\nBoth bubble-through tests! CO₂ is odourless (limewater → white ppt). SO₂ is pungent (KMnO₄ purple → colourless)."
             }
           ]
         },
@@ -254,7 +401,88 @@
             },
             {
               "type": "richText",
-              "markdown": "What is QA? Qualitative analysis is a method used to identify elements and/or compounds present in an unknown substance, using physical tests (based on pH, smell, colour and solubility) and chemical tests (identification of cations, anions and gases).\n\nStep 1 — Physical ObservationLook at the colour of the solid and the solution. Coloured solutions → transition metal (Fe²⁺, Fe³⁺, Cu²⁺). White solid, colourless solution → Ca²⁺, Al³⁺, Zn²⁺, NH₄⁺\n\n↓\n\nStep 2 — Add NaOH dropwise, then in excess\n\nGreen ppt → Fe²⁺\n\nRed-brown ppt → Fe³⁺\n\nLight blue ppt → Cu²⁺\n\nWhite ppt → Ca²⁺, Al³⁺ or Zn²⁺\n\nNo ppt, gas on warming → NH₄⁺\n\nFor white ppt: does it dissolve in excess NaOH? → A–Z (Al³⁺, Zn²⁺). Insoluble → Ca²⁺\n\n↓\n\nStep 3 — Add NH₃ dropwise, then in excess (to confirm)\n\nLight blue ppt, dark blue solution in excess → Cu²⁺ ✓\n\nWhite ppt dissolves in excess → Zn²⁺ (Al³⁺ stays insoluble)\n\nNo ppt at all → Ca²⁺\n\n↓\n\nStep 4 — Test for AnionsAcidify with dilute nitric acid first! Then aqueous barium nitrate (for SO₄²⁻), aqueous silver nitrate (for Cl⁻ / I⁻), dilute acid alone + limewater (for CO₃²⁻), NaOH + Al foil + warm (for NO₃⁻)\n\n↓\n\nStep 5 — Test any evolved gasesMatch gas colour + smell + specific test → identify H₂, O₂, CO₂, NH₃, Cl₂ or SO₂\n\nDistinguishing Similar Ions\n\nPair to DistinguishKey TestResult\n\nAl³⁺ vs Zn²⁺Add excess NH₃Only Zn²⁺ dissolves in excess NH₃ to form a colourless solution. Al³⁺ remains as a white ppt.\n\nCa²⁺ vs Al³⁺ / Zn²⁺Add NH₃Ca²⁺ gives NO precipitate with NH₃ at all. Al³⁺ and Zn²⁺ give white ppt.\n\nFe²⁺ vs Fe³⁺Colour of ppt with NaOH / NH₃Fe²⁺ = green ppt. Fe³⁺ = red-brown ppt. Both insoluble in excess.\n\nNH₄⁺ vs other cationsAdd NaOH + warmNH₄⁺ gives NO ppt, but colourless pungent gas (NH₃) that turns moist red litmus paper blue.\n\nCl⁻ vs I⁻Dilute HNO₃ + AgNO₃(aq)Cl⁻ = white ppt (AgCl). I⁻ = yellow ppt (AgI).\n\nSO₄²⁻ vs CO₃²⁻Add dilute acidCO₃²⁻ gives effervescence of CO₂ (white ppt with limewater). SO₄²⁻ does not react with dilute acid."
+              "markdown": "What is QA? Qualitative analysis is a method used to identify elements and/or compounds present in an unknown substance, using physical tests (based on pH, smell, colour and solubility) and chemical tests (identification of cations, anions and gases)."
+            },
+            {
+              "type": "heading",
+              "text": "Physical observation",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Look at the colour of the solid and the solution. Coloured solutions → transition metal (Fe²⁺, Fe³⁺, Cu²⁺). White solid, colourless solution → Ca²⁺, Al³⁺, Zn²⁺, NH₄⁺"
+            },
+            {
+              "type": "heading",
+              "text": "Cation test",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Add NaOH dropwise, then in excess\n\nGreen ppt → Fe²⁺\n\nRed-brown ppt → Fe³⁺\n\nLight blue ppt → Cu²⁺\n\nWhite ppt → Ca²⁺, Al³⁺ or Zn²⁺\n\nNo ppt, gas on warming → NH₄⁺\n\nFor white ppt: does it dissolve in excess NaOH? → A–Z (Al³⁺, Zn²⁺). Insoluble → Ca²⁺\n\nAdd NH₃ dropwise, then in excess (to confirm)\n\nLight blue ppt, dark blue solution in excess → Cu²⁺ ✓\n\nWhite ppt dissolves in excess → Zn²⁺ (Al³⁺ stays insoluble)\n\nNo ppt at all → Ca²⁺"
+            },
+            {
+              "type": "heading",
+              "text": "Anion test",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Acidify with dilute nitric acid first! Then aqueous barium nitrate (for SO₄²⁻), aqueous silver nitrate (for Cl⁻ / I⁻), dilute acid alone + limewater (for CO₃²⁻), NaOH + Al foil + warm (for NO₃⁻)"
+            },
+            {
+              "type": "heading",
+              "text": "Gas test",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Match gas colour + smell + specific test → identify H₂, O₂, CO₂, NH₃, Cl₂ or SO₂"
+            },
+            {
+              "type": "heading",
+              "text": "Distinguishing Similar Ions",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Pair to Distinguish",
+                "Key Test",
+                "Result"
+              ],
+              "rows": [
+                [
+                  "Al³⁺ vs Zn²⁺",
+                  "Add excess NH₃",
+                  "Only Zn²⁺ dissolves in excess NH₃ to form a colourless solution. Al³⁺ remains as a white ppt."
+                ],
+                [
+                  "Ca²⁺ vs Al³⁺ / Zn²⁺",
+                  "Add NH₃",
+                  "Ca²⁺ gives NO precipitate with NH₃ at all. Al³⁺ and Zn²⁺ give white ppt."
+                ],
+                [
+                  "Fe²⁺ vs Fe³⁺",
+                  "Colour of ppt with NaOH / NH₃",
+                  "Fe²⁺ = green ppt. Fe³⁺ = red-brown ppt. Both insoluble in excess."
+                ],
+                [
+                  "NH₄⁺ vs other cations",
+                  "Add NaOH + warm",
+                  "NH₄⁺ gives NO ppt, but colourless pungent gas (NH₃) that turns moist red litmus paper blue."
+                ],
+                [
+                  "Cl⁻ vs I⁻",
+                  "Dilute HNO₃ + AgNO₃(aq)",
+                  "Cl⁻ = white ppt (AgCl). I⁻ = yellow ppt (AgI)."
+                ],
+                [
+                  "SO₄²⁻ vs CO₃²⁻",
+                  "Add dilute acid",
+                  "CO₃²⁻ gives effervescence of CO₂ (white ppt with limewater). SO₄²⁻ does not react with dilute acid."
+                ]
+              ]
             }
           ]
         },
@@ -602,8 +830,67 @@
               "level": 2
             },
             {
+              "type": "heading",
+              "text": "The Always-Soluble Squad",
+              "level": 3
+            },
+            {
               "type": "richText",
-              "markdown": "SPAN\n\nThe Always-Soluble Squad\n\nS — Sodium (Na⁺)\n\nP — Potassium (K⁺)\n\nA — Ammonium (NH₄⁺)\n\nN — Nitrates (NO₃⁻)\n\n✓ ALL their salts are soluble. Zero exceptions. This is why nitrates and sodium salts are used in precipitation reactions.\n\nChlorides (Cl⁻)\n\n✓ Soluble, except…\n\n\"Pure Art Courses\"\n\nPure — Pb²⁺ (PbCl₂)\n\nArt — Ag⁺ (AgCl)\n\nCourses — Chlorides\n\nBr⁻ and I⁻ follow the same pattern (AgBr cream, AgI yellow). PbCl₂ is insoluble in COLD water but dissolves in HOT.\n\nSulfates (SO₄²⁻)\n\n✓ Soluble, except…\n\n\"Sciences\"\n\nBiology — Ba²⁺ (BaSO₄)\n\nChemistry — Ca²⁺ (CaSO₄)\n\nPhysics — Pb²⁺ (PbSO₄)\n\nThis is why BaSO₄ (white ppt, insoluble in acid) is the SO₄²⁻ test, and why lead won't react with H₂SO₄ (PbSO₄ coating).\n\nCarbonates (CO₃²⁻)\n\n✗ Insoluble, except…\n\nThe SPA crew:\n\nNa⁺ (sodium)\n\nK⁺ (potassium)\n\nNH₄⁺ (ammonium)\n\nInsoluble carbonates (CaCO₃, ZnCO₃, CuCO₃…) are perfect excess reactants for the filtration salt-prep method.\n\nHydroxides (OH⁻)\n\n✗ Insoluble, except…\n\nNa⁺ (NaOH)\n\nK⁺ (KOH)\n\nBa²⁺ (Ba(OH)₂)\n\nNH₄⁺ is NOT here — Ba²⁺ takes its spot!\n\nInsoluble hydroxides are exactly the precipitates you see in QA cation tests (Fe(OH)₂ green, Fe(OH)₃ red-brown, Cu(OH)₂ light blue…).\n\nPhosphates (PO₄³⁻)\n\n✗ Insoluble, except…\n\nThe SPA crew again:\n\nNa⁺ (sodium)\n\nK⁺ (potassium)\n\nNH₄⁺ (ammonium)\n\nSame exceptions as carbonates — if you know one, you know both.\n\nThe whole system in one breath: SPAN salts are always soluble. Chlorides are soluble except \"Pure Art Courses\" (Pb, Ag). Sulfates are soluble except the \"Sciences\" (Ba, Ca, Pb). Carbonates, hydroxides and phosphates flip to insoluble — except Na⁺, K⁺, NH₄⁺ (with Ba²⁺ replacing NH₄⁺ for hydroxides)."
+              "markdown": "SPAN\n\nS — Sodium (Na⁺)\n\nP — Potassium (K⁺)\n\nA — Ammonium (NH₄⁺)\n\nN — Nitrates (NO₃⁻)\n\n✓ ALL their salts are soluble. Zero exceptions. This is why nitrates and sodium salts are used in precipitation reactions."
+            },
+            {
+              "type": "heading",
+              "text": "Chlorides (Cl⁻)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "✓ Soluble, except…\n\n\"Pure Art Courses\"\n\nPure — Pb²⁺ (PbCl₂)\n\nArt — Ag⁺ (AgCl)\n\nCourses — Chlorides\n\nBr⁻ and I⁻ follow the same pattern (AgBr cream, AgI yellow). PbCl₂ is insoluble in COLD water but dissolves in HOT."
+            },
+            {
+              "type": "heading",
+              "text": "Sulfates (SO₄²⁻)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "✓ Soluble, except…\n\n\"Sciences\"\n\nBiology — Ba²⁺ (BaSO₄)\n\nChemistry — Ca²⁺ (CaSO₄)\n\nPhysics — Pb²⁺ (PbSO₄)\n\nThis is why BaSO₄ (white ppt, insoluble in acid) is the SO₄²⁻ test, and why lead won't react with H₂SO₄ (PbSO₄ coating)."
+            },
+            {
+              "type": "heading",
+              "text": "Carbonates (CO₃²⁻)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "✗ Insoluble, except…\n\nThe SPA crew:\n\nNa⁺ (sodium)\n\nK⁺ (potassium)\n\nNH₄⁺ (ammonium)\n\nInsoluble carbonates (CaCO₃, ZnCO₃, CuCO₃…) are perfect excess reactants for the filtration salt-prep method."
+            },
+            {
+              "type": "heading",
+              "text": "Hydroxides (OH⁻)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "✗ Insoluble, except…\n\nNa⁺ (NaOH)\n\nK⁺ (KOH)\n\nBa²⁺ (Ba(OH)₂)\n\nNH₄⁺ is NOT here — Ba²⁺ takes its spot!\n\nInsoluble hydroxides are exactly the precipitates you see in QA cation tests (Fe(OH)₂ green, Fe(OH)₃ red-brown, Cu(OH)₂ light blue…)."
+            },
+            {
+              "type": "heading",
+              "text": "Phosphates (PO₄³⁻)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "✗ Insoluble, except…\n\nThe SPA crew again:\n\nNa⁺ (sodium)\n\nK⁺ (potassium)\n\nNH₄⁺ (ammonium)\n\nSame exceptions as carbonates — if you know one, you know both."
+            },
+            {
+              "type": "heading",
+              "text": "The whole system in one breath",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "SPAN salts are always soluble. Chlorides are soluble except \"Pure Art Courses\" (Pb, Ag). Sulfates are soluble except the \"Sciences\" (Ba, Ca, Pb). Carbonates, hydroxides and phosphates flip to insoluble — except Na⁺, K⁺, NH₄⁺ (with Ba²⁺ replacing NH₄⁺ for hydroxides)."
             }
           ]
         },
