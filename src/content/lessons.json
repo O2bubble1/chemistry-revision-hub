@@ -958,12 +958,56 @@
             },
             {
               "type": "heading",
+              "text": "Terminal velocity — how the forces change",
+              "level": 2
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Stage",
+                "What happens",
+                "Forces",
+                "Acceleration"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Just released",
+                  "W > R",
+                  "a = g"
+                ],
+                [
+                  "2",
+                  "Speeding up",
+                  "W > R",
+                  "a decreasing"
+                ],
+                [
+                  "3",
+                  "Terminal velocity",
+                  "W = R",
+                  "a = 0"
+                ],
+                [
+                  "4",
+                  "Parachute opens",
+                  "R > W",
+                  "decelerating"
+                ]
+              ]
+            },
+            {
+              "type": "richText",
+              "markdown": "The weight NEVER changes. Only the air resistance grows — until at stage 3 it equals the weight.\n\nResultant force = 0 N → acceleration = 0 m s⁻² → CONSTANT velocity, not zero velocity."
+            },
+            {
+              "type": "heading",
               "text": "Complete study notes",
               "level": 2
             },
             {
               "type": "richText",
-              "markdown": "Definition: friction is the force that opposes, or tends to oppose, relative motion between two surfaces in contact. The \"tends to\" matters — friction acts on a stationary box you are pushing but failing to move.\n\nFriction is not the enemy\n\nUseful effectsUnwanted effects\n\nFriction between shoes and the ground lets you walk without slipping; between tyres and road it lets cars accelerate, turn and brake.\n\nSurfaces heat up, causing wear and tear on moving parts.\n\nFriction lets a belt drive a pulley, a nail hold in wood, and a car park on a slope without sliding.\n\nIn machinery friction reduces efficiency, because a large amount of energy is transferred away as unwanted internal energy.\n\nWays to reduce friction\n\nBall and roller bearings between moving parts · surfaces separated by a lubricant · surfaces separated by an air cushion · smoother, streamlined shapes.\n\nWhat friction depends on\n\nThe materials in contact · the roughness of the surfaces · it is proportional to the force pressing the surfaces together · and it is independent of the area of contact.\n\nTerminal velocity — the four-stage story\n\nStage 1 — just releasedAir resistance is zero, so the only force is the weight. The resultant force is at its maximum and the object accelerates at g.\n\n↓\n\nStage 2 — speeding upAs speed increases, air resistance increases. The resultant force (weight − air resistance) shrinks, so the acceleration decreases — the object is still speeding up, just less quickly.\n\n↓\n\nStage 3 — terminal velocity reachedAir resistance has grown until it equals the weight. Resultant force = 0 N, acceleration = 0 m s⁻², and the object falls at a constant velocity.\n\n↓\n\nStage 4 — parachute opensCross-sectional area jumps, so air resistance jumps above the weight. Now there is a resultant force upwards: the object decelerates until air resistance falls back to equal the weight, giving a new, lower terminal velocity.\n\nTerminal velocity — how the forces change1Just releasedWa = g2Speeding upWRa decreasing3Terminal velocityWRa = 04Parachute opensWRdeceleratingThe weight NEVER changes. Only the air resistance grows — until at stage 3 it equals the weight.Resultant force = 0 N → acceleration = 0 m s⁻² → CONSTANT velocity, not zero velocity.\n\nThe weight never changes; only the air resistance grows, until it balances the weight.\n\nWhat changes the size of the terminal velocity\n\nMass of the falling object\n\nA heavier object generally has a greater terminal velocity. Its weight is larger, so it must accelerate to a higher speed before air resistance can grow large enough to balance that weight.\n\nCross-sectional area\n\nA larger area (an open parachute, a spread-eagled skydiver) experiences greater air resistance at any given speed, so the balance point comes sooner — a lower terminal velocity.\n\nModel answer for \"explain what is meant by terminal velocity\" [1]: it is the constant velocity of a falling object reached when the air resistance on the object is equal to the gravitational force (weight) on it. Say \"constant velocity\", not \"maximum speed\", and always name both forces."
+              "markdown": "Definition: friction is the force that opposes, or tends to oppose, relative motion between two surfaces in contact. The \"tends to\" matters — friction acts on a stationary box you are pushing but failing to move.\n\nFriction is not the enemy\n\nUseful effectsUnwanted effects\n\nFriction between shoes and the ground lets you walk without slipping; between tyres and road it lets cars accelerate, turn and brake.\n\nSurfaces heat up, causing wear and tear on moving parts.\n\nFriction lets a belt drive a pulley, a nail hold in wood, and a car park on a slope without sliding.\n\nIn machinery friction reduces efficiency, because a large amount of energy is transferred away as unwanted internal energy.\n\nWays to reduce friction\n\nBall and roller bearings between moving parts · surfaces separated by a lubricant · surfaces separated by an air cushion · smoother, streamlined shapes.\n\nWhat friction depends on\n\nThe materials in contact · the roughness of the surfaces · it is proportional to the force pressing the surfaces together · and it is independent of the area of contact.\n\nTerminal velocity — the four-stage story\n\nStage 1 — just releasedAir resistance is zero, so the only force is the weight. The resultant force is at its maximum and the object accelerates at g.\n\n↓\n\nStage 2 — speeding upAs speed increases, air resistance increases. The resultant force (weight − air resistance) shrinks, so the acceleration decreases — the object is still speeding up, just less quickly.\n\n↓\n\nStage 3 — terminal velocity reachedAir resistance has grown until it equals the weight. Resultant force = 0 N, acceleration = 0 m s⁻², and the object falls at a constant velocity.\n\n↓\n\nStage 4 — parachute opensCross-sectional area jumps, so air resistance jumps above the weight. Now there is a resultant force upwards: the object decelerates until air resistance falls back to equal the weight, giving a new, lower terminal velocity.\n\nThe weight never changes; only the air resistance grows, until it balances the weight.\n\nWhat changes the size of the terminal velocity\n\nMass of the falling object\n\nA heavier object generally has a greater terminal velocity. Its weight is larger, so it must accelerate to a higher speed before air resistance can grow large enough to balance that weight.\n\nCross-sectional area\n\nA larger area (an open parachute, a spread-eagled skydiver) experiences greater air resistance at any given speed, so the balance point comes sooner — a lower terminal velocity.\n\nModel answer for \"explain what is meant by terminal velocity\" [1]: it is the constant velocity of a falling object reached when the air resistance on the object is equal to the gravitational force (weight) on it. Say \"constant velocity\", not \"maximum speed\", and always name both forces."
             }
           ]
         },
