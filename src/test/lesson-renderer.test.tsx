@@ -11,6 +11,16 @@ test("renders a semantic table block", () => {
   expect(screen.getByRole("cell", { name: "Cu²⁺" })).toBeVisible()
 })
 
+test("marks adjacent callout and comparison roots for shared lesson rhythm", () => {
+  const { container } = render(<LessonRenderer blocks={[
+    { type: "callout", title: "Decide", body: "Choose a method.", tone: "tip" },
+    { type: "comparison", items: [{ title: "A", body: "First" }, { title: "B", body: "Second" }] },
+  ]} />)
+
+  expect(container.querySelector('[data-lesson-block="callout"]')).toHaveClass("typeset-block")
+  expect(container.querySelector('[data-lesson-block="comparison"]')).toHaveClass("typeset-block")
+})
+
 test("includes complete salt preparation procedures", async () => {
   const chemistry = catalog.subjects.find((subject) => subject.id === "chemistry")
   const saltPreparation = chemistry?.lessons.find((lesson) => lesson.id === "salt-prep")

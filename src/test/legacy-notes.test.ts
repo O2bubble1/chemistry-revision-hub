@@ -14,14 +14,18 @@ const legacyLessonIds = {
   },
 } as const
 
-type LegacyInventory = Record<string, Record<string, { text: string[] }>>
-function normalizedText(html: string): string {
-  return html
+type LegacyInventory = Record<string, Record<string, { text: string[]; rawText: string }>>
+
+const controlSelector = "button, script, style, svg, path, input, select, option, textarea"
+const semanticSelector = "h3, h4, h5, h6, p, th, td, li, figcaption"
+const sourceBlockSelector = "article, br, div, figcaption, figure, h1, h2, h3, h4, h5, h6, li, ol, p, section, table, tbody, td, tfoot, th, thead, tr, ul"
+const interactionInstruction = /Tap any orange blank(?: to reveal the answer)?\s*;?\s*Tap again to hide it\.?(?:\s*(?:Quiz yourself before revealing|Try saying the sentence out loud before you reveal)\.?)?|Reveal all answers|Hide all answers|your own quizzes/gi
+
+function normalizedText(text: string): string {
+  return text
     .replace(/\*\*/g, "")
     .replace(/\|/g, " ")
     .replace(/([\p{Ll}\p{N}])([\p{Lu}])/gu, "$1 $2")
-    .replace(/<(?:script|style)\b[^>]*>[\s\S]*?<\/(?:script|style)>/gi, " ")
-    .replace(/<[^>]+>/g, " ")
     .replace(/&#(x[\da-f]+|\d+);/gi, (_, value: string) => String.fromCodePoint(Number(value.startsWith("x") ? `0${value}` : value)))
     .replace(/&(amp|lt|gt|quot|apos|nbsp|ndash|mdash);/gi, (_, value: string) => ({ amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", ndash: "–", mdash: "—" })[value.toLowerCase()]!)
     .replace(/\s+([.,!?;:])/g, "$1")
@@ -35,12 +39,68 @@ function normalizedText(html: string): string {
     .trim()
 }
 
-function substantiveText(section: string): string[] {
-  return [...section.matchAll(/<(?:h[3-6]|p|th|td|li|figcaption)[^>]*>([\s\S]*?)<\/(?:h[3-6]|p|th|td|li|figcaption)>/gi)]
-    .filter(([, text]) => !/<(?:button|span)\b[^>]*class="[^"]*(?:blank|answer)[^"]*"/i.test(text))
-    .map(([, text]) => normalizedText(text))
-    .filter((text) => text.length > 1 && !/Tap any orange blank|Reveal all answers|Hide all answers|your own quizzes/i.test(text))
+function sourceFragment(section: string): DocumentFragment {
+  const template = document.createElement("template")
+  template.innerHTML = section
+  template.content.querySelectorAll(controlSelector).forEach((element) => element.replaceWith(document.createTextNode(" ")))
+  return template.content
 }
+
+function isElementNode(node: Node): node is Element {
+  return node.nodeType === Node.ELEMENT_NODE
+}
+
+function isAnswerControl(node: Node): boolean {
+  return isElementNode(node) && node.tagName === "SPAN" && (node.classList.contains("blank") || node.classList.contains("answer"))
+}
+
+
+function fragmentText(element: Element): string[] {
+  const chunks: string[] = [""]
+  const append = (text: string) => { chunks[chunks.length - 1] += text }
+  const visit = (node: Node): void => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      append(node.textContent ?? "")
+      return
+    }
+    if (!isElementNode(node)) return
+    if (isAnswerControl(node)) {
+      chunks.push("")
+      return
+    }
+    node.childNodes.forEach(visit)
+  }
+
+  element.childNodes.forEach(visit)
+  return chunks.flatMap((chunk) => chunk.split(interactionInstruction)).map(normalizedText).filter((text) => text.length > 1)
+}
+
+export function substantiveText(section: string): string[] {
+  const fragment = sourceFragment(section)
+  return [...fragment.querySelectorAll<Element>(semanticSelector)].flatMap(fragmentText)
+}
+
+function sourceText(section: string): string {
+  const fragment = sourceFragment(section)
+  fragment.querySelectorAll("span.blank, span.answer").forEach((element) => element.replaceWith(document.createTextNode(" ")))
+  fragment.querySelectorAll(sourceBlockSelector).forEach((element) => element.after(document.createTextNode(" ")))
+  return normalizedText((fragment.textContent ?? "").replace(interactionInstruction, " "))
+}
+
+test("keeps curriculum text surrounding legacy answer controls", () => {
+  expect(substantiveText('<p>Explain <span class="blank">?</span> with ions.</p>')).toEqual(["Explain", "with ions."])
+})
+
+test("keeps complete words around inline source tags", () => {
+  expect(sourceText('<p><strong>P</strong>ure and <strong>CO</strong> and</p>')).toBe("Pure and CO and")
+})
+test("keeps a raw-text word boundary around legacy answer controls", () => {
+  expect(sourceText('<p>before<span class="blank">?</span>after</p>')).toBe("before after")
+})
+
+test("keeps a raw-text word boundary around legacy controls", () => {
+  expect(sourceText('<p>before<button>reveal</button>after</p>')).toBe("before after")
+})
 
 export async function extractLegacyLessonInventory(path: string): Promise<LegacyInventory> {
   const html = await readFile(path, "utf8")
@@ -57,11 +117,11 @@ export async function extractLegacyLessonInventory(path: string): Promise<Legacy
     const lessonId = legacyLessonIds[subjectId][sourceId as never]
     if (!lessonId) throw new Error(`Unmapped legacy panel: ${subjectId}/${sourceId}`)
     const end = panels[index + 1]?.index ?? template.length
-    const section = template.slice(panel.index, end).replace(/<button\b[^>]*>[\s\S]*?<\/button>/gi, " ")
+    const section = template.slice(panel.index, end)
     const headingMatch = section.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i)
     if (!headingMatch) throw new Error(`Missing heading for ${subjectId}/${sourceId}`)
     const afterHeading = section.slice((headingMatch.index ?? 0) + headingMatch[0].length)
-    inventory[subjectId]![lessonId] = { text: substantiveText(afterHeading) }
+    inventory[subjectId]![lessonId] = { text: substantiveText(afterHeading), rawText: sourceText(afterHeading) }
   }
 
   return inventory
@@ -85,6 +145,40 @@ function blockText(block: LessonBlock): string {
 export function visibleLessonInventory(content: ContentCatalog): Record<string, Record<string, { text: string }>> {
   return Object.fromEntries(content.subjects.map((subject) => [subject.id, Object.fromEntries(subject.lessons.map((lesson) => [lesson.id, { text: normalizedText(lesson.blocks.map(blockText).join(" ")) }]))]))
 }
+
+function tokenMultiset(text: string): Map<string, number> {
+  const tokens = normalizedText(text).normalize("NFKC").toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []
+  return tokens.reduce((counts, token) => counts.set(token, (counts.get(token) ?? 0) + 1), new Map<string, number>())
+}
+
+test("preserves every Chemistry legacy token occurrence", async () => {
+  const expected = await extractLegacyLessonInventory("Revision_Hub__Chemistry_and_Physics.html")
+  const visible = visibleLessonInventory(catalog)
+
+  for (const [lessonId, { rawText }] of Object.entries(expected.chemistry)) {
+    const sourceTokens = tokenMultiset(rawText)
+    const visibleTokens = tokenMultiset(visible.chemistry?.[lessonId]?.text ?? "")
+
+    for (const [token, count] of sourceTokens) {
+      expect(visibleTokens.get(token) ?? 0, `${lessonId}: ${token}`).toBeGreaterThanOrEqual(count)
+    }
+  }
+})
+
+test("preserves every Physics legacy token occurrence", async () => {
+  const expected = await extractLegacyLessonInventory("Revision_Hub__Chemistry_and_Physics.html")
+  const visible = visibleLessonInventory(catalog)
+
+  for (const [lessonId, { rawText }] of Object.entries(expected.physics)) {
+    const sourceTokens = tokenMultiset(rawText)
+    const visibleTokens = tokenMultiset(visible.physics?.[lessonId]?.text ?? "")
+
+    for (const [token, count] of sourceTokens) {
+      expect(visibleTokens.get(token) ?? 0, `${lessonId}: ${token}`).toBeGreaterThanOrEqual(count)
+    }
+  }
+})
+
 
 test("surfaces every legacy textual lesson section", async () => {
   const expected = await extractLegacyLessonInventory("Revision_Hub__Chemistry_and_Physics.html")
