@@ -14,23 +14,32 @@ const legacyLessonIds = {
   },
 } as const
 
-type LegacyInventory = Record<string, Record<string, { landmarks: string[] }>>
+type LegacyInventory = Record<string, Record<string, { text: string[] }>>
 function normalizedText(html: string): string {
   return html
     .replace(/\*\*/g, "")
+    .replace(/\|/g, " ")
     .replace(/([\p{Ll}\p{N}])([\p{Lu}])/gu, "$1 $2")
     .replace(/<(?:script|style)\b[^>]*>[\s\S]*?<\/(?:script|style)>/gi, " ")
     .replace(/<[^>]+>/g, " ")
     .replace(/&#(x[\da-f]+|\d+);/gi, (_, value: string) => String.fromCodePoint(Number(value.startsWith("x") ? `0${value}` : value)))
-    .replace(/&(amp|lt|gt|quot|apos|nbsp);/gi, (_, value: string) => ({ amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " })[value.toLowerCase()]!)
+    .replace(/&(amp|lt|gt|quot|apos|nbsp|ndash|mdash);/gi, (_, value: string) => ({ amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", ndash: "–", mdash: "—" })[value.toLowerCase()]!)
     .replace(/\s+([.,!?;:])/g, "$1")
+    .replace(/\s+/g, " ")
+    .replace(/\s*([+–—/])\s*/g, " $1 ")
+    .replace(/\bNa\s+OH\b/g, "NaOH")
+    .replace(/\bAg\s+(NO₃|Cl|I)\b/g, "Ag$1")
+    .replace(/\(\s+/g, "(")
+    .replace(/\s+\)/g, ")")
     .replace(/\s+/g, " ")
     .trim()
 }
-function sourceLandmarks(text: string): string[] {
-  const sentences = text.match(/[^.!?]+[.!?](?:\s|$)/g) ?? []
-  const first = sentences.map((sentence) => sentence.trim()).find((sentence) => sentence.length > 20) ?? text.slice(0, 80)
-  return [first.trim()]
+
+function substantiveText(section: string): string[] {
+  return [...section.matchAll(/<(?:h[3-6]|p|th|td|li|figcaption)[^>]*>([\s\S]*?)<\/(?:h[3-6]|p|th|td|li|figcaption)>/gi)]
+    .filter(([, text]) => !/<(?:button|span)\b[^>]*class="[^"]*(?:blank|answer)[^"]*"/i.test(text))
+    .map(([, text]) => normalizedText(text))
+    .filter((text) => text.length > 1 && !/Tap any orange blank|Reveal all answers|Hide all answers|You are given a scenario|your own quizzes/i.test(text))
 }
 
 export async function extractLegacyLessonInventory(path: string): Promise<LegacyInventory> {
@@ -38,7 +47,7 @@ export async function extractLegacyLessonInventory(path: string): Promise<Legacy
   const templateMatch = html.match(/<script type="__bundler\/template">\s*(.*?)\s*<\/script>/s)
   if (!templateMatch?.[1]) throw new Error("Missing bundled legacy template")
   const template = JSON.parse(templateMatch[1]) as string
-  const panels = [...template.matchAll(/<div\s+id="([^"]+)"[^>]*class="section"[^>]*data-subject="(chem|phys)"[^>]*>/g)]
+  const panels = [...template.matchAll(/<div\s+id="([^"]+)"[^>]*class="section"[^>]*data-subject="(chem|phys|both)"[^>]*>/g)]
   const inventory: LegacyInventory = { chemistry: {}, physics: {} }
 
   for (const [index, panel] of panels.entries()) {
@@ -46,13 +55,13 @@ export async function extractLegacyLessonInventory(path: string): Promise<Legacy
     if (!sourceId || !sourceSubject || sourceSubject === "both") continue
     const subjectId = sourceSubject === "chem" ? "chemistry" : "physics"
     const lessonId = legacyLessonIds[subjectId][sourceId as never]
-    if (!lessonId) continue
+    if (!lessonId) throw new Error(`Unmapped legacy panel: ${subjectId}/${sourceId}`)
     const end = panels[index + 1]?.index ?? template.length
     const section = template.slice(panel.index, end).replace(/<button\b[^>]*>[\s\S]*?<\/button>/gi, " ")
     const headingMatch = section.match(/<h2[^>]*>([\s\S]*?)<\/h2>/i)
     if (!headingMatch) throw new Error(`Missing heading for ${subjectId}/${sourceId}`)
     const afterHeading = section.slice((headingMatch.index ?? 0) + headingMatch[0].length)
-    inventory[subjectId]![lessonId] = { landmarks: sourceLandmarks(normalizedText(afterHeading)) }
+    inventory[subjectId]![lessonId] = { text: substantiveText(afterHeading) }
   }
 
   return inventory
@@ -85,8 +94,8 @@ test("surfaces every legacy textual lesson section", async () => {
   const visible = visibleLessonInventory(catalog)
 
   for (const [subjectId, lessons] of Object.entries(expected)) {
-    for (const [lessonId, { landmarks }] of Object.entries(lessons)) {
-      for (const landmark of landmarks) expect(visible[subjectId]?.[lessonId]?.text).toContain(landmark)
+    for (const [lessonId, { text }] of Object.entries(lessons)) {
+      for (const sourceText of text) expect((visible[subjectId]?.[lessonId]?.text ?? "").replace(/\s+/g, "").toLowerCase()).toContain(sourceText.replace(/\s+/g, "").toLowerCase())
     }
   }
   expect(allLessonBlocks(catalog).some((block) => block.type === "details")).toBe(false)
