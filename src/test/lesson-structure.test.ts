@@ -58,3 +58,10 @@ test("keeps pH inequality notation readable", () => {
   expect(JSON.stringify(lesson("chemistry", "ph-indicators").blocks)).toContain("< 7")
   expect(JSON.stringify(lesson("chemistry", "ph-indicators").blocks)).toContain("> 7")
 })
+
+test("gives Physics motion and force data semantic structure", () => {
+  for (const lessonId of ["kinematics", "motion-graphs", "forces-weight", "newtons-laws"]) {
+    expect(lesson("physics", lessonId).blocks.some((block) => block.type === "table")).toBe(true)
+  }
+  expect(lesson("physics", "equations-of-motion").blocks.some((block) => block.type === "callout" && block.tone === "warning")).toBe(true)
+})

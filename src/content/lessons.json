@@ -1386,6 +1386,51 @@
               "level": 2
             },
             {
+              "type": "heading",
+              "text": "The quantity table",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": ["Quantity", "Definition", "SI unit", "Type", "Symbol"],
+              "rows": [
+                ["Distance", "The total length of path travelled by an object", "metre (m)", "Scalar", "d"],
+                ["Displacement", "The distance measured in a straight line from the starting point, in a stated direction", "metre (m)", "Vector", "s"],
+                ["Speed", "Distance travelled per unit time", "m s⁻¹", "Scalar", "—"],
+                ["Velocity", "Displacement per unit time (i.e. rate of change of displacement)", "m s⁻¹", "Vector", "u, v"],
+                ["Acceleration", "Rate of change of velocity — how fast the velocity changes each second", "m s⁻²", "Vector", "a"]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Distance vs displacement — the split that costs marks",
+              "level": 3
+            },
+            {
+              "type": "comparison",
+              "items": [
+                { "title": "Distance — scalar", "body": "Adds up everything you walked, no matter which way you turned. It can only ever increase. A full lap of a track gives a large distance." },
+                { "title": "Displacement — vector", "body": "Only cares where you ended up relative to where you started, plus a direction. It can decrease, and it can be zero. A full lap gives zero displacement." }
+              ]
+            },
+            {
+              "type": "callout",
+              "title": "Direction convention",
+              "body": "A negative acceleration does NOT always mean slowing down — it means the acceleration points the negative way.",
+              "tone": "warning"
+            },
+            {
+              "type": "table",
+              "headers": ["The trap", "What the examiner wants instead"],
+              "rows": [
+                ["Writing \"velocity = distance / time\"", "Velocity is displacement per unit time. Reserve \"distance\" for speed."],
+                ["Giving a displacement with no direction", "State the direction: \"200 m, south of point A\". A vector answer without a direction is incomplete."],
+                ["Assuming negative acceleration always means slowing down", "A negative sign only means \"in the negative direction\". An object speeding up in the negative direction also has negative acceleration."],
+                ["Assuming constant speed means no acceleration", "Moving in a circle at constant speed still means the direction of velocity is changing, so the object is accelerating."],
+                ["Rounding too early", "Keep full precision through the working; round only the final answer, and match the significant figures of the data (usually 2 or 3 s.f.)."]
+              ]
+            },
+            {
               "type": "richText",
               "markdown": "The big idea: Kinematics describes how things move without asking why. Everything reduces to five quantities and a hard split between scalars (size only) and vectors (size and direction). Most lost marks in this topic come from swapping a vector for its scalar twin.\n\nThe quantity table\n\nQuantity\n\nDefinition\n\nSI unit\n\nType\n\nSymbol\n\nDistance\n\nThe total length of path travelled by an object\n\nmetre (m)\n\nScalar\n\nd\n\nDisplacement\n\nThe distance measured in a straight line from the starting point, in a stated direction\n\nmetre (m)\n\nVector\n\ns\n\nSpeed\n\nDistance travelled per unit time\n\nm s⁻¹\n\nScalar\n\n—\n\nVelocity\n\nDisplacement per unit time (i.e. rate of change of displacement)\n\nm s⁻¹\n\nVector\n\nu, v\n\nAcceleration\n\nRate of change of velocity — how fast the velocity changes each second\n\nm s⁻²\n\nVector\n\na\n\naverage speed = total distance ÷ total time · average velocity = net displacement ÷ total time · acceleration = (v − u) ÷ t\n\nDistance vs displacement — the split that costs marks\n\nDistance — scalar\n\nAdds up everything you walked, no matter which way you turned. It can only ever increase. A full lap of a track gives a large distance.\n\nDisplacement — vector\n\nOnly cares where you ended up relative to where you started, plus a direction. It can decrease, and it can be zero. A full lap gives zero displacement.\n\nWorked example — circular track Practice 1 Q1\n\nAn athlete runs half a lap of a circular track of radius 20 m, from A to the opposite point B, in 7.5 s.\n\n(a) Average speed. Distance = half the circumference = 0.5 × π × (40 m) = 62.832 m.\n\nAverage speed = 62.832 m ÷ 7.5 s = 8.4 m s⁻¹ (2 s.f.)\n\n(b) Magnitude of displacement A → B. The straight line from A to B is a diameter = 40 m.\n\n(c) Why is average velocity zero over one complete lap? After one complete lap the athlete returns to his original position, so his net displacement is zero. Since velocity is displacement per unit time, a zero displacement gives a zero average velocity — even though his average speed is large.\n\nDirection convention — the sign of the accelerationSpeeding up → acceleration is in the SAME direction as the velocity. Slowing down → OPPOSITE direction.velocity is +ve · Speeding upvaa is POSITIVEvelocity is +ve · Slowing downvaa is NEGATIVEvelocity is −ve · Speeding upvaa is NEGATIVEvelocity is −ve · Slowing downvaa is POSITIVEA negative acceleration does NOT always mean slowing down — it means the acceleration points the negative way.The direction of the axis you choose determines every sign in the question. State it before you calculate.\n\nThe sign of the acceleration depends on the direction of motion as well as on whether the object is speeding up or slowing down.\n\nExam traps to watch\n\nThe trapWhat the examiner wants instead\n\nWriting \"velocity = distance / time\"\n\nVelocity is displacement per unit time. Reserve \"distance\" for speed.\n\nGiving a displacement with no direction\n\nState the direction: \"200 m, south of point A\". A vector answer without a direction is incomplete.\n\nAssuming negative acceleration always means slowing down\n\nA negative sign only means \"in the negative direction\". An object speeding up in the negative direction also has negative acceleration.\n\nAssuming constant speed means no acceleration\n\nMoving in a circle at constant speed still means the direction of velocity is changing, so the object is accelerating.\n\nRounding too early\n\nKeep full precision through the working; round only the final answer, and match the significant figures of the data (usually 2 or 3 s.f.).\n\nDescribing motion with diagrams\n\nTicker-tape timer — dot spacing shows how speed changesDots are printed at equal time intervals, so spacing = distance travelled per unit time.direction of motionConstant spacingConstant speeddirection of motionIncreasing spacingSpeeding updirection of motionDecreasing spacingSlowing downFree fall shows as steadily increasing spacing — constant acceleration of about 10 m s⁻².\n\nDot spacing on a ticker tape is a direct read-out of how the speed is changing.\n\nA coin tossed at 20 m s⁻¹ and caught again — the same motion, four graphstime / svelocity / m s⁻¹20−2024straight line, crosses zero at 2 stime / sspeed / m s⁻¹2024V shape — speed can never be negativetime / sdisplacement / m2024returns to 0 m — back in the handtime / sdistance / m204024keeps rising to 40 m — never decreasesAt the top (t = 2 s) the velocity is zero but the acceleration is still −10 m s⁻² — the velocity line has no kink.\n\nOne motion, four graphs. Velocity goes negative; speed and distance never do."
             }
@@ -1418,6 +1463,42 @@
               "level": 2
             },
             {
+              "type": "table",
+              "headers": ["Shape", "What it means", "How to read it"],
+              "rows": [
+                ["Horizontal line", "At rest", "Gradient = 0, so velocity = 0. Position is not changing."],
+                ["Straight sloping line", "Constant velocity", "Velocity = gradient = Δs ÷ Δt. Steeper line = faster."],
+                ["Curve getting steeper", "Accelerating", "Gradient increasing, so velocity increasing. A freely falling object gives this shape."],
+                ["Curve flattening off", "Decelerating", "Gradient decreasing towards zero — the object is coming to rest."],
+                ["Line sloping downwards", "Moving back towards the start", "Negative gradient = negative velocity, i.e. motion in the opposite direction."]
+              ]
+            },
+            {
+              "type": "table",
+              "headers": ["Shape", "What it means", "How to read it"],
+              "rows": [
+                ["Horizontal line above the axis", "Constant velocity", "Gradient = 0, so acceleration = 0 and the forces are balanced."],
+                ["Straight sloping line", "Uniform acceleration", "a = gradient = (v − u) ÷ t. The equations of motion are valid here."],
+                ["Curve flattening towards a horizontal line", "Approaching terminal velocity", "Acceleration decreasing to zero as air resistance builds up to equal the weight."],
+                ["Line crossing the time axis", "The object reversed direction", "Above axis and below axis are opposite directions. Areas on opposite sides cancel when finding displacement."],
+                ["Area under the line", "Displacement", "Split into triangles and rectangles: triangle = ½ × base × height, rectangle = base × height."]
+              ]
+            },
+            {
+              "type": "richText",
+              "markdown": "Two rules run this whole tab: the gradient of a graph gives you the quantity one step \"down\" the chain, and the area under a graph gives you the quantity one step \"up\". Everything else is shape recognition.\n\ndisplacement–time graphgradient = velocity. Area under it means nothing.\n\n↓ gradient ↑ area\n\nvelocity–time graphgradient = acceleration · area under = displacement\n\n↓ gradient ↑ area\n\nacceleration–time grapharea under = change in velocity"
+            },
+            {
+              "type": "richText",
+              "markdown": "Displacement–time graphs\n\nShapeWhat it meansHow to read it\n\nHorizontal lineAt restGradient = 0, so velocity = 0. Position is not changing.\n\nStraight sloping lineConstant velocityVelocity = gradient = Δs ÷ Δt. Steeper line = faster.\n\nCurve getting steeperAcceleratingGradient increasing, so velocity increasing. A freely falling object gives this shape.\n\nCurve flattening offDeceleratingGradient decreasing towards zero — the object is coming to rest.\n\nLine sloping downwardsMoving back towards the startNegative gradient = negative velocity, i.e. motion in the opposite direction.\n\nVelocity–time graphs\n\nShapeWhat it meansHow to read it\n\nHorizontal line above the axisConstant velocityGradient = 0, so acceleration = 0 and the forces are balanced.\n\nStraight sloping lineUniform accelerationa = gradient = (v − u) ÷ t. The equations of motion are valid here.\n\nCurve flattening towards a horizontal lineApproaching terminal velocityAcceleration decreasing to zero as air resistance builds up to equal the weight.\n\nLine crossing the time axisThe object reversed directionAbove axis and below axis are opposite directions. Areas on opposite sides cancel when finding displacement.\n\nArea under the lineDisplacementSplit into triangles and rectangles: triangle = ½ × base × height, rectangle = base × height."
+            },
+
+            {
+              "type": "heading",
+              "text": "Motion graph interpretation",
+              "level": 3
+            },
+            {
               "type": "richText",
               "markdown": "Two rules run this whole tab: the gradient of a graph gives you the quantity one step \"down\" the chain, and the area under a graph gives you the quantity one step \"up\". Everything else is shape recognition.\n\ndisplacement–time graphgradient = velocity. Area under it means nothing.\n\n↓ gradient ↑ area\n\nvelocity–time graphgradient = acceleration · area under = displacement\n\n↓ gradient ↑ area\n\nacceleration–time grapharea under = change in velocity\n\nDisplacement–time graphsUNIFORM / CONSTANT VELOCITYAt reference pointStationaryZero accelerationsConstant displacement, +veStationaryZero accelerationsDistance from ref. pointincreases at constant rateConstant +ve velocitysDistance from ref. pointdecreases at constant rateConstant −ve velocitysDisplacement −ve, distanceincreases at constant rateConstant −ve velocitysDisplacement −ve, distancedecreases at constant rateConstant +ve velocitysNON-UNIFORM VELOCITYIncreases at adecreasing rateDecreasing +ve velocitysDecreases at anincreasing rateIncreasing −ve velocitysDecreases at adecreasing rateDecreasing −ve velocitysIncreases at anincreasing rateIncreasing +ve velocitysGradient of a displacement–time graph = velocity. Distance from the reference point = magnitude of displacement.\n\nEvery displacement–time shape in the syllabus, uniform and non-uniform.\n\nDisplacement–time graphs\n\nShapeWhat it meansHow to read it\n\nHorizontal lineAt restGradient = 0, so velocity = 0. Position is not changing.\n\nStraight sloping lineConstant velocityVelocity = gradient = Δs ÷ Δt. Steeper line = faster.\n\nCurve getting steeperAcceleratingGradient increasing, so velocity increasing. A freely falling object gives this shape.\n\nCurve flattening offDeceleratingGradient decreasing towards zero — the object is coming to rest.\n\nLine sloping downwardsMoving back towards the startNegative gradient = negative velocity, i.e. motion in the opposite direction.\n\nVelocity–time graphsUNIFORM / CONSTANT ACCELERATIONStationary(zero change in displacement)Zero accelerationvConstant velocity in thepositive directionZero accelerationv+ve velocity, speed increasesat a constant rate (speeding up)Constant +ve accelerationv+ve velocity, speed decreasesto 0 at a constant rateConstant −ve accelerationv−ve velocity, speed decreasesto 0 (slowing down)Constant +ve accelerationv−ve velocity, speed increases(speeding up, NOT decelerating)Constant −ve accelerationvNON-UNIFORM ACCELERATIONSpeed increases at adecreasing rateDecreasing +ve accelerationvSpeed decreases to 0 atan increasing rateIncreasing −ve accelerationvSpeed decreases to 0 ata decreasing rateDecreasing −ve accelerationvSpeed increases at anincreasing rateIncreasing +ve accelerationvGradient = acceleration. Area under the line = displacement.\n\nEvery velocity–time shape in the syllabus. Note the fourth uniform case: speeding up in the negative direction is NOT deceleration.\n\nVelocity–time graphs\n\nShapeWhat it meansHow to read it\n\nHorizontal line above the axisConstant velocityGradient = 0, so acceleration = 0 and the forces are balanced.\n\nStraight sloping lineUniform accelerationa = gradient = (v − u) ÷ t. The equations of motion are valid here.\n\nCurve flattening towards a horizontal lineApproaching terminal velocityAcceleration decreasing to zero as air resistance builds up to equal the weight.\n\nLine crossing the time axisThe object reversed directionAbove axis and below axis are opposite directions. Areas on opposite sides cancel when finding displacement.\n\nArea under the lineDisplacementSplit into triangles and rectangles: triangle = ½ × base × height, rectangle = base × height.\n\nSketching the skydiver Practice 2 Q2\n\nA skydiver reaches a terminal velocity of 55.6 m s⁻¹ after 10.0 s, falls for 70.0 s, opens her parachute and quickly slows to a new terminal velocity of 10.2 m s⁻¹, then lands 105 s later.\n\nStage 1 — 0 to 10 s: a steep curve rising from the origin and flattening, because air resistance increases as speed increases, so acceleration decreases.\n\nStage 2 — 10 s to 80 s: a horizontal line at 55.6 m s⁻¹. Air resistance now equals weight, resultant force is 0 N.\n\nStage 3 — parachute opens: a steep drop that curves and levels out at 10.2 m s⁻¹ — the larger cross-sectional area gives much greater air resistance, so there is a large upward resultant force and a deceleration that shrinks to zero.\n\nStage 4: horizontal at 10.2 m s⁻¹ until she lands.\n\nWhy the equations of motion cannot be used here: the acceleration is not uniform for parts of the journey, and the kinematics equations are only valid for uniform acceleration.\n\nMarks are awarded for the boring things. In a sketch question the three marks usually go to: (1) axes labelled with quantity and unit, (2) correct shape including curvature, (3) key values marked on both axes. Draw the shape first, then go back and label.\n\nComparing the two graph types\n\nDisplacement–time vs velocity–time: one journeyA → B accelerating from restB → C constant velocityC → D decelerating to a stoptime / sdisplacement / mABCDconcave curvestraight lineconvex curvetime / svelocity / m s⁻¹ABCDgradient +ve constanthorizontalgradient −ve constantThe y-axis label tells you which graph you are reading. Check it first.\n\nOne journey, both graphs. The y-axis label tells you which you are reading.\n\nReading area off a velocity–time graph\n\nArea under a velocity–time graph = displacementtime / svelocity / m s⁻¹0123451020304050Acceleration = gradient= (50 − 0) ÷ (5 − 0)= 10 m s⁻²0 s to 5 s — triangle= 0.5 × 5 × 50= 125 m4 s to 5 s — trapezium= 0.5 × (30 + 50) × 1= 40 mThe handout labels the gradient “velocity” here — it is the acceleration. The number is right, the label is not.\n\nGradient gives acceleration; area gives displacement. Split into triangles and trapeziums.\n\nThe skydiver, stage by stage\n\nSkydiver — velocity–time graph with the four stagestime / svelocity / m s⁻¹55.610.21accelerating,2terminal velocity3parachute opens4new terminal velocity1Air resistance grows with speed, so the acceleration decreases — the curve flattens.2Air resistance = weight. Resultant force 0 N, acceleration 0 m s⁻², constant velocity.3Larger area → air resistance exceeds weight → upward resultant force, so she decelerates.4A new, lower terminal velocity where the forces balance again.The parachute stage must CURVE — the deceleration shrinks as the speed falls.\n\nThe parachute stage must curve — the deceleration shrinks as the speed falls."
             }
@@ -1441,6 +1522,26 @@
               "level": 2
             },
             {
+              "type": "callout",
+              "title": "Health warning",
+              "body": "these four equations are only valid when the acceleration is uniform (constant). If a question mentions terminal velocity, a parachute or \"changing acceleration\", the equations do not apply for that stage — use a graph instead.",
+              "tone": "warning"
+            },
+            {
+              "type": "table",
+              "headers": ["Situation", "What to use"],
+              "rows": [
+                ["Released from rest", "u = 0, a = g. With g = 10 m s⁻²: s = ½gt² and v = gt."],
+                ["Thrown upwards", "Take up as positive: a = −g throughout, including at the very top. At maximum height v = 0 but a is still −g."],
+                ["Air resistance negligible", "All objects fall with the same acceleration regardless of mass — a heavier nail takes exactly the same time to fall as a lighter one."],
+                ["Air resistance significant", "Acceleration decreases as speed increases; the object may reach terminal velocity. EOM no longer valid."]
+              ]
+            },
+            {
+              "type": "richText",
+              "markdown": "Health warning: these four equations are only valid when the acceleration is uniform (constant). If a question mentions terminal velocity, a parachute or \"changing acceleration\", the equations do not apply for that stage — use a graph instead.\n\nFree fall\n\nSituationWhat to use\n\nReleased from restu = 0, a = g. With g = 10 m s⁻²: s = ½gt² and v = gt.\n\nThrown upwardsTake up as positive: a = −g throughout, including at the very top. At maximum height v = 0 but a is still −g.\n\nAir resistance negligibleAll objects fall with the same acceleration regardless of mass — a heavier nail takes exactly the same time to fall as a lighter one.\n\nAir resistance significantAcceleration decreases as speed increases; the object may reach terminal velocity. EOM no longer valid."
+            },
+            {
               "type": "richText",
               "markdown": "Health warning: these four equations are only valid when the acceleration is uniform (constant). If a question mentions terminal velocity, a parachute or \"changing acceleration\", the equations do not apply for that stage — use a graph instead.\n\nThe four equations\n\nv = u + at\n\nleaves out s\n\nUse when you don't know and don't want the displacement.\n\ns = ut + ½at²\n\nleaves out v\n\nUse when the final velocity is neither given nor asked for.\n\nv² = u² + 2as\n\nleaves out t\n\nUse when time is not mentioned anywhere in the question.\n\ns = ½(u + v)t\n\nleaves out a\n\nUse when acceleration is unknown but both velocities are given.\n\nHow to attack any EOM question\n\n1. Choose a positive direction and write it down. \"Taking downwards as positive\" earns nothing on its own but prevents almost every sign error.\n\n↓\n\n2. List s, u, v, a, t. Write the three you know, put a \"?\" on the one you want, and cross out the fifth.\n\n↓\n\n3. Pick the equation missing the crossed-out letter. Substitute with units, then solve.\n\n↓\n\n4. Sanity-check the sign and size. A car should not decelerate at 400 m s⁻², and a dropped ball should not have negative downward velocity.\n\nFree fall\n\nSituationWhat to use\n\nReleased from restu = 0, a = g. With g = 10 m s⁻²: s = ½gt² and v = gt.\n\nThrown upwardsTake up as positive: a = −g throughout, including at the very top. At maximum height v = 0 but a is still −g.\n\nAir resistance negligibleAll objects fall with the same acceleration regardless of mass — a heavier nail takes exactly the same time to fall as a lighter one.\n\nAir resistance significantAcceleration decreases as speed increases; the object may reach terminal velocity. EOM no longer valid.\n\nWorked example — block down a ramp Practice 2 Q1\n\nA block is released from rest and slides down a frictionless ramp 5.0 m long, reaching the end 1.6 s later.\n\n(a) Velocity at the end of the ramp. Known: s = 5.0 m, u = 0, t = 1.6 s. Wanted: v. Missing: a → use s = ½(u + v)t.\n\n5.0 = 0.5 × v × 1.6 → v = 6.3 m s⁻¹ (2 s.f.)\n\n(b) Acceleration. Known: s, u, t. Wanted: a. Missing: v → use s = ut + ½at².\n\n5.0 = 0 + ½ × a × (1.6)² → a = 3.9 m s⁻² (2 s.f.)\n\n(c) Average speed for the whole journey (5.0 m on the ramp in 1.6 s, then 5.0 m on a rough surface in 3.2 s):\n\naverage speed = total distance ÷ total time = 10.0 m ÷ 4.8 s = 2.1 m s⁻¹ (2 s.f.)\n\nWorked example — the Mars descent Dynamics Practice Q2\n\nA 250 kg probe fires reverse thrusters at 40 m s⁻¹ and lands 30 s later at 0.75 m s⁻¹. Take gMars = 4.0 N kg⁻¹, no air resistance.\n\nStep 1 — acceleration. Taking downwards as positive: a = (v − u) ÷ t = (0.75 − 40) ÷ 30 = −1.31 m s⁻² (i.e. a deceleration).\n\nStep 2 — resultant force. FR = ma = 250 × (−1.31) = −327 N, so there is a resultant force of 327 N upwards.\n\nStep 3 — bring in the weight. Weight = mg = 250 × 4.0 = 1000 N downwards.\n\n1000 − thrust = −327 → thrust ≈ 1.3 × 10³ N upwards.\n\nWhy this is a two-topic question: kinematics gives you a, then Newton's second law converts a into a force. Almost every Sec 3 dynamics problem has this shape.\n\nFree fall — reading g off the graph\n\nFree fall — gradient of the speed–time graph gives gtime / svelocity / m s⁻¹123456710203040506070806 s60 m s⁻¹Gradient = acceleration= 60 ÷ 6g = 10 m s⁻²Free fall = the only forceacting is the weight.All objects fall at the samerate when there is no airresistance, whatever theirmass or size.Released from the sameheight, they land together.\n\nThe gradient of the speed–time graph for a freely falling body is g = 10 m s⁻²."
             }
@@ -1462,6 +1563,24 @@
               "type": "heading",
               "text": "Complete study notes",
               "level": 2
+            },
+            {
+              "type": "comparison",
+              "items": [
+                { "title": "Mass", "body": "The amount of substance (matter) in the body\n\nConstant in any location\n\nMeasured in kilograms (kg)\n\nScalar\n\nMeasured with a beam balance / electronic balance" },
+                { "title": "Weight", "body": "The force of gravity acting on the body\n\nDepends on the gravitational field strength at that location\n\nMeasured in newtons (N)\n\nVector — it acts downwards, towards the centre of the Earth\n\nMeasured with a spring balance (newton meter / force meter)" }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": ["Term", "Definition you should be able to write out"],
+              "rows": [
+                ["Gravitational field", "A region in which a mass experiences a force due to gravitational attraction."],
+                ["Gravitational field strength, g", "The gravitational force per unit mass placed at that point. Unit: N kg⁻¹."],
+                ["On Earth", "g ≈ 10 N kg⁻¹ — a 1 kg mass experiences a gravitational force of 10 N."],
+                ["On the Moon", "g ≈ 1.6 N kg⁻¹ — the same 1 kg mass experiences only 1.6 N."],
+                ["Numerically equal to…", "the acceleration of free fall for a body near the Earth, which is why 10 N kg⁻¹ and 10 m s⁻² are interchangeable."]
+              ]
             },
             {
               "type": "richText",
@@ -1499,6 +1618,46 @@
               "type": "heading",
               "text": "Complete study notes",
               "level": 2
+            },
+            {
+              "type": "table",
+              "headers": ["If the forces are…", "Then the object…"],
+              "rows": [
+                ["Balanced (resultant force = 0 N)", "is in equilibrium: either at rest, or moving in a straight line at constant speed. Acceleration = 0 m s⁻²."],
+                ["Unbalanced (resultant force ≠ 0 N)", "accelerates in the direction of the resultant force — speeding up, slowing down, or changing direction."]
+              ]
+            },
+            {
+              "type": "table",
+              "headers": ["Idea", "Explanation"],
+              "rows": [
+                ["Inertia", "The reluctance of a body to change its state of rest or motion. Newton's first law is also called the law of inertia."],
+                ["Quantified by mass", "The greater the mass, the greater the inertia — a more massive object is harder to start, speed up, slow down or turn."],
+                ["Seat belts", "In a collision a passenger in motion continues to move forward because of inertia. The seat belt exerts an external force on the passenger, decelerating them safely."],
+                ["Box on an accelerating lorry", "The box tends to stay where it was, so relative to the lorry it slides towards the back. When the lorry brakes, the box slides towards the front."],
+                ["Passenger on a train", "As the train accelerates forwards, a frictionless passenger stays at rest relative to the ground, so she appears to move backwards relative to the train."]
+              ]
+            },
+            {
+              "type": "table",
+              "headers": ["Case", "Method"],
+              "rows": [
+                ["Parallel forces", "Simple addition (same direction) or subtraction (opposite directions). Choose a positive direction first."],
+                ["Perpendicular forces", "Pythagoras for the magnitude, trigonometry for the direction. 3 N east + 4 N north gives 5 N at 37° east of north."],
+                ["Non-parallel forces", "Draw to scale using the tip-to-tail method or the parallelogram method, then measure — or calculate with trigonometry."],
+                ["Static point mass, 3 forces", "The forces are balanced, so the three vectors form a closed vector triangle — the three arrows follow each other head to tail in a closed loop. (Preferred method.)"]
+              ]
+            },
+            {
+              "type": "table",
+              "headers": ["Free-body diagram rule", "Guidance"],
+              "rows": [
+                ["What it is", "A diagram showing the object (as a dot, a block or a sketch) and only the forces acting on it."],
+                ["Rule 1 — forces ON the object only", "Forces the object exerts on its surroundings must not appear. Half of all lost marks live here."],
+                ["Rule 2 — label every arrow fully", "Use \"type of force on object by source\", e.g. \"normal contact force on box by table\"."],
+                ["Rule 3 — start the arrow from the right place", "Weight acts from the centre of gravity; normal force acts from the contact surface."],
+                ["Rule 4 — arrow length shows magnitude", "If the object is in equilibrium, opposing arrows must be drawn the same length."]
+              ]
             },
             {
               "type": "richText",
