@@ -65,3 +65,14 @@ test("gives Physics motion and force data semantic structure", () => {
   }
   expect(lesson("physics", "equations-of-motion").blocks.some((block) => block.type === "callout" && block.tone === "warning")).toBe(true)
 })
+
+test("represents Motion Graph table interpretations only in semantic tables", () => {
+  const blocks = lesson("physics", "motion-graphs").blocks
+  const tables = blocks.filter((block) => block.type === "table" && block.headers.join("|") === "Shape|What it means|How to read it")
+  const richText = blocks.filter((block) => block.type === "richText").map((block) => block.markdown).join("\n")
+
+  expect(tables).toHaveLength(2)
+  expect(richText).not.toContain("Horizontal lineAt restGradient = 0")
+  expect(richText).not.toContain("Horizontal line above the axisConstant velocityGradient = 0")
+  expect(richText.match(/Two rules run this whole tab/g)).toHaveLength(1)
+})
