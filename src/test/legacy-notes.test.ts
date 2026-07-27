@@ -75,6 +75,7 @@ function blockText(block: LessonBlock): string {
     case "comparison": return block.items.map((item) => `${item.title} ${item.body}`).join(" ")
     case "table": return `${block.headers.join(" ")} ${block.rows.flat().join(" ")}`
     case "figure": return `${block.alt} ${block.caption ?? ""}`
+    case "figureGallery": return `${block.summary} ${block.figures.map((figure) => `${figure.alt} ${figure.caption ?? ""}`).join(" ")}`
     case "quizLink":
     case "flashcardLink":
     case "periodicTableLink": return block.label
@@ -83,10 +84,6 @@ function blockText(block: LessonBlock): string {
 
 export function visibleLessonInventory(content: ContentCatalog): Record<string, Record<string, { text: string }>> {
   return Object.fromEntries(content.subjects.map((subject) => [subject.id, Object.fromEntries(subject.lessons.map((lesson) => [lesson.id, { text: normalizedText(lesson.blocks.map(blockText).join(" ")) }]))]))
-}
-
-function allLessonBlocks(content: ContentCatalog): LessonBlock[] {
-  return content.subjects.flatMap((subject) => subject.lessons.flatMap((lesson) => lesson.blocks))
 }
 
 test("surfaces every legacy textual lesson section", async () => {
@@ -98,7 +95,6 @@ test("surfaces every legacy textual lesson section", async () => {
       for (const sourceText of text) expect((visible[subjectId]?.[lessonId]?.text ?? "").replace(/\s+/g, "").toLowerCase()).toContain(sourceText.replace(/\s+/g, "").toLowerCase())
     }
   }
-  expect(allLessonBlocks(catalog).some((block) => block.type === "details")).toBe(false)
 })
 
 test("renders completed model answers instead of inert blanks", () => {

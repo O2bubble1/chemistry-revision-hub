@@ -46,8 +46,8 @@ Study state stays in browser localStorage. Query links such as `?subject=chemist
 
 ## Deploy
 
-Enable **Settings → Pages → Build and deployment → GitHub Actions**. `.github/workflows/pages.yml` runs checks, builds once, then deploys that validated `dist` artifact on pushes to `main`.
+`.github/workflows/pages.yml` runs checks and builds on every `main` push. The validated output is committed to `docs/`, which existing GitHub Pages legacy publishing serves automatically.
 
 ## Original materials
 
-All 18 legacy posters, handouts, and concept-map sheets are extracted under `public/source-materials/` and presented as lazy-loaded, captioned, accessible figures in their relevant lessons. Every migrated lesson also retains the remaining legacy prose in a collapsed **Preserved source notes** section; model-answer notes render completed answers rather than legacy blank prompts. `/original-materials.html` remains available as the complete legacy viewer for source reference.
+All 18 legacy posters, handouts, and concept-map sheets are extracted under `public/source-materials/`. Each relevant lesson keeps its full textual source material visible in normal reading flow; original scans sit in optional lazy-loaded, captioned source-material galleries. Model answers render completed answers rather than legacy blank prompts. `/original-materials.html` remains the complete legacy viewer for source reference.
