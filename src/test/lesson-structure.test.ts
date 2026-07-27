@@ -20,8 +20,7 @@ test("gives Chemistry diagnostic data semantic tables", () => {
 
 test("preserves Chemistry QA source headings", () => {
   const headings = lesson("chemistry", "qa-strategy").blocks
-    .filter((block) => block.type === "heading" && block.level === 3)
-    .map((block) => block.text)
+    .flatMap((block) => block.type === "heading" && block.level === 3 ? [block.text] : [])
 
   expect(headings).toEqual([
     "Step 1 — Physical Observation",

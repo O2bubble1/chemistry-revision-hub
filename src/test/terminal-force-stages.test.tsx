@@ -18,7 +18,7 @@ test("keeps exactly one detailed terminal-velocity stage table in complete notes
     "Stage 3 — terminal velocity reached",
     "Stage 4 — parachute opens",
   ]
-  const stageTables = lesson.blocks.filter((block) => block.type === "table" && block.headers.includes("Stage") && block.headers.includes("Forces"))
+  const stageTables = lesson.blocks.flatMap((block) => block.type === "table" && block.headers.includes("Stage") && block.headers.includes("Forces") ? [block] : [])
 
   expect(stageTables).toHaveLength(1)
   expect(stageTables[0]?.rows.map(([stage]) => stage)).toEqual(stageLabels)

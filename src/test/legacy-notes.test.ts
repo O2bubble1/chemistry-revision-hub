@@ -50,7 +50,7 @@ function isElementNode(node: Node): node is Element {
   return node.nodeType === Node.ELEMENT_NODE
 }
 
-function isAnswerControl(node: Node): node is Element {
+function isAnswerControl(node: Node): boolean {
   return isElementNode(node) && node.tagName === "SPAN" && (node.classList.contains("blank") || node.classList.contains("answer"))
 }
 
