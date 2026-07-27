@@ -21,26 +21,36 @@ export function LessonRenderer({ blocks, onToolLink }: Props) {
     <article className="typeset typeset-docs max-w-3xl">
       {blocks.map((block, index) => {
         const key = `${block.type}-${index}`
+        let content
         switch (block.type) {
           case "heading":
-            return block.level === 2 ? <h2 key={key}>{block.text}</h2> : <h3 key={key}>{block.text}</h3>
+            content = block.level === 2 ? <h2>{block.text}</h2> : <h3>{block.text}</h3>
+            break
           case "richText":
-            return <Markdown key={key}>{block.markdown}</Markdown>
+            content = <Markdown>{block.markdown}</Markdown>
+            break
           case "callout":
-            return <Alert key={key} variant={block.tone}><AlertTitle>{block.title}</AlertTitle><AlertDescription><Markdown>{block.body}</Markdown></AlertDescription></Alert>
+            content = <Alert variant={block.tone}><AlertTitle>{block.title}</AlertTitle><AlertDescription><Markdown>{block.body}</Markdown></AlertDescription></Alert>
+            break
           case "comparison":
-            return <div key={key} data-comparison-grid className="grid items-start gap-4 sm:grid-cols-2">{block.items.map((item, itemIndex) => <Card key={item.title} data-comparison-item={itemIndex}><CardHeader><CardTitle>{item.title}</CardTitle></CardHeader><CardContent><Markdown>{item.body}</Markdown></CardContent></Card>)}</div>
+            content = <div data-comparison-grid className="grid items-start gap-4 sm:grid-cols-2">{block.items.map((item, itemIndex) => <Card key={item.title} data-comparison-item={itemIndex}><CardHeader><CardTitle>{item.title}</CardTitle></CardHeader><CardContent><Markdown>{item.body}</Markdown></CardContent></Card>)}</div>
+            break
           case "table":
-            return <div key={key} className="typeset-scroll"><Table><TableHeader><TableRow>{block.headers.map((header) => <TableHead key={header}>{header}</TableHead>)}</TableRow></TableHeader><TableBody>{block.rows.map((row, rowIndex) => <TableRow key={rowIndex}>{row.map((cell, cellIndex) => <TableCell key={cellIndex}>{cell}</TableCell>)}</TableRow>)}</TableBody></Table></div>
+            content = <div className="typeset-scroll"><Table><TableHeader><TableRow>{block.headers.map((header) => <TableHead key={header}>{header}</TableHead>)}</TableRow></TableHeader><TableBody>{block.rows.map((row, rowIndex) => <TableRow key={rowIndex}>{row.map((cell, cellIndex) => <TableCell key={cellIndex}>{cell}</TableCell>)}</TableRow>)}</TableBody></Table></div>
+            break
           case "figure":
-            return <Figure key={key} {...block} />
+            content = <Figure {...block} />
+            break
           case "figureGallery":
-            return <Accordion key={key}><AccordionItem value={key}><AccordionTrigger>{block.summary}</AccordionTrigger><AccordionContent><div className="space-y-4">{block.figures.map((figure) => <Figure key={figure.src} {...figure} />)}</div></AccordionContent></AccordionItem></Accordion>
+            content = <Accordion><AccordionItem value={key}><AccordionTrigger>{block.summary}</AccordionTrigger><AccordionContent><div className="space-y-4">{block.figures.map((figure) => <Figure key={figure.src} {...figure} />)}</div></AccordionContent></AccordionItem></Accordion>
+            break
           case "quizLink":
           case "flashcardLink":
           case "periodicTableLink":
-            return <button key={key} type="button" className="not-typeset text-primary underline underline-offset-4" onClick={() => onToolLink?.(block.type, block.targetId)}>{block.label}</button>
+            content = <button type="button" className="not-typeset text-primary underline underline-offset-4" onClick={() => onToolLink?.(block.type, block.targetId)}>{block.label}</button>
+            break
         }
+        return <div key={key} data-lesson-block={block.type} className={block.type === "richText" || block.type === "heading" ? undefined : "typeset-block"}>{content}</div>
       })}
     </article>
   )
