@@ -30,3 +30,21 @@ test("updates selected element when a cell receives keyboard focus", async () =>
 
   expect(screen.getByRole("region", { name: "Selected element" })).toHaveTextContent("Hydrogen")
 })
+
+test("exposes category tint hooks on every element cell", () => {
+  render(<PeriodicTablePage />)
+
+  expect(screen.getByRole("button", { name: /hydrogen/i })).toHaveAttribute("data-category", "Nonmetal")
+  expect(screen.getByRole("button", { name: /sodium/i })).toHaveAttribute("data-category", "Alkali metal")
+  expect(screen.getByRole("button", { name: /helium/i })).toHaveAttribute("data-category", "Noble gas")
+  expect(screen.getByRole("button", { name: /hydrogen/i })).toHaveClass("dark:bg-emerald-500/20")
+  expect(screen.getByRole("button", { name: /sodium/i })).toHaveClass("dark:bg-rose-500/20")
+  expect(screen.getByRole("button", { name: /helium/i })).toHaveClass("dark:bg-violet-500/20")
+})
+
+test("uses a stable detail band and horizontal-only table viewport", () => {
+  render(<PeriodicTablePage />)
+
+  expect(screen.getByTestId("periodic-detail-band")).toHaveClass("min-h-64", "h-auto", "sm:min-h-0", "sm:h-52")
+  expect(screen.getByTestId("periodic-table-viewport")).toHaveClass("overflow-y-hidden")
+})
