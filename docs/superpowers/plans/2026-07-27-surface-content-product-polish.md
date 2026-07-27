@@ -91,6 +91,7 @@ Expected: all pass; validator reports two subjects and complete lesson catalog.
 **Interfaces:**
 - Adds optional `figureGallery` block: `{ type: "figureGallery", summary: string, figures: Array<{ src: string; alt: string; caption?: string }> }`.
 - Gallery contains source scans only; substantive textual content must not depend on it.
+- Asset-parity test collects both top-level `figure` blocks and figures nested in `figureGallery`; every extracted legacy asset must remain represented.
 
 - [ ] **Step 1: Add failing renderer contract**
 
@@ -220,7 +221,7 @@ Expected: failure because details currently open in a dialog and cells omit full
 
 - [ ] **Step 3: Replace dialog with a persistent grid panel**
 
-Render the selected-element panel as an `aside`/`region` spanning upper-middle empty grid columns and rows. Give it a default instructional state, then update its atomic number, mass, shells, period/group, category, and note from the selected focusable button's `onClick` and `onFocus` handlers. Keep `aria-live="polite"` on the changing facts, not the whole page.
+Render the selected-element panel as an `aside`/`region` spanning exactly grid columns 3–12 and rows 1–3—the verified empty upper-middle cells between groups 1–2 and 13–18. Give it a default instructional state, then update its atomic number, mass, shells, period/group, category, and note from the selected focusable button's `onClick` and `onFocus` handlers. Keep `aria-live="polite"` on the changing facts, not the whole page. Verify at 390px and desktop that it stays contained inside the horizontally scrollable grid and never overlaps element cells.
 
 Render each button with a conventional visual hierarchy: atomic number top-left, large symbol center, name and rounded mass beneath. Derive a category class from the existing `category` string using a local `Record<string, string>` of semantic Tailwind token tints; do not add raw color values to JSON.
 
