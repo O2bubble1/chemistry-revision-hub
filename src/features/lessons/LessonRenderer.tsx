@@ -1,6 +1,5 @@
 import Markdown from "react-markdown"
 
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -30,8 +29,6 @@ export function LessonRenderer({ blocks, onToolLink }: Props) {
             return <div key={key} className="typeset-scroll"><Table><TableHeader><TableRow>{block.headers.map((header) => <TableHead key={header}>{header}</TableHead>)}</TableRow></TableHeader><TableBody>{block.rows.map((row, rowIndex) => <TableRow key={rowIndex}>{row.map((cell, cellIndex) => <TableCell key={cellIndex}>{cell}</TableCell>)}</TableRow>)}</TableBody></Table></div>
           case "figure":
             return <figure key={key} className="typeset-figure"><img src={resolveFigureSrc(block.src)} alt={block.alt} loading="lazy" decoding="async" />{block.caption ? <figcaption className="typeset-figure-caption">{block.caption}</figcaption> : null}</figure>
-          case "details":
-            return <Accordion key={key} className="not-typeset" defaultValue={undefined}><AccordionItem value={key}><AccordionTrigger>{block.summary}</AccordionTrigger><AccordionContent><div className="typeset"><Markdown>{block.markdown}</Markdown></div></AccordionContent></AccordionItem></Accordion>
           case "quizLink":
           case "flashcardLink":
           case "periodicTableLink":

@@ -12,6 +12,7 @@
     "test": "vitest run",
     "validate-content": "tsx src/features/lessons/validate-content.ts",
     "extract-legacy-study-data": "tsx scripts/extract-legacy-study-data.ts",
+    "surface-legacy-lesson-notes": "tsx scripts/surface-legacy-lesson-notes.ts",
     "preview": "vite preview"
   },
   "dependencies": {
