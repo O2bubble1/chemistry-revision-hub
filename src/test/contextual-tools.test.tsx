@@ -64,5 +64,5 @@ test("keeps lesson context visible and labels the periodic-table mobile cue", as
 
   expect(screen.getByText("Chemistry / Kahoot-Style Quiz")).toBeVisible()
   await user.click(screen.getByRole("button", { name: "Periodic table" }))
-  expect(screen.getByText("Swipe horizontally to explore all elements.")).toBeVisible()
+  expect(screen.getByText("Swipe the table horizontally to explore all elements")).toBeVisible()
 })
