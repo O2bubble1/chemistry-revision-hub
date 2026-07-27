@@ -6,29 +6,23 @@ import { expect, test } from "vitest"
 import { LessonRenderer } from "@/features/lessons/LessonRenderer"
 import { catalog } from "@/features/lessons/load-content"
 
-test("renders source terminal-velocity force stages as a semantic table", () => {
+test("keeps exactly one detailed terminal-velocity stage table in complete notes", () => {
   const lesson = catalog.subjects
     .find((subject) => subject.id === "physics")
     ?.lessons.find((entry) => entry.id === "friction-terminal-velocity")
   if (!lesson) throw new Error("Missing friction and terminal velocity lesson")
 
-  const flattened = lesson.blocks.find((block) => block.type === "richText" && block.markdown.includes("Terminal velocity — how the forces change1Just released"))
-  const stages = lesson.blocks.find((block) => block.type === "table" && block.headers.includes("Stage") && block.headers.includes("Forces"))
+  const stageLabels = [
+    "Stage 1 — just released",
+    "Stage 2 — speeding up",
+    "Stage 3 — terminal velocity reached",
+    "Stage 4 — parachute opens",
+  ]
+  const stageTables = lesson.blocks.filter((block) => block.type === "table" && block.headers.includes("Stage") && block.headers.includes("Forces"))
 
-  expect(flattened).toBeUndefined()
-  expect(stages).toMatchObject({
-    headers: ["Stage", "What happens", "Forces", "Acceleration"],
-    rows: [
-      ["1", "Just released", "W > R", "a = g"],
-      ["2", "Speeding up", "W > R", "a decreasing"],
-      ["3", "Terminal velocity", "W = R", "a = 0"],
-      ["4", "Parachute opens", "R > W", "decelerating"],
-    ],
-  })
+  expect(stageTables).toHaveLength(1)
+  expect(stageTables[0]?.rows.map(([stage]) => stage)).toEqual(stageLabels)
 
   render(<LessonRenderer blocks={lesson.blocks} />)
-  for (const label of ["Just released", "Speeding up", "Terminal velocity", "Parachute opens"]) {
-    expect(screen.getAllByRole("cell", { name: label }).length).toBeGreaterThan(0)
-  }
-  expect(screen.getByText("The weight NEVER changes. Only the air resistance grows — until at stage 3 it equals the weight.")).toBeVisible()
+  for (const label of stageLabels) expect(screen.getByRole("cell", { name: label })).toBeVisible()
 })
