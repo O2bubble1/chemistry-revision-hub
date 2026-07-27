@@ -91,10 +91,15 @@
               "markdown": "Add aqueous sodium hydroxide and warm. **Ammonia** turns damp red litmus paper blue."
             },
             {
-              "type": "figure",
-              "src": "/source-materials/poster_cations.jpg",
-              "alt": "Qualitative-analysis poster showing tests for ammonium, calcium, aluminium, zinc, iron(II), iron(III), and copper(II) cations using aqueous sodium hydroxide and ammonia.",
-              "caption": "Original qualitative-analysis reference poster"
+              "type": "figureGallery",
+              "summary": "Original source materials",
+              "figures": [
+                {
+                  "src": "/source-materials/poster_cations.jpg",
+                  "alt": "Qualitative-analysis poster showing tests for ammonium, calcium, aluminium, zinc, iron(II), iron(III), and copper(II) cations using aqueous sodium hydroxide and ammonia.",
+                  "caption": "Original qualitative-analysis reference poster"
+                }
+              ]
             },
             {
               "type": "heading",
@@ -126,10 +131,15 @@
               "tone": "warning"
             },
             {
-              "type": "figure",
-              "src": "/source-materials/poster_anions.jpg",
-              "alt": "Qualitative-analysis poster showing anion tests for carbonate, chloride, iodide, sulfate, and nitrate, alongside gas tests.",
-              "caption": "Original anion and gas-test reference poster"
+              "type": "figureGallery",
+              "summary": "Original source materials",
+              "figures": [
+                {
+                  "src": "/source-materials/poster_anions.jpg",
+                  "alt": "Qualitative-analysis poster showing anion tests for carbonate, chloride, iodide, sulfate, and nitrate, alongside gas tests.",
+                  "caption": "Original anion and gas-test reference poster"
+                }
+              ]
             },
             {
               "type": "heading",
@@ -191,10 +201,15 @@
               ]
             },
             {
-              "type": "figure",
-              "src": "/source-materials/poster_anions.jpg",
-              "alt": "Qualitative-analysis poster listing gas tests for hydrogen, oxygen, carbon dioxide, ammonia, chlorine, and sulfur dioxide.",
-              "caption": "Original gas-test reference poster"
+              "type": "figureGallery",
+              "summary": "Original source materials",
+              "figures": [
+                {
+                  "src": "/source-materials/poster_anions.jpg",
+                  "alt": "Qualitative-analysis poster listing gas tests for hydrogen, oxygen, carbon dioxide, ammonia, chlorine, and sulfur dioxide.",
+                  "caption": "Original gas-test reference poster"
+                }
+              ]
             },
             {
               "type": "heading",
@@ -329,46 +344,45 @@
               "markdown": "Group 1 and ammonium salts need an acid plus alkali. Both reactants are soluble, so nothing can be filtered away.\n\n**First titration — find the volume.** Pipette 25.0 cm³ of alkali into a conical flask, add 2–3 drops of indicator, then run acid from a burette to the permanent endpoint. Record the acid volume used.\n\n**Repeat without indicator.** Use the same acid volume but omit the indicator so crystals stay pure. Heat to saturation, cool to crystallise, filter the crystals, rinse with a little cold deionised water, and dry them."
             },
             {
-              "type": "figure",
-              "src": "/source-materials/handout_1.jpg",
-              "alt": "Salt-preparation flowchart choosing precipitation, excess insoluble reactant, or titration by product and reactant solubility.",
-              "caption": "Original handout: preparing salts flowchart"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/handout_2.jpg",
-              "alt": "Filtration-method handout showing dissolving, filtering, concentrating, crystallising, and drying a soluble salt made with an excess insoluble reactant.",
-              "caption": "Original handout: filtration method"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/handout_3.jpg",
-              "alt": "Handout explaining the reaction of dilute acid with a moderately reactive metal to prepare a soluble salt.",
-              "caption": "Original handout: acid and metal"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/handout_4.jpg",
-              "alt": "Reactivity-series handout showing metals from potassium to gold and their reactions with dilute acids.",
-              "caption": "Original handout: reactivity series"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/handout_5.jpg",
-              "alt": "Handout showing reactions between acids and oxides, insoluble bases, and carbonates for salt preparation.",
-              "caption": "Original handout: acid with oxide, base, or carbonate"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/handout_6.jpg",
-              "alt": "Titration-method handout showing acid-alkali neutralisation and a sample preparation of sodium nitrate.",
-              "caption": "Original handout: titration method"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/handout_7.jpg",
-              "alt": "Continuation handout for titration, crystallisation, and model answers for salt preparation.",
-              "caption": "Original handout: titration completion"
+              "type": "figureGallery",
+              "summary": "Original source materials",
+              "figures": [
+                {
+                  "src": "/source-materials/handout_1.jpg",
+                  "alt": "Salt-preparation flowchart choosing precipitation, excess insoluble reactant, or titration by product and reactant solubility.",
+                  "caption": "Original handout: preparing salts flowchart"
+                },
+                {
+                  "src": "/source-materials/handout_2.jpg",
+                  "alt": "Filtration-method handout showing dissolving, filtering, concentrating, crystallising, and drying a soluble salt made with an excess insoluble reactant.",
+                  "caption": "Original handout: filtration method"
+                },
+                {
+                  "src": "/source-materials/handout_3.jpg",
+                  "alt": "Handout explaining the reaction of dilute acid with a moderately reactive metal to prepare a soluble salt.",
+                  "caption": "Original handout: acid and metal"
+                },
+                {
+                  "src": "/source-materials/handout_4.jpg",
+                  "alt": "Reactivity-series handout showing metals from potassium to gold and their reactions with dilute acids.",
+                  "caption": "Original handout: reactivity series"
+                },
+                {
+                  "src": "/source-materials/handout_5.jpg",
+                  "alt": "Handout showing reactions between acids and oxides, insoluble bases, and carbonates for salt preparation.",
+                  "caption": "Original handout: acid with oxide, base, or carbonate"
+                },
+                {
+                  "src": "/source-materials/handout_6.jpg",
+                  "alt": "Titration-method handout showing acid-alkali neutralisation and a sample preparation of sodium nitrate.",
+                  "caption": "Original handout: titration method"
+                },
+                {
+                  "src": "/source-materials/handout_7.jpg",
+                  "alt": "Continuation handout for titration, crystallisation, and model answers for salt preparation.",
+                  "caption": "Original handout: titration completion"
+                }
+              ]
             },
             {
               "type": "heading",
@@ -451,16 +465,20 @@
               ]
             },
             {
-              "type": "figure",
-              "src": "/source-materials/pdf_p1.jpg",
-              "alt": "Chemical bonding comparison poster for ionic, covalent, and metallic bonding, covering formation, structure, melting point, conductivity, and solubility.",
-              "caption": "Original bonding poster: types of bonding and structure"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/pdf_p2.jpg",
-              "alt": "Chemical bonding poster showing structures, a deduction flowchart, metals, and alloys.",
-              "caption": "Original bonding poster: structures and materials"
+              "type": "figureGallery",
+              "summary": "Original source materials",
+              "figures": [
+                {
+                  "src": "/source-materials/pdf_p1.jpg",
+                  "alt": "Chemical bonding comparison poster for ionic, covalent, and metallic bonding, covering formation, structure, melting point, conductivity, and solubility.",
+                  "caption": "Original bonding poster: types of bonding and structure"
+                },
+                {
+                  "src": "/source-materials/pdf_p2.jpg",
+                  "alt": "Chemical bonding poster showing structures, a deduction flowchart, metals, and alloys.",
+                  "caption": "Original bonding poster: structures and materials"
+                }
+              ]
             },
             {
               "type": "heading",
@@ -500,34 +518,35 @@
               "markdown": "Use an indicator to find the exact neutralisation volume, then repeat without indicator before crystallisation."
             },
             {
-              "type": "figure",
-              "src": "/source-materials/pdf_p5.jpg",
-              "alt": "Concept-map worksheet on particles and bonding with completed model answers.",
-              "caption": "Original concept map: particles and bonding"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/pdf_p6.jpg",
-              "alt": "Concept-map worksheet on melting points and electrical conductivity with completed model answers.",
-              "caption": "Original concept map: melting points and conductivity"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/pdf_p7.jpg",
-              "alt": "Concept-map worksheet on solubility and related chemistry ideas with completed model answers.",
-              "caption": "Original concept map: solubility and related ideas"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/pdf_p8.jpg",
-              "alt": "Concept-map worksheet on ionic bonding with completed model answers.",
-              "caption": "Original concept map: ionic bonding"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/pdf_p9.jpg",
-              "alt": "Concept-map worksheet on covalent bonding with completed model answers.",
-              "caption": "Original concept map: covalent bonding"
+              "type": "figureGallery",
+              "summary": "Original source materials",
+              "figures": [
+                {
+                  "src": "/source-materials/pdf_p5.jpg",
+                  "alt": "Concept-map worksheet on particles and bonding with completed model answers.",
+                  "caption": "Original concept map: particles and bonding"
+                },
+                {
+                  "src": "/source-materials/pdf_p6.jpg",
+                  "alt": "Concept-map worksheet on melting points and electrical conductivity with completed model answers.",
+                  "caption": "Original concept map: melting points and conductivity"
+                },
+                {
+                  "src": "/source-materials/pdf_p7.jpg",
+                  "alt": "Concept-map worksheet on solubility and related chemistry ideas with completed model answers.",
+                  "caption": "Original concept map: solubility and related ideas"
+                },
+                {
+                  "src": "/source-materials/pdf_p8.jpg",
+                  "alt": "Concept-map worksheet on ionic bonding with completed model answers.",
+                  "caption": "Original concept map: ionic bonding"
+                },
+                {
+                  "src": "/source-materials/pdf_p9.jpg",
+                  "alt": "Concept-map worksheet on covalent bonding with completed model answers.",
+                  "caption": "Original concept map: covalent bonding"
+                }
+              ]
             },
             {
               "type": "heading",
@@ -704,16 +723,20 @@
           ],
           "blocks": [
             {
-              "type": "figure",
-              "src": "/source-materials/pdf_p3.jpg",
-              "alt": "Original mole-concept reference poster covering relative formula mass and chemical formulae.",
-              "caption": "Original mole-concept poster: relative mass and formulae"
-            },
-            {
-              "type": "figure",
-              "src": "/source-materials/pdf_p4.jpg",
-              "alt": "Original mole-concept reference poster showing formula triangles and percentage yield.",
-              "caption": "Original mole-concept poster: formulae and yield"
+              "type": "figureGallery",
+              "summary": "Original source materials",
+              "figures": [
+                {
+                  "src": "/source-materials/pdf_p3.jpg",
+                  "alt": "Original mole-concept reference poster covering relative formula mass and chemical formulae.",
+                  "caption": "Original mole-concept poster: relative mass and formulae"
+                },
+                {
+                  "src": "/source-materials/pdf_p4.jpg",
+                  "alt": "Original mole-concept reference poster showing formula triangles and percentage yield.",
+                  "caption": "Original mole-concept poster: formulae and yield"
+                }
+              ]
             }
           ]
         }

@@ -27,7 +27,10 @@ const originalAssets = [
 ]
 
 test("extracts legacy original materials into accessible lesson figures", () => {
-  const figures = catalog.subjects.flatMap((subject) => subject.lessons.flatMap((lesson) => lesson.blocks)).filter((block) => block.type === "figure").map((block) => block.src.replace("/source-materials/", ""))
+  const figures = catalog.subjects
+    .flatMap((subject) => subject.lessons.flatMap((lesson) => lesson.blocks))
+    .flatMap((block) => block.type === "figure" ? [block] : block.type === "figureGallery" ? block.figures : [])
+    .map((figure) => figure.src.replace("/source-materials/", ""))
 
   for (const asset of originalAssets) {
     expect(existsSync(join("public", "source-materials", asset))).toBe(true)

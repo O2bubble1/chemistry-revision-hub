@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react"
+import { render, screen, within } from "@testing-library/react"
 import { expect, test } from "vitest"
 
 import { LessonRenderer } from "@/features/lessons/LessonRenderer"
@@ -48,4 +48,11 @@ test("keeps four comparison cards in paired desktop columns", () => {
 
   expect(container.querySelector("[data-comparison-grid]")).toHaveClass("sm:grid-cols-2")
   expect(container.querySelector("[data-comparison-grid]")).not.toHaveClass("lg:grid-cols-3")
+})
+
+test("renders source scans in an optional labelled gallery", () => {
+  const { container } = render(<LessonRenderer blocks={[{ type: "figureGallery", summary: "Original source materials", figures: [{ src: "/source-materials/example.jpg", alt: "Original handout" }] }]} />)
+
+  expect(within(container).getByRole("button", { name: "Original source materials" })).toBeVisible()
+  expect(within(container).queryByRole("img", { name: "Original handout" })).not.toBeInTheDocument()
 })

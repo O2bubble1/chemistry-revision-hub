@@ -14,9 +14,10 @@ const tableBlock = z.object({ type: z.literal("table"), headers: z.array(z.strin
   })
 })
 const figureBlock = z.object({ type: z.literal("figure"), src: z.string().min(1), alt: z.string().min(1), caption: z.string().optional() })
+const figureGalleryBlock = z.object({ type: z.literal("figureGallery"), summary: z.string().min(1), figures: z.array(figureBlock.omit({ type: true })).min(1) })
 const toolLinkBlock = z.object({ type: z.enum(["quizLink", "flashcardLink", "periodicTableLink"]), label: z.string().min(1), targetId: id.optional() })
 
-export const lessonBlockSchema = z.discriminatedUnion("type", [headingBlock, richTextBlock, calloutBlock, comparisonBlock, tableBlock, figureBlock, toolLinkBlock])
+export const lessonBlockSchema = z.discriminatedUnion("type", [headingBlock, richTextBlock, calloutBlock, comparisonBlock, tableBlock, figureBlock, figureGalleryBlock, toolLinkBlock])
 
 export const lessonSchema = z.object({
   id,

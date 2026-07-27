@@ -2,6 +2,7 @@ import Markdown from "react-markdown"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import type { LessonBlock } from "./schema"
 
@@ -9,6 +10,10 @@ type Props = { blocks: LessonBlock[]; onToolLink?: (type: "quizLink" | "flashcar
 
 export function resolveFigureSrc(src: string, base = import.meta.env.BASE_URL): string {
   return `${base.replace(/\/$/, "")}/${src.replace(/^\//, "")}`
+}
+
+function Figure({ src, alt, caption }: Extract<LessonBlock, { type: "figure" }> | Extract<LessonBlock, { type: "figureGallery" }>["figures"][number]) {
+  return <figure className="typeset-figure"><img src={resolveFigureSrc(src)} alt={alt} loading="lazy" decoding="async" />{caption ? <figcaption className="typeset-figure-caption">{caption}</figcaption> : null}</figure>
 }
 
 export function LessonRenderer({ blocks, onToolLink }: Props) {
@@ -28,7 +33,9 @@ export function LessonRenderer({ blocks, onToolLink }: Props) {
           case "table":
             return <div key={key} className="typeset-scroll"><Table><TableHeader><TableRow>{block.headers.map((header) => <TableHead key={header}>{header}</TableHead>)}</TableRow></TableHeader><TableBody>{block.rows.map((row, rowIndex) => <TableRow key={rowIndex}>{row.map((cell, cellIndex) => <TableCell key={cellIndex}>{cell}</TableCell>)}</TableRow>)}</TableBody></Table></div>
           case "figure":
-            return <figure key={key} className="typeset-figure"><img src={resolveFigureSrc(block.src)} alt={block.alt} loading="lazy" decoding="async" />{block.caption ? <figcaption className="typeset-figure-caption">{block.caption}</figcaption> : null}</figure>
+            return <Figure key={key} {...block} />
+          case "figureGallery":
+            return <Accordion key={key}><AccordionItem value={key}><AccordionTrigger>{block.summary}</AccordionTrigger><AccordionContent><div className="space-y-4">{block.figures.map((figure) => <Figure key={figure.src} {...figure} />)}</div></AccordionContent></AccordionItem></Accordion>
           case "quizLink":
           case "flashcardLink":
           case "periodicTableLink":
