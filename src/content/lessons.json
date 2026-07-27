@@ -1873,6 +1873,50 @@
             },
             {
               "type": "heading",
+              "text": "Terminal velocity — how the forces change",
+              "level": 2
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Stage",
+                "What happens",
+                "Forces",
+                "Acceleration"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Just released",
+                  "W > R",
+                  "a = g"
+                ],
+                [
+                  "2",
+                  "Speeding up",
+                  "W > R",
+                  "a decreasing"
+                ],
+                [
+                  "3",
+                  "Terminal velocity",
+                  "W = R",
+                  "a = 0"
+                ],
+                [
+                  "4",
+                  "Parachute opens",
+                  "R > W",
+                  "decelerating"
+                ]
+              ]
+            },
+            {
+              "type": "richText",
+              "markdown": "The weight NEVER changes. Only the air resistance grows — until at stage 3 it equals the weight.\n\nResultant force = 0 N → acceleration = 0 m s⁻² → CONSTANT velocity, not zero velocity."
+            },
+            {
+              "type": "heading",
               "text": "Complete study notes",
               "level": 2
             },
@@ -1947,8 +1991,28 @@
               ]
             },
             {
+              "type": "heading",
+              "text": "Terminal velocity — how the forces change",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Stage",
+                "What happens",
+                "Forces",
+                "Acceleration"
+              ],
+              "rows": [
+                ["1", "Just released", "W > R", "a = g"],
+                ["2", "Speeding up", "W > R", "a decreasing"],
+                ["3", "Terminal velocity", "W = R", "a = 0"],
+                ["4", "Parachute opens", "R > W", "decelerating"]
+              ]
+            },
+            {
               "type": "richText",
-              "markdown": "Terminal velocity — how the forces change1Just releasedWa = g2Speeding upWRa decreasing3Terminal velocityWRa = 04Parachute opensWRdeceleratingThe weight NEVER changes. Only the air resistance grows — until at stage 3 it equals the weight."
+              "markdown": "The weight NEVER changes. Only the air resistance grows — until at stage 3 it equals the weight."
             },
             {
               "type": "callout",
