@@ -42,7 +42,7 @@ function normalizedText(text: string): string {
 function sourceFragment(section: string): DocumentFragment {
   const template = document.createElement("template")
   template.innerHTML = section
-  template.content.querySelectorAll(controlSelector).forEach((element) => element.remove())
+  template.content.querySelectorAll(controlSelector).forEach((element) => element.replaceWith(document.createTextNode(" ")))
   return template.content
 }
 
@@ -98,6 +98,9 @@ test("keeps a raw-text word boundary around legacy answer controls", () => {
   expect(sourceText('<p>before<span class="blank">?</span>after</p>')).toBe("before after")
 })
 
+test("keeps a raw-text word boundary around legacy controls", () => {
+  expect(sourceText('<p>before<button>reveal</button>after</p>')).toBe("before after")
+})
 
 export async function extractLegacyLessonInventory(path: string): Promise<LegacyInventory> {
   const html = await readFile(path, "utf8")
