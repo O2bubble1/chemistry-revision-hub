@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react"
 
 import { readNavigation, type NavigationState, writeNavigation } from "@/app/navigation"
 import { Button } from "@/components/ui/button"
+import { PageHeader } from "@/components/PageHeader"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { FlashcardsPage } from "@/features/flashcards/FlashcardsPage"
@@ -85,7 +86,7 @@ export default function App() {
   const openTool = (nextView: View) => { setToolTargetId(undefined); setView(nextView) }
   const toolLinks = <div className="mb-8 flex flex-wrap gap-2">{subject.id === "chemistry" ? <Button variant="outline" className="min-h-11" onClick={() => openTool("periodic")}><AtomIcon data-icon="inline-start" />Periodic table</Button> : null}<Button variant="outline" className="min-h-11" onClick={() => openTool("quiz")}><HelpCircleIcon data-icon="inline-start" />Quiz</Button><Button variant="outline" className="min-h-11" onClick={() => openTool("flashcards")}><LayersIcon data-icon="inline-start" />Flashcards</Button></div>
   const archiveLink = <a className="mt-auto inline-flex min-h-11 items-center px-3 text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground" href={originalMaterialsUrl}>Original materials</a>
-  const content = view === "lesson" ? <><p className="mb-2 text-sm text-muted-foreground">{subject.title} / {lesson.title}</p><h1 className="mb-3 text-3xl font-semibold tracking-tight sm:text-4xl">{lesson.title}</h1><p className="mb-8 max-w-2xl text-lg text-muted-foreground">{lesson.summary}</p><LessonRenderer blocks={lesson.blocks} onToolLink={(type, targetId) => { setToolTargetId(targetId); setView(type === "periodicTableLink" ? "periodic" : type === "quizLink" ? "quiz" : "flashcards") }} /></> : view === "periodic" ? <PeriodicTablePage /> : view === "quiz" ? <QuizPage key={`quiz-${toolTargetId ?? "library"}`} initialSubject={subject.id} initialQuizId={toolTargetId} /> : <FlashcardsPage key={`flashcards-${toolTargetId ?? "library"}`} initialSubject={subject.id} initialDeckId={toolTargetId} />
+  const content = view === "lesson" ? <section className="mx-auto max-w-5xl"><PageHeader eyebrow={`${subject.title} / ${lesson.title}`} title={lesson.title} summary={lesson.summary} /><LessonRenderer blocks={lesson.blocks} onToolLink={(type, targetId) => { setToolTargetId(targetId); setView(type === "periodicTableLink" ? "periodic" : type === "quizLink" ? "quiz" : "flashcards") }} /></section> : view === "periodic" ? <PeriodicTablePage /> : view === "quiz" ? <QuizPage key={`quiz-${toolTargetId ?? "library"}`} initialSubject={subject.id} initialQuizId={toolTargetId} /> : <FlashcardsPage key={`flashcards-${toolTargetId ?? "library"}`} initialSubject={subject.id} initialDeckId={toolTargetId} />
 
   return <div className="min-h-svh bg-background text-foreground">
     <header className="sticky top-0 z-10 border-b bg-background/95 backdrop-blur"><div className="flex min-h-16 items-center gap-3 px-4 lg:px-6">
@@ -93,6 +94,6 @@ export default function App() {
       <button type="button" className="flex min-h-11 items-center gap-2 text-left font-semibold" aria-label="Revision Hub home" onClick={() => setView("lesson")}><AtomIcon aria-hidden="true" /><span className="hidden sm:inline">Revision Hub</span></button>
       <div className="ml-auto flex min-w-0 items-center gap-2"><Select value={subject.id} onValueChange={(value) => { if (value) chooseSubject(value) }} items={catalog.subjects.map((entry) => ({ label: entry.title, value: entry.id }))}><SelectTrigger aria-label="Subject" className="h-10 min-w-0 w-28 sm:min-w-32"><SelectValue /></SelectTrigger><SelectContent align="end"><SelectGroup>{catalog.subjects.map((entry) => <SelectItem key={entry.id} value={entry.id}>{entry.title}</SelectItem>)}</SelectGroup></SelectContent></Select><Button variant="outline" size="icon" className="min-h-11 min-w-11" aria-label="Switch theme" onClick={switchTheme}>{dark ? <SunIcon /> : <MoonIcon />}</Button></div>
     </div></header>
-    <div className="grid lg:grid-cols-[17rem_minmax(0,1fr)]"><aside className="hidden h-[calc(100svh-4rem)] self-start overflow-y-auto border-r p-3 lg:sticky lg:top-16 lg:flex lg:flex-col">{navigationList()}{archiveLink}</aside><main ref={mainRef} tabIndex={-1} className="min-w-0 px-4 py-8 focus:outline-none sm:px-8 lg:px-10 xl:px-12">{toolLinks}{content}</main></div>
+    <div className="grid lg:grid-cols-[17rem_minmax(0,1fr)]"><aside className="hidden h-[calc(100svh-4rem)] self-start overflow-y-auto border-r p-3 lg:sticky lg:top-16 lg:flex lg:flex-col">{navigationList()}{archiveLink}</aside><main ref={mainRef} tabIndex={-1} className="min-w-0 px-4 py-8 focus:outline-none sm:px-8 lg:px-10 xl:px-12">{view === "lesson" ? toolLinks : null}{content}</main></div>
   </div>
 }

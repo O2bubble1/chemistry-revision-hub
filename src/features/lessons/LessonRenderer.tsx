@@ -27,7 +27,7 @@ export function LessonRenderer({ blocks, onToolLink }: Props) {
           case "richText":
             return <Markdown key={key}>{block.markdown}</Markdown>
           case "callout":
-            return <Alert key={key}><AlertTitle>{block.title}</AlertTitle><AlertDescription><Markdown>{block.body}</Markdown></AlertDescription></Alert>
+            return <Alert key={key} variant={block.tone}><AlertTitle>{block.title}</AlertTitle><AlertDescription><Markdown>{block.body}</Markdown></AlertDescription></Alert>
           case "comparison":
             return <div key={key} data-comparison-grid className="grid items-start gap-4 sm:grid-cols-2">{block.items.map((item, itemIndex) => <Card key={item.title} data-comparison-item={itemIndex}><CardHeader><CardTitle>{item.title}</CardTitle></CardHeader><CardContent><Markdown>{item.body}</Markdown></CardContent></Card>)}</div>
           case "table":

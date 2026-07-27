@@ -2,6 +2,7 @@ import { useState } from "react"
 
 import elements from "@/content/elements.json"
 import { Button } from "@/components/ui/button"
+import { PageHeader } from "@/components/PageHeader"
 
 type Element = (typeof elements)[number]
 
@@ -31,8 +32,8 @@ function SelectedElementPanel({ selected }: { selected: Element | null }) {
 export function PeriodicTablePage() {
   const [selected, setSelected] = useState<Element | null>(null)
 
-  return <section className="mx-auto max-w-6xl">
-    <div className="mb-6"><h1 className="text-3xl font-semibold tracking-tight">Periodic Table</h1><p className="mt-2 text-muted-foreground">Select an element for its structure and revision note.</p></div>
+  return <section className="mx-auto max-w-5xl">
+    <PageHeader title="Periodic Table" summary="Select an element for its structure and revision note." />
     <div className="mb-4 flex flex-wrap gap-2 text-sm text-muted-foreground"><span>Element categories are labelled in every detail view.</span><span>Highlighted study notes cover qualitative analysis.</span></div>
     <p className="mb-2 text-sm text-muted-foreground sm:hidden">Swipe horizontally to explore all elements.</p>
     <div className="overflow-x-auto rounded-lg border bg-muted/20 p-3 shadow-sm">

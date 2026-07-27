@@ -1,6 +1,7 @@
 import { useRef, useState, type ChangeEvent, type FormEvent } from "react"
 import content from "@/content/flashcards.json"
 import { Badge } from "@/components/ui/badge"
+import { PageHeader } from "@/components/PageHeader"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -19,6 +20,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
   exportDecks,
   importDecks,
@@ -142,14 +144,8 @@ export function FlashcardsPage({ initialSubject = "all", initialDeckId }: { init
 
   if (studying && card) {
     return (
-      <section className="mx-auto flex w-full max-w-3xl flex-col gap-4 py-6 sm:py-10">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <p className="text-sm text-muted-foreground">{reviewingMissed ? "Review missed cards" : studying.title}</p>
-            <h1 className="font-heading text-2xl font-semibold">Card {cardIndex + 1} of {cards.length}</h1>
-          </div>
-          <Button variant="outline" onClick={() => setStudying(null)}>Back to decks</Button>
-        </div>
+      <section className="mx-auto flex w-full max-w-5xl flex-col gap-4 py-6 sm:py-10">
+        <PageHeader eyebrow={reviewingMissed ? "Review missed cards" : studying.title} title={`Card ${cardIndex + 1} of ${cards.length}`} actions={<Button variant="outline" onClick={() => setStudying(null)}>Back to decks</Button>} />
         <Card className="min-h-72 justify-center">
           <CardContent className="flex flex-col gap-6 py-8 text-center">
             <p className="text-sm font-medium text-muted-foreground">Question</p>
@@ -176,26 +172,13 @@ export function FlashcardsPage({ initialSubject = "all", initialDeckId }: { init
 
   return (
     <section className="mx-auto flex w-full max-w-5xl flex-col gap-6 py-6 sm:py-10">
-      <header className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div className="flex flex-col gap-1">
-          <p className="text-sm font-medium text-muted-foreground">Active recall</p>
-          <h1 className="font-heading text-3xl font-semibold">Flashcards</h1>
-          <p className="text-muted-foreground">Choose a deck, reveal each answer, then revisit cards you missed.</p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Button variant="outline" onClick={downloadDecks}>Export custom decks</Button>
-          <Button variant="outline" onClick={() => importInput.current?.click()}>Import JSON</Button>
-          <input ref={importInput} aria-label="Import flashcard decks" className="sr-only" type="file" accept="application/json" onChange={handleImport} />
-          <Button onClick={() => { setEditingDeck(null); setCreateOpen(true) }}>Create deck</Button>
-        </div>
-      </header>
+      <PageHeader eyebrow="Active recall" title="Flashcards" summary="Choose a deck, reveal each answer, then revisit cards you missed." actions={<div className="flex flex-wrap gap-2"><Button variant="outline" onClick={downloadDecks}>Export custom decks</Button><Button variant="outline" onClick={() => importInput.current?.click()}>Import JSON</Button><input ref={importInput} aria-label="Import flashcard decks" className="sr-only" type="file" accept="application/json" onChange={handleImport} /><Button onClick={() => { setEditingDeck(null); setCreateOpen(true) }}>Create deck</Button></div>} />
       {error && <p className="text-sm text-destructive" role="alert">{error}</p>}
       <label className="flex max-w-xs flex-col gap-2 text-sm font-medium">
         Subject
-        <select className="h-8 rounded-lg border border-input bg-background px-2.5 text-sm" value={initialSubject === "all" ? subject : initialSubject} disabled={initialSubject !== "all"} onChange={(event) => setSubject(event.target.value)}>
-          {initialSubject === "all" ? <option value="all">All subjects</option> : null}
-          {subjects.filter((item) => initialSubject === "all" || item === initialSubject).map((item) => <option key={item} value={item}>{item}</option>)}
-        </select>
+        <Select value={initialSubject === "all" ? subject : initialSubject} disabled={initialSubject !== "all"} onValueChange={(value) => setSubject(value ?? "all")} items={(initialSubject === "all" ? [{ label: "All subjects", value: "all" }, ...subjects.map((item) => ({ label: item, value: item }))] : [{ label: initialSubject, value: initialSubject }])}>
+          <SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectGroup>{initialSubject === "all" ? <SelectItem value="all">All subjects</SelectItem> : null}{subjects.filter((item) => initialSubject === "all" || item === initialSubject).map((item) => <SelectItem key={item} value={item}>{item}</SelectItem>)}</SelectGroup></SelectContent>
+        </Select>
       </label>
       <section aria-label="Deck library" className="grid gap-4 sm:grid-cols-2">
         {visibleDecks.map((deck) => (
@@ -221,9 +204,9 @@ export function FlashcardsPage({ initialSubject = "all", initialDeckId }: { init
             <DialogDescription>Write one card per line as Question | Answer.</DialogDescription>
           </DialogHeader>
           <form key={editingDeck?.id ?? "new"} className="flex flex-col gap-4" onSubmit={saveDeck}>
-            <label className="flex flex-col gap-2 text-sm font-medium">Deck title<input className="h-8 rounded-lg border border-input bg-background px-2.5 text-sm" name="title" defaultValue={editingDeck?.title} required /></label>
-            <label className="flex flex-col gap-2 text-sm font-medium">Subject<input aria-label="Deck subject" className="h-8 rounded-lg border border-input bg-background px-2.5 text-sm" name="subject" defaultValue={editingDeck?.subject ?? (initialSubject === "all" ? "" : initialSubject)} disabled={initialSubject !== "all"} required /></label>
-            <label className="flex flex-col gap-2 text-sm font-medium">Cards<textarea className="min-h-24 rounded-lg border border-input bg-background px-2.5 py-2 text-sm" name="cards" defaultValue={editingDeck?.cards.map((card) => `${card.front} | ${card.back}`).join("\n")} placeholder="Question | Answer" required /></label>
+            <label className="flex flex-col gap-2 text-sm font-medium">Deck title<input className="min-h-11 rounded-md border bg-background px-3" name="title" defaultValue={editingDeck?.title} required /></label>
+            <label className="flex flex-col gap-2 text-sm font-medium">Subject<input aria-label="Deck subject" className="min-h-11 rounded-md border bg-background px-3" name="subject" defaultValue={editingDeck?.subject ?? (initialSubject === "all" ? "" : initialSubject)} disabled={initialSubject !== "all"} required /></label>
+            <label className="flex flex-col gap-2 text-sm font-medium">Cards<textarea className="min-h-24 rounded-md border bg-background px-3 py-2" name="cards" defaultValue={editingDeck?.cards.map((card) => `${card.front} | ${card.back}`).join("\n")} placeholder="Question | Answer" required /></label>
             <DialogFooter><Button type="submit">Save deck</Button></DialogFooter>
           </form>
         </DialogContent>

@@ -45,13 +45,24 @@ test("opens the quiz library instead of retaining a prior lesson target", async 
  expect(screen.getByRole("button", { name: "Start Chemistry: Set A · Easier" })).toBeVisible()
 })
 
-test("returns directly to the quiz library from a linked quiz", async () => {
+test("returns to the quiz library after returning to lesson view", async () => {
   const user = userEvent.setup()
   window.history.replaceState({}, "", "?subject=chemistry&topic=kahoot-quiz")
   render(<App />)
 
   await user.click(screen.getByRole("button", { name: "Open Chemistry quiz" }))
+  await user.click(screen.getByRole("button", { name: "Revision Hub home" }))
   await user.click(screen.getByRole("button", { name: "Quiz" }))
 
   expect(screen.getByRole("button", { name: "Start Chemistry: Set A · Easier" })).toBeVisible()
+})
+
+test("keeps lesson context visible and labels the periodic-table mobile cue", async () => {
+  const user = userEvent.setup()
+  window.history.replaceState({}, "", "?subject=chemistry&topic=kahoot-quiz")
+  render(<App />)
+
+  expect(screen.getByText("Chemistry / Kahoot-Style Quiz")).toBeVisible()
+  await user.click(screen.getByRole("button", { name: "Periodic table" }))
+  expect(screen.getByText("Swipe horizontally to explore all elements.")).toBeVisible()
 })
