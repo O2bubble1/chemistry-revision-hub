@@ -24,6 +24,7 @@
   .typeset :where(h3) { font-size: 1.2em; }
   .typeset :where(p, ul, ol, blockquote, pre, figure, table, details) { margin-block: var(--typeset-flow); }
   .typeset-docs > .typeset-block { margin-block: var(--typeset-flow); }
+  .typeset-docs > .typeset-block :where(table, figure) { margin-block: 0; }
   .typeset :where(ul, ol) { padding-inline-start: 1.5em; }
   .typeset :where(li + li) { margin-block-start: 0.35em; }
   .typeset :where(code) { border-radius: calc(var(--radius) * 0.6); background: var(--muted); padding: 0.1em 0.3em; font-family: ui-monospace, monospace; font-size: 0.9em; }
