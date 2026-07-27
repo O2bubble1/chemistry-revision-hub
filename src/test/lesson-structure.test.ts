@@ -41,6 +41,19 @@ test("gives Chemistry preparation and bonding notes scanable structure", () => {
   expect(lesson("chemistry", "bonding").blocks.some((block) => block.type === "comparison")).toBe(true)
 })
 
+test("keeps Bonding study-note material in source order", () => {
+  const blocks = lesson("chemistry", "bonding").blocks
+  const completeNotesIndex = blocks.findIndex((block) => block.type === "heading" && block.text === "Complete study notes")
+  const typesIndex = blocks.findIndex((block) => block.type === "heading" && block.text === "Types of Chemical Bonding and Structure")
+  const propertyMatrixIndex = blocks.findIndex((block) => block.type === "table" && block.headers[0] === "Property")
+  const giantCovalentComparisonIndex = blocks.findIndex((block) => block.type === "comparison" && block.items.some((item) => item.title === "Diamond") && block.items.some((item) => item.title === "Graphite"))
+
+  expect(completeNotesIndex).toBeGreaterThanOrEqual(0)
+  expect(typesIndex).toBeGreaterThan(completeNotesIndex)
+  expect(propertyMatrixIndex).toBeGreaterThan(typesIndex)
+  expect(giantCovalentComparisonIndex).toBeGreaterThan(propertyMatrixIndex)
+})
+
 test("keeps pH inequality notation readable", () => {
   expect(JSON.stringify(lesson("chemistry", "ph-indicators").blocks)).toContain("< 7")
   expect(JSON.stringify(lesson("chemistry", "ph-indicators").blocks)).toContain("> 7")

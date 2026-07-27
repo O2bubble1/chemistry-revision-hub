@@ -788,7 +788,16 @@
             },
             {
               "type": "heading",
-              "text": "Property matrix",
+              "text": "Complete study notes",
+              "level": 2
+            },
+            {
+              "type": "richText",
+              "markdown": "The big idea: Chemical bonding occurs in both elements and compounds. Most atoms bond to achieve a stable (usually duplet or octet) electronic configuration with a completely filled valence electron shell, similar to noble gases. ALL types of chemical bonding involve electrostatic forces of attraction between oppositely charged particles."
+            },
+            {
+              "type": "heading",
+              "text": "Types of Chemical Bonding and Structure",
               "level": 3
             },
             {
@@ -872,17 +881,8 @@
             },
             {
               "type": "heading",
-              "text": "Types of Chemical Bonding and Structure",
+              "text": "Property matrix",
               "level": 3
-            },
-            {
-              "type": "heading",
-              "text": "Complete study notes",
-              "level": 2
-            },
-            {
-              "type": "richText",
-              "markdown": "The big idea: Chemical bonding occurs in both elements and compounds. Most atoms bond to achieve a stable (usually duplet or octet) electronic configuration with a completely filled valence electron shell, similar to noble gases. ALL types of chemical bonding involve electrostatic forces of attraction between oppositely charged particles."
             },
             {
               "type": "heading",
