@@ -71,6 +71,8 @@ test("keeps Equation of Motion warning and free-fall guide semantic", () => {
   const warningCallouts = blocks.filter(
     (block) => block.type === "callout" && block.tone === "warning" && block.body.includes("only valid when the acceleration is uniform (constant)"),
   )
+  const warningWording = "these four equations are only valid when the acceleration is uniform (constant). If a question mentions terminal velocity, a parachute or \"changing acceleration\", the equations do not apply for that stage — use a graph instead."
+  const blockText = blocks.map((block) => block.type === "callout" ? block.body : block.type === "richText" ? block.markdown : "").join("\n")
   const freeFallTables = blocks.filter(
     (block) => block.type === "table" && block.headers.join("|") === "Situation|What to use" && block.rows.some(([situation]) => situation === "Released from rest"),
   )
@@ -81,6 +83,7 @@ test("keeps Equation of Motion warning and free-fall guide semantic", () => {
   )
 
   expect(warningCallouts).toHaveLength(1)
+  expect(blockText.split(warningWording)).toHaveLength(2)
   expect(freeFallTables).toHaveLength(1)
   expect(duplicatedFreeFallGuide).toBe(false)
 })
