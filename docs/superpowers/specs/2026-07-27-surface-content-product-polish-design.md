@@ -6,7 +6,7 @@ Make every substantive lesson note from `Revision_Hub__Chemistry_and_Physics.htm
 
 ## Scope
 
-- Surface all 23 substantive migrated Chemistry and Physics source-note sections currently held in `src/content/lessons.json` as `details` blocks named `Preserved source notes`.
+- Surface every textual lesson section found directly in the original HTML bundle, with source-derived parity inventory and automated coverage checks; no source-note text stays only in `details`.
 - Keep all source material safe: lesson JSON remains validated by Zod; no raw HTML, executable content, inline styles, event handlers, or arbitrary component names.
 - Preserve existing curated blocks, figures, quiz/deck links, immutable built-in JSON, local-only custom study data, and query navigation (`?subject=<id>&topic=<id>`).
 - Retain `original-materials.html` as archive/reference fallback, not as primary route for study content.
@@ -20,9 +20,9 @@ Each migrated `details` block becomes visible semantic lesson content:
 2. A visible `richText` block containing its validated Markdown in source order.
 3. Existing curated blocks remain before it, so quick-reference material comes first and complete lesson detail follows naturally.
 
-No CSS-forced-open accordion and no alternate expansion component. The source content is ordinary document flow, searchable by browser and assistive technology, and preserved as immutable JSON. The renderer’s `details` support is removed after all built-in content is migrated.
+No CSS-forced-open accordion and no alternate expansion component for lesson text. The source content is ordinary document flow, searchable by browser and assistive technology, and preserved as immutable JSON. `details` remains only for optional figure galleries.
 
-Content validation gains a regression that rejects `details` in built-in lesson JSON and asserts every substantive lesson exposes its complete note material through normal visible blocks.
+Content validation and regression checks derive their section/text inventory from `Revision_Hub__Chemistry_and_Physics.html`, then confirm every expected textual section is represented by normal visible blocks in the matching React lesson.
 
 ## Shared Product UI
 
@@ -33,7 +33,7 @@ Create small shared presentation pieces rather than duplicating widths, headers,
 - One subject-filter and form-control presentation built from existing shadcn Base UI primitives.
 - Contextual tool navigation: show study-tool shortcuts where they help lesson reading; avoid repeating them as a banner on the destination tool page.
 - Callout tones map to semantic visual treatment for `info`, `tip`, and `warning` without encoding meaning in color alone.
-- Periodic table remains horizontally scrollable at small widths but gains an explicit mobile reading cue and a stable surrounding layout.
+- Periodic table becomes a conventional element grid: atomic number, symbol, name, and mass in every cell; semantic category tint; no dialog. Activating a focusable element cell updates an always-visible, keyboard-accessible detail panel placed in the intentional upper-middle grid gap. The table remains horizontally scrollable at small widths with an explicit mobile reading cue.
 
 No new visual brand, fonts, dependency, account system, router, server, or content-management system.
 
