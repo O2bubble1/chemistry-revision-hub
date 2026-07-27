@@ -35,7 +35,7 @@ export function PeriodicTablePage() {
   return <section className="mx-auto max-w-5xl">
     <PageHeader title="Periodic Table" summary="Select an element for its structure and revision note." />
     <div className="mb-4 flex flex-wrap gap-2 text-sm text-muted-foreground"><span>Element categories are labelled in every detail view.</span><span>Highlighted study notes cover qualitative analysis.</span></div>
-    <p className="mb-2 text-sm text-muted-foreground sm:hidden">Swipe horizontally to explore all elements.</p>
+    <p className="mb-2 text-sm text-muted-foreground sm:hidden">Swipe the table horizontally to explore all elements</p>
     <div className="overflow-x-auto rounded-lg border bg-muted/20 p-3 shadow-sm">
       <div className="grid min-w-[58rem] grid-cols-[repeat(18,minmax(2.6rem,1fr))] gap-1">
         <SelectedElementPanel selected={selected} />
