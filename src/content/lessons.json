@@ -405,7 +405,7 @@
             },
             {
               "type": "heading",
-              "text": "Physical observation",
+              "text": "Step 1 — Physical Observation",
               "level": 3
             },
             {
@@ -414,16 +414,25 @@
             },
             {
               "type": "heading",
-              "text": "Cation test",
+              "text": "Step 2 — Add NaOH dropwise, then in excess",
               "level": 3
             },
             {
               "type": "richText",
-              "markdown": "Add NaOH dropwise, then in excess\n\nGreen ppt → Fe²⁺\n\nRed-brown ppt → Fe³⁺\n\nLight blue ppt → Cu²⁺\n\nWhite ppt → Ca²⁺, Al³⁺ or Zn²⁺\n\nNo ppt, gas on warming → NH₄⁺\n\nFor white ppt: does it dissolve in excess NaOH? → A–Z (Al³⁺, Zn²⁺). Insoluble → Ca²⁺\n\nAdd NH₃ dropwise, then in excess (to confirm)\n\nLight blue ppt, dark blue solution in excess → Cu²⁺ ✓\n\nWhite ppt dissolves in excess → Zn²⁺ (Al³⁺ stays insoluble)\n\nNo ppt at all → Ca²⁺"
+              "markdown": "Green ppt → Fe²⁺\n\nRed-brown ppt → Fe³⁺\n\nLight blue ppt → Cu²⁺\n\nWhite ppt → Ca²⁺, Al³⁺ or Zn²⁺\n\nNo ppt, gas on warming → NH₄⁺\n\nFor white ppt: does it dissolve in excess NaOH? → A–Z (Al³⁺, Zn²⁺). Insoluble → Ca²⁺"
             },
             {
               "type": "heading",
-              "text": "Anion test",
+              "text": "Step 3 — Add NH₃ dropwise, then in excess (to confirm)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Light blue ppt, dark blue solution in excess → Cu²⁺ ✓\n\nWhite ppt dissolves in excess → Zn²⁺ (Al³⁺ stays insoluble)\n\nNo ppt at all → Ca²⁺"
+            },
+            {
+              "type": "heading",
+              "text": "Step 4 — Test for Anions",
               "level": 3
             },
             {
@@ -432,7 +441,7 @@
             },
             {
               "type": "heading",
-              "text": "Gas test",
+              "text": "Step 5 — Test any evolved gases",
               "level": 3
             },
             {
