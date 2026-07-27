@@ -66,6 +66,25 @@ test("gives Physics motion and force data semantic structure", () => {
   expect(lesson("physics", "equations-of-motion").blocks.some((block) => block.type === "callout" && block.tone === "warning")).toBe(true)
 })
 
+test("keeps Equation of Motion warning and free-fall guide semantic", () => {
+  const blocks = lesson("physics", "equations-of-motion").blocks
+  const warningCallouts = blocks.filter(
+    (block) => block.type === "callout" && block.tone === "warning" && block.body.includes("only valid when the acceleration is uniform (constant)"),
+  )
+  const freeFallTables = blocks.filter(
+    (block) => block.type === "table" && block.headers.join("|") === "Situation|What to use" && block.rows.some(([situation]) => situation === "Released from rest"),
+  )
+  const duplicatedFreeFallGuide = blocks.some(
+    (block) =>
+      block.type === "richText" &&
+      block.markdown.includes("Health warning: these four equations are only valid when the acceleration is uniform (constant). If a question mentions terminal velocity, a parachute or \"changing acceleration\", the equations do not apply for that stage — use a graph instead.\n\nFree fall\n\nSituationWhat to use\n\nReleased from rest"),
+  )
+
+  expect(warningCallouts).toHaveLength(1)
+  expect(freeFallTables).toHaveLength(1)
+  expect(duplicatedFreeFallGuide).toBe(false)
+})
+
 test("represents Motion Graph table interpretations only in semantic tables", () => {
   const blocks = lesson("physics", "motion-graphs").blocks
   const tables = blocks.filter((block) => block.type === "table" && block.headers.join("|") === "Shape|What it means|How to read it")
