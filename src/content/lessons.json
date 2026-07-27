@@ -1242,7 +1242,7 @@
             },
             {
               "type": "richText",
-              "markdown": "Elements used in QA tests are highlighted. Hover over any element for details.\n\nQA Cation\n\nQA Reagent / Anion element\n\nAlkali Metal\n\nAlkaline Earth\n\nTransition Metal\n\nNon-metal\n\nPost-transition\n\nHalogen\n\nNoble Gas\n\nMetalloid\n\nThe staircase line: The bold red zigzag runs from beside boron down to below polonium. Elements to the left/below the line are metals, elements to the right/above are non-metals, and the metalloids (B, Si, Ge, As, Sb, Te, Po) sitting along it have properties of both. Click any element for its discovery story and uses; hover for quick data."
+              "markdown": "Elements used in QA tests are highlighted. Hover over any element for details.\n\nQA Cation\n\nQA Reagent / Anion element\n\nAlkali Metal\n\nAlkaline Earth\n\nTransition Metal\n\nNon-metal\n\nPost-transition\n\nHalogen\n\nNoble Gas\n\nMetalloid\n\nLanthanide\n\nActinide\n\nMetal / Non-metal staircase line\n\nThe staircase line: The bold red zigzag runs from beside boron down to below polonium. Elements to the left/below the line are metals, elements to the right/above are non-metals, and the metalloids (B, Si, Ge, As, Sb, Te, Po) sitting along it have properties of both. Click any element for its discovery story and uses; hover for quick data."
             }
           ]
         },
