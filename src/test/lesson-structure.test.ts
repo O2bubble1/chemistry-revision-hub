@@ -34,3 +34,14 @@ test("preserves Chemistry QA source headings", () => {
 
   expect(lesson("chemistry", "solubility-rules").blocks.some((block) => block.type === "heading" && block.text === "The Always-Soluble Squad")).toBe(true)
 })
+
+test("gives Chemistry preparation and bonding notes scanable structure", () => {
+  expect(lesson("chemistry", "salt-prep").blocks.filter((block) => block.type === "heading" && block.level === 3).length).toBeGreaterThan(2)
+  expect(lesson("chemistry", "bonding").blocks.some((block) => block.type === "table")).toBe(true)
+  expect(lesson("chemistry", "bonding").blocks.some((block) => block.type === "comparison")).toBe(true)
+})
+
+test("keeps pH inequality notation readable", () => {
+  expect(JSON.stringify(lesson("chemistry", "ph-indicators").blocks)).toContain("< 7")
+  expect(JSON.stringify(lesson("chemistry", "ph-indicators").blocks)).toContain("> 7")
+})

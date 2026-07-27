@@ -628,7 +628,52 @@
             },
             {
               "type": "richText",
-              "markdown": "The big idea: The method of salt preparation depends on the salt's solubility in water. Ask two questions in order: ① Is the salt soluble? ② Are the starting materials soluble?\n\nQ1 — Is the salt to be prepared soluble in water?\n\nNO → Insoluble salt → Method (A) Precipitation\n\nYES → Soluble salt → go to Q2\n\n↓\n\nQ2 — Are the starting materials for making the salt soluble in water?\n\nNO (Non-SPA salts) → Method (B) Filtration — acid + excess insoluble reactant\n\nYES (SPA salts — Group 1 or ammonium cations) → Method (C) Titration\n\nMethod (A) — Precipitation (Insoluble Salts)\n\nA precipitate is an insoluble chemical produced during a chemical reaction. ALL insoluble salts can be prepared by the precipitation method. Mix a soluble salt (e.g. a nitrate) containing the cation with a soluble salt (e.g. a sodium salt) containing the anion.\n\nSteps: Add one aqueous solution to the other aqueous solution → Stir thoroughly until no more precipitate forms → Filter and collect the residue (which contains the precipitate); discard the filtrate → Wash the residue with deionised water to remove unwanted reactants → Dry the residue between sheets of filter paper.\n\nMethod (B) — Filtration (Soluble Salts NOT containing Group 1 / Ammonium)\n\nReact warm dilute acid with an excess insoluble reactant: a moderately reactive metal, an insoluble base, or an insoluble carbonate. Warm only when using a metal or insoluble base — carbonates react quickly, so no heating is needed.\n\nSteps: Add excess reactant to warm dilute acid, stir until no more reacts → Filter the mixture to obtain the filtrate → Heat the filtrate till the point of saturation ( CANNOT evaporate to dryness — crystals will decompose upon heating) → Test for saturation by dipping a glass rod into the solution (optional) → Cool the filtrate to allow crystals to form → Filter to obtain the crystals as residue → Wash with a small amount of COLD deionised water → Dry crystals between pieces of filter paper.\n\nWhy excess? To ensure ALL the acid is completely used up — the leftover insoluble reactant is easily removed by filtration.\n\nCombinationExamples of reactants\n\nAcid + metalMg, Al, Zn, Fe (moderately reactive metals only)\n\nAcid + insoluble baseMgO, ZnO, CuO, Fe(OH)₃, Cu(OH)₂\n\nAcid + insoluble carbonateMgCO₃, ZnCO₃, CuCO₃\n\nAcids usedHCl, HNO₃, H₂SO₄\n\n✗ The acid + metal method is NOT suitable for:\n\n• Unreactive metals — lead and copper do not react with dilute acids\n\n• Very reactive metals — sodium, potassium and calcium react too vigorously (explosive!)\n\n• Making salts that are insoluble in water — e.g. PbCl₂, PbSO₄, AgCl (use precipitation instead)\n\n✗ The PbCl₂ trap: Can we make PbCl₂ via PbO(s) + 2HCl(aq) → PbCl₂(s) + H₂O(l)? NO! If the product starts off as a solid, it will not fully react to completion — the insoluble PbCl₂ layer coats the PbO and stops the reaction. Insoluble salts like PbCl₂ must be made by precipitation.\n\nMethod (C) — Titration (Group 1 or Ammonium Salts)\n\nSoluble salts containing Group 1 or ammonium cations are prepared by reacting an acid with an alkali (or a carbonate solution). Both starting materials are soluble, so nothing can be filtered off — a titration must first find the exact volume of acid that neutralises a known volume of alkali. Sodium, potassium and ammonium salts are prepared using the titration method.\n\nPart 1 (with indicator): Fill a burette with the dilute acid; note the initial reading (V₁ cm³) → Pipette 25.0 cm³ of aqueous alkali into a conical flask → Add 2 to 3 drops of an indicator (e.g. phenolphthalein or methyl orange) → Add the acid slowly from the burette until the endpoint, where ONE drop of acid causes the indicator to change colour permanently → Record the final reading (V₂ cm³). Volume of acid needed for complete neutralisation = (V₂ − V₁) cm³.\n\nPart 2 (without indicator): Repeat the titration WITHOUT the indicator — the indicator would make the salt impure — by adding the same volume (V₂ − V₁) cm³ of acid → Transfer to a crucible and heat to evaporate the water to form a saturated solution (glass rod test: crystals form on the cool rod = saturated) → Cool the hot saturated solution so the salt can crystallise → Filter to obtain the crystals and rinse with a little cold deionised water → Dry by pressing between sheets of filter paper.\n\nThe Reactivity Series — Reaction with Dilute Acids, Most → Least\n\nMetal\n\nReaction with dilute acid → intensity\n\nK\n\nPotassium\n\nEXPLOSIVE — never add to acid!\n\nNa\n\nSodium\n\nEXPLOSIVE\n\nCa\n\nCalcium\n\nEXPLOSIVE / TOO VIOLENT\n\nMg\n\nMagnesium\n\nVIGOROUS — rapid bubbling ✓ salt-prep OK\n\nAl\n\nAluminium\n\nFAST once oxide layer removed ✓\n\nZn\n\nZinc\n\nMODERATE — steady bubbling ✓\n\nFe\n\nIron\n\nSLOW — gentle bubbling ✓\n\nSn\n\nTin\n\nVERY SLOW\n\nPb\n\nLead\n\nAPPEARS unreactive — insoluble PbCl₂ / PbSO₄ layer coats it and stops the reaction\n\nH\n\n✗ HYDROGEN — THE CUT-OFF LINE ✗ metals BELOW cannot displace H₂ → NO REACTION with dilute acids\n\nCu\n\nCopper\n\n✗ NO REACTION — use CuO / Cu(OH)₂ / CuCO₃ instead\n\nAg\n\nSilver\n\n✗ NO REACTION\n\nAu\n\nGold\n\n✗ NO REACTION\n\nPt\n\nPlatinum\n\n✗ NO REACTION\n\nBar length = how violently the metal reacts with dilute acid. K, Na, Ca: too dangerous — never used for salt prep. Mg → Fe: the safe \"acid + excess metal\" zone. Sn, Pb: too slow / self-coating. Below H: no reaction ever — go via the oxide, hydroxide or carbonate.\n\nWorked Examples from the Handout\n\n(a) Acid + Metal — Zinc sulfate\n\nZn(s) + H₂SO₄(aq) → ZnSO₄(aq) + H₂(g)\n\nDissolve (excess zinc, constant stirring) → Filter (remove unreacted zinc) → Concentrate (evaporate to about one-third the original volume) → Crystallise (cool to room temperature) → Filter, wash, dry.\n\n(b) Acid + Insoluble Base — Copper(II) sulfate\n\nCuO(s) + H₂SO₄(aq) → CuSO₄(aq) + H₂O(l)\n\nAdd CuO to sulfuric acid until no more can dissolve → filter to remove excess CuO (residue) → concentrate, crystallise, filter the filtrate → copper(II) sulfate crystals.\n\n(c) Acid + Carbonate — Calcium nitrate\n\nCaCO₃(s) + 2HNO₃(aq) → Ca(NO₃)₂(aq) + CO₂(g) + H₂O(l)\n\nCarbonates react quickly with acids, so no heating is needed. Add calcium carbonate until no more dissolves → filter → concentrate, crystallise, filter."
+              "markdown": "The big idea: The method of salt preparation depends on the salt's solubility in water. Ask two questions in order: ① Is the salt soluble? ② Are the starting materials soluble?\n\nQ1 — Is the salt to be prepared soluble in water?\n\nNO → Insoluble salt → Method (A) Precipitation\n\nYES → Soluble salt → go to Q2\n\n↓\n\nQ2 — Are the starting materials for making the salt soluble in water?\n\nNO (Non-SPA salts) → Method (B) Filtration — acid + excess insoluble reactant\n\nYES (SPA salts — Group 1 or ammonium cations) → Method (C) Titration"
+            },
+            {
+              "type": "heading",
+              "text": "Method (A) — Precipitation (Insoluble Salts)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "A precipitate is an insoluble chemical produced during a chemical reaction. ALL insoluble salts can be prepared by the precipitation method. Mix a soluble salt (e.g. a nitrate) containing the cation with a soluble salt (e.g. a sodium salt) containing the anion.\n\nSteps: Add one aqueous solution to the other aqueous solution → Stir thoroughly until no more precipitate forms → Filter and collect the residue (which contains the precipitate); discard the filtrate → Wash the residue with deionised water to remove unwanted reactants → Dry the residue between sheets of filter paper."
+            },
+            {
+              "type": "heading",
+              "text": "Method (B) — Filtration (Soluble Salts NOT containing Group 1 / Ammonium)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "React warm dilute acid with an excess insoluble reactant: a moderately reactive metal, an insoluble base, or an insoluble carbonate. Warm only when using a metal or insoluble base — carbonates react quickly, so no heating is needed.\n\nSteps: Add excess reactant to warm dilute acid, stir until no more reacts → Filter the mixture to obtain the filtrate → Heat the filtrate till the point of saturation ( CANNOT evaporate to dryness — crystals will decompose upon heating) → Test for saturation by dipping a glass rod into the solution (optional) → Cool the filtrate to allow crystals to form → Filter to obtain the crystals as residue → Wash with a small amount of COLD deionised water → Dry crystals between pieces of filter paper.\n\nWhy excess? To ensure ALL the acid is completely used up — the leftover insoluble reactant is easily removed by filtration.\n\nCombinationExamples of reactants\n\nAcid + metalMg, Al, Zn, Fe (moderately reactive metals only)\n\nAcid + insoluble baseMgO, ZnO, CuO, Fe(OH)₃, Cu(OH)₂\n\nAcid + insoluble carbonateMgCO₃, ZnCO₃, CuCO₃\n\nAcids usedHCl, HNO₃, H₂SO₄\n\n✗ The acid + metal method is NOT suitable for:\n\n• Unreactive metals — lead and copper do not react with dilute acids\n\n• Very reactive metals — sodium, potassium and calcium react too vigorously (explosive!)\n\n• Making salts that are insoluble in water — e.g. PbCl₂, PbSO₄, AgCl (use precipitation instead)\n\n✗ The PbCl₂ trap: Can we make PbCl₂ via PbO(s) + 2HCl(aq) → PbCl₂(s) + H₂O(l)? NO! If the product starts off as a solid, it will not fully react to completion — the insoluble PbCl₂ layer coats the PbO and stops the reaction. Insoluble salts like PbCl₂ must be made by precipitation."
+            },
+            {
+              "type": "heading",
+              "text": "Method (C) — Titration (Group 1 or Ammonium Salts)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Soluble salts containing Group 1 or ammonium cations are prepared by reacting an acid with an alkali (or a carbonate solution). Both starting materials are soluble, so nothing can be filtered off — a titration must first find the exact volume of acid that neutralises a known volume of alkali. Sodium, potassium and ammonium salts are prepared using the titration method.\n\nPart 1 (with indicator): Fill a burette with the dilute acid; note the initial reading (V₁ cm³) → Pipette 25.0 cm³ of aqueous alkali into a conical flask → Add 2 to 3 drops of an indicator (e.g. phenolphthalein or methyl orange) → Add the acid slowly from the burette until the endpoint, where ONE drop of acid causes the indicator to change colour permanently → Record the final reading (V₂ cm³). Volume of acid needed for complete neutralisation = (V₂ − V₁) cm³.\n\nPart 2 (without indicator): Repeat the titration WITHOUT the indicator — the indicator would make the salt impure — by adding the same volume (V₂ − V₁) cm³ of acid → Transfer to a crucible and heat to evaporate the water to form a saturated solution (glass rod test: crystals form on the cool rod = saturated) → Cool the hot saturated solution so the salt can crystallise → Filter to obtain the crystals and rinse with a little cold deionised water → Dry by pressing between sheets of filter paper."
+            },
+            {
+              "type": "heading",
+              "text": "The Reactivity Series — Reaction with Dilute Acids, Most → Least",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Metal\n\nReaction with dilute acid → intensity\n\nK\n\nPotassium\n\nEXPLOSIVE — never add to acid!\n\nNa\n\nSodium\n\nEXPLOSIVE\n\nCa\n\nCalcium\n\nEXPLOSIVE / TOO VIOLENT\n\nMg\n\nMagnesium\n\nVIGOROUS — rapid bubbling ✓ salt-prep OK\n\nAl\n\nAluminium\n\nFAST once oxide layer removed ✓\n\nZn\n\nZinc\n\nMODERATE — steady bubbling ✓\n\nFe\n\nIron\n\nSLOW — gentle bubbling ✓\n\nSn\n\nTin\n\nVERY SLOW\n\nPb\n\nLead\n\nAPPEARS unreactive — insoluble PbCl₂ / PbSO₄ layer coats it and stops the reaction\n\nH\n\n✗ HYDROGEN — THE CUT-OFF LINE ✗ metals BELOW cannot displace H₂ → NO REACTION with dilute acids\n\nCu\n\nCopper\n\n✗ NO REACTION — use CuO / Cu(OH)₂ / CuCO₃ instead\n\nAg\n\nSilver\n\n✗ NO REACTION\n\nAu\n\nGold\n\n✗ NO REACTION\n\nPt\n\nPlatinum\n\n✗ NO REACTION\n\nBar length = how violently the metal reacts with dilute acid. K, Na, Ca: too dangerous — never used for salt prep. Mg → Fe: the safe \"acid + excess metal\" zone. Sn, Pb: too slow / self-coating. Below H: no reaction ever — go via the oxide, hydroxide or carbonate."
+            },
+            {
+              "type": "heading",
+              "text": "Worked Examples from the Handout",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "(a) Acid + Metal — Zinc sulfate\n\nZn(s) + H₂SO₄(aq) → ZnSO₄(aq) + H₂(g)\n\nDissolve (excess zinc, constant stirring) → Filter (remove unreacted zinc) → Concentrate (evaporate to about one-third the original volume) → Crystallise (cool to room temperature) → Filter, wash, dry.\n\n(b) Acid + Insoluble Base — Copper(II) sulfate\n\nCuO(s) + H₂SO₄(aq) → CuSO₄(aq) + H₂O(l)\n\nAdd CuO to sulfuric acid until no more can dissolve → filter to remove excess CuO (residue) → concentrate, crystallise, filter the filtrate → copper(II) sulfate crystals.\n\n(c) Acid + Carbonate — Calcium nitrate\n\nCaCO₃(s) + 2HNO₃(aq) → Ca(NO₃)₂(aq) + CO₂(g) + H₂O(l)\n\nCarbonates react quickly with acids, so no heating is needed. Add calcium carbonate until no more dissolves → filter → concentrate, crystallise, filter."
             }
           ]
         },
@@ -668,7 +713,52 @@
             },
             {
               "type": "richText",
-              "markdown": "The quick sort: Metal + oxygen → usually a basic oxide. Non-metal + oxygen → usually an acidic oxide. Then learn the two exception clubs: the amphoteric trio (metal oxides that swing both ways) and the neutral trio (non-metal oxides that react with nothing).\n\nACIDIC Oxides\n\nOxides of NON-METALS\n\nReacts with: bases / alkalis → salt + water\n\nIn water: many dissolve to form acids\n\nExamples: CO₂ (→ carbonic acid), SO₂ (→ sulfurous acid), SO₃ (→ sulfuric acid), NO₂\n\nSiO₂ is acidic but insoluble in water\n\nLinks to QA: CO₂ and SO₂ are your acidic gases — they turn damp blue litmus red.\n\nBASIC Oxides\n\nOxides of METALS\n\nReacts with: acids → salt + water\n\nIn water: a few dissolve to form alkalis (Na₂O, K₂O, CaO)\n\nExamples: Na₂O, K₂O, CaO, MgO, CuO, Fe₂O₃\n\nMost (MgO, CuO, Fe₂O₃) are insoluble — perfect excess reactants for salt prep!\n\ne.g. CuO + H₂SO₄ → CuSO₄ + H₂O — the filtration method classic.\n\nAMPHOTERIC Oxides\n\nMetal oxides that react BOTH ways\n\nReacts with: BOTH acids AND bases → salt + water\n\nThe most common three:\n\nAl₂O₃ — aluminium oxide\n\nZnO — zinc oxide\n\nPbO — lead(II) oxide\n\ne.g. ZnO + 2HCl → ZnCl₂ + H₂O\n\nand ZnO + 2NaOH → Na₂ZnO₂ + H₂O\n\nSame A–Z–P trio as the amphoteric hydroxides in QA — Al and Zn are exactly why those white ppts dissolve in excess NaOH!\n\nNEUTRAL Oxides\n\nNon-metal oxides that react with NOTHING\n\nReacts with: neither acids nor bases\n\nEffect on litmus: none — neutral to indicators\n\nThe most common three:\n\nCO — carbon monoxide\n\nNO — nitrogen monoxide\n\nH₂O — water\n\nTrap: CO is neutral but CO₂ is acidic; NO is neutral but NO₂ is acidic. One extra oxygen flips the type!\n\nClassifying an Oxide — Decision Path\n\nQ1 — Is it a metal oxide or non-metal oxide?\n\nMETAL → basic… unless it's Al₂O₃ / ZnO / PbO → amphoteric\n\nNON-METAL → acidic… unless it's CO / NO / H₂O → neutral\n\n↓\n\nQ2 — Confirm by reaction\n\nReacts with acid only → BASIC\n\nReacts with alkali only → ACIDIC\n\nReacts with BOTH → AMPHOTERIC\n\nReacts with NEITHER → NEUTRAL\n\nMemory hooks: Amphoteric = \"A Zany Plumber\" (Al₂O₃, ZnO, PbO). Neutral = \"CO NO H₂O\" — say it out loud, it almost rhymes (\"see-oh, en-oh, aitch-two-oh\"). Everything else follows the metal/non-metal rule."
+              "markdown": "The quick sort: Metal + oxygen → usually a basic oxide. Non-metal + oxygen → usually an acidic oxide. Then learn the two exception clubs: the amphoteric trio (metal oxides that swing both ways) and the neutral trio (non-metal oxides that react with nothing)."
+            },
+            {
+              "type": "heading",
+              "text": "ACIDIC Oxides",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Oxides of NON-METALS\n\nReacts with: bases / alkalis → salt + water\n\nIn water: many dissolve to form acids\n\nExamples: CO₂ (→ carbonic acid), SO₂ (→ sulfurous acid), SO₃ (→ sulfuric acid), NO₂\n\nSiO₂ is acidic but insoluble in water\n\nLinks to QA: CO₂ and SO₂ are your acidic gases — they turn damp blue litmus red."
+            },
+            {
+              "type": "heading",
+              "text": "BASIC Oxides",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Oxides of METALS\n\nReacts with: acids → salt + water\n\nIn water: a few dissolve to form alkalis (Na₂O, K₂O, CaO)\n\nExamples: Na₂O, K₂O, CaO, MgO, CuO, Fe₂O₃\n\nMost (MgO, CuO, Fe₂O₃) are insoluble — perfect excess reactants for salt prep!\n\ne.g. CuO + H₂SO₄ → CuSO₄ + H₂O — the filtration method classic."
+            },
+            {
+              "type": "heading",
+              "text": "AMPHOTERIC Oxides",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Metal oxides that react BOTH ways\n\nReacts with: BOTH acids AND bases → salt + water\n\nThe most common three:\n\nAl₂O₃ — aluminium oxide\n\nZnO — zinc oxide\n\nPbO — lead(II) oxide\n\ne.g. ZnO + 2HCl → ZnCl₂ + H₂O\n\nand ZnO + 2NaOH → Na₂ZnO₂ + H₂O\n\nSame A–Z–P trio as the amphoteric hydroxides in QA — Al and Zn are exactly why those white ppts dissolve in excess NaOH!"
+            },
+            {
+              "type": "heading",
+              "text": "NEUTRAL Oxides",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Non-metal oxides that react with NOTHING\n\nReacts with: neither acids nor bases\n\nEffect on litmus: none — neutral to indicators\n\nThe most common three:\n\nCO — carbon monoxide\n\nNO — nitrogen monoxide\n\nH₂O — water\n\nTrap: CO is neutral but CO₂ is acidic; NO is neutral but NO₂ is acidic. One extra oxygen flips the type!"
+            },
+            {
+              "type": "heading",
+              "text": "Classifying an Oxide — Decision Path",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Q1 — Is it a metal oxide or non-metal oxide?\n\nMETAL → basic… unless it's Al₂O₃ / ZnO / PbO → amphoteric\n\nNON-METAL → acidic… unless it's CO / NO / H₂O → neutral\n\n↓\n\nQ2 — Confirm by reaction\n\nReacts with acid only → BASIC\n\nReacts with alkali only → ACIDIC\n\nReacts with BOTH → AMPHOTERIC\n\nReacts with NEITHER → NEUTRAL\n\nMemory hooks: Amphoteric = \"A Zany Plumber\" (Al₂O₃, ZnO, PbO). Neutral = \"CO NO H₂O\" — say it out loud, it almost rhymes (\"see-oh, en-oh, aitch-two-oh\"). Everything else follows the metal/non-metal rule."
             }
           ]
         },
@@ -680,27 +770,6 @@
             "Chemistry"
           ],
           "blocks": [
-            {
-              "type": "comparison",
-              "items": [
-                {
-                  "title": "Ionic",
-                  "body": "Electrostatic attraction between oppositely charged ions. Conducts when molten or aqueous."
-                },
-                {
-                  "title": "Simple molecular",
-                  "body": "Strong covalent bonds within molecules, weak forces between them. Low melting points."
-                },
-                {
-                  "title": "Giant covalent",
-                  "body": "Many covalent bonds in a lattice. High melting points."
-                },
-                {
-                  "title": "Metallic",
-                  "body": "Positive ions and delocalised electrons. Conducts electricity."
-                }
-              ]
-            },
             {
               "type": "figureGallery",
               "summary": "Original source materials",
@@ -719,12 +788,110 @@
             },
             {
               "type": "heading",
+              "text": "Property matrix",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Property",
+                "IONIC\n\nGiant ionic lattice",
+                "COVALENT\n\nSimple molecular",
+                "COVALENT\n\nGiant covalent",
+                "METALLIC\n\nGiant metallic lattice"
+              ],
+              "rows": [
+                [
+                  "Description",
+                  "Electrostatic forces of attraction between oppositely charged ions",
+                  "Electrostatic forces of attraction between the positively charged nuclei of atoms and their shared pair(s) of electrons",
+                  "Many covalent bonds in an extensive network",
+                  "Electrostatic forces of attraction between metal cations and sea of delocalised valence electrons"
+                ],
+                [
+                  "Formation",
+                  "Metal atoms transfer their valence electrons to non-metal atoms",
+                  "Two atoms share at least one pair of valence electrons",
+                  "Two atoms share at least one pair of valence electrons",
+                  "Metal atoms lose valence electrons to form metal cations surrounded by a sea of delocalised electrons that can move freely between the cations"
+                ],
+                [
+                  "Particles",
+                  "Oppositely charged ions in a regular lattice",
+                  "Simple (discrete) molecules",
+                  "Extensive network of atoms",
+                  "Lattice of metal cations + sea of delocalised valence electrons"
+                ],
+                [
+                  "Melting & boiling points",
+                  "High — large amount of thermal energy required to overcome the strong electrostatic forces of attraction between oppositely charged ions",
+                  "Low — only a small amount of thermal energy required to overcome the weak intermolecular forces of attraction between molecules",
+                  "High — large amount of thermal energy required to break all the strong covalent bonds between atoms in the extensive network",
+                  "High (except Group 1 metals and mercury) — large amount of thermal energy required to overcome the strong electrostatic forces between metal cations and the sea of delocalised electrons"
+                ],
+                [
+                  "Conducts electricity?",
+                  "✓ Yes in molten and aqueous states (free-moving ions act as mobile charge carriers)",
+                  "✗ No in all physical states (except acids and alkalis, which ionise in water)",
+                  "✗ No in all physical states (except graphite)",
+                  "✓ Yes in solid and molten states (delocalised valence electrons act as mobile charge carriers)"
+                ],
+                [
+                  "Solubility",
+                  "Mostly soluble in water; insoluble in organic solvents",
+                  "Mostly insoluble in water; soluble in organic solvents",
+                  "Insoluble in water and organic solvents",
+                  "Insoluble in water and organic solvents"
+                ],
+                [
+                  "Others",
+                  "Hard and brittle",
+                  "NIL",
+                  "Hard (diamond, silicon dioxide); slippery (graphite)",
+                  "High thermal conductivity; high density (except Group 1 metals); malleable and ductile"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Giant covalent contrasts",
+              "level": 3
+            },
+            {
+              "type": "comparison",
+              "items": [
+                {
+                  "title": "Diamond",
+                  "body": "Hard — all the carbon atoms are held rigidly in fixed positions by strong covalent bonds, which cannot be broken easily. Does NOT conduct electricity — each carbon atom forms covalent bonds with FOUR other carbon atoms. All the valence electrons are used for bonding, so there are no delocalised electrons to act as mobile charge carriers."
+                },
+                {
+                  "title": "Graphite",
+                  "body": "Slippery — each layer of carbon atoms can slide over another layer easily due to the weak intermolecular forces of attraction between the layers. CAN conduct electricity — each carbon atom only uses THREE out of four valence electrons for covalent bonding, leaving one delocalised valence electron per carbon atom. These move freely along the layers as mobile charge carriers."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Types of Chemical Bonding and Structure",
+              "level": 3
+            },
+            {
+              "type": "heading",
               "text": "Complete study notes",
               "level": 2
             },
             {
               "type": "richText",
-              "markdown": "The big idea: Chemical bonding occurs in both elements and compounds. Most atoms bond to achieve a stable (usually duplet or octet) electronic configuration with a completely filled valence electron shell, similar to noble gases. ALL types of chemical bonding involve electrostatic forces of attraction between oppositely charged particles.\n\nTypes of Chemical Bonding and Structure\n\nProperty\n\nIONIC\n\nGiant ionic lattice\n\nCOVALENT\n\nSimple molecular\n\nCOVALENT\n\nGiant covalent\n\nMETALLIC\n\nGiant metallic lattice\n\nDescription\n\nElectrostatic forces of attraction between oppositely charged ions\n\nElectrostatic forces of attraction between the positively charged nuclei of atoms and their shared pair(s) of electrons\n\nElectrostatic forces of attraction between metal cations and sea of delocalised valence electrons\n\nFormation\n\nMetal atoms transfer their valence electrons to non-metal atoms\n\nTwo atoms share at least one pair of valence electrons\n\nMetal atoms lose valence electrons to form metal cations surrounded by a sea of delocalised electrons that can move freely between the cations\n\nParticles\n\nOppositely charged ions in a regular lattice\n\nSimple (discrete) molecules\n\nExtensive network of atoms\n\nLattice of metal cations + sea of delocalised valence electrons\n\nMelting & boiling points\n\nHigh — large amount of thermal energy required to overcome the strong electrostatic forces of attraction between oppositely charged ions\n\nLow — only a small amount of thermal energy required to overcome the weak intermolecular forces of attraction between molecules\n\nHigh — large amount of thermal energy required to break all the strong covalent bonds between atoms in the extensive network\n\nHigh (except Group 1 metals and mercury) — large amount of thermal energy required to overcome the strong electrostatic forces between metal cations and the sea of delocalised electrons\n\nConducts electricity?\n\n✓ Yes in molten and aqueous states (free-moving ions act as mobile charge carriers)\n\n✗ No in all physical states (except acids and alkalis, which ionise in water)\n\n✗ No in all physical states (except graphite)\n\n✓ Yes in solid and molten states (delocalised valence electrons act as mobile charge carriers)\n\nSolubility\n\nMostly soluble in water; insoluble in organic solvents\n\nMostly insoluble in water; soluble in organic solvents\n\nInsoluble in water and organic solvents\n\nInsoluble in water and organic solvents\n\nOthers\n\nHard and brittle\n\nNIL\n\nHard (diamond, silicon dioxide); slippery (graphite)\n\nHigh thermal conductivity; high density (except Group 1 metals); malleable and ductile\n\nGiant Covalent Substances — Diamond vs Graphite\n\nDiamond\n\nHard — all the carbon atoms are held rigidly in fixed positions by strong covalent bonds, which cannot be broken easily.\n\nDoes NOT conduct electricity — each carbon atom forms covalent bonds with FOUR other carbon atoms. All the valence electrons are used for bonding, so there are no delocalised electrons to act as mobile charge carriers.\n\nGraphite\n\nSlippery — each layer of carbon atoms can slide over another layer easily due to the weak intermolecular forces of attraction between the layers.\n\nCAN conduct electricity — each carbon atom only uses THREE out of four valence electrons for covalent bonding, leaving one delocalised valence electron per carbon atom. These move freely along the layers as mobile charge carriers.\n\nDeducing the Bonding and Structure of a Substance\n\nStart — Melting and boiling points?\n\nLOW → Simple covalent substances OR some metals (Group 1 metals or mercury)\n\nHIGH → Giant lattice structures (metals / ionic compounds) OR giant covalent substances\n\n↓\n\nIf LOW — Conducts electricity?\n\nNo, in all physical states → Simple covalent substance (check physical state at r.t.p.: solid e.g. sulfur, iodine · liquid e.g. water, bromine · gas e.g. oxygen, methane)\n\nYes, in aqueous state only → Simple covalent substance (acidic or alkaline gas, e.g. hydrogen chloride, ammonia)\n\nYes, in solid and molten states → Group 1 metal or mercury\n\n↓\n\nIf HIGH — Conducts electricity in molten state?\n\nNo → Giant covalent substance (except graphite)\n\nYes → Giant lattice structure → then ask: conducts in SOLID state? Yes → Metal. No → Ionic compound\n\nPure Metals vs Alloys\n\nPure Metals\n\nAtoms are arranged regularly in layers. When a force is applied, the layers of metal atoms can slide over each other easily. Hence pure metals are malleable (can be bent or flattened into thin sheets) and ductile (can be pulled into wires without breaking).\n\nAlloys\n\nAn alloy is a solid mixture of a metal and one or a few other elements. The constituent atoms have different sizes, which disrupt the regular arrangement of atoms. A larger force is required to make the layers slide over each other, so an alloy is stronger and harder than a pure metal."
+              "markdown": "The big idea: Chemical bonding occurs in both elements and compounds. Most atoms bond to achieve a stable (usually duplet or octet) electronic configuration with a completely filled valence electron shell, similar to noble gases. ALL types of chemical bonding involve electrostatic forces of attraction between oppositely charged particles."
+            },
+            {
+              "type": "heading",
+              "text": "Giant Covalent Substances — Diamond vs Graphite; Pure Metals vs Alloys",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Deducing the Bonding and Structure of a Substance\n\nStart — Melting and boiling points?\n\nLOW → Simple covalent substances OR some metals (Group 1 metals or mercury)\n\nHIGH → Giant lattice structures (metals / ionic compounds) OR giant covalent substances\n\n↓\n\nIf LOW — Conducts electricity?\n\nNo, in all physical states → Simple covalent substance (check physical state at r.t.p.: solid e.g. sulfur, iodine · liquid e.g. water, bromine · gas e.g. oxygen, methane)\n\nYes, in aqueous state only → Simple covalent substance (acidic or alkaline gas, e.g. hydrogen chloride, ammonia)\n\nYes, in solid and molten states → Group 1 metal or mercury\n\n↓\n\nIf HIGH — Conducts electricity in molten state?\n\nNo → Giant covalent substance (except graphite)\n\nYes → Giant lattice structure → then ask: conducts in SOLID state? Yes → Metal. No → Ionic compound\n\nPure Metals vs Alloys\n\nPure Metals\n\nAtoms are arranged regularly in layers. When a force is applied, the layers of metal atoms can slide over each other easily. Hence pure metals are malleable (can be bent or flattened into thin sheets) and ductile (can be pulled into wires without breaking).\n\nAlloys\n\nAn alloy is a solid mixture of a metal and one or a few other elements. The constituent atoms have different sizes, which disrupt the regular arrangement of atoms. A larger force is required to make the layers slide over each other, so an alloy is stronger and harder than a pure metal."
             }
           ]
         },
@@ -792,7 +959,106 @@
             },
             {
               "type": "richText",
-              "markdown": "Every fill-in-the-blank from the Bonding Concept Maps (I) & (II), plus the Salt Preparation exercises from Handout 2, with model answers. The completed responses are shown below for review.\n\nConcept Map (I) — A. Ionic Bonding\n\nIonic bonds are formed when metal atoms transfer their valence electrons to non-metal atoms, allowing these atoms to achieve a stable octet / duplet electronic configuration. Metal cations and non-metal anions are formed as a result.\n\nIonic bonding is defined as the electrostatic forces of attraction between oppositely charged ions in an ionic compound.\n\nThe ions in an ionic compound are arranged in a giant ionic (crystal) lattice structure, where the oppositely charged ions are arranged in a regular pattern.\n\nThe ions are held in place by strong electrostatic forces of attraction.\n\nConcept Map (I) — B. Covalent Bonding\n\nCovalent bonds are formed when two non-metal atoms share at least one pair of valence electrons, allowing both atoms to achieve a stable duplet / octet electronic configuration.\n\nCovalent bonding is defined as the electrostatic forces of attraction between the positively charged nuclei of atoms and their shared pair(s) of electrons.\n\nSimple covalent substances have a simple molecular structure and exist as simple (discrete) molecules held together by weak intermolecular forces of attraction. However, within each molecule, atoms are held together by strong covalent bonds.\n\nConcept Map (I) — C. Physical Properties\n\nMelting and boiling points: Ionic compounds — high. Simple covalent substances — low.\n\nElectrical conductivity: Ionic compounds conduct electricity in aqueous and molten states. Simple covalent substances do not conduct electricity in any state.\n\nSolubility: Most ionic compounds are soluble in water and insoluble in organic solvents. Most simple covalent substances are insoluble in water and soluble in organic solvents.\n\nOthers (ionic compounds): Brittle (will break apart easily when hit) and Hard (resistant to scratching or wear and tear).\n\nConcept Map (II) — Particles in Each Structure\n\nGiant ionic lattice: oppositely charged ions arranged in a regular lattice structure.\n\nSimple molecular: simple (discrete) molecules.\n\nGiant covalent: extensive network of atoms.\n\nGiant metallic lattice: lattice of metal cations surrounded by a sea of delocalised valence electrons.\n\nConcept Map (II) — Bonding Present\n\nIonic compounds: Ionic bonding (electrostatic forces of attraction between oppositely charged ions).\n\nSimple molecular: Covalent bonding (electrostatic forces of attraction between the positively charged nuclei of atoms and their shared pair(s) of electrons) between atoms, AND weak intermolecular forces of attraction between molecules.\n\nGiant covalent: covalent bonding (electrostatic forces of attraction between the positively charged nuclei of atoms and their shared pair(s) of electrons) between atoms. Examples: diamond, graphite.\n\nMetals: Metallic bonding (electrostatic forces of attraction between the metal cations and sea of delocalised valence electrons).\n\nConcept Map (II) — Melting and Boiling Points\n\nGiant ionic lattice: A large amount of thermal energy is needed to overcome the strong electrostatic forces of attraction between oppositely charged ions. High melting and boiling points.\n\nSimple molecular: Only a small amount of thermal energy is needed to overcome the weak intermolecular forces of attraction between molecules. Low melting and boiling points.\n\nGiant covalent: A large amount of thermal energy is needed to break the strong covalent bonds between atoms. High melting and boiling points.\n\nGiant metallic lattice: A large amount of thermal energy is needed to overcome the strong electrostatic forces of attraction between metal cations and sea of delocalised valence electrons. High melting and boiling points.\n\nConcept Map (II) — Electrical Conductivity\n\nGiant ionic lattice: Do not conduct electricity in solid state — ions are held in fixed positions in the lattice structure. Conduct electricity in molten and aqueous states — free-moving ions can act as mobile charge carriers to conduct electricity.\n\nSimple molecular: Do not conduct electricity in any state — electrically neutral overall. Exceptions: acidic and alkaline gases, which ionise to produce free-moving ions when dissolved in water (e.g. ammonia and hydrogen chloride).\n\nGiant covalent: Do not conduct electricity in any state — all valence electrons in the atoms are used for bonding. Exception: graphite — contains delocalised valence electrons that can move freely along the layers and act as mobile charge carriers to conduct electricity.\n\nGiant metallic lattice: Conduct electricity in solid and molten states — contains delocalised valence electrons that can act as mobile charge carriers to conduct electricity.\n\nConcept Map (II) — Solubility\n\nGiant ionic lattice: mostly soluble in water, insoluble in organic solvents.\n\nSimple molecular: mostly insoluble in water, soluble in organic solvents.\n\nGiant covalent and giant metallic: insoluble in both water and organic solvents.\n\nConcept Map (II) — Other Properties\n\nGiant ionic lattice: Brittle (break apart easily when hit) and Hard (resistant to wear and tear).\n\nGiant covalent: Hard — all the atoms are held rigidly in fixed positions by strong covalent bonds, which cannot be broken easily. Exception: graphite — consists of flat layers of carbon atoms that can slide over another layer easily, making it soft and slippery.\n\nGiant metallic lattice: High thermal conductivity, high density, malleable (can be bent or flattened into thin sheets when hammered), ductile (can be pulled into wires without breaking), shiny, sonorous.\n\nExam technique: The three bonding definitions all follow the same template — \"electrostatic forces of attraction between ___ and ___\". Ionic: oppositely charged ions. Covalent: positively charged nuclei + shared pair(s) of electrons. Metallic: metal cations + sea of delocalised valence electrons. Learn the template once, swap in the particles.\n\nSalt Preparation — Ex 1: Acid + Metal / Base / Carbonate (Handout p12)\n\nSuggest the reagents required to prepare the following soluble salts by the filtration method. The anion decides the acid, the cation decides the metal / base / carbonate — and check the reactivity series before picking a metal!\n\n(a) Copper(II) sulfate: dilute sulfuric acid (H₂SO₄) + excess copper(II) oxide / copper(II) carbonate — NOT copper metal, it is below hydrogen and does not react with dilute acids.\n\n(b) Iron(II) chloride: dilute hydrochloric acid (HCl) + excess iron (Fe metal) — a moderately reactive metal displaces H₂ and gives the iron(II) salt.\n\n(c) Barium nitrate: dilute nitric acid (HNO₃) + excess barium carbonate (BaCO₃) — barium metal is far too reactive; its insoluble carbonate is the safe route.\n\n(d) Aluminium sulfate: dilute sulfuric acid (H₂SO₄) + excess aluminium (Al metal)\n\n(e) Calcium chloride: dilute hydrochloric acid (HCl) + excess calcium carbonate (CaCO₃) — NOT calcium metal, the reaction is too vigorous.\n\n(f) Zinc nitrate: dilute nitric acid (HNO₃) + excess zinc (Zn metal) / zinc oxide / zinc carbonate\n\nSalt Preparation — Ex 2: Titration Method (Handout p13)\n\nSuggest the reagents required to prepare the following soluble salts (all contain Group 1 or ammonium cations, so use the titration method with a dilute acid + dilute alkali).\n\n(a) Ammonium nitrate: HNO₃(aq) + NH₃(aq)\n\n(b) Potassium sulfate: H₂SO₄(aq) + KOH(aq)\n\n(c) Lithium chloride: HCl(aq) + LiOH(aq)\n\n(d) Sodium ethanoate: CH₃CO₂H(aq) + NaOH(aq)\n\n(e) Potassium phosphate: H₃PO₄(aq) + KOH(aq)\n\nReagent-picking recipe: Match the anion to the acid (chloride → HCl, sulfate → H₂SO₄, nitrate → HNO₃, ethanoate → CH₃CO₂H, phosphate → H₃PO₄). Then match the cation: Group 1 / NH₄⁺ → its alkali (titration). Mg–Fe on the reactivity series → the metal itself works. Cu or very reactive metals → use the oxide, hydroxide or carbonate instead."
+              "markdown": "Every fill-in-the-blank from the Bonding Concept Maps (I) & (II), plus the Salt Preparation exercises from Handout 2, with model answers. The completed responses are shown below for review."
+            },
+            {
+              "type": "heading",
+              "text": "Concept Map (I) — A. Ionic Bonding",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Ionic bonds are formed when metal atoms transfer their valence electrons to non-metal atoms, allowing these atoms to achieve a stable octet / duplet electronic configuration. Metal cations and non-metal anions are formed as a result.\n\nIonic bonding is defined as the electrostatic forces of attraction between oppositely charged ions in an ionic compound.\n\nThe ions in an ionic compound are arranged in a giant ionic (crystal) lattice structure, where the oppositely charged ions are arranged in a regular pattern.\n\nThe ions are held in place by strong electrostatic forces of attraction."
+            },
+            {
+              "type": "heading",
+              "text": "Concept Map (I) — B. Covalent Bonding",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Covalent bonds are formed when two non-metal atoms share at least one pair of valence electrons, allowing both atoms to achieve a stable duplet / octet electronic configuration.\n\nCovalent bonding is defined as the electrostatic forces of attraction between the positively charged nuclei of atoms and their shared pair(s) of electrons.\n\nSimple covalent substances have a simple molecular structure and exist as simple (discrete) molecules held together by weak intermolecular forces of attraction. However, within each molecule, atoms are held together by strong covalent bonds."
+            },
+            {
+              "type": "heading",
+              "text": "Concept Map (I) — C. Physical Properties",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Melting and boiling points: Ionic compounds — high. Simple covalent substances — low.\n\nElectrical conductivity: Ionic compounds conduct electricity in aqueous and molten states. Simple covalent substances do not conduct electricity in any state.\n\nSolubility: Most ionic compounds are soluble in water and insoluble in organic solvents. Most simple covalent substances are insoluble in water and soluble in organic solvents.\n\nOthers (ionic compounds): Brittle (will break apart easily when hit) and Hard (resistant to scratching or wear and tear)."
+            },
+            {
+              "type": "heading",
+              "text": "Concept Map (II) — Particles in Each Structure",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Giant ionic lattice: oppositely charged ions arranged in a regular lattice structure.\n\nSimple molecular: simple (discrete) molecules.\n\nGiant covalent: extensive network of atoms.\n\nGiant metallic lattice: lattice of metal cations surrounded by a sea of delocalised valence electrons."
+            },
+            {
+              "type": "heading",
+              "text": "Concept Map (II) — Bonding Present",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Ionic compounds: Ionic bonding (electrostatic forces of attraction between oppositely charged ions).\n\nSimple molecular: Covalent bonding (electrostatic forces of attraction between the positively charged nuclei of atoms and their shared pair(s) of electrons) between atoms, AND weak intermolecular forces of attraction between molecules.\n\nGiant covalent: covalent bonding (electrostatic forces of attraction between the positively charged nuclei of atoms and their shared pair(s) of electrons) between atoms. Examples: diamond, graphite.\n\nMetals: Metallic bonding (electrostatic forces of attraction between the metal cations and sea of delocalised valence electrons)."
+            },
+            {
+              "type": "heading",
+              "text": "Concept Map (II) — Melting and Boiling Points",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Giant ionic lattice: A large amount of thermal energy is needed to overcome the strong electrostatic forces of attraction between oppositely charged ions. High melting and boiling points.\n\nSimple molecular: Only a small amount of thermal energy is needed to overcome the weak intermolecular forces of attraction between molecules. Low melting and boiling points.\n\nGiant covalent: A large amount of thermal energy is needed to break the strong covalent bonds between atoms. High melting and boiling points.\n\nGiant metallic lattice: A large amount of thermal energy is needed to overcome the strong electrostatic forces of attraction between metal cations and sea of delocalised valence electrons. High melting and boiling points."
+            },
+            {
+              "type": "heading",
+              "text": "Concept Map (II) — Electrical Conductivity",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Giant ionic lattice: Do not conduct electricity in solid state — ions are held in fixed positions in the lattice structure. Conduct electricity in molten and aqueous states — free-moving ions can act as mobile charge carriers to conduct electricity.\n\nSimple molecular: Do not conduct electricity in any state — electrically neutral overall. Exceptions: acidic and alkaline gases, which ionise to produce free-moving ions when dissolved in water (e.g. ammonia and hydrogen chloride).\n\nGiant covalent: Do not conduct electricity in any state — all valence electrons in the atoms are used for bonding. Exception: graphite — contains delocalised valence electrons that can move freely along the layers and act as mobile charge carriers to conduct electricity.\n\nGiant metallic lattice: Conduct electricity in solid and molten states — contains delocalised valence electrons that can act as mobile charge carriers to conduct electricity."
+            },
+            {
+              "type": "heading",
+              "text": "Concept Map (II) — Solubility",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Giant ionic lattice: mostly soluble in water, insoluble in organic solvents.\n\nSimple molecular: mostly insoluble in water, soluble in organic solvents.\n\nGiant covalent and giant metallic: insoluble in both water and organic solvents."
+            },
+            {
+              "type": "heading",
+              "text": "Concept Map (II) — Other Properties",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Giant ionic lattice: Brittle (break apart easily when hit) and Hard (resistant to wear and tear).\n\nGiant covalent: Hard — all the atoms are held rigidly in fixed positions by strong covalent bonds, which cannot be broken easily. Exception: graphite — consists of flat layers of carbon atoms that can slide over another layer easily, making it soft and slippery.\n\nGiant metallic lattice: High thermal conductivity, high density, malleable (can be bent or flattened into thin sheets when hammered), ductile (can be pulled into wires without breaking), shiny, sonorous.\n\nExam technique: The three bonding definitions all follow the same template — \"electrostatic forces of attraction between ___ and ___\". Ionic: oppositely charged ions. Covalent: positively charged nuclei + shared pair(s) of electrons. Metallic: metal cations + sea of delocalised valence electrons. Learn the template once, swap in the particles."
+            },
+            {
+              "type": "heading",
+              "text": "Salt Preparation — Ex 1: Acid + Metal / Base / Carbonate (Handout p12)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Suggest the reagents required to prepare the following soluble salts by the filtration method. The anion decides the acid, the cation decides the metal / base / carbonate — and check the reactivity series before picking a metal!\n\n(a) Copper(II) sulfate: dilute sulfuric acid (H₂SO₄) + excess copper(II) oxide / copper(II) carbonate — NOT copper metal, it is below hydrogen and does not react with dilute acids.\n\n(b) Iron(II) chloride: dilute hydrochloric acid (HCl) + excess iron (Fe metal) — a moderately reactive metal displaces H₂ and gives the iron(II) salt.\n\n(c) Barium nitrate: dilute nitric acid (HNO₃) + excess barium carbonate (BaCO₃) — barium metal is far too reactive; its insoluble carbonate is the safe route.\n\n(d) Aluminium sulfate: dilute sulfuric acid (H₂SO₄) + excess aluminium (Al metal)\n\n(e) Calcium chloride: dilute hydrochloric acid (HCl) + excess calcium carbonate (CaCO₃) — NOT calcium metal, the reaction is too vigorous.\n\n(f) Zinc nitrate: dilute nitric acid (HNO₃) + excess zinc (Zn metal) / zinc oxide / zinc carbonate"
+            },
+            {
+              "type": "heading",
+              "text": "Salt Preparation — Ex 2: Titration Method (Handout p13)",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Suggest the reagents required to prepare the following soluble salts (all contain Group 1 or ammonium cations, so use the titration method with a dilute acid + dilute alkali).\n\n(a) Ammonium nitrate: HNO₃(aq) + NH₃(aq)\n\n(b) Potassium sulfate: H₂SO₄(aq) + KOH(aq)\n\n(c) Lithium chloride: HCl(aq) + LiOH(aq)\n\n(d) Sodium ethanoate: CH₃CO₂H(aq) + NaOH(aq)\n\n(e) Potassium phosphate: H₃PO₄(aq) + KOH(aq)\n\nReagent-picking recipe: Match the anion to the acid (chloride → HCl, sulfate → H₂SO₄, nitrate → HNO₃, ethanoate → CH₃CO₂H, phosphate → H₃PO₄). Then match the cation: Group 1 / NH₄⁺ → its alkali (titration). Mg–Fe on the reactivity series → the metal itself works. Cu or very reactive metals → use the oxide, hydroxide or carbonate instead."
             }
           ]
         },
@@ -953,7 +1219,7 @@
             },
             {
               "type": "richText",
-              "markdown": "Every indicator lined up on the same 0–14 pH axis, ordered by where it changes colour, so you can see how they compare at a glance.\n\n0\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7\n\n8\n\n9\n\n10\n\n11\n\n12\n\n13\n\n14\n\nStrength\n\nStrongly Acidic\n\nWeakly Acidic\n\nNeutral\n\nWeakly Alkaline\n\nStrongly Alkaline\n\nUniversal\n\nIndicator\n\nRed\n\nPurple\n\nMethyl\n\nOrange\n\nRed\n\n3.1–4.4\n\nYellow\n\nMethyl\n\nRed\n\nRed\n\n4.2–6.3\n\nYellow\n\nLitmus\n\nRed\n\n5.0–8.0\n\nBlue\n\nBromothymol\n\nBlue\n\nYellow\n\n6.0–7.6\n\nBlue\n\nPhenol-\n\nphthalein\n\nColourless\n\n8.3–10.0\n\nPink\n\n0\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7\n\n8\n\n9\n\n10\n\n11\n\n12\n\n13\n\n14\n\nThe core rule: pH [$ 7 = acidic (excess H⁺), pH = 7 = neutral, pH ] 7 = alkaline (excess OH⁻). The further the pH is from 7 in either direction, the stronger the acid or alkali. The pill on each bar shows the exact pH range where that indicator flips colour.\n\nQuick Reference Table\n\nIndicatorpH Range (Colour Change)Colour BelowColour AboveTypical Use\n\nMethyl Orange\n\n3.1 – 4.4\n\nRed\n\nYellow\n\nTitrations of strong acids\n\nMethyl Red\n\n4.2 – 6.3\n\nRed\n\nYellow\n\nWeak base titrations\n\nLitmus\n\n5.0 – 8.0\n\nRed\n\nBlue\n\nQuick check for any acid or base (used in gas tests)\n\nBromothymol Blue\n\n6.0 – 7.6\n\nYellow\n\nBlue\n\nNeutral-range testing (e.g. aquariums)\n\nPhenolphthalein\n\n8.3 – 10.0\n\nColourless\n\nPink\n\nTitrations of weak acids\n\nUniversal Indicator\n\n0 – 14\n\nVaries continuously (red → green → purple)\n\nEstimating the exact pH value\n\nCommon mix-up: Methyl Orange, Methyl Red, Bromothymol Blue and Phenolphthalein each only tell you when you've crossed one specific pH range — they can't estimate a precise pH the way Universal Indicator can. That sharp colour flip is exactly why titrations use them: it marks the endpoint clearly."
+              "markdown": "Every indicator lined up on the same 0–14 pH axis, ordered by where it changes colour, so you can see how they compare at a glance.\n\n0\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7\n\n8\n\n9\n\n10\n\n11\n\n12\n\n13\n\n14\n\nStrength\n\nStrongly Acidic\n\nWeakly Acidic\n\nNeutral\n\nWeakly Alkaline\n\nStrongly Alkaline\n\nUniversal\n\nIndicator\n\nRed\n\nPurple\n\nMethyl\n\nOrange\n\nRed\n\n3.1–4.4\n\nYellow\n\nMethyl\n\nRed\n\nRed\n\n4.2–6.3\n\nYellow\n\nLitmus\n\nRed\n\n5.0–8.0\n\nBlue\n\nBromothymol\n\nBlue\n\nYellow\n\n6.0–7.6\n\nBlue\n\nPhenol-\n\nphthalein\n\nColourless\n\n8.3–10.0\n\nPink\n\n0\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7\n\n8\n\n9\n\n10\n\n11\n\n12\n\n13\n\n14\n\nThe core rule: pH < 7 = acidic (excess H⁺), pH = 7 = neutral, pH > 7 = alkaline (excess OH⁻). The further the pH is from 7 in either direction, the stronger the acid or alkali. The pill on each bar shows the exact pH range where that indicator flips colour.\n\nQuick Reference Table\n\nIndicator\n\npH range (colour change)\n\nColour Below\n\nColour Above\n\nTypical Use\n\nMethyl Orange\n\n3.1 – 4.4\n\nRed\n\nYellow\n\nTitrations of strong acids\n\nMethyl Red\n\n4.2 – 6.3\n\nRed\n\nYellow\n\nWeak base titrations\n\nLitmus\n\n5.0 – 8.0\n\nRed\n\nBlue\n\nQuick check for any acid or base (used in gas tests)\n\nBromothymol Blue\n\n6.0 – 7.6\n\nYellow\n\nBlue\n\nNeutral-range testing (e.g. aquariums)\n\nPhenolphthalein\n\n8.3 – 10.0\n\nColourless\n\nPink\n\nTitrations of weak acids\n\nUniversal Indicator\n\n0 – 14\n\nVaries continuously (red → green → purple)\n\nEstimating the exact pH value\n\nCommon mix-up: Methyl Orange, Methyl Red, Bromothymol Blue and Phenolphthalein each only tell you when you've crossed one specific pH range — they can't estimate a precise pH the way Universal Indicator can. That sharp colour flip is exactly why titrations use them: it marks the endpoint clearly."
             }
           ]
         },

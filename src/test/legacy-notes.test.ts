@@ -86,6 +86,26 @@ export function visibleLessonInventory(content: ContentCatalog): Record<string, 
   return Object.fromEntries(content.subjects.map((subject) => [subject.id, Object.fromEntries(subject.lessons.map((lesson) => [lesson.id, { text: normalizedText(lesson.blocks.map(blockText).join(" ")) }]))]))
 }
 
+function tokenMultiset(text: string): Map<string, number> {
+  const tokens = normalizedText(text).normalize("NFKC").toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) ?? []
+  return tokens.reduce((counts, token) => counts.set(token, (counts.get(token) ?? 0) + 1), new Map<string, number>())
+}
+
+
+test("preserves every Chemistry legacy token occurrence", async () => {
+  const expected = await extractLegacyLessonInventory("Revision_Hub__Chemistry_and_Physics.html")
+  const visible = visibleLessonInventory(catalog)
+
+  for (const [lessonId, { text }] of Object.entries(expected.chemistry)) {
+    const sourceTokens = tokenMultiset(text.join(" "))
+    const visibleTokens = tokenMultiset(visible.chemistry?.[lessonId]?.text ?? "")
+
+    for (const [token, count] of sourceTokens) {
+      expect(visibleTokens.get(token) ?? 0, `${lessonId}: ${token}`).toBeGreaterThanOrEqual(count)
+    }
+  }
+})
+
 test("surfaces every legacy textual lesson section", async () => {
   const expected = await extractLegacyLessonInventory("Revision_Hub__Chemistry_and_Physics.html")
   const visible = visibleLessonInventory(catalog)
