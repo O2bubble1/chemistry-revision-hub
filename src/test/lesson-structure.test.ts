@@ -98,3 +98,9 @@ test("represents Motion Graph table interpretations only in semantic tables", ()
   expect(richText).not.toContain("Horizontal line above the axisConstant velocityGradient = 0")
   expect(richText.match(/Two rules run this whole tab/g)).toHaveLength(1)
 })
+
+test("gives Physics energy and terminal-velocity notes semantic structure", () => {
+  expect(lesson("physics", "work-energy-power").blocks.some((block) => block.type === "table")).toBe(true)
+  expect(lesson("physics", "energy-resources").blocks.some((block) => block.type === "table")).toBe(true)
+  expect(lesson("physics", "friction-terminal-velocity").blocks.some((block) => block.type === "comparison")).toBe(true)
+})

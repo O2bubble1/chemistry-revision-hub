@@ -1878,7 +1878,101 @@
             },
             {
               "type": "richText",
-              "markdown": "Definition: friction is the force that opposes, or tends to oppose, relative motion between two surfaces in contact. The \"tends to\" matters — friction acts on a stationary box you are pushing but failing to move.\n\nFriction is not the enemy\n\nUseful effectsUnwanted effects\n\nFriction between shoes and the ground lets you walk without slipping; between tyres and road it lets cars accelerate, turn and brake.\n\nSurfaces heat up, causing wear and tear on moving parts.\n\nFriction lets a belt drive a pulley, a nail hold in wood, and a car park on a slope without sliding.\n\nIn machinery friction reduces efficiency, because a large amount of energy is transferred away as unwanted internal energy.\n\nWays to reduce friction\n\nBall and roller bearings between moving parts · surfaces separated by a lubricant · surfaces separated by an air cushion · smoother, streamlined shapes.\n\nWhat friction depends on\n\nThe materials in contact · the roughness of the surfaces · it is proportional to the force pressing the surfaces together · and it is independent of the area of contact.\n\nTerminal velocity — the four-stage story\n\nStage 1 — just releasedAir resistance is zero, so the only force is the weight. The resultant force is at its maximum and the object accelerates at g.\n\n↓\n\nStage 2 — speeding upAs speed increases, air resistance increases. The resultant force (weight − air resistance) shrinks, so the acceleration decreases — the object is still speeding up, just less quickly.\n\n↓\n\nStage 3 — terminal velocity reachedAir resistance has grown until it equals the weight. Resultant force = 0 N, acceleration = 0 m s⁻², and the object falls at a constant velocity.\n\n↓\n\nStage 4 — parachute opensCross-sectional area jumps, so air resistance jumps above the weight. Now there is a resultant force upwards: the object decelerates until air resistance falls back to equal the weight, giving a new, lower terminal velocity.\n\nTerminal velocity — how the forces change1Just releasedWa = g2Speeding upWRa decreasing3Terminal velocityWRa = 04Parachute opensWRdeceleratingThe weight NEVER changes. Only the air resistance grows — until at stage 3 it equals the weight.Resultant force = 0 N → acceleration = 0 m s⁻² → CONSTANT velocity, not zero velocity.\n\nThe weight never changes; only the air resistance grows, until it balances the weight.\n\nWhat changes the size of the terminal velocity\n\nFactorEffect and reason\n\nMass of the falling object\n\nA heavier object generally has a greater terminal velocity. Its weight is larger, so it must accelerate to a higher speed before air resistance can grow large enough to balance that weight.\n\nCross-sectional area\n\nA larger area (an open parachute, a spread-eagled skydiver) experiences greater air resistance at any given speed, so the balance point comes sooner — a lower terminal velocity.\n\nModel answer for \"explain what is meant by terminal velocity\" [1]: it is the constant velocity of a falling object reached when the air resistance on the object is equal to the gravitational force (weight) on it. Say \"constant velocity\", not \"maximum speed\", and always name both forces."
+              "markdown": "Definition: friction is the force that opposes, or tends to oppose, relative motion between two surfaces in contact. The \"tends to\" matters — friction acts on a stationary box you are pushing but failing to move."
+            },
+            {
+              "type": "heading",
+              "text": "Friction is not the enemy",
+              "level": 3
+            },
+            {
+              "type": "comparison",
+              "items": [
+                {
+                  "title": "Useful effects",
+                  "body": "Friction between shoes and the ground lets you walk without slipping; between tyres and road it lets cars accelerate, turn and brake.\n\nFriction lets a belt drive a pulley, a nail hold in wood, and a car park on a slope without sliding."
+                },
+                {
+                  "title": "Unwanted effects",
+                  "body": "Surfaces heat up, causing wear and tear on moving parts.\n\nIn machinery friction reduces efficiency, because a large amount of energy is transferred away as unwanted internal energy."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Ways to reduce friction",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Ball and roller bearings between moving parts · surfaces separated by a lubricant · surfaces separated by an air cushion · smoother, streamlined shapes."
+            },
+            {
+              "type": "heading",
+              "text": "What friction depends on",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "The materials in contact · the roughness of the surfaces · it is proportional to the force pressing the surfaces together · and it is independent of the area of contact."
+            },
+            {
+              "type": "heading",
+              "text": "Terminal velocity — the four-stage story",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Stage",
+                "What happens"
+              ],
+              "rows": [
+                [
+                  "Stage 1 — just released",
+                  "Air resistance is zero, so the only force is the weight. The resultant force is at its maximum and the object accelerates at g."
+                ],
+                [
+                  "Stage 2 — speeding up",
+                  "As speed increases, air resistance increases. The resultant force (weight − air resistance) shrinks, so the acceleration decreases — the object is still speeding up, just less quickly."
+                ],
+                [
+                  "Stage 3 — terminal velocity reached",
+                  "Air resistance has grown until it equals the weight. Resultant force = 0 N, acceleration = 0 m s⁻², and the object falls at a constant velocity."
+                ],
+                [
+                  "Stage 4 — parachute opens",
+                  "Cross-sectional area jumps, so air resistance jumps above the weight. Now there is a resultant force upwards: the object decelerates until air resistance falls back to equal the weight, giving a new, lower terminal velocity."
+                ]
+              ]
+            },
+            {
+              "type": "richText",
+              "markdown": "Terminal velocity — how the forces change1Just releasedWa = g2Speeding upWRa decreasing3Terminal velocityWRa = 04Parachute opensWRdeceleratingThe weight NEVER changes. Only the air resistance grows — until at stage 3 it equals the weight."
+            },
+            {
+              "type": "callout",
+              "title": "Constant velocity, not maximum speed",
+              "body": "Resultant force = 0 N → acceleration = 0 m s⁻² → CONSTANT velocity, not zero velocity.\n\nThe weight never changes; only the air resistance grows, until it balances the weight.\n\nModel answer for \"explain what is meant by terminal velocity\" [1]: it is the constant velocity of a falling object reached when the air resistance on the object is equal to the gravitational force (weight) on it. Say \"constant velocity\", not \"maximum speed\", and always name both forces.",
+              "tone": "tip"
+            },
+            {
+              "type": "heading",
+              "text": "What changes the size of the terminal velocity\n\nFactorEffect and reason",
+              "level": 3
+            },
+            {
+              "type": "comparison",
+              "items": [
+                {
+                  "title": "Mass of the falling object",
+                  "body": "A heavier object generally has a greater terminal velocity. Its weight is larger, so it must accelerate to a higher speed before air resistance can grow large enough to balance that weight."
+                },
+                {
+                  "title": "Cross-sectional area",
+                  "body": "A larger area (an open parachute, a spread-eagled skydiver) experiences greater air resistance at any given speed, so the balance point comes sooner — a lower terminal velocity."
+                }
+              ]
             }
           ]
         },
@@ -1922,7 +2016,217 @@
             },
             {
               "type": "richText",
-              "markdown": "The model: energy sits in stores and moves between them along pathways. It is never created or destroyed. The SI unit for energy and for work is the joule (J), and both are scalars.\n\nThe six energy stores\n\nStoreAlso calledExample\n\nKinetickinetic energyAny object in motion with speed v\n\nGravitational potentialgravitational potential energyAn object raised above the ground\n\nElastic potentialelastic potential energyA stretched rubber band, a compressed spring\n\nChemical potentialchemical potential energyFood, fossil fuels, batteries\n\nInternalinternal energyA hot object — the KE and PE of all its molecules\n\nNuclearnuclear energyThe nuclei of atoms; released by fission\n\nVocabulary that loses marks: heat, light, sound and electricity are not stores — they are energy in transit. Avoid \"heat energy\", \"sound energy\", \"light energy\" and \"electrical energy\". Say internal energy (or just \"heat\" as a transfer), and energy transferred by sound waves / electrically. Also do not mix the two models: stores are transferred, forms are converted.\n\nEnergy stores and transfer pathwaysEnergy sits in STORES and moves along PATHWAYS. Name both stores and the pathway for full marks.THE SIX STORESKineticGravitationalpotentialElasticpotentialChemicalpotentialInternalNuclearTHE FOUR PATHWAYSMechanicallyby a force over a distanceBy heatingdue to a temperature differenceBy waveselectromagnetic and soundElectricallyby an electric currentEXAMPLE · a bulb in a circuitChemical storeof the dry cellelectricallyInternal storeof the bulbby wavesSurroundingslight + infraredHeat, light, sound and electricity are NOT stores — they are energy in transit. Avoid “heat energy”, “sound energy”, “light energy”.Stores are TRANSFERRED; forms are CONVERTED. Do not mix the two models in one sentence.\n\nSix stores, four pathways, and one worked transfer chain.\n\nThe two formulas you must recall\n\nEK = ½mv²\n\nkinetic store\n\nm in kg, v in m s⁻¹. Only the speed is squared — a very common slip.\n\nEP = mgh\n\ngravitational potential store\n\nh is the height relative to the chosen reference level, usually the ground.\n\nThe four transfer pathways\n\nPathwayExample\n\nMechanically, by a force acting over a distanceA force pushes a cart over a distance s, transferring energy to the cart's kinetic store.\n\nBy heating, due to a temperature differenceA hot pan transfers energy to the internal store of the butter, which melts.\n\nBy propagation of waves (electromagnetic and mechanical)Infrared from the Sun warms skin; sound waves from cymbals set eardrums vibrating.\n\nElectrically, by an electric currentA dry cell transfers energy from its chemical potential store to the internal store of a bulb filament.\n\nPrinciple of conservation of energy\n\n(i) Energy cannot be created or destroyed. (ii) It can only be transferred from one store to another. (iii) The total energy of an isolated system is constant. (An isolated system is one that exchanges neither matter nor energy with its surroundings.)\n\nWorked example — parcel down a smooth ramp\n\nA 4.0 kg parcel slides down a smooth curved ramp from a height of 5.0 m. Take g = 10 m s⁻². Find the speed at the bottom.\n\nBy the principle of conservation of energy: loss in gravitational potential store = gain in kinetic store.\n\nmgh = ½mv² → since the mass appears on both sides, it cancels: (10)(5.0) = ½v²\n\nv = 10 m s⁻¹ — and notice the answer is independent of mass, which is why this is a favourite exam question.\n\nWork done\n\nW = F × s · work done = force × distance moved in the direction of the force · unit: joule (J)\n\nSituationWork done by that force\n\nLifting a 50 N box through 1.1 mPositive: W = 50 × 1.1 = 55 J\n\nCarrying the same box 2.0 m horizontally at constant speedZero: the weight acts downwards but there is no vertical displacement, so W = 50 × 0 = 0 J\n\nYour hand stopping a ball you catchNegative: the force on the ball is opposite to the ball's displacement, so the hand removes energy from the ball's kinetic store.\n\nWork done = force × distance moved IN THE DIRECTION of the forcePOSITIVE workLifting a 50 N box through 1.1 msFW = 50 × 1.1 = 55 Jforce and displacement in the SAME directionZERO workCarrying the box 2 m horizontallysW90° apartW = 50 × 0 = 0 Jdisplacement is PERPENDICULAR to the weightNEGATIVE workYour hand stopping a ball you catchsFW is negativeforce and displacement are OPPOSITENo work is done when the distance moved in the direction of the force is zero — carrying a box on the level does no work against gravity.\n\nPositive, zero and negative work — decided by the direction of the displacement relative to the force.\n\nWork–energy theorem\n\nFR × s = ½mv² − ½mu² · the work done by the resultant force equals the change in the kinetic store.\n\nPower\n\nP = W ÷ t\n\nwork done per unit time\n\nPower is the work done, or energy transferred, per unit time. Unit: J s⁻¹ = watt (W). Scalar.\n\nP = F × v\n\nforce × velocity\n\nA powerful machine is both strong (big force) and fast (big velocity). Handy for engines and jets.\n\nEfficiency\n\nefficiency = (useful energy output ÷ total energy input) × 100%\n\nwhere total energy input = useful energy output + non-useful (wasted) energy\n\nWorked example — the electric motor\n\nAn electric motor lifts a 10 N load through 5.0 m using 65 J of electrical input.\n\nUseful output = work done on the load = 10 N × 5.0 m = 50 J.\n\nEnergy wasted = 65 − 50 = 15 J.\n\nEfficiency = (50 ÷ 65) × 100% = 77%.\n\nEfficiency is never 100% because some energy is always transferred to the internal store of the surroundings through friction and resistance."
+              "markdown": "The model: energy sits in stores and moves between them along pathways. It is never created or destroyed. The SI unit for energy and for work is the joule (J), and both are scalars."
+            },
+            {
+              "type": "heading",
+              "text": "The six energy stores",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Store",
+                "Also called",
+                "Example"
+              ],
+              "rows": [
+                [
+                  "Kinetic",
+                  "kinetic energy",
+                  "Any object in motion with speed v"
+                ],
+                [
+                  "Gravitational potential",
+                  "gravitational potential energy",
+                  "An object raised above the ground"
+                ],
+                [
+                  "Elastic potential",
+                  "elastic potential energy",
+                  "A stretched rubber band, a compressed spring"
+                ],
+                [
+                  "Chemical potential",
+                  "chemical potential energy",
+                  "Food, fossil fuels, batteries"
+                ],
+                [
+                  "Internal",
+                  "internal energy",
+                  "A hot object — the KE and PE of all its molecules"
+                ],
+                [
+                  "Nuclear",
+                  "nuclear energy",
+                  "The nuclei of atoms; released by fission"
+                ]
+              ]
+            },
+            {
+              "type": "callout",
+              "title": "Vocabulary that loses marks",
+              "body": "heat, light, sound and electricity are not stores — they are energy in transit. Avoid \"heat energy\", \"sound energy\", \"light energy\" and \"electrical energy\". Say internal energy (or just \"heat\" as a transfer), and energy transferred by sound waves / electrically. Also do not mix the two models: stores are transferred, forms are converted.\n\nEnergy stores and transfer pathwaysEnergy sits in STORES and moves along PATHWAYS. Name both stores and the pathway for full marks.THE SIX STORESKineticGravitationalpotentialElasticpotentialChemicalpotentialInternalNuclearTHE FOUR PATHWAYSMechanicallyby a force over a distanceBy heatingdue to a temperature differenceBy waveselectromagnetic and soundElectricallyby an electric currentEXAMPLE · a bulb in a circuitChemical storeof the dry cellelectricallyInternal storeof the bulbby wavesSurroundingslight + infraredHeat, light, sound and electricity are NOT stores — they are energy in transit. Avoid “heat energy”, “sound energy”, “light energy”.Stores are TRANSFERRED; forms are CONVERTED. Do not mix the two models in one sentence.\n\nSix stores, four pathways, and one worked transfer chain.",
+              "tone": "warning"
+            },
+            {
+              "type": "heading",
+              "text": "The two formulas you must recall",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Formula",
+                "Store",
+                "Notes"
+              ],
+              "rows": [
+                [
+                  "EK = ½mv²",
+                  "kinetic store",
+                  "m in kg, v in m s⁻¹. Only the speed is squared — a very common slip."
+                ],
+                [
+                  "EP = mgh",
+                  "gravitational potential store",
+                  "h is the height relative to the chosen reference level, usually the ground."
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "The four transfer pathways",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Pathway",
+                "Example"
+              ],
+              "rows": [
+                [
+                  "Mechanically, by a force acting over a distance",
+                  "A force pushes a cart over a distance s, transferring energy to the cart's kinetic store."
+                ],
+                [
+                  "By heating, due to a temperature difference",
+                  "A hot pan transfers energy to the internal store of the butter, which melts."
+                ],
+                [
+                  "By propagation of waves (electromagnetic and mechanical)",
+                  "Infrared from the Sun warms skin; sound waves from cymbals set eardrums vibrating."
+                ],
+                [
+                  "Electrically, by an electric current",
+                  "A dry cell transfers energy from its chemical potential store to the internal store of a bulb filament."
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Principle of conservation of energy",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "(i) Energy cannot be created or destroyed. (ii) It can only be transferred from one store to another. (iii) The total energy of an isolated system is constant. (An isolated system is one that exchanges neither matter nor energy with its surroundings.)"
+            },
+            {
+              "type": "heading",
+              "text": "Worked example — parcel down a smooth ramp",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "A 4.0 kg parcel slides down a smooth curved ramp from a height of 5.0 m. Take g = 10 m s⁻². Find the speed at the bottom.\n\nBy the principle of conservation of energy: loss in gravitational potential store = gain in kinetic store.\n\nmgh = ½mv² → since the mass appears on both sides, it cancels: (10)(5.0) = ½v²\n\nv = 10 m s⁻¹ — and notice the answer is independent of mass, which is why this is a favourite exam question."
+            },
+            {
+              "type": "heading",
+              "text": "Work done",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "W = F × s · work done = force × distance moved in the direction of the force · unit: joule (J)"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Situation",
+                "Work done by that force"
+              ],
+              "rows": [
+                [
+                  "Lifting a 50 N box through 1.1 m",
+                  "Positive: W = 50 × 1.1 = 55 J"
+                ],
+                [
+                  "Carrying the same box 2.0 m horizontally at constant speed",
+                  "Zero: the weight acts downwards but there is no vertical displacement, so W = 50 × 0 = 0 J"
+                ],
+                [
+                  "Your hand stopping a ball you catch",
+                  "Negative: the force on the ball is opposite to the ball's displacement, so the hand removes energy from the ball's kinetic store."
+                ]
+              ]
+            },
+            {
+              "type": "richText",
+              "markdown": "Work done = force × distance moved IN THE DIRECTION of the forcePOSITIVE workLifting a 50 N box through 1.1 msFW = 50 × 1.1 = 55 Jforce and displacement in the SAME directionZERO workCarrying the box 2 m horizontallysW90° apartW = 50 × 0 = 0 Jdisplacement is PERPENDICULAR to the weightNEGATIVE workYour hand stopping a ball you catchsFW is negativeforce and displacement are OPPOSITENo work is done when the distance moved in the direction of the force is zero — carrying a box on the level does no work against gravity.\n\nPositive, zero and negative work — decided by the direction of the displacement relative to the force."
+            },
+            {
+              "type": "heading",
+              "text": "Work–energy theorem",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "FR × s = ½mv² − ½mu² · the work done by the resultant force equals the change in the kinetic store."
+            },
+            {
+              "type": "heading",
+              "text": "Power",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Formula",
+                "Meaning",
+                "Notes"
+              ],
+              "rows": [
+                [
+                  "P = W ÷ t",
+                  "work done per unit time",
+                  "Power is the work done, or energy transferred, per unit time. Unit: J s⁻¹ = watt (W). Scalar."
+                ],
+                [
+                  "P = F × v",
+                  "force × velocity",
+                  "A powerful machine is both strong (big force) and fast (big velocity). Handy for engines and jets."
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Efficiency",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "efficiency = (useful energy output ÷ total energy input) × 100%\n\nwhere total energy input = useful energy output + non-useful (wasted) energy"
+            },
+            {
+              "type": "heading",
+              "text": "Worked example — the electric motor",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "An electric motor lifts a 10 N load through 5.0 m using 65 J of electrical input.\n\nUseful output = work done on the load = 10 N × 5.0 m = 50 J.\n\nEnergy wasted = 65 − 50 = 15 J.\n\nEfficiency = (50 ÷ 65) × 100% = 77%.\n\nEfficiency is never 100% because some energy is always transferred to the internal store of the surroundings through friction and resistance."
             }
           ]
         },
@@ -1958,7 +2262,91 @@
             },
             {
               "type": "richText",
-              "markdown": "Energy Resources & Singapore's Trilemma\n\nSingapore's energy trilemma: as a small country with limited natural energy resources, Singapore has to balance energy security (supply that will not be disrupted), competitive pricing (affordable electricity), and environmental sustainability (renewable, low-impact resources). Almost every exam discussion question wants two of these three in tension.\n\nNon-renewable — cannot be replenished, will run out\n\nResourceHow it worksAdvantagesDisadvantages\n\nFossil fuels\n\nHave energy in the chemical potential store; burning transfers energy by heating to water, producing steam that drives turbines.\n\nMore reliable than weather-dependent resources; relatively cheap to produce.\n\nGases produced during burning cause environmental pollution and contribute to global warming.\n\nNuclear fuels\n\nUranium nuclei undergo fission, splitting into parts; energy moves from the nuclear store to the kinetic stores of those parts, heating water into steam.\n\nLow-carbon, reducing greenhouse gas emissions; high reliability and uninterrupted supply.\n\nRisk of accidents; pollution from improper disposal of radioactive waste.\n\nRenewable — can be replenished\n\nResourceHow it worksAdvantagesDisadvantages\n\nBiofuels\n\nEthanol, biodiesel and biogas derived from biomass; energy sits in the chemical potential store and is released by burning.\n\nWidely available on a large scale; relatively cheap.\n\nBurning still produces gases that contribute to global warming.\n\nWind\n\nEnergy in the kinetic store of the wind is transferred mechanically to the kinetic store of the turbine blades, which drive generators.\n\nRenewable; clean — no harmful gases produced.\n\nIntermittent — needs steady winds of about 20–25 km h⁻¹; noise pollution and loss of habitat.\n\nTides\n\nChanging high and low tides rotate turbines below the water surface; kinetic store of water → kinetic store of turbines.\n\nMore reliable than wind or sun; clean.\n\nHigh cost of building tidal barrages; marine life affected by altered currents and noise.\n\nHydropower\n\nWater held behind a dam has energy in the gravitational potential store; releasing it transfers energy mechanically to the kinetic store of the water, spinning turbines.\n\nRenewable and continually regenerated; clean.\n\nHigh cost of dams; damming a river damages the surrounding environment.\n\nGeothermal\n\nWater reaching volcanic hotspots is heated under pressure, gaining energy in its internal store, and is forced up as steam to drive turbines.\n\nRenewable; clean, naturally available energy.\n\nRelease of poisonous gases such as hydrogen sulfide during drilling; only available in certain regions.\n\nSolar\n\nEnergy in the Sun's nuclear store travels as electromagnetic waves to solar panels made of semiconductors such as silicon, generating electricity.\n\nClean method of producing electricity; well suited to Singapore's high year-round irradiance.\n\nUnavailable at night and weather-dependent; panels take up a lot of space.\n\nWhy not hydropower in Singapore? The height difference of the water source is the biggest contributor to the energy input of a hydroelectric plant, and Singapore has no large body of moving water with a drop of anything like 180 m. Solar is the sensible alternative: high average sunlight per unit area and plenty of flat, unobstructed rooftops."
+              "markdown": "Energy Resources & Singapore's Trilemma\n\nSingapore's energy trilemma: as a small country with limited natural energy resources, Singapore has to balance energy security (supply that will not be disrupted), competitive pricing (affordable electricity), and environmental sustainability (renewable, low-impact resources). Almost every exam discussion question wants two of these three in tension."
+            },
+            {
+              "type": "heading",
+              "text": "Non-renewable — cannot be replenished, will run out",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Resource",
+                "How it works",
+                "Advantages",
+                "Disadvantages"
+              ],
+              "rows": [
+                [
+                  "Fossil fuels",
+                  "Have energy in the chemical potential store; burning transfers energy by heating to water, producing steam that drives turbines.",
+                  "More reliable than weather-dependent resources; relatively cheap to produce.",
+                  "Gases produced during burning cause environmental pollution and contribute to global warming."
+                ],
+                [
+                  "Nuclear fuels",
+                  "Uranium nuclei undergo fission, splitting into parts; energy moves from the nuclear store to the kinetic stores of those parts, heating water into steam.",
+                  "Low-carbon, reducing greenhouse gas emissions; high reliability and uninterrupted supply.",
+                  "Risk of accidents; pollution from improper disposal of radioactive waste."
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Renewable — can be replenished",
+              "level": 3
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Resource",
+                "How it works",
+                "Advantages",
+                "Disadvantages"
+              ],
+              "rows": [
+                [
+                  "Biofuels",
+                  "Ethanol, biodiesel and biogas derived from biomass; energy sits in the chemical potential store and is released by burning.",
+                  "Widely available on a large scale; relatively cheap.",
+                  "Burning still produces gases that contribute to global warming."
+                ],
+                [
+                  "Wind",
+                  "Energy in the kinetic store of the wind is transferred mechanically to the kinetic store of the turbine blades, which drive generators.",
+                  "Renewable; clean — no harmful gases produced.",
+                  "Intermittent — needs steady winds of about 20–25 km h⁻¹; noise pollution and loss of habitat."
+                ],
+                [
+                  "Tides",
+                  "Changing high and low tides rotate turbines below the water surface; kinetic store of water → kinetic store of turbines.",
+                  "More reliable than wind or sun; clean.",
+                  "High cost of building tidal barrages; marine life affected by altered currents and noise."
+                ],
+                [
+                  "Hydropower",
+                  "Water held behind a dam has energy in the gravitational potential store; releasing it transfers energy mechanically to the kinetic store of the water, spinning turbines.",
+                  "Renewable and continually regenerated; clean.",
+                  "High cost of dams; damming a river damages the surrounding environment."
+                ],
+                [
+                  "Geothermal",
+                  "Water reaching volcanic hotspots is heated under pressure, gaining energy in its internal store, and is forced up as steam to drive turbines.",
+                  "Renewable; clean, naturally available energy.",
+                  "Release of poisonous gases such as hydrogen sulfide during drilling; only available in certain regions."
+                ],
+                [
+                  "Solar",
+                  "Energy in the Sun's nuclear store travels as electromagnetic waves to solar panels made of semiconductors such as silicon, generating electricity.",
+                  "Clean method of producing electricity; well suited to Singapore's high year-round irradiance.",
+                  "Unavailable at night and weather-dependent; panels take up a lot of space."
+                ]
+              ]
+            },
+            {
+              "type": "richText",
+              "markdown": "Why not hydropower in Singapore? The height difference of the water source is the biggest contributor to the energy input of a hydroelectric plant, and Singapore has no large body of moving water with a drop of anything like 180 m. Solar is the sensible alternative: high average sunlight per unit area and plenty of flat, unobstructed rooftops."
             }
           ]
         },
@@ -1995,7 +2383,52 @@
             },
             {
               "type": "richText",
-              "markdown": "Every definition and standard explanation from Kinematics, Dynamics and Work-Energy-Power, written the way the mark scheme wants it. Cover each completed response and state it before checking your answer.\n\nA. Kinematics\n\nDistance is the total length of path travelled by an object and is a scalar quantity. Displacement is the distance measured in a straight line from the starting point in a stated direction, and is a vector quantity.\n\nSpeed is the distance travelled per unit time, whereas velocity is the displacement per unit time. Acceleration is defined as the rate of change of velocity, and its SI unit is m s⁻².\n\nAfter one complete lap an athlete returns to his original position, so his net displacement is zero. Since velocity is displacement per unit time, the average velocity is therefore also zero. The set of kinematics equations may only be used when the acceleration is uniform. In a skydiving question the acceleration is not uniform for parts of the journey, so the equations cannot be applied to those stages. On a displacement–time graph the gradient gives the velocity. On a velocity–time graph the gradient gives the acceleration and the area under the graph gives the displacement.\n\nB. Forces, mass and weight\n\nA gravitational field is a region in which a mass experiences a force due to gravitational attraction. Gravitational field strength, g, is defined as the gravitational force per unit mass placed at that point, and is measured in N kg⁻¹. Weight is the gravitational force acting on an object that has mass, calculated using W = mg. Mass is measured using a beam / electronic balance while weight is measured using a spring balance. Mass is constant in any location, whereas weight depends on g at that location.\n\nFriction is the force that opposes, or tends to oppose, relative motion between two surfaces in contact. The frictional force is proportional to the force pressing the surfaces together and is independent of the area of contact.\n\nC. Newton's laws\n\nNewton's first law: an object at rest will remain at rest, and an object in motion will continue to move at constant velocity, unless a resultant force acts on it. When the forces on an object are balanced the resultant force is 0 N, the object is in equilibrium, and its acceleration is 0 m s⁻². It may still be moving, provided it moves in a straight line at constant speed.\n\nInertia is the reluctance of a body to change its state of rest or motion. It is quantified by the mass of the object: the greater this is, the greater the inertia.\n\nNewton's second law: the resultant force acting on an object is equal to the product of its mass and its acceleration, and the object accelerates in the direction of the resultant force. One newton is the force that produces an acceleration of 1 m s⁻² when applied to a mass of 1 kg.\n\nNewton's third law: if body A exerts a force on body B, then body B exerts an equal and opposite force on body A. For two forces to be an action–reaction pair they must be equal in magnitude, opposite in direction, acting on different bodies, and of the same nature.\n\nThe weight of a TV and the normal contact force on it are not an action–reaction pair because they act on the same body and are not of the same type of force (one contact, one non-contact). A free-body diagram shows the object and only the forces that act on it; the forces the object exerts on its environment should not appear.\n\nD. Terminal velocity\n\nAs the speed of a falling object increases, the air resistance experienced by the object also increases. Terminal velocity is the constant velocity of a falling object reached when the air resistance on the object is equal to the gravitational force (weight) on the object. At terminal velocity the resultant force is 0 N and the acceleration of the object is 0 m s⁻². An object with a larger cross-sectional area experiences greater air resistance and therefore has a lower terminal velocity. A heavier object generally has a greater terminal velocity.\n\nE. Work, energy and power\n\nThe principle of conservation of energy states that energy cannot be created or destroyed, but can only be transferred from one store to another, and that the total energy of an isolated system is constant. Work done by a constant force is defined as the product of the force and the distance moved in the direction of the force. Its SI unit is the joule and it is a scalar. No work is done when the distance moved in the direction of the force is zero. Negative work is done when the force and the displacement are opposite in direction.\n\nThe work–energy theorem states that the work done by the resultant force on a particle changes the energy in its kinetic store. Power is defined as the work done, or energy transferred, per unit time. Its SI unit is the watt, equal to one joule per second. Power may also be calculated as force × velocity. Efficiency is the useful energy output divided by the total energy input, expressed as a percentage. The total energy input equals the useful energy output plus the non-useful (wasted) energy.\n\nEnergy can be transferred by four pathways: mechanically by a force acting over a distance, by heating due to a temperature difference, by the propagation of waves, and electrically by an electric current."
+              "markdown": "Every definition and standard explanation from Kinematics, Dynamics and Work-Energy-Power, written the way the mark scheme wants it. Cover each completed response and state it before checking your answer."
+            },
+            {
+              "type": "heading",
+              "text": "A. Kinematics",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Distance is the total length of path travelled by an object and is a scalar quantity. Displacement is the distance measured in a straight line from the starting point in a stated direction, and is a vector quantity.\n\nSpeed is the distance travelled per unit time, whereas velocity is the displacement per unit time. Acceleration is defined as the rate of change of velocity, and its SI unit is m s⁻².\n\nAfter one complete lap an athlete returns to his original position, so his net displacement is zero. Since velocity is displacement per unit time, the average velocity is therefore also zero. The set of kinematics equations may only be used when the acceleration is uniform. In a skydiving question the acceleration is not uniform for parts of the journey, so the equations cannot be applied to those stages. On a displacement–time graph the gradient gives the velocity. On a velocity–time graph the gradient gives the acceleration and the area under the graph gives the displacement."
+            },
+            {
+              "type": "heading",
+              "text": "B. Forces, mass and weight",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "A gravitational field is a region in which a mass experiences a force due to gravitational attraction. Gravitational field strength, g, is defined as the gravitational force per unit mass placed at that point, and is measured in N kg⁻¹. Weight is the gravitational force acting on an object that has mass, calculated using W = mg. Mass is measured using a beam / electronic balance while weight is measured using a spring balance. Mass is constant in any location, whereas weight depends on g at that location.\n\nFriction is the force that opposes, or tends to oppose, relative motion between two surfaces in contact. The frictional force is proportional to the force pressing the surfaces together and is independent of the area of contact."
+            },
+            {
+              "type": "heading",
+              "text": "C. Newton's laws",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Newton's first law: an object at rest will remain at rest, and an object in motion will continue to move at constant velocity, unless a resultant force acts on it. When the forces on an object are balanced the resultant force is 0 N, the object is in equilibrium, and its acceleration is 0 m s⁻². It may still be moving, provided it moves in a straight line at constant speed.\n\nInertia is the reluctance of a body to change its state of rest or motion. It is quantified by the mass of the object: the greater this is, the greater the inertia.\n\nNewton's second law: the resultant force acting on an object is equal to the product of its mass and its acceleration, and the object accelerates in the direction of the resultant force. One newton is the force that produces an acceleration of 1 m s⁻² when applied to a mass of 1 kg.\n\nNewton's third law: if body A exerts a force on body B, then body B exerts an equal and opposite force on body A. For two forces to be an action–reaction pair they must be equal in magnitude, opposite in direction, acting on different bodies, and of the same nature.\n\nThe weight of a TV and the normal contact force on it are not an action–reaction pair because they act on the same body and are not of the same type of force (one contact, one non-contact). A free-body diagram shows the object and only the forces that act on it; the forces the object exerts on its environment should not appear."
+            },
+            {
+              "type": "heading",
+              "text": "D. Terminal velocity",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "As the speed of a falling object increases, the air resistance experienced by the object also increases. Terminal velocity is the constant velocity of a falling object reached when the air resistance on the object is equal to the gravitational force (weight) on the object. At terminal velocity the resultant force is 0 N and the acceleration of the object is 0 m s⁻². An object with a larger cross-sectional area experiences greater air resistance and therefore has a lower terminal velocity. A heavier object generally has a greater terminal velocity."
+            },
+            {
+              "type": "heading",
+              "text": "E. Work, energy and power",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "The principle of conservation of energy states that energy cannot be created or destroyed, but can only be transferred from one store to another, and that the total energy of an isolated system is constant. Work done by a constant force is defined as the product of the force and the distance moved in the direction of the force. Its SI unit is the joule and it is a scalar. No work is done when the distance moved in the direction of the force is zero. Negative work is done when the force and the displacement are opposite in direction.\n\nThe work–energy theorem states that the work done by the resultant force on a particle changes the energy in its kinetic store. Power is defined as the work done, or energy transferred, per unit time. Its SI unit is the watt, equal to one joule per second. Power may also be calculated as force × velocity. Efficiency is the useful energy output divided by the total energy input, expressed as a percentage. The total energy input equals the useful energy output plus the non-useful (wasted) energy.\n\nEnergy can be transferred by four pathways: mechanically by a force acting over a distance, by heating due to a temperature difference, by the propagation of waves, and electrically by an electric current."
             }
           ]
         },
@@ -2021,8 +2454,97 @@
               "markdown": "You are given a scenario. Your only job is to decide which approach you would reach for — no working out required. That decision is where most marks are actually won and lost."
             },
             {
+              "type": "heading",
+              "text": "Worked examples",
+              "level": 3
+            },
+            {
               "type": "richText",
-              "markdown": "The questions from your practices and worksheets, reduced to the method. If you can reproduce the first line of each one, the arithmetic follows.\n\n1 · Two perpendicular forces Dynamics Practice Q1\n\nA 4.0 N force acts due north on a 2.0 kg object at rest; a 3.0 N force pushes it due east.\n\nResultant force: the forces are perpendicular, so FR = √(4.0² + 3.0²) = 5.0 N, at an angle tan⁻¹(3.0/4.0) = 37° east of north.\n\n(i) Acceleration: a = FR ÷ m = 5.0 ÷ 2.0 = 2.5 m s⁻², 37° east of north (same direction as the resultant force).\n\n(ii) Velocity after 2.0 s: v = u + at = 0 + 2.5 × 2.0 = 5.0 m s⁻¹, also 37° east of north.\n\nMarker's note: both answers are vectors — a magnitude alone will not score full marks.\n\n2 · Velocity–time graph of a car Dynamics Practice Q3\n\nA 1000 kg car speeds up from 0 to 5.0 m s⁻¹ in 5.0 s, cruises to 11.0 s, then decelerates. Road friction is 125 N.\n\n(i) 0 – 5.0 s: a = gradient = 5.0 ÷ 5.0 = 1.0 m s⁻².\n\nFR = ma → driving force − 125 = 1000 × 1.0 → driving force = 1125 N.\n\n(ii) 5.0 – 11.0 s: constant velocity, so a = 0 and FR = 0.\n\ndriving force − 125 = 0 → driving force = 125 N.\n\nThe idea being tested: constant velocity does not mean no driving force — it means the driving force exactly balances friction.\n\n3 · Two connected masses Dynamics Practice Q4\n\nA 4.0 kg block is connected by a cable to a 2.0 kg block, which is pulled by a 20 N force. They move at a constant 3.0 m s⁻¹. Friction on the left block, F₁, is twice that on the right block, F₂.\n\nConstant speed → a = 0 → resultant force on each block = 0. Take rightwards as positive.\n\nLeft block: T − F₁ = 0, so T = F₁ = 2F₂.\n\nRight block: 20 − F₂ − T = 0, so T = 20 − F₂.\n\nSolve: 2F₂ = 20 − F₂ → F₂ = 6.7 N, F₁ = 13 N, and the tension T = 13 N (2 s.f.).\n\n4 · The school bag Dynamics Practice, O-Level Q10\n\nA bag is pulled with force P against 0.5 N of friction; a graph of acceleration a against P is given, crossing the P-axis at 0.5 N.\n\n(a) Why must P exceed 0.5 N? The applied force must be greater than the frictional force for the resultant force to be non-zero, so that the bag can accelerate.\n\n(b)(ii) Finding m: at P = 2.0 N the resultant force = 2.0 − 0.5 = 1.5 N and the graph gives a = 0.75 m s⁻².\n\nm = F ÷ a = 1.5 ÷ 0.75 = 2.0 kg. Do not take the gradient — the line does not pass through the origin, so a is not directly proportional to P.\n\n(c)(i) v = u + at = 0 + 0.75 × 3.0 = 2.3 m s⁻¹.\n\n(c)(ii) P reduced to 0.5 N: the resultant force becomes zero, so the acceleration is zero and the bag continues at a constant velocity of 2.3 m s⁻¹ (Newton's first law).\n\n(d) Partner of P: the force acting on the student by the bag, equal in magnitude to P and opposite in direction.\n\n5 · MRT carriages Worksheet 8 Q3\n\nTwo identical carriages move right at constant velocity; friction on each is 1.65 kN. The engine is in the right-hand (first) carriage.\n\nTension on the left carriage: net force = 0 → T − 1.65 = 0 → T = 1.65 kN.\n\nDriving force: for the right carriage, −1.65 (tension) + driving force − 1.65 (friction) = 0 → 3.30 kN.\n\nAccelerating case: with friction 2.00 kN each, mass 2000 kg each and a = 2 m s⁻², treat both carriages as one system:\n\ndriving force − 2 × 2000 = 4000 × 2.00 → driving force = 12 000 N.\n\nGeneral result for n carriages at constant velocity: driving force = nf, where f is the friction on one carriage.\n\n6 · The Perseverance rover Worksheet 8 Q2\n\nA 1000 kg rover is lowered at constant velocity onto Mars, where g = 3.721 m s⁻², by three ropes at equal angles.\n\nConstant velocity → resultant force = 0. Total tension = weight = 1000 × 3.721 = 3721 N.\n\nPer rope: 3721 ÷ 3 = 1240 N (4 s.f.).\n\nWhy a parachute helps: it increases the resistive force of air on the rover, creating a resultant force opposite to the motion, which reduces the acceleration of the descent. On a planet with no atmosphere it would do nothing, because there is no air to provide the resistive force.\n\nIf it were simply dropped from 25 m: v² = u² + 2as = 0 + 2(3.721)(25) → v = 14 m s⁻¹, which on impact would mean a force of order 10⁵ N — hence the ropes.\n\n7 · The nail and the cork board WEP Practice Q1\n\nA 10.5 g nail falls from rest through 80.0 cm and embeds 4.8 cm into a cork board.\n\n(a) Would a heavier nail take longer? No — it takes the same time, because the acceleration due to gravity is independent of mass.\n\n(b) Work done on the nail by the board. Total drop = 80.0 + 4.8 = 84.8 cm.\n\nLoss in gravitational potential store = mgh = (0.0105)(10)(0.848) = 0.08904 J.\n\nBy conservation of energy the work done to stop the nail equals this loss → 0.089 J (2 s.f.).\n\n(c) Average deceleration. W = Fd → F = 0.08904 ÷ 0.048 = 1.855 N.\n\na = F ÷ m = 1.855 ÷ 0.0105 = 180 m s⁻² (2 s.f.).\n\nThe trick: the height must include the 4.8 cm travelled inside the board, because the nail keeps falling while it decelerates.\n\n8 · Car up an incline Worksheet 9 Q2\n\nA 1500 kg car climbs to a height of 10.0 m on a 12.0° slope against 500 N of friction, with a driving force of 8.40 kN. Take g = 9.81 m s⁻².\n\n(a) Gain in gravitational potential store: mgh = 1500 × 9.81 × 10.0 = 147 kJ.\n\n(b) Energy transferred away by friction: slope length = 10.0 ÷ sin 12.0° = 48.097 m; W = Fs = 500 × 48.097 = 24 000 J.\n\n(c) Speed at 10.0 m: work done by engine = Fs = 8400 × 48.097 = 404 kJ.\n\nBy conservation of energy: 404 010 = 147 000 + EK + 24 000 → EK = 233 010 J → ½(1500)v² = 233 010 → v = 17.6 m s⁻¹.\n\nCommon error: using F = ma with only the driving force. Along a slope the component of the weight also acts, so the energy route is safer.\n\n9 · The bouncing nickel ball Worksheet 9 Q3\n\nA nickel sphere of radius 2.00 cm (ρ = 8.908 g cm⁻³) falls from 50.0 cm and rebounds to 30.0 cm.\n\nMass: m = ρV = 8.908 × (4/3)π(2.00)³ = 298.51 g = 0.29851 kg. Convert to SI units before substituting.\n\nWork done by the gravitational field: mgh = 0.29851 × 9.81 × 0.500 = 1.46 J (3 s.f.).\n\nPercentage energy loss on impact: since both energies are mgh with the same m and g, the masses cancel:\n\nloss = (1 − h₂/h₁) × 100% = (1 − 30.0/50.0) × 100% = 40%.\n\nPlausible observation: a loud sound is heard on impact — some energy in the kinetic store is transferred away by sound waves, which is why the ball cannot return to its original height.\n\n10 · Motor and friction WEP Practice Q2\n\nA battery supplies 500 J to a motor that pulls an object 40.5 m at constant speed with a 6.00 N force.\n\n(a) Efficiency: useful energy = Fs = 6.00 × 40.5 = 243 J → efficiency = (243 ÷ 500) × 100% = 48.6%.\n\n(b) Frictional force: by conservation of energy the wasted 500 − 243 = 257 J is the work done against friction → F = 257 ÷ 40.5 = 6.35 N.\n\nSpot the inconsistency: at constant speed the frictional force should equal the 6.00 N driving force. The mismatch tells you the question's numbers are slightly off — noticing this is exactly the physical reasoning being trained.\n\nOptional challenge MCQ — answer key\n\nAnswers with the one-line reason for the harder Kinematics graphs & EOM paper. Try each one before you look.\n\nQAnsReason\n\n1D(v − u)t/2 equals ½at², which is only the displacement when u = 0. The other three are all valid rearrangements.\n\n2DA falling sphere accelerates, so displacement grows with an increasing gradient — a curve getting steeper.\n\n3CTime up = half of 3.20 s = 1.60 s, so u = gt = 9.81 × 1.60 = 15.7 m s⁻¹.\n\n4CBoth start together and meet again at t₁, so somewhere before t₁ their displacement–time gradients — their velocities — must be equal.\n\n6see reasonChoose the graph that rises in a straight line while the fuel burns, then falls in a straight line of gradient −g through zero into negative velocity.\n\n7ATime to fall t = v/g, so horizontal distance = ut = uv/g.\n\n8Cs ∝ t² from rest: s(8) = 32a, s(16) = 128a, so the second interval is 96a and the ratio is 3.\n\n9Bvx = 35 cos40° = 26.8; vy = 35 sin40° − 9.81(4.0) = −16.7; speed = √(26.8² + 16.7²) ≈ 32 m s⁻¹.\n\n10DBoth fall with the same acceleration, so the earlier stone is always faster — the gap grows regardless of mass.\n\n11CRises to S1 at time t, returns to zero at 2t (S1 = S2), then ends at −S3 at the ground.\n\n12CSame rate throughout, so acceleration is a single constant negative value and velocity is one straight line passing through zero into negative values.\n\n14CP lands at t = 4.0 s having fallen 80 m; Q has then fallen ½(10)(3.0²) = 45 m, so the maximum separation is 35 m.\n\n15CAccelerating: 100 s, 1000 m. Decelerating: 50 s, 500 m. Remaining 1500 m at 20 m s⁻¹ = 75 s. Total ≈ 225 s ≈ 230 s."
+              "markdown": "The questions from your practices and worksheets, reduced to the method. If you can reproduce the first line of each one, the arithmetic follows.\n\n1 · Two perpendicular forces Dynamics Practice Q1\n\nA 4.0 N force acts due north on a 2.0 kg object at rest; a 3.0 N force pushes it due east.\n\nResultant force: the forces are perpendicular, so FR = √(4.0² + 3.0²) = 5.0 N, at an angle tan⁻¹(3.0/4.0) = 37° east of north.\n\n(i) Acceleration: a = FR ÷ m = 5.0 ÷ 2.0 = 2.5 m s⁻², 37° east of north (same direction as the resultant force).\n\n(ii) Velocity after 2.0 s: v = u + at = 0 + 2.5 × 2.0 = 5.0 m s⁻¹, also 37° east of north.\n\nMarker's note: both answers are vectors — a magnitude alone will not score full marks.\n\n2 · Velocity–time graph of a car Dynamics Practice Q3\n\nA 1000 kg car speeds up from 0 to 5.0 m s⁻¹ in 5.0 s, cruises to 11.0 s, then decelerates. Road friction is 125 N.\n\n(i) 0 – 5.0 s: a = gradient = 5.0 ÷ 5.0 = 1.0 m s⁻².\n\nFR = ma → driving force − 125 = 1000 × 1.0 → driving force = 1125 N.\n\n(ii) 5.0 – 11.0 s: constant velocity, so a = 0 and FR = 0.\n\ndriving force − 125 = 0 → driving force = 125 N.\n\nThe idea being tested: constant velocity does not mean no driving force — it means the driving force exactly balances friction.\n\n3 · Two connected masses Dynamics Practice Q4\n\nA 4.0 kg block is connected by a cable to a 2.0 kg block, which is pulled by a 20 N force. They move at a constant 3.0 m s⁻¹. Friction on the left block, F₁, is twice that on the right block, F₂.\n\nConstant speed → a = 0 → resultant force on each block = 0. Take rightwards as positive.\n\nLeft block: T − F₁ = 0, so T = F₁ = 2F₂.\n\nRight block: 20 − F₂ − T = 0, so T = 20 − F₂.\n\nSolve: 2F₂ = 20 − F₂ → F₂ = 6.7 N, F₁ = 13 N, and the tension T = 13 N (2 s.f.).\n\n4 · The school bag Dynamics Practice, O-Level Q10\n\nA bag is pulled with force P against 0.5 N of friction; a graph of acceleration a against P is given, crossing the P-axis at 0.5 N.\n\n(a) Why must P exceed 0.5 N? The applied force must be greater than the frictional force for the resultant force to be non-zero, so that the bag can accelerate.\n\n(b)(ii) Finding m: at P = 2.0 N the resultant force = 2.0 − 0.5 = 1.5 N and the graph gives a = 0.75 m s⁻².\n\nm = F ÷ a = 1.5 ÷ 0.75 = 2.0 kg. Do not take the gradient — the line does not pass through the origin, so a is not directly proportional to P.\n\n(c)(i) v = u + at = 0 + 0.75 × 3.0 = 2.3 m s⁻¹.\n\n(c)(ii) P reduced to 0.5 N: the resultant force becomes zero, so the acceleration is zero and the bag continues at a constant velocity of 2.3 m s⁻¹ (Newton's first law).\n\n(d) Partner of P: the force acting on the student by the bag, equal in magnitude to P and opposite in direction.\n\n5 · MRT carriages Worksheet 8 Q3\n\nTwo identical carriages move right at constant velocity; friction on each is 1.65 kN. The engine is in the right-hand (first) carriage.\n\nTension on the left carriage: net force = 0 → T − 1.65 = 0 → T = 1.65 kN.\n\nDriving force: for the right carriage, −1.65 (tension) + driving force − 1.65 (friction) = 0 → 3.30 kN.\n\nAccelerating case: with friction 2.00 kN each, mass 2000 kg each and a = 2 m s⁻², treat both carriages as one system:\n\ndriving force − 2 × 2000 = 4000 × 2.00 → driving force = 12 000 N.\n\nGeneral result for n carriages at constant velocity: driving force = nf, where f is the friction on one carriage.\n\n6 · The Perseverance rover Worksheet 8 Q2\n\nA 1000 kg rover is lowered at constant velocity onto Mars, where g = 3.721 m s⁻², by three ropes at equal angles.\n\nConstant velocity → resultant force = 0. Total tension = weight = 1000 × 3.721 = 3721 N.\n\nPer rope: 3721 ÷ 3 = 1240 N (4 s.f.).\n\nWhy a parachute helps: it increases the resistive force of air on the rover, creating a resultant force opposite to the motion, which reduces the acceleration of the descent. On a planet with no atmosphere it would do nothing, because there is no air to provide the resistive force.\n\nIf it were simply dropped from 25 m: v² = u² + 2as = 0 + 2(3.721)(25) → v = 14 m s⁻¹, which on impact would mean a force of order 10⁵ N — hence the ropes.\n\n7 · The nail and the cork board WEP Practice Q1\n\nA 10.5 g nail falls from rest through 80.0 cm and embeds 4.8 cm into a cork board.\n\n(a) Would a heavier nail take longer? No — it takes the same time, because the acceleration due to gravity is independent of mass.\n\n(b) Work done on the nail by the board. Total drop = 80.0 + 4.8 = 84.8 cm.\n\nLoss in gravitational potential store = mgh = (0.0105)(10)(0.848) = 0.08904 J.\n\nBy conservation of energy the work done to stop the nail equals this loss → 0.089 J (2 s.f.).\n\n(c) Average deceleration. W = Fd → F = 0.08904 ÷ 0.048 = 1.855 N.\n\na = F ÷ m = 1.855 ÷ 0.0105 = 180 m s⁻² (2 s.f.).\n\nThe trick: the height must include the 4.8 cm travelled inside the board, because the nail keeps falling while it decelerates.\n\n8 · Car up an incline Worksheet 9 Q2\n\nA 1500 kg car climbs to a height of 10.0 m on a 12.0° slope against 500 N of friction, with a driving force of 8.40 kN. Take g = 9.81 m s⁻².\n\n(a) Gain in gravitational potential store: mgh = 1500 × 9.81 × 10.0 = 147 kJ.\n\n(b) Energy transferred away by friction: slope length = 10.0 ÷ sin 12.0° = 48.097 m; W = Fs = 500 × 48.097 = 24 000 J.\n\n(c) Speed at 10.0 m: work done by engine = Fs = 8400 × 48.097 = 404 kJ.\n\nBy conservation of energy: 404 010 = 147 000 + EK + 24 000 → EK = 233 010 J → ½(1500)v² = 233 010 → v = 17.6 m s⁻¹.\n\nCommon error: using F = ma with only the driving force. Along a slope the component of the weight also acts, so the energy route is safer.\n\n9 · The bouncing nickel ball Worksheet 9 Q3\n\nA nickel sphere of radius 2.00 cm (ρ = 8.908 g cm⁻³) falls from 50.0 cm and rebounds to 30.0 cm.\n\nMass: m = ρV = 8.908 × (4/3)π(2.00)³ = 298.51 g = 0.29851 kg. Convert to SI units before substituting.\n\nWork done by the gravitational field: mgh = 0.29851 × 9.81 × 0.500 = 1.46 J (3 s.f.).\n\nPercentage energy loss on impact: since both energies are mgh with the same m and g, the masses cancel:\n\nloss = (1 − h₂/h₁) × 100% = (1 − 30.0/50.0) × 100% = 40%.\n\nPlausible observation: a loud sound is heard on impact — some energy in the kinetic store is transferred away by sound waves, which is why the ball cannot return to its original height.\n\n10 · Motor and friction WEP Practice Q2\n\nA battery supplies 500 J to a motor that pulls an object 40.5 m at constant speed with a 6.00 N force.\n\n(a) Efficiency: useful energy = Fs = 6.00 × 40.5 = 243 J → efficiency = (243 ÷ 500) × 100% = 48.6%.\n\n(b) Frictional force: by conservation of energy the wasted 500 − 243 = 257 J is the work done against friction → F = 257 ÷ 40.5 = 6.35 N.\n\nSpot the inconsistency: at constant speed the frictional force should equal the 6.00 N driving force. The mismatch tells you the question's numbers are slightly off — noticing this is exactly the physical reasoning being trained."
+            },
+            {
+              "type": "heading",
+              "text": "Optional challenge MCQ — answer key",
+              "level": 3
+            },
+            {
+              "type": "richText",
+              "markdown": "Answers with the one-line reason for the harder Kinematics graphs & EOM paper. Try each one before you look."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Q",
+                "Ans",
+                "Reason"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "D",
+                  "(v − u)t/2 equals ½at², which is only the displacement when u = 0. The other three are all valid rearrangements."
+                ],
+                [
+                  "2",
+                  "D",
+                  "A falling sphere accelerates, so displacement grows with an increasing gradient — a curve getting steeper."
+                ],
+                [
+                  "3",
+                  "C",
+                  "Time up = half of 3.20 s = 1.60 s, so u = gt = 9.81 × 1.60 = 15.7 m s⁻¹."
+                ],
+                [
+                  "4",
+                  "C",
+                  "Both start together and meet again at t₁, so somewhere before t₁ their displacement–time gradients — their velocities — must be equal."
+                ],
+                [
+                  "6",
+                  "see reason",
+                  "Choose the graph that rises in a straight line while the fuel burns, then falls in a straight line of gradient −g through zero into negative velocity."
+                ],
+                [
+                  "7",
+                  "A",
+                  "Time to fall t = v/g, so horizontal distance = ut = uv/g."
+                ],
+                [
+                  "8",
+                  "C",
+                  "s ∝ t² from rest: s(8) = 32a, s(16) = 128a, so the second interval is 96a and the ratio is 3."
+                ],
+                [
+                  "9",
+                  "B",
+                  "vx = 35 cos40° = 26.8; vy = 35 sin40° − 9.81(4.0) = −16.7; speed = √(26.8² + 16.7²) ≈ 32 m s⁻¹."
+                ],
+                [
+                  "10",
+                  "D",
+                  "Both fall with the same acceleration, so the earlier stone is always faster — the gap grows regardless of mass."
+                ],
+                [
+                  "11",
+                  "C",
+                  "Rises to S1 at time t, returns to zero at 2t (S1 = S2), then ends at −S3 at the ground."
+                ],
+                [
+                  "12",
+                  "C",
+                  "Same rate throughout, so acceleration is a single constant negative value and velocity is one straight line passing through zero into negative values."
+                ],
+                [
+                  "14",
+                  "C",
+                  "P lands at t = 4.0 s having fallen 80 m; Q has then fallen ½(10)(3.0²) = 45 m, so the maximum separation is 35 m."
+                ],
+                [
+                  "15",
+                  "C",
+                  "Accelerating: 100 s, 1000 m. Decelerating: 50 s, 500 m. Remaining 1500 m at 20 m s⁻¹ = 75 s. Total ≈ 225 s ≈ 230 s."
+                ]
+              ]
             }
           ]
         },

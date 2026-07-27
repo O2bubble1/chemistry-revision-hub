@@ -165,12 +165,12 @@ test("preserves every Chemistry legacy token occurrence", async () => {
   }
 })
 
-test("preserves every Task 4 Physics legacy token occurrence", async () => {
+test("preserves every Physics legacy token occurrence", async () => {
   const expected = await extractLegacyLessonInventory("Revision_Hub__Chemistry_and_Physics.html")
   const visible = visibleLessonInventory(catalog)
 
-  for (const lessonId of ["mnemonics", "kinematics", "motion-graphs", "equations-of-motion", "forces-weight", "newtons-laws"]) {
-    const sourceTokens = tokenMultiset(expected.physics![lessonId]!.rawText)
+  for (const [lessonId, { rawText }] of Object.entries(expected.physics)) {
+    const sourceTokens = tokenMultiset(rawText)
     const visibleTokens = tokenMultiset(visible.physics?.[lessonId]?.text ?? "")
 
     for (const [token, count] of sourceTokens) {
@@ -178,6 +178,7 @@ test("preserves every Task 4 Physics legacy token occurrence", async () => {
     }
   }
 })
+
 
 test("surfaces every legacy textual lesson section", async () => {
   const expected = await extractLegacyLessonInventory("Revision_Hub__Chemistry_and_Physics.html")
