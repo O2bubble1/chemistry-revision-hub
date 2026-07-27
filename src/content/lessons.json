@@ -1969,45 +1969,15 @@
               "type": "table",
               "headers": [
                 "Stage",
-                "What happens"
-              ],
-              "rows": [
-                [
-                  "Stage 1 — just released",
-                  "Air resistance is zero, so the only force is the weight. The resultant force is at its maximum and the object accelerates at g."
-                ],
-                [
-                  "Stage 2 — speeding up",
-                  "As speed increases, air resistance increases. The resultant force (weight − air resistance) shrinks, so the acceleration decreases — the object is still speeding up, just less quickly."
-                ],
-                [
-                  "Stage 3 — terminal velocity reached",
-                  "Air resistance has grown until it equals the weight. Resultant force = 0 N, acceleration = 0 m s⁻², and the object falls at a constant velocity."
-                ],
-                [
-                  "Stage 4 — parachute opens",
-                  "Cross-sectional area jumps, so air resistance jumps above the weight. Now there is a resultant force upwards: the object decelerates until air resistance falls back to equal the weight, giving a new, lower terminal velocity."
-                ]
-              ]
-            },
-            {
-              "type": "heading",
-              "text": "Terminal velocity — how the forces change",
-              "level": 3
-            },
-            {
-              "type": "table",
-              "headers": [
-                "Stage",
                 "What happens",
                 "Forces",
                 "Acceleration"
               ],
               "rows": [
-                ["1", "Just released", "W > R", "a = g"],
-                ["2", "Speeding up", "W > R", "a decreasing"],
-                ["3", "Terminal velocity", "W = R", "a = 0"],
-                ["4", "Parachute opens", "R > W", "decelerating"]
+                ["Stage 1 — just released", "Air resistance is zero, so the only force is the weight. The resultant force is at its maximum and the object accelerates at g.", "W > R", "a = g"],
+                ["Stage 2 — speeding up", "As speed increases, air resistance increases. The resultant force (weight − air resistance) shrinks, so the acceleration decreases — the object is still speeding up, just less quickly.", "W > R", "a decreasing"],
+                ["Stage 3 — terminal velocity reached", "Air resistance has grown until it equals the weight. Resultant force = 0 N, acceleration = 0 m s⁻², and the object falls at a constant velocity.", "W = R", "a = 0"],
+                ["Stage 4 — parachute opens", "Cross-sectional area jumps, so air resistance jumps above the weight. Now there is a resultant force upwards: the object decelerates until air resistance falls back to equal the weight, giving a new, lower terminal velocity.", "R > W", "decelerating"]
               ]
             },
             {
