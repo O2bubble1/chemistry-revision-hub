@@ -51,11 +51,11 @@ export function PeriodicTablePage() {
           {Array.from({ length: 18 }, (_, index) => <span key={index}>{index + 1}</span>)}
         </div>
         <div className="grid grid-cols-[repeat(18,minmax(2.6rem,1fr))] gap-1.5">
-          {elements.map((element) => <Button key={element.symbol} variant="outline" data-category={element.category} className={`col-span-1 row-span-1 grid aspect-[4/5] h-auto min-h-0 grid-rows-[auto_1fr_auto_auto] border p-1 text-center leading-none ${categoryTints[element.category] ?? "border-primary/35 bg-primary/10 hover:bg-primary/20"}`} style={{ gridColumnStart: element.group, gridRowStart: element.period }} aria-label={`${element.name}, atomic number ${element.atomicNumber}`} onClick={() => setSelected(element)} onFocus={() => setSelected(element)}>
-            <span data-element-field="mass" className="justify-self-center text-[0.625rem] text-muted-foreground">{element.mass}</span>
-            <span data-element-field="symbol" className="self-center text-xl font-semibold">{element.symbol}</span>
-            <span data-element-field="name" className="w-full truncate text-[0.48rem] font-medium text-muted-foreground">{element.name}</span>
-            <span data-element-field="atomic-number" className="justify-self-center text-[0.625rem] text-muted-foreground">{element.atomicNumber}</span>
+          {elements.map((element) => <Button key={element.symbol} variant="outline" data-category={element.category} className={`col-span-1 row-span-1 grid aspect-square h-auto min-h-0 min-w-0 overflow-hidden grid-rows-[auto_1fr_auto_auto] gap-0 border p-0.5 text-center leading-none focus-visible:ring-2 focus-visible:ring-inset ${categoryTints[element.category] ?? "border-primary/35 bg-primary/10 hover:bg-primary/20"}`} style={{ gridColumnStart: element.group, gridRowStart: element.period }} aria-label={`${element.name}, atomic number ${element.atomicNumber}`} onClick={() => setSelected(element)} onFocus={() => setSelected(element)}>
+            <span data-element-field="mass" className="min-w-0 justify-self-center text-[0.45rem] leading-none text-muted-foreground">{element.mass}</span>
+            <span data-element-field="symbol" className="min-w-0 self-center text-base leading-none font-semibold">{element.symbol}</span>
+            <span data-element-field="name" className="min-w-0 w-full truncate text-[0.4rem] leading-none font-medium text-muted-foreground">{element.name}</span>
+            <span data-element-field="atomic-number" className="min-w-0 justify-self-center text-[0.45rem] leading-none text-muted-foreground">{element.atomicNumber}</span>
           </Button>)}
         </div>
       </div>
