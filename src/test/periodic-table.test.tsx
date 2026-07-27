@@ -14,7 +14,7 @@ test("updates the persistent periodic-table detail panel", async () => {
   expect(hydrogen).toHaveTextContent("1")
   expect(hydrogen).toHaveTextContent("H")
   expect(hydrogen).toHaveTextContent("Hydrogen")
-  expect(hydrogen).toHaveTextContent("1")
+  expect(screen.getByRole("button", { name: /chlorine/i })).toHaveTextContent("35.5")
 
   await user.click(hydrogen)
 

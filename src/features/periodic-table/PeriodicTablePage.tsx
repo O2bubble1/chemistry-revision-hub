@@ -39,7 +39,7 @@ export function PeriodicTablePage() {
       <div className="grid min-w-[58rem] grid-cols-[repeat(18,minmax(2.6rem,1fr))] gap-1">
         <SelectedElementPanel selected={selected} />
         {elements.map((element) => <Button key={element.symbol} variant="outline" className={`col-span-1 row-span-1 grid aspect-square h-auto min-h-0 grid-rows-[auto_1fr_auto_auto] items-center border p-1 text-center leading-none ${categoryTints[element.category] ?? "border-primary/15 bg-primary/5 hover:bg-primary/10"}`} style={{ gridColumnStart: element.group, gridRowStart: element.period }} aria-label={`${element.name}, atomic number ${element.atomicNumber}`} onClick={() => setSelected(element)} onFocus={() => setSelected(element)}>
-          <span className="justify-self-start text-[0.625rem] text-muted-foreground">{element.atomicNumber}</span><span className="self-end text-base font-semibold">{element.symbol}</span><span className="w-full truncate text-[0.55rem] text-muted-foreground">{element.name}</span><span className="text-[0.55rem] text-muted-foreground">{Math.round(element.mass)}</span>
+          <span className="justify-self-start text-[0.625rem] text-muted-foreground">{element.atomicNumber}</span><span className="self-end text-base font-semibold">{element.symbol}</span><span className="w-full truncate text-[0.55rem] text-muted-foreground">{element.name}</span><span className="text-[0.55rem] text-muted-foreground">{element.mass}</span>
         </Button>)}
       </div>
     </div>
