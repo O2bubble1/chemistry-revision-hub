@@ -7,16 +7,16 @@ import { PageHeader } from "@/components/PageHeader"
 type Element = (typeof elements)[number]
 
 const categoryTints: Record<string, string> = {
-  "Alkali metal": "border-rose-400/50 bg-rose-500/15 hover:bg-rose-500/25 dark:border-rose-400/60 dark:bg-rose-500/20 dark:hover:bg-rose-500/30",
-  "Alkaline earth metal": "border-orange-400/50 bg-orange-500/15 hover:bg-orange-500/25 dark:border-orange-400/60 dark:bg-orange-500/20 dark:hover:bg-orange-500/30",
-  Actinide: "border-red-400/50 bg-red-500/15 hover:bg-red-500/25 dark:border-red-400/60 dark:bg-red-500/20 dark:hover:bg-red-500/30",
-  Halogen: "border-fuchsia-400/50 bg-fuchsia-500/15 hover:bg-fuchsia-500/25 dark:border-fuchsia-400/60 dark:bg-fuchsia-500/20 dark:hover:bg-fuchsia-500/30",
-  Lanthanide: "border-cyan-400/50 bg-cyan-500/15 hover:bg-cyan-500/25 dark:border-cyan-400/60 dark:bg-cyan-500/20 dark:hover:bg-cyan-500/30",
-  Metalloid: "border-amber-400/50 bg-amber-500/15 hover:bg-amber-500/25 dark:border-amber-400/60 dark:bg-amber-500/20 dark:hover:bg-amber-500/30",
-  "Noble gas": "border-violet-400/50 bg-violet-500/15 hover:bg-violet-500/25 dark:border-violet-400/60 dark:bg-violet-500/20 dark:hover:bg-violet-500/30",
-  Nonmetal: "border-emerald-400/50 bg-emerald-500/15 hover:bg-emerald-500/25 dark:border-emerald-400/60 dark:bg-emerald-500/20 dark:hover:bg-emerald-500/30",
-  "Post-transition metal": "border-indigo-400/50 bg-indigo-500/15 hover:bg-indigo-500/25 dark:border-indigo-400/60 dark:bg-indigo-500/20 dark:hover:bg-indigo-500/30",
-  "Transition metal": "border-sky-400/50 bg-sky-500/15 hover:bg-sky-500/25 dark:border-sky-400/60 dark:bg-sky-500/20 dark:hover:bg-sky-500/30",
+  "Alkali metal": "border-rose-300/80 bg-rose-100/80 hover:bg-rose-200/80 dark:border-rose-300/35 dark:bg-rose-950/50 dark:hover:bg-rose-900/60",
+  "Alkaline earth metal": "border-orange-300/80 bg-orange-100/80 hover:bg-orange-200/80 dark:border-orange-300/35 dark:bg-orange-950/50 dark:hover:bg-orange-900/60",
+  Actinide: "border-red-300/80 bg-red-100/80 hover:bg-red-200/80 dark:border-red-300/35 dark:bg-red-950/50 dark:hover:bg-red-900/60",
+  Halogen: "border-fuchsia-300/80 bg-fuchsia-100/80 hover:bg-fuchsia-200/80 dark:border-fuchsia-300/35 dark:bg-fuchsia-950/50 dark:hover:bg-fuchsia-900/60",
+  Lanthanide: "border-cyan-300/80 bg-cyan-100/80 hover:bg-cyan-200/80 dark:border-cyan-300/35 dark:bg-cyan-950/50 dark:hover:bg-cyan-900/60",
+  Metalloid: "border-amber-300/80 bg-amber-100/80 hover:bg-amber-200/80 dark:border-amber-300/35 dark:bg-amber-950/50 dark:hover:bg-amber-900/60",
+  "Noble gas": "border-violet-300/80 bg-violet-100/80 hover:bg-violet-200/80 dark:border-violet-300/35 dark:bg-violet-950/50 dark:hover:bg-violet-900/60",
+  Nonmetal: "border-emerald-300/80 bg-emerald-100/80 hover:bg-emerald-200/80 dark:border-emerald-300/35 dark:bg-emerald-950/50 dark:hover:bg-emerald-900/60",
+  "Post-transition metal": "border-indigo-300/80 bg-indigo-100/80 hover:bg-indigo-200/80 dark:border-indigo-300/35 dark:bg-indigo-950/50 dark:hover:bg-indigo-900/60",
+  "Transition metal": "border-sky-300/80 bg-sky-100/80 hover:bg-sky-200/80 dark:border-sky-300/35 dark:bg-sky-950/50 dark:hover:bg-sky-900/60",
 }
 
 function SelectedElementPanel({ selected }: { selected: Element | null }) {
@@ -46,12 +46,18 @@ export function PeriodicTablePage() {
     <SelectedElementPanel selected={selected} />
     <p className="mb-2 mt-4 text-sm text-muted-foreground sm:hidden">Swipe the table horizontally to explore all elements</p>
     <div data-testid="periodic-table-viewport" className="mt-4 overflow-x-auto overflow-y-hidden rounded-lg border bg-muted/20 p-3 shadow-sm">
-      <div className="grid min-w-[58rem] grid-cols-[repeat(18,minmax(2.6rem,1fr))] gap-1.5">
-        {elements.map((element) => <Button key={element.symbol} variant="outline" data-category={element.category} className={`col-span-1 row-span-1 grid aspect-square h-auto min-h-0 grid-rows-[auto_1fr_auto] border px-1 py-1 text-center leading-none ${categoryTints[element.category] ?? "border-primary/35 bg-primary/10 hover:bg-primary/20"}`} style={{ gridColumnStart: element.group, gridRowStart: element.period }} aria-label={`${element.name}, atomic number ${element.atomicNumber}`} onClick={() => setSelected(element)} onFocus={() => setSelected(element)}>
-          <span className="flex justify-between text-[0.625rem] text-muted-foreground"><span>{element.atomicNumber}</span><span>{element.mass}</span></span>
-          <span className="self-center text-lg font-semibold">{element.symbol}</span>
-          <span className="truncate text-[0.6rem] text-muted-foreground">{element.name}</span>
-        </Button>)}
+      <div className="min-w-[58rem]">
+        <div data-testid="periodic-group-labels" className="mb-1.5 grid grid-cols-[repeat(18,minmax(2.6rem,1fr))] gap-1.5 text-center text-xs font-medium text-muted-foreground">
+          {Array.from({ length: 18 }, (_, index) => <span key={index}>{index + 1}</span>)}
+        </div>
+        <div className="grid grid-cols-[repeat(18,minmax(2.6rem,1fr))] gap-1.5">
+          {elements.map((element) => <Button key={element.symbol} variant="outline" data-category={element.category} className={`col-span-1 row-span-1 grid aspect-[4/5] h-auto min-h-0 grid-rows-[auto_1fr_auto_auto] border p-1 text-center leading-none ${categoryTints[element.category] ?? "border-primary/35 bg-primary/10 hover:bg-primary/20"}`} style={{ gridColumnStart: element.group, gridRowStart: element.period }} aria-label={`${element.name}, atomic number ${element.atomicNumber}`} onClick={() => setSelected(element)} onFocus={() => setSelected(element)}>
+            <span data-element-field="mass" className="justify-self-center text-[0.625rem] text-muted-foreground">{element.mass}</span>
+            <span data-element-field="symbol" className="self-center text-xl font-semibold">{element.symbol}</span>
+            <span data-element-field="name" className="w-full truncate text-[0.48rem] font-medium text-muted-foreground">{element.name}</span>
+            <span data-element-field="atomic-number" className="justify-self-center text-[0.625rem] text-muted-foreground">{element.atomicNumber}</span>
+          </Button>)}
+        </div>
       </div>
     </div>
   </section>
