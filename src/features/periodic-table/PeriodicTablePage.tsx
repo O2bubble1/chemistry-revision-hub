@@ -7,40 +7,50 @@ import { PageHeader } from "@/components/PageHeader"
 type Element = (typeof elements)[number]
 
 const categoryTints: Record<string, string> = {
-  "Alkali metal": "border-destructive/30 bg-destructive/10 hover:bg-destructive/15",
-  "Alkaline earth metal": "border-primary/30 bg-primary/10 hover:bg-primary/15",
-  Actinide: "border-primary/30 bg-primary/10 hover:bg-primary/15",
-  Halogen: "border-destructive/30 bg-destructive/10 hover:bg-destructive/15",
-  Lanthanide: "border-primary/30 bg-primary/10 hover:bg-primary/15",
-  Metalloid: "border-primary/30 bg-primary/10 hover:bg-primary/15",
-  "Noble gas": "border-primary/30 bg-primary/10 hover:bg-primary/15",
-  Nonmetal: "border-primary/30 bg-primary/10 hover:bg-primary/15",
-  "Post-transition metal": "border-muted-foreground/30 bg-muted hover:bg-muted/75",
-  "Transition metal": "border-muted-foreground/30 bg-muted hover:bg-muted/75",
+  "Alkali metal": "border-rose-400/50 bg-rose-500/15 hover:bg-rose-500/25 dark:border-rose-400/60 dark:bg-rose-500/20 dark:hover:bg-rose-500/30",
+  "Alkaline earth metal": "border-orange-400/50 bg-orange-500/15 hover:bg-orange-500/25 dark:border-orange-400/60 dark:bg-orange-500/20 dark:hover:bg-orange-500/30",
+  Actinide: "border-red-400/50 bg-red-500/15 hover:bg-red-500/25 dark:border-red-400/60 dark:bg-red-500/20 dark:hover:bg-red-500/30",
+  Halogen: "border-fuchsia-400/50 bg-fuchsia-500/15 hover:bg-fuchsia-500/25 dark:border-fuchsia-400/60 dark:bg-fuchsia-500/20 dark:hover:bg-fuchsia-500/30",
+  Lanthanide: "border-cyan-400/50 bg-cyan-500/15 hover:bg-cyan-500/25 dark:border-cyan-400/60 dark:bg-cyan-500/20 dark:hover:bg-cyan-500/30",
+  Metalloid: "border-amber-400/50 bg-amber-500/15 hover:bg-amber-500/25 dark:border-amber-400/60 dark:bg-amber-500/20 dark:hover:bg-amber-500/30",
+  "Noble gas": "border-violet-400/50 bg-violet-500/15 hover:bg-violet-500/25 dark:border-violet-400/60 dark:bg-violet-500/20 dark:hover:bg-violet-500/30",
+  Nonmetal: "border-emerald-400/50 bg-emerald-500/15 hover:bg-emerald-500/25 dark:border-emerald-400/60 dark:bg-emerald-500/20 dark:hover:bg-emerald-500/30",
+  "Post-transition metal": "border-indigo-400/50 bg-indigo-500/15 hover:bg-indigo-500/25 dark:border-indigo-400/60 dark:bg-indigo-500/20 dark:hover:bg-indigo-500/30",
+  "Transition metal": "border-sky-400/50 bg-sky-500/15 hover:bg-sky-500/25 dark:border-sky-400/60 dark:bg-sky-500/20 dark:hover:bg-sky-500/30",
 }
 
 function SelectedElementPanel({ selected }: { selected: Element | null }) {
-  return <aside role="region" aria-label="Selected element" className="col-start-3 col-span-10 row-start-1 row-span-3 flex min-w-0 flex-col justify-center rounded-md border border-primary/20 bg-background p-3 shadow-sm">
-    {selected ? <div aria-live="polite" className="space-y-2">
-      <div className="flex items-baseline justify-between gap-2"><h2 className="min-w-0 truncate text-lg font-semibold">{selected.name} <span className="text-muted-foreground">({selected.symbol})</span></h2><span className="shrink-0 text-xs font-medium text-muted-foreground">{selected.category}</span></div>
-      <dl className="grid grid-cols-2 gap-x-3 gap-y-1 text-xs"><div><dt className="text-muted-foreground">Atomic number</dt><dd>{selected.atomicNumber}</dd></div><div><dt className="text-muted-foreground">Relative atomic mass</dt><dd>{selected.mass}</dd></div><div><dt className="text-muted-foreground">Shells</dt><dd>{selected.shells}</dd></div><div><dt className="text-muted-foreground">Period / group</dt><dd>{selected.period} / {selected.group}</dd></div></dl>
-      {selected.note ? <p className="text-xs leading-snug text-muted-foreground">{selected.note}</p> : <p className="text-xs text-muted-foreground">No revision note recorded for this element.</p>}
-    </div> : <div className="space-y-1"><h2 className="text-sm font-semibold">Selected element</h2><p className="text-xs text-muted-foreground">Select or focus an element to view its structure and revision note.</p></div>}
+  return <aside data-testid="periodic-detail-band" role="region" aria-label="Selected element" className="flex h-auto min-h-64 flex-col justify-center rounded-lg border border-primary/25 bg-card p-5 shadow-sm sm:min-h-0 sm:h-52">
+    {selected ? <div aria-live="polite" className="grid gap-4">
+      <div className="flex items-start justify-between gap-4">
+        <h2 className="min-w-0 text-xl font-semibold tracking-tight">{selected.name} <span className="text-muted-foreground">({selected.symbol})</span></h2>
+        <span className="shrink-0 rounded-full border border-current/25 px-2 py-1 text-xs font-medium text-muted-foreground">{selected.category}</span>
+      </div>
+      <dl className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm sm:grid-cols-4">
+        <div><dt className="text-muted-foreground">Atomic number</dt><dd className="font-medium">{selected.atomicNumber}</dd></div>
+        <div><dt className="text-muted-foreground">Relative atomic mass</dt><dd className="font-medium">{selected.mass}</dd></div>
+        <div><dt className="text-muted-foreground">Shells</dt><dd className="font-medium">{selected.shells}</dd></div>
+        <div><dt className="text-muted-foreground">Period / group</dt><dd className="font-medium">{selected.period} / {selected.group}</dd></div>
+      </dl>
+      <p className="text-sm leading-snug text-muted-foreground">{selected.note || "No revision note recorded for this element."}</p>
+    </div> : <div className="space-y-2"><h2 className="text-lg font-semibold">Selected element</h2><p className="max-w-2xl text-sm text-muted-foreground">Select or focus an element to view its structure and revision note.</p></div>}
   </aside>
 }
 
 export function PeriodicTablePage() {
   const [selected, setSelected] = useState<Element | null>(null)
 
-  return <section className="mx-auto max-w-5xl">
+  return <section className="mx-auto w-full max-w-[96rem]">
     <PageHeader title="Periodic Table" summary="Select an element for its structure and revision note." />
     <div className="mb-4 flex flex-wrap gap-2 text-sm text-muted-foreground"><span>Element categories are labelled in every detail view.</span><span>Highlighted study notes cover qualitative analysis.</span></div>
-    <p className="mb-2 text-sm text-muted-foreground sm:hidden">Swipe the table horizontally to explore all elements</p>
-    <div className="overflow-x-auto rounded-lg border bg-muted/20 p-3 shadow-sm">
-      <div className="grid min-w-[58rem] grid-cols-[repeat(18,minmax(2.6rem,1fr))] gap-1">
-        <SelectedElementPanel selected={selected} />
-        {elements.map((element) => <Button key={element.symbol} variant="outline" className={`col-span-1 row-span-1 grid aspect-square h-auto min-h-0 grid-rows-[auto_1fr_auto_auto] items-center border p-1 text-center leading-none ${categoryTints[element.category] ?? "border-primary/15 bg-primary/5 hover:bg-primary/10"}`} style={{ gridColumnStart: element.group, gridRowStart: element.period }} aria-label={`${element.name}, atomic number ${element.atomicNumber}`} onClick={() => setSelected(element)} onFocus={() => setSelected(element)}>
-          <span className="justify-self-start text-[0.625rem] text-muted-foreground">{element.atomicNumber}</span><span className="self-end text-base font-semibold">{element.symbol}</span><span className="w-full truncate text-[0.55rem] text-muted-foreground">{element.name}</span><span className="text-[0.55rem] text-muted-foreground">{element.mass}</span>
+    <SelectedElementPanel selected={selected} />
+    <p className="mb-2 mt-4 text-sm text-muted-foreground sm:hidden">Swipe the table horizontally to explore all elements</p>
+    <div data-testid="periodic-table-viewport" className="mt-4 overflow-x-auto overflow-y-hidden rounded-lg border bg-muted/20 p-3 shadow-sm">
+      <div className="grid min-w-[58rem] grid-cols-[repeat(18,minmax(2.6rem,1fr))] gap-1.5">
+        {elements.map((element) => <Button key={element.symbol} variant="outline" data-category={element.category} className={`col-span-1 row-span-1 grid aspect-square h-auto min-h-0 grid-rows-[auto_1fr_auto] border px-1 py-1 text-center leading-none ${categoryTints[element.category] ?? "border-primary/35 bg-primary/10 hover:bg-primary/20"}`} style={{ gridColumnStart: element.group, gridRowStart: element.period }} aria-label={`${element.name}, atomic number ${element.atomicNumber}`} onClick={() => setSelected(element)} onFocus={() => setSelected(element)}>
+          <span className="flex justify-between text-[0.625rem] text-muted-foreground"><span>{element.atomicNumber}</span><span>{element.mass}</span></span>
+          <span className="self-center text-lg font-semibold">{element.symbol}</span>
+          <span className="truncate text-[0.6rem] text-muted-foreground">{element.name}</span>
         </Button>)}
       </div>
     </div>
