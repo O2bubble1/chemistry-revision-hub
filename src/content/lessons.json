@@ -1962,16 +1962,20 @@
               "level": 3
             },
             {
-              "type": "comparison",
-              "items": [
-                {
-                  "title": "Mass of the falling object",
-                  "body": "A heavier object generally has a greater terminal velocity. Its weight is larger, so it must accelerate to a higher speed before air resistance can grow large enough to balance that weight."
-                },
-                {
-                  "title": "Cross-sectional area",
-                  "body": "A larger area (an open parachute, a spread-eagled skydiver) experiences greater air resistance at any given speed, so the balance point comes sooner — a lower terminal velocity."
-                }
+              "type": "table",
+              "headers": [
+                "Factor",
+                "Effect and reason"
+              ],
+              "rows": [
+                [
+                  "Mass of the falling object",
+                  "A heavier object generally has a greater terminal velocity. Its weight is larger, so it must accelerate to a higher speed before air resistance can grow large enough to balance that weight."
+                ],
+                [
+                  "Cross-sectional area",
+                  "A larger area (an open parachute, a spread-eagled skydiver) experiences greater air resistance at any given speed, so the balance point comes sooner — a lower terminal velocity."
+                ]
               ]
             }
           ]
