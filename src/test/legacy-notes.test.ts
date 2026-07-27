@@ -39,7 +39,7 @@ function substantiveText(section: string): string[] {
   return [...section.matchAll(/<(?:h[3-6]|p|th|td|li|figcaption)[^>]*>([\s\S]*?)<\/(?:h[3-6]|p|th|td|li|figcaption)>/gi)]
     .filter(([, text]) => !/<(?:button|span)\b[^>]*class="[^"]*(?:blank|answer)[^"]*"/i.test(text))
     .map(([, text]) => normalizedText(text))
-    .filter((text) => text.length > 1 && !/Tap any orange blank|Reveal all answers|Hide all answers|You are given a scenario|your own quizzes/i.test(text))
+    .filter((text) => text.length > 1 && !/Tap any orange blank|Reveal all answers|Hide all answers|your own quizzes/i.test(text))
 }
 
 export async function extractLegacyLessonInventory(path: string): Promise<LegacyInventory> {
