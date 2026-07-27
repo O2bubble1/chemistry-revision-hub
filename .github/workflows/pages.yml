@@ -40,10 +40,11 @@ jobs:
           git rm -r --ignore-unmatch docs/assets docs/source-materials
           git rm --ignore-unmatch docs/index.html docs/original-materials.html docs/vite.svg
           cp -R dist/. docs/
-          git add docs
-          git diff --cached --quiet || (
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "chore: publish Pages site"
-            git push
-          )
+          git add --force docs
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: publish Pages site"
+          git push origin HEAD:${{ github.event.repository.default_branch }}
