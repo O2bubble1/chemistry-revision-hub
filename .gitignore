@@ -12,3 +12,7 @@ coverage/
 .worktrees/
 chemistry-revision-hub/
 xd:/
+
+# Source practicals — contain a real student name and marked work. Never publish.
+Chemistry_Practical/
+*.pdf
