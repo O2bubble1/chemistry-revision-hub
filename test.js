@@ -28,4 +28,25 @@ check('no bundler scaffolding remains', function () {
   assert.ok(!/__bundler/.test(html), 'found __bundler references');
 });
 
+check('all 8 font references are inlined as data URIs', function () {
+  var n = (html.match(/url\("data:font\/woff2;base64,/g) || []).length;
+  assert.strictEqual(n, 8, 'expected 8 inlined font refs, got ' + n);
+});
+
+check('no unresolved UUID font placeholders', function () {
+  assert.ok(!/src: url\("[0-9a-f]{8}-[0-9a-f]{4}-/.test(html), 'a UUID placeholder survived');
+});
+
+check('document shell is intact', function () {
+  assert.ok(/^<!DOCTYPE html>/i.test(html.trim()), 'missing doctype');
+  assert.ok(/<title>Revision Hub/.test(html), 'missing title');
+  assert.ok(/<\/html>\s*$/.test(html), 'missing closing html tag');
+});
+
+check('existing sections survived the unwrap', function () {
+  ['cations', 'anions', 'gases', 'solubility', 'periodic', 'quiz', 'cards'].forEach(function (id) {
+    assert.ok(html.indexOf('id="' + id + '"') !== -1, 'lost section #' + id);
+  });
+});
+
 console.log('\n' + checks + ' checks passed');
