@@ -97,4 +97,77 @@ check('fontById returns undefined for unknown ids', function () {
   assert.strictEqual(F.fontById('nope'), undefined);
 });
 
+/* ---- qa data ---- */
+var Q = load(['QA-ENGINE'], ['QA_CATIONS', 'QA_ANIONS', 'QA_SALTS', 'qaSoluble', 'qaSaltById']);
+
+check('all seven syllabus cations are present', function () {
+  ['NH4+','Ca2+','Al3+','Zn2+','Fe2+','Fe3+','Cu2+'].forEach(function (c) {
+    assert.ok(Q.QA_CATIONS[c], 'missing cation ' + c);
+    assert.ok(Q.QA_CATIONS[c].naoh && Q.QA_CATIONS[c].nh3, c + ' missing a reagent result');
+    assert.ok(Q.QA_CATIONS[c].soln && Q.QA_CATIONS[c].solid, c + ' missing a colour');
+  });
+});
+
+check('all five syllabus anions are present', function () {
+  ['CO3','Cl','I','SO4','NO3'].forEach(function (a) {
+    assert.ok(Q.QA_ANIONS[a], 'missing anion ' + a);
+  });
+});
+
+check('amphoteric hydroxides dissolve in excess NaOH only where they should', function () {
+  assert.strictEqual(Q.QA_CATIONS['Al3+'].naoh.ppt.excess, 'dissolves');
+  assert.strictEqual(Q.QA_CATIONS['Al3+'].nh3.ppt.excess, 'insoluble');
+  assert.strictEqual(Q.QA_CATIONS['Zn2+'].naoh.ppt.excess, 'dissolves');
+  assert.strictEqual(Q.QA_CATIONS['Zn2+'].nh3.ppt.excess, 'dissolves');
+  assert.strictEqual(Q.QA_CATIONS['Ca2+'].naoh.ppt.excess, 'insoluble');
+});
+
+check('copper(II) gives the dark blue solution in excess ammonia', function () {
+  var r = Q.QA_CATIONS['Cu2+'].nh3;
+  assert.strictEqual(r.ppt.excess, 'dissolves');
+  assert.ok(/dark blue/i.test(r.text), 'missing dark blue: ' + r.text);
+  assert.strictEqual(Q.QA_CATIONS['Cu2+'].naoh.ppt.excess, 'insoluble');
+});
+
+check('calcium and ammonium give no precipitate with ammonia', function () {
+  assert.strictEqual(Q.QA_CATIONS['Ca2+'].nh3.ppt, null);
+  assert.strictEqual(Q.QA_CATIONS['NH4+'].nh3.ppt, null);
+});
+
+check('halides differ only by precipitate colour', function () {
+  assert.strictEqual(Q.QA_ANIONS['Cl'].agno3.ppt.colour, 'white');
+  assert.strictEqual(Q.QA_ANIONS['I'].agno3.ppt.colour, 'yellow');
+});
+
+check('solubility follows SPAN and the exception mnemonics', function () {
+  assert.strictEqual(Q.qaSoluble('Ca2+', 'NO3'), true,  'all nitrates are soluble');
+  assert.strictEqual(Q.qaSoluble('NH4+', 'CO3'), true,  'ammonium carbonate is soluble');
+  assert.strictEqual(Q.qaSoluble('Ca2+', 'CO3'), false, 'calcium carbonate is insoluble');
+  assert.strictEqual(Q.qaSoluble('Ca2+', 'SO4'), false, 'calcium sulfate is insoluble');
+  assert.strictEqual(Q.qaSoluble('Cu2+', 'SO4'), true,  'copper sulfate is soluble');
+  assert.strictEqual(Q.qaSoluble('Zn2+', 'Cl'),  true,  'zinc chloride is soluble');
+});
+
+check('the salt pool excludes non-existent and redox-interfering pairs', function () {
+  var ids = Q.QA_SALTS.map(function (s) { return s.id; });
+  ['Al3+|CO3','Fe3+|CO3','Fe3+|I','Cu2+|I'].forEach(function (id) {
+    assert.ok(ids.indexOf(id) === -1, 'pool should not contain ' + id);
+  });
+  assert.strictEqual(Q.QA_SALTS.length, 31, 'expected 31 salts, got ' + Q.QA_SALTS.length);
+});
+
+check('the pool has enough insoluble unknowns to exercise the acid-dissolve path', function () {
+  var insoluble = Q.QA_SALTS.filter(function (s) { return !s.soluble; });
+  assert.strictEqual(insoluble.length, 5, 'expected 5 insoluble salts, got ' + insoluble.length);
+});
+
+check('every salt resolves and is fully described', function () {
+  Q.QA_SALTS.forEach(function (s) {
+    assert.strictEqual(Q.qaSaltById(s.id), s);
+    assert.ok(Q.QA_CATIONS[s.cat], s.id + ' has an unknown cation');
+    assert.ok(Q.QA_ANIONS[s.an], s.id + ' has an unknown anion');
+    assert.ok(s.name && s.name.length > 3, s.id + ' has no readable name');
+  });
+});
+
 console.log('\n' + checks + ' checks passed');

@@ -7253,5 +7253,138 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') fontPanelToggle(false);
 });
 </script>
+<script>
+/* == QA-ENGINE-START == */
+/* Qualitative analysis truth table. Wording is transcribed from the #cations,
+   #anions and #gases sections of this same page so the simulator's model answers
+   and the revision notes cannot drift apart. */
+
+var QA_CATIONS = {
+  'NH4+': { label:'NH₄⁺', name:'Ammonium', soln:'colourless', solid:'white',
+    naoh:{ ppt:null, gasOnWarm:'NH3',
+      text:'No precipitate is produced. On warming, a colourless and pungent gas is evolved which turns moist red litmus paper blue.' },
+    nh3: { ppt:null, text:'No precipitate is produced.' } },
+
+  'Ca2+': { label:'Ca²⁺', name:'Calcium', soln:'colourless', solid:'white',
+    naoh:{ ppt:{ colour:'white', excess:'insoluble' },
+      text:'A white precipitate is formed, insoluble in excess aqueous sodium hydroxide.' },
+    nh3: { ppt:null, text:'No precipitate is produced.' } },
+
+  'Al3+': { label:'Al³⁺', name:'Aluminium', soln:'colourless', solid:'white',
+    naoh:{ ppt:{ colour:'white', excess:'dissolves', excessSoln:'colourless' },
+      text:'A white precipitate is formed, which dissolves in excess aqueous sodium hydroxide to form a colourless solution.' },
+    nh3: { ppt:{ colour:'white', excess:'insoluble' },
+      text:'A white precipitate is formed, insoluble in excess aqueous ammonia.' } },
+
+  'Zn2+': { label:'Zn²⁺', name:'Zinc', soln:'colourless', solid:'white',
+    naoh:{ ppt:{ colour:'white', excess:'dissolves', excessSoln:'colourless' },
+      text:'A white precipitate is formed, which dissolves in excess aqueous sodium hydroxide to form a colourless solution.' },
+    nh3: { ppt:{ colour:'white', excess:'dissolves', excessSoln:'colourless' },
+      text:'A white precipitate is formed, which dissolves in excess aqueous ammonia to form a colourless solution.' } },
+
+  'Fe2+': { label:'Fe²⁺', name:'Iron(II)', soln:'green', solid:'green',
+    naoh:{ ppt:{ colour:'green', excess:'insoluble' },
+      text:'A green precipitate is formed, insoluble in excess aqueous sodium hydroxide.' },
+    nh3: { ppt:{ colour:'green', excess:'insoluble' },
+      text:'A green precipitate is formed, insoluble in excess aqueous ammonia.' } },
+
+  'Fe3+': { label:'Fe³⁺', name:'Iron(III)', soln:'yellow-brown', solid:'yellow-brown',
+    naoh:{ ppt:{ colour:'red-brown', excess:'insoluble' },
+      text:'A red-brown precipitate is formed, insoluble in excess aqueous sodium hydroxide.' },
+    nh3: { ppt:{ colour:'red-brown', excess:'insoluble' },
+      text:'A red-brown precipitate is formed, insoluble in excess aqueous ammonia.' } },
+
+  'Cu2+': { label:'Cu²⁺', name:'Copper(II)', soln:'blue', solid:'blue',
+    naoh:{ ppt:{ colour:'light blue', excess:'insoluble' },
+      text:'A light blue precipitate is formed, insoluble in excess aqueous sodium hydroxide.' },
+    nh3: { ppt:{ colour:'light blue', excess:'dissolves', excessSoln:'dark blue' },
+      text:'A light blue precipitate is formed, which dissolves in excess aqueous ammonia to form a dark blue solution.' } }
+};
+
+var QA_ANIONS = {
+  'CO3': { label:'CO₃²⁻', name:'Carbonate',
+    acid:  { ppt:null, gas:'CO2',
+      text:'Effervescence of a colourless, odourless gas is observed.' },
+    agno3: { ppt:{ colour:'white' }, gas:null, text:'A white precipitate is formed.' },
+    bano3: { ppt:{ colour:'white' }, gas:null, text:'A white precipitate is formed.' },
+    alfoil:{ ppt:null, gas:null, text:'No gas is evolved.' } },
+
+  'Cl':  { label:'Cl⁻', name:'Chloride',
+    acid:  { ppt:null, gas:null, text:'No effervescence is observed.' },
+    agno3: { ppt:{ colour:'white' }, gas:null, text:'A white precipitate is formed.' },
+    bano3: { ppt:null, gas:null, text:'No precipitate is formed.' },
+    alfoil:{ ppt:null, gas:null, text:'No gas is evolved.' } },
+
+  'I':   { label:'I⁻', name:'Iodide',
+    acid:  { ppt:null, gas:null, text:'No effervescence is observed.' },
+    agno3: { ppt:{ colour:'yellow' }, gas:null, text:'A yellow precipitate is formed.' },
+    bano3: { ppt:null, gas:null, text:'No precipitate is formed.' },
+    alfoil:{ ppt:null, gas:null, text:'No gas is evolved.' } },
+
+  'SO4': { label:'SO₄²⁻', name:'Sulfate',
+    acid:  { ppt:null, gas:null, text:'No effervescence is observed.' },
+    agno3: { ppt:null, gas:null, text:'No precipitate is formed.' },
+    bano3: { ppt:{ colour:'white' }, gas:null, text:'A white precipitate is formed.' },
+    alfoil:{ ppt:null, gas:null, text:'No gas is evolved.' } },
+
+  'NO3': { label:'NO₃⁻', name:'Nitrate',
+    acid:  { ppt:null, gas:null, text:'No effervescence is observed.' },
+    agno3: { ppt:null, gas:null, text:'No precipitate is formed.' },
+    bano3: { ppt:null, gas:null, text:'No precipitate is formed.' },
+    alfoil:{ ppt:null, gas:'NH3',
+      text:'A colourless and pungent gas is evolved on warming, which turns moist red litmus paper blue.' } }
+};
+
+var QA_GAS_TESTS = {
+  'CO2': { limewater:'A white precipitate is formed in the limewater.',
+           splint:'The lighted splint is extinguished.',
+           glowing:'The glowing splint is extinguished.',
+           redlitmus:'The moist red litmus paper does not change colour.',
+           bluelitmus:'The moist blue litmus paper does not change colour.',
+           kmno4:'The acidified potassium manganate(VII) does not change colour.' },
+  'NH3': { redlitmus:'The moist red litmus paper turns blue.',
+           bluelitmus:'The moist blue litmus paper does not change colour.',
+           limewater:'The limewater does not change.',
+           splint:'The lighted splint is extinguished.',
+           glowing:'The glowing splint is extinguished.',
+           kmno4:'The acidified potassium manganate(VII) does not change colour.' }
+};
+
+/* SPAN: sodium, potassium, ammonium and nitrates are always soluble.
+   Chlorides/iodides: soluble except Ag and Pb, neither of which is on the syllabus list.
+   Sulfates: insoluble for Ba, Ca, Pb ("Sciences"). Carbonates: insoluble except Na, K, NH4. */
+function qaSoluble(cat, an) {
+  if (an === 'NO3') return true;
+  if (cat === 'NH4+') return true;
+  if (an === 'CO3') return false;
+  if (an === 'SO4') return cat !== 'Ca2+';
+  return true;
+}
+
+var QA_SALTS = (function () {
+  var cats = ['NH4+','Ca2+','Al3+','Zn2+','Fe2+','Fe3+','Cu2+'];
+  var ans  = ['CO3','Cl','I','SO4','NO3'];
+  /* Al3+/CO3 and Fe3+/CO3 do not exist; Fe3+ and Cu2+ oxidise iodide rather than
+     forming a stable salt, so those pairs would not behave as the table predicts. */
+  var skip = { 'Al3+|CO3':1, 'Fe3+|CO3':1, 'Fe3+|I':1, 'Cu2+|I':1 };
+  var anionWord = { CO3:'carbonate', Cl:'chloride', I:'iodide', SO4:'sulfate', NO3:'nitrate' };
+  var out = [];
+  for (var i = 0; i < cats.length; i++) {
+    for (var j = 0; j < ans.length; j++) {
+      var id = cats[i] + '|' + ans[j];
+      if (skip[id]) continue;
+      out.push({ id:id, cat:cats[i], an:ans[j], soluble:qaSoluble(cats[i], ans[j]),
+                 name: QA_CATIONS[cats[i]].name + ' ' + anionWord[ans[j]] });
+    }
+  }
+  return out;
+})();
+
+function qaSaltById(id) {
+  for (var i = 0; i < QA_SALTS.length; i++) { if (QA_SALTS[i].id === id) return QA_SALTS[i]; }
+  return undefined;
+}
+/* == QA-ENGINE-END == */
+</script>
 
 </body></html>
