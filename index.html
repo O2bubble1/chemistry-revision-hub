@@ -853,6 +853,23 @@ html { background: var(--color-bg); }
   display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
   font-size:0.95em; line-height:1; transition:all .15s; padding:0; }
 .theme-btn:hover { background:var(--color-accent-200); }
+.font-panel { position:absolute; z-index:9000; margin-top:8px; min-width:262px;
+  background:var(--color-surface); border:1px solid var(--color-divider);
+  border-radius:var(--radius-md); box-shadow:var(--shadow-sm);
+  padding:var(--space-4); display:flex; flex-direction:column; gap:var(--space-3); }
+.fp-row { display:flex; align-items:center; gap:var(--space-2); font-size:0.82em; }
+.fp-row > span:first-child { flex:0 0 68px; color:var(--color-neutral-700); }
+.fp-select { flex:1; font-family:inherit; font-size:0.95em; padding:6px 8px;
+  border:1px solid var(--color-divider); border-radius:var(--radius-sm);
+  background:var(--color-neutral-100); color:var(--color-text); }
+.fp-range { flex:1; accent-color:var(--color-accent); }
+.fp-out { flex:0 0 42px; text-align:right; font-size:0.9em; color:var(--color-neutral-600); }
+.fp-check { gap:var(--space-2); cursor:pointer; }
+.fp-check input { accent-color:var(--color-accent); }
+.fp-reset { border:1px solid var(--color-divider); background:transparent; cursor:pointer;
+  font-family:inherit; font-size:0.78em; font-weight:700; color:var(--color-accent-700);
+  border-radius:999px; padding:7px 14px; align-self:flex-start; }
+@media (max-width: 560px) { .font-panel { left:var(--space-4); right:var(--space-4); min-width:0; } }
 .theme-icon-dark { display:none; }
 [data-theme="dark"] .theme-icon-light { display:none; }
 [data-theme="dark"] .theme-icon-dark { display:inline; }
@@ -1136,6 +1153,14 @@ html { background: var(--color-bg); }
 <div class="toolbar">
 
  <button id="themeToggle" class="theme-btn" onclick="toggleTheme()" title="Switch between light and dark" aria-label="Switch theme"><span class="theme-icon-light">◑</span><span class="theme-icon-dark">◐</span></button>
+ <button id="fontToggle" class="theme-btn" onclick="fontPanelToggle()" title="Change fonts and text size" aria-label="Typography settings" aria-expanded="false">Aa</button>
+ <div id="fontPanel" class="font-panel" role="dialog" aria-label="Typography" style="display:none;">
+  <label class="fp-row"><span>Headings</span><select id="fpHeading" class="fp-select" onchange="fontPick('heading', this.value)"></select></label>
+  <label class="fp-row"><span>Body</span><select id="fpBody" class="fp-select" onchange="fontPick('body', this.value)"></select></label>
+  <label class="fp-row"><span>Size</span><input id="fpScale" class="fp-range" type="range" min="90" max="130" step="5" oninput="fontPick('scale', this.value / 100)"><span id="fpScaleOut" class="fp-out">100%</span></label>
+  <label class="fp-row fp-check"><input id="fpComfort" type="checkbox" onchange="fontPick('comfort', this.checked)"><span>Reading comfort</span></label>
+  <button class="fp-reset" onclick="fontReset()">Reset to default</button>
+ </div>
  <span class="tool-label">Subject</span>
  <span class="select-wrap">
   <select id="subjectSelect" class="subject-select" onchange="setSubject(this.value)">
@@ -7175,6 +7200,58 @@ function fontLoad() {
 
 fontLoad();
 fontApply(fontState);
+
+function fontPanelBuild() {
+  var mk = function (sel, current) {
+    sel.innerHTML = '';
+    FONTS.forEach(function (f) {
+      var o = document.createElement('option');
+      o.value = f.id; o.textContent = f.name;
+      o.style.fontFamily = f.stack;          /* preview the family in the list */
+      if (f.id === current) o.selected = true;
+      sel.appendChild(o);
+    });
+  };
+  mk(document.getElementById('fpHeading'), fontState.heading);
+  mk(document.getElementById('fpBody'), fontState.body);
+  document.getElementById('fpScale').value = String(Math.round(fontState.scale * 100));
+  document.getElementById('fpScaleOut').textContent = Math.round(fontState.scale * 100) + '%';
+  document.getElementById('fpComfort').checked = fontState.comfort;
+}
+
+function fontPick(key, value) {
+  fontState[key] = value;
+  if (key === 'scale') {
+    document.getElementById('fpScaleOut').textContent = Math.round(value * 100) + '%';
+  }
+  fontApply(fontState);
+  fontSave();
+}
+
+function fontReset() {
+  fontState.heading = 'caprasimo'; fontState.body = 'figtree';
+  fontState.scale = 1; fontState.comfort = false;
+  fontApply(fontState); fontSave(); fontPanelBuild();
+}
+
+function fontPanelToggle(force) {
+  var p = document.getElementById('fontPanel');
+  var open = force !== undefined ? force : p.style.display === 'none';
+  if (open) fontPanelBuild();
+  p.style.display = open ? 'flex' : 'none';
+  document.getElementById('fontToggle').setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+/* Close on outside click and on Escape — same affordances as the other overlays. */
+document.addEventListener('click', function (e) {
+  var p = document.getElementById('fontPanel');
+  if (!p || p.style.display === 'none') return;
+  if (p.contains(e.target) || e.target.id === 'fontToggle') return;
+  fontPanelToggle(false);
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') fontPanelToggle(false);
+});
 </script>
 
 </body></html>
