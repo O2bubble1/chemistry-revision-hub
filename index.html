@@ -121,6 +121,9 @@
   --font-heading: "Caprasimo", system-ui, sans-serif;
   --font-heading-weight: 400;
   --font-body: "Figtree", system-ui, sans-serif;
+  --font-scale: 1;
+  --line-height-body: 1.55;
+  --letter-spacing-body: 0;
 
   --space-1: 4.4px;
   --space-2: 8.8px;
@@ -231,7 +234,14 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-headi
    ══════════════════════════════════════════════════════════════════════ */
 
 *, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+/* ponytail: only em-derived text scales — ~30 component rules set their own fixed
+   px sizes and stay put. Upgrade path if it reads unevenly: convert those px values
+   to em. Do not add a second scaling mechanism. `zoom` was rejected because it
+   displaces the position:fixed overlays (periodic table modal, source viewer, tooltip). */
+body { margin: 0; font-size: calc(15px * var(--font-scale));
+       line-height: var(--line-height-body);
+       letter-spacing: var(--letter-spacing-body);
+       font-weight: 400; }
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading); font-weight: var(--font-heading-weight);
   line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
@@ -7085,5 +7095,86 @@ document.addEventListener('keydown', e => {
 
 </script>
 
+<script>
+/* == FONT-DATA-START == */
+/* Typography options. `google` is the Google Fonts family name, or null when the
+   family is already bundled as a data URI or supplied by the OS. */
+var FONTS = [
+  { id:'caprasimo', name:'Caprasimo (display)', stack:'"Caprasimo", system-ui, sans-serif',            google:null },
+  { id:'figtree',   name:'Figtree',             stack:'"Figtree", system-ui, sans-serif',              google:null },
+  { id:'system',    name:'System UI',           stack:'system-ui, -apple-system, sans-serif',          google:null },
+  { id:'inter',     name:'Inter',               stack:'"Inter", system-ui, sans-serif',                google:'Inter' },
+  { id:'poppins',   name:'Poppins',             stack:'"Poppins", system-ui, sans-serif',              google:'Poppins' },
+  { id:'nunito',    name:'Nunito',              stack:'"Nunito", system-ui, sans-serif',               google:'Nunito' },
+  { id:'worksans',  name:'Work Sans',           stack:'"Work Sans", system-ui, sans-serif',            google:'Work Sans' },
+  { id:'grotesk',   name:'Space Grotesk',       stack:'"Space Grotesk", system-ui, sans-serif',        google:'Space Grotesk' },
+  { id:'lora',      name:'Lora',                stack:'"Lora", Georgia, serif',                        google:'Lora' },
+  { id:'merri',     name:'Merriweather',        stack:'"Merriweather", Georgia, serif',                google:'Merriweather' },
+  { id:'sourceserif',name:'Source Serif 4',     stack:'"Source Serif 4", Georgia, serif',              google:'Source Serif 4' },
+  { id:'plex',      name:'IBM Plex Sans',       stack:'"IBM Plex Sans", system-ui, sans-serif',        google:'IBM Plex Sans' },
+  { id:'atkinson',  name:'Atkinson Hyperlegible', stack:'"Atkinson Hyperlegible", system-ui, sans-serif', google:'Atkinson Hyperlegible' },
+  { id:'lexend',    name:'Lexend',              stack:'"Lexend", system-ui, sans-serif',               google:'Lexend' },
+  { id:'jetbrains', name:'JetBrains Mono',      stack:'"JetBrains Mono", ui-monospace, monospace',     google:'JetBrains Mono' }
+];
+
+function fontById(id) {
+  for (var i = 0; i < FONTS.length; i++) { if (FONTS[i].id === id) return FONTS[i]; }
+  return undefined;
+}
+
+/* null when nothing needs fetching. Weights 400/700 cover body and bold; headings
+   render at 400 because --font-heading-weight is 400. */
+function fontLinkHref(f) {
+  if (!f || !f.google) return null;
+  return 'https://fonts.googleapis.com/css2?family=' +
+         f.google.replace(/ /g, '+') + ':wght@400;700&display=swap';
+}
+/* == FONT-DATA-END == */
+
+var FONT_KEY = 'hciRevisionHub.font';
+var fontState = { heading: 'caprasimo', body: 'figtree', scale: 1, comfort: false };
+var fontLoaded = {};
+
+function fontEnsureLoaded(id) {
+  var href = fontLinkHref(fontById(id));
+  if (!href || fontLoaded[id]) return;
+  fontLoaded[id] = true;
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = href;
+  document.head.appendChild(link);
+}
+
+function fontApply(state) {
+  var h = fontById(state.heading) || fontById('caprasimo');
+  var b = fontById(state.body) || fontById('figtree');
+  fontEnsureLoaded(h.id);
+  fontEnsureLoaded(b.id);
+  var r = document.documentElement.style;
+  r.setProperty('--font-heading', h.stack);
+  r.setProperty('--font-body', b.stack);
+  r.setProperty('--font-scale', String(state.scale));
+  r.setProperty('--line-height-body', state.comfort ? '1.75' : '1.55');
+  r.setProperty('--letter-spacing-body', state.comfort ? '0.01em' : '0');
+}
+
+function fontSave() {
+  try { window.localStorage.setItem(FONT_KEY, JSON.stringify(fontState)); } catch (e) {}
+}
+
+function fontLoad() {
+  try {
+    var s = JSON.parse(window.localStorage.getItem(FONT_KEY) || 'null');
+    if (!s) return;
+    if (fontById(s.heading)) fontState.heading = s.heading;
+    if (fontById(s.body)) fontState.body = s.body;
+    if (typeof s.scale === 'number' && s.scale >= 0.9 && s.scale <= 1.3) fontState.scale = s.scale;
+    fontState.comfort = !!s.comfort;
+  } catch (e) {}
+}
+
+fontLoad();
+fontApply(fontState);
+</script>
 
 </body></html>

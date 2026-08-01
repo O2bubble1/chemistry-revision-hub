@@ -49,4 +49,52 @@ check('existing sections survived the unwrap', function () {
   });
 });
 
+/* ---- font data ---- */
+var F = load(['FONT-DATA'], ['FONTS', 'fontById', 'fontLinkHref']);
+
+check('every font has id, name and a stack', function () {
+  assert.ok(F.FONTS.length >= 14, 'expected at least 14 families, got ' + F.FONTS.length);
+  F.FONTS.forEach(function (f) {
+    assert.ok(f.id && f.name && f.stack, 'incomplete entry: ' + JSON.stringify(f));
+  });
+});
+
+check('font ids are unique', function () {
+  var seen = {};
+  F.FONTS.forEach(function (f) {
+    assert.ok(!seen[f.id], 'duplicate font id: ' + f.id);
+    seen[f.id] = 1;
+  });
+});
+
+check('every stack falls back to a system font', function () {
+  F.FONTS.forEach(function (f) {
+    assert.ok(/system-ui|sans-serif|serif|monospace/.test(f.stack),
+      f.id + ' has no fallback: ' + f.stack);
+  });
+});
+
+check('bundled and system families need no network fetch', function () {
+  ['caprasimo', 'figtree', 'system'].forEach(function (id) {
+    assert.strictEqual(fontLinkOf(id), null, id + ' should not fetch');
+  });
+  function fontLinkOf(id) { return F.fontLinkHref(F.fontById(id)); }
+});
+
+check('google families build a valid css2 url', function () {
+  var href = F.fontLinkHref(F.fontById('inter'));
+  assert.ok(/^https:\/\/fonts\.googleapis\.com\/css2\?family=Inter/.test(href), href);
+  assert.ok(/display=swap/.test(href), 'missing display=swap: ' + href);
+  assert.ok(href.indexOf(' ') === -1, 'unencoded space in url: ' + href);
+});
+
+check('multi-word google families are url-encoded', function () {
+  var href = F.fontLinkHref(F.fontById('atkinson'));
+  assert.ok(/family=Atkinson\+Hyperlegible/.test(href), href);
+});
+
+check('fontById returns undefined for unknown ids', function () {
+  assert.strictEqual(F.fontById('nope'), undefined);
+});
+
 console.log('\n' + checks + ' checks passed');
