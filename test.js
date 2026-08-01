@@ -170,4 +170,130 @@ check('every salt resolves and is fully described', function () {
   });
 });
 
+/* ---- qa reducer ---- */
+var R = load(['QA-ENGINE'], ['qaRunTest', 'qaNewPortion', 'qaSaltById', 'QA_SALTS']);
+
+/* Without an explicit portion, dissolve the sample first — every reagent other than
+   water acts on a solution, so a bare fresh portion would just come back `blocked`. */
+function run(saltId, reagent, mode, portion) {
+  var salt = R.qaSaltById(saltId);
+  var p = portion;
+  if (!p) {
+    p = R.qaNewPortion();
+    if (reagent !== 'water') R.qaRunTest(salt, 'water', null, p);
+  }
+  return R.qaRunTest(salt, reagent, mode, p);
+}
+
+check('a soluble salt dissolves to its cation colour', function () {
+  assert.ok(/colourless/.test(run('Ca2+|Cl', 'water').solutionColour + ''));
+  assert.strictEqual(run('Cu2+|SO4', 'water').solutionColour, 'blue');
+  assert.strictEqual(run('Fe2+|SO4', 'water').solutionColour, 'green');
+  assert.strictEqual(run('Fe3+|Cl', 'water').solutionColour, 'yellow-brown');
+});
+
+check('an insoluble salt gives a suspension, not a solution', function () {
+  var r = run('Zn2+|CO3', 'water');
+  assert.strictEqual(r.solutionColour, null);
+  assert.ok(/insoluble|suspension|did not dissolve/i.test(r.text), r.text);
+});
+
+check('solution tests are blocked until an insoluble solid is dissolved', function () {
+  var p = R.qaNewPortion();
+  run('Zn2+|CO3', 'water', null, p);
+  var r = run('Zn2+|CO3', 'naoh', 'excess', p);
+  assert.ok(r.blocked, 'expected the test to be blocked on an undissolved solid');
+});
+
+check('dilute nitric acid dissolves an insoluble carbonate with effervescence', function () {
+  var p = R.qaNewPortion();
+  run('Zn2+|CO3', 'water', null, p);
+  var r = run('Zn2+|CO3', 'hno3', null, p);
+  assert.strictEqual(r.gas, 'CO2');
+  assert.ok(/effervescen/i.test(r.text), r.text);
+  assert.strictEqual(p.dissolved, true);
+  assert.strictEqual(p.acidified, true);
+  assert.ok(!run('Zn2+|CO3', 'naoh', 'excess', p).blocked, 'should be unblocked now');
+});
+
+check('dropwise stops before the excess behaviour is revealed', function () {
+  var r = run('Zn2+|Cl', 'naoh', 'dropwise');
+  assert.strictEqual(r.ppt.colour, 'white');
+  assert.ok(!/dissolv/i.test(r.text), 'dropwise must not reveal excess behaviour: ' + r.text);
+});
+
+check('excess reveals the amphoteric behaviour', function () {
+  assert.ok(/dissolv/i.test(run('Al3+|Cl', 'naoh', 'excess').text));
+  assert.ok(/insolubl/i.test(run('Al3+|Cl', 'nh3', 'excess').text));
+  assert.ok(/dark blue/i.test(run('Cu2+|SO4', 'nh3', 'excess').text));
+});
+
+check('unacidified carbonate gives a false positive with silver nitrate', function () {
+  var p = R.qaNewPortion();
+  run('NH4+|CO3', 'water', null, p);
+  var r = run('NH4+|CO3', 'agno3', null, p);
+  assert.ok(r.ppt, 'expected a precipitate');
+  assert.strictEqual(r.falsePositive, true);
+  assert.ok(/acidif/i.test(r.note || ''), 'note should explain the missing acidification');
+});
+
+check('acidifying first removes the carbonate interference', function () {
+  var p = R.qaNewPortion();
+  run('NH4+|CO3', 'water', null, p);
+  run('NH4+|CO3', 'hno3', null, p);
+  var r = run('NH4+|CO3', 'agno3', null, p);
+  assert.strictEqual(r.ppt, null);
+  assert.ok(!r.falsePositive);
+});
+
+check('chloride and sulfate are unaffected by acidification', function () {
+  var p = R.qaNewPortion();
+  run('Ca2+|Cl', 'water', null, p);
+  run('Ca2+|Cl', 'hno3', null, p);
+  assert.strictEqual(run('Ca2+|Cl', 'agno3', null, p).ppt.colour, 'white');
+  assert.strictEqual(run('Ca2+|Cl', 'bano3', null, p).ppt, null);
+});
+
+check('the nitrate test evolves ammonia', function () {
+  assert.strictEqual(run('Ca2+|NO3', 'alfoil').gas, 'NH3');
+  assert.strictEqual(run('Ca2+|Cl', 'alfoil').gas, null);
+});
+
+check('an ammonium salt confounds the nitrate test', function () {
+  var r = run('NH4+|Cl', 'alfoil');
+  assert.strictEqual(r.gas, 'NH3', 'ammonium releases NH3 regardless of the anion');
+  assert.ok(/ammonium/i.test(r.note || ''), 'note should warn the result is not conclusive');
+});
+
+check('warming after NaOH detects ammonium', function () {
+  var p = R.qaNewPortion();
+  run('NH4+|Cl', 'water', null, p);
+  run('NH4+|Cl', 'naoh', 'excess', p);
+  assert.strictEqual(run('NH4+|Cl', 'warm', null, p).gas, 'NH3');
+});
+
+check('warming without alkali detects nothing', function () {
+  var p = R.qaNewPortion();
+  run('NH4+|Cl', 'water', null, p);
+  assert.strictEqual(run('NH4+|Cl', 'warm', null, p).gas, null);
+});
+
+check('aqueous sodium carbonate precipitates every metal cation but not ammonium', function () {
+  assert.ok(run('Ca2+|Cl', 'na2co3').ppt, 'calcium should precipitate');
+  assert.strictEqual(run('NH4+|Cl', 'na2co3').ppt, null, 'ammonium carbonate is soluble');
+});
+
+check('every salt survives every reagent without throwing', function () {
+  var reagents = ['water','hno3','naoh','nh3','agno3','bano3','na2co3','alfoil','warm'];
+  R.QA_SALTS.forEach(function (s) {
+    reagents.forEach(function (rg) {
+      var p = R.qaNewPortion();
+      R.qaRunTest(s, 'water', null, p);
+      var out = R.qaRunTest(s, rg, 'excess', p);
+      assert.ok(out && typeof out.text === 'string' && out.text.length > 0,
+        s.id + ' + ' + rg + ' produced no text');
+    });
+  });
+});
+
 console.log('\n' + checks + ' checks passed');

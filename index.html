@@ -7384,6 +7384,148 @@ function qaSaltById(id) {
   for (var i = 0; i < QA_SALTS.length; i++) { if (QA_SALTS[i].id === id) return QA_SALTS[i]; }
   return undefined;
 }
+
+function qaNewPortion() { return { acidified:false, dissolved:false, added:[] }; }
+
+/* One reducer over the truth tables. Everything the bench and the marker need is
+   derived from its return value, so there is no second source of truth. */
+function qaRunTest(salt, reagent, mode, portion) {
+  var cat = QA_CATIONS[salt.cat], an = QA_ANIONS[salt.an];
+  var out = { solutionColour: undefined, ppt: null, gas: null, text: '', note: undefined };
+
+  if (reagent === 'water') {
+    portion.added.push('water');
+    if (salt.soluble) {
+      portion.dissolved = true;
+      out.solutionColour = cat.soln;
+      out.text = 'The solid dissolved to form a ' + cat.soln + ' solution.';
+    } else {
+      out.solutionColour = null;
+      out.ppt = { colour: cat.solid };
+      out.text = 'The solid did not dissolve. A ' + cat.solid + ' suspension was formed.';
+    }
+    return out;
+  }
+
+  /* Everything after this point acts on a solution. */
+  if (!portion.dissolved && reagent !== 'hno3') {
+    out.blocked = 'The solid has not dissolved yet. Dissolve it in a minimum volume of ' +
+                  'dilute nitric acid before carrying out tests on the solution.';
+    out.text = out.blocked;
+    return out;
+  }
+
+  if (reagent === 'hno3') {
+    portion.acidified = true;
+    if (!portion.dissolved) {
+      portion.dissolved = true;
+      if (salt.an === 'CO3') {
+        out.gas = 'CO2';
+        out.solutionColour = cat.soln;
+        out.text = 'Effervescence of a colourless, odourless gas is observed and the solid ' +
+                   'dissolves to form a ' + cat.soln + ' solution.';
+      } else {
+        out.solutionColour = cat.soln;
+        out.text = 'The solid dissolves to form a ' + cat.soln + ' solution. ' +
+                   'No effervescence is observed.';
+      }
+      return out;
+    }
+    out.gas = an.acid.gas;
+    out.text = an.acid.text;
+    return out;
+  }
+
+  if (reagent === 'naoh' || reagent === 'nh3') {
+    portion.added.push(reagent);
+    var res = cat[reagent];
+    if (!res.ppt) { out.text = res.text; return out; }
+    if (mode === 'dropwise') {
+      out.ppt = { colour: res.ppt.colour, excess: null };
+      out.text = 'A ' + res.ppt.colour + ' precipitate is formed.';
+      out.note = 'Keep adding until there is no further change to find out whether it ' +
+                 'dissolves in excess.';
+      return out;
+    }
+    out.ppt = res.ppt;
+    out.text = res.text;
+    if (res.ppt.excess === 'dissolves') out.solutionColour = res.ppt.excessSoln;
+    return out;
+  }
+
+  if (reagent === 'agno3' || reagent === 'bano3') {
+    /* Carbonate precipitates with both reagents. Acidifying first destroys it — which
+       is exactly why the syllabus says to acidify, so let the mistake happen. */
+    if (salt.an === 'CO3') {
+      if (portion.acidified) {
+        out.text = 'No precipitate is formed.';
+        return out;
+      }
+      out.ppt = { colour: 'white' };
+      out.falsePositive = true;
+      out.text = 'A white precipitate is formed.';
+      out.note = 'FALSE POSITIVE — this portion was never acidified, so carbonate ions ' +
+                 'precipitated with the reagent. Add dilute nitric acid first.';
+      return out;
+    }
+    out.ppt = an[reagent].ppt;
+    out.text = an[reagent].text;
+    if (!portion.acidified && out.ppt) {
+      out.note = 'The result is right, but you did not acidify first. Without that step ' +
+                 'you could not rule out carbonate.';
+    }
+    return out;
+  }
+
+  if (reagent === 'na2co3') {
+    if (salt.cat === 'NH4+') {
+      out.text = 'No precipitate is formed.';
+      return out;
+    }
+    out.ppt = { colour: 'white', excess: 'insoluble' };
+    out.text = 'A white precipitate is formed, insoluble in excess.';
+    out.note = 'The metal cation forms an insoluble carbonate. This narrows the cation ' +
+               'but does not identify it.';
+    return out;
+  }
+
+  if (reagent === 'alfoil') {
+    if (salt.an === 'NO3') {
+      out.gas = 'NH3';
+      out.text = an.alfoil.text;
+      if (salt.cat === 'NH4+') {
+        out.note = 'Ammonium salts also give ammonia here, so on its own this does not ' +
+                   'prove nitrate is present.';
+      }
+      return out;
+    }
+    if (salt.cat === 'NH4+') {
+      out.gas = 'NH3';
+      out.text = 'A colourless and pungent gas is evolved which turns moist red litmus ' +
+                 'paper blue.';
+      out.note = 'This came from the ammonium ion, not from nitrate. The test is not ' +
+                 'conclusive for an ammonium salt.';
+      return out;
+    }
+    out.text = 'No gas is evolved.';
+    return out;
+  }
+
+  if (reagent === 'warm') {
+    var hasAlkali = portion.added.indexOf('naoh') !== -1 || portion.added.indexOf('nh3') !== -1;
+    if (salt.cat === 'NH4+' && hasAlkali) {
+      out.gas = 'NH3';
+      out.text = 'A colourless and pungent gas is evolved which turns moist red litmus ' +
+                 'paper blue.';
+      return out;
+    }
+    out.text = 'No change is observed on warming.';
+    return out;
+  }
+
+  out.text = 'Nothing happens.';
+  return out;
+}
 /* == QA-ENGINE-END == */
 </script>
 
