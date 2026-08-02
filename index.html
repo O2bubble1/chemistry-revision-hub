@@ -7466,8 +7466,10 @@ var QA_SALTS = (function () {
   var cats = ['NH4+','Ca2+','Al3+','Zn2+','Fe2+','Fe3+','Cu2+'];
   var ans  = ['CO3','Cl','I','SO4','NO3'];
   /* Al3+/CO3 and Fe3+/CO3 do not exist; Fe3+ and Cu2+ oxidise iodide rather than
-     forming a stable salt, so those pairs would not behave as the table predicts. */
-  var skip = { 'Al3+|CO3':1, 'Fe3+|CO3':1, 'Fe3+|I':1, 'Cu2+|I':1 };
+     forming a stable salt, so those pairs would not behave as the table predicts.
+     Ca2+|SO4 is excluded because the engine's acid-dissolve path would wrongly
+     dissolve it — every insoluble unknown in the syllabus practicals is a carbonate. */
+  var skip = { 'Al3+|CO3':1, 'Fe3+|CO3':1, 'Fe3+|I':1, 'Cu2+|I':1, 'Ca2+|SO4':1 };
   var anionWord = { CO3:'carbonate', Cl:'chloride', I:'iodide', SO4:'sulfate', NO3:'nitrate' };
   var out = [];
   for (var i = 0; i < cats.length; i++) {

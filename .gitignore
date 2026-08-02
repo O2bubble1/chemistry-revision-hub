@@ -16,3 +16,6 @@ xd:/
 # Source practicals — contain a real student name and marked work. Never publish.
 Chemistry_Practical/
 *.pdf
+
+# Planning docs live outside the repo — they carry absolute paths and a real name.
+docs/superpowers/

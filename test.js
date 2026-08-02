@@ -153,12 +153,12 @@ check('the salt pool excludes non-existent and redox-interfering pairs', functio
   ['Al3+|CO3','Fe3+|CO3','Fe3+|I','Cu2+|I'].forEach(function (id) {
     assert.ok(ids.indexOf(id) === -1, 'pool should not contain ' + id);
   });
-  assert.strictEqual(Q.QA_SALTS.length, 31, 'expected 31 salts, got ' + Q.QA_SALTS.length);
+  assert.strictEqual(Q.QA_SALTS.length, 30, 'expected 30 salts, got ' + Q.QA_SALTS.length);
 });
 
 check('the pool has enough insoluble unknowns to exercise the acid-dissolve path', function () {
   var insoluble = Q.QA_SALTS.filter(function (s) { return !s.soluble; });
-  assert.strictEqual(insoluble.length, 5, 'expected 5 insoluble salts, got ' + insoluble.length);
+  assert.strictEqual(insoluble.length, 4, 'expected 4 insoluble salts, got ' + insoluble.length);
 });
 
 check('every salt resolves and is fully described', function () {
