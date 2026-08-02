@@ -1,53 +1,32 @@
-# Chemistry & Physics Revision Hub
+# Chemistry Revision Hub
 
-Mobile-first Chemistry and Physics revision hub. Lessons, quizzes, flashcards, and periodic-table study material are local, versioned data; no account or server is required.
+A single-file revision hub for O-Level / IP Chemistry and Physics.
+Live at <https://o2bubble1.github.io/chemistry-revision-hub/>.
 
-## Stack
+Everything is `index.html` — open it in a browser and it works. No build step, no
+dependencies, no server. Fonts are inlined as data URIs so it works offline.
 
-Bun, Vite, React, TypeScript, Tailwind CSS, shadcn/ui Base UI, Zod, and GitHub Pages.
+## What's in it
 
-## Start
+- **Chemistry** — qualitative analysis (cations, anions, gases), a practical simulator,
+  salt preparation, solubility rules, pH indicators, oxides, bonding, a clickable periodic table
+- **Physics** — kinematics, motion graphs, equations of motion, forces, Newton's laws,
+  friction, work/energy/power
+- **Tools** — flashcards, quizzes, model answers, a typography panel, and a light/dark theme
 
-```sh
-bun install
-bun run dev
+## Practical simulator
+
+Pick an unknown salt, run reagents on the bench, and write up what you observe in a
+replica of the real practical paper. `Check my work` marks your observations against the
+model answers. Practice mode randomises the unknown; replay mode reproduces practicals
+E3.5, E3.7 and E3.9.
+
+## Development
+
+```bash
+node test.js   # zero-dependency checks over index.html
 ```
 
-## Quality checks
-
-```sh
-bun run lint
-bun run typecheck
-bun run test
-bun run validate-content
-bun run build
-```
-
-## Refresh migrated study data
-
-The current quiz pools and starter decks were extracted from the legacy artifact. Regenerate them after intentional legacy-data changes:
-
-```sh
-bun run extract-legacy-study-data
-```
-
-The extractor converts legacy HTML snippets to plain text before writing JSON.
-
-## Content
-
-- Lessons: `src/content/lessons.json`
-- Built-in quizzes: `src/content/quizzes.json`
-- Built-in flashcards: `src/content/flashcards.json`
-- Elements: `src/content/elements.json`
-
-Lesson blocks are validated with Zod. Content supports only named blocks and Markdown text; raw HTML, scripts, styles, and arbitrary components are rejected. Read [`skills/SKILL.md`](skills/SKILL.md) before authoring.
-
-Study state stays in browser localStorage. Query links such as `?subject=chemistry&topic=cation-tests` are refresh-safe on GitHub Pages.
-
-## Deploy
-
-`.github/workflows/pages.yml` runs checks and builds on every `main` push. The validated output is committed to `docs/`, which existing GitHub Pages legacy publishing serves automatically.
-
-## Original materials
-
-All 18 legacy posters, handouts, and concept-map sheets are extracted under `public/source-materials/`. Each relevant lesson keeps its full textual source material visible in normal reading flow; original scans sit in optional lazy-loaded, captioned source-material galleries. Model answers render completed answers rather than legacy blank prompts. `/original-materials.html` remains the complete legacy viewer for source reference.
+Edit `index.html` directly. `test.js` extracts marker-delimited script blocks
+(`/* == QA-ENGINE-START == */` and friends) and asserts against them, so keep those
+comments intact.
