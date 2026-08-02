@@ -853,6 +853,31 @@ html { background: var(--color-bg); }
   display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
   font-size:0.95em; line-height:1; transition:all .15s; padding:0; }
 .theme-btn:hover { background:var(--color-accent-200); }
+.qa-intro { color:var(--color-neutral-700); margin-bottom:var(--space-4); max-width:62ch; }
+.qa-modes { display:flex; flex-wrap:wrap; gap:var(--space-2); margin-bottom:var(--space-4);
+  align-items:center; }
+.qa-modebtn { border:1.5px solid var(--color-accent); background:transparent;
+  color:var(--color-accent-700); border-radius:999px; padding:8px 18px; cursor:pointer;
+  font-family:inherit; font-size:0.8em; font-weight:700; }
+.qa-modebtn.qa-on { background:var(--color-accent); color:#fff; }
+.qa-modebtn.qa-new { margin-left:auto; border-color:var(--color-accent-2);
+  color:var(--color-accent-2-700); }
+.qa-select { font-family:inherit; font-size:0.8em; padding:7px 10px;
+  border:1px solid var(--color-divider); border-radius:var(--radius-sm);
+  background:var(--color-neutral-100); color:var(--color-text); }
+
+.qa-split { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-4); align-items:start; }
+.qa-pane { background:var(--color-surface); border-radius:var(--radius-md);
+  padding:var(--space-4); box-shadow:var(--shadow-sm); }
+.qa-bench { position:sticky; top:var(--space-4); }
+
+/* Below 900px the panes stack, bench first — you act, then write it down. The result
+   card stays pinned so it is still visible while you type into the paper. */
+@media (max-width: 900px) {
+  .qa-split { grid-template-columns:1fr; }
+  .qa-bench { position:static; order:-1; }
+  .qa-result { position:sticky; top:0; z-index:20; }
+}
 .font-panel { position:absolute; z-index:9000; margin-top:8px; min-width:262px;
   background:var(--color-surface); border:1px solid var(--color-divider);
   border-radius:var(--radius-md); box-shadow:var(--shadow-sm);
@@ -1188,6 +1213,7 @@ html { background: var(--color-bg); }
   <button class="tab" data-subject="chem" data-group="qa" data-target="anions">Anion Tests</button>
   <button class="tab" data-subject="chem" data-group="qa" data-target="gases">Gas Tests</button>
   <button class="tab" data-subject="chem" data-group="qa" data-target="flow">QA Strategy</button>
+  <button class="tab" data-subject="chem" data-group="qa" data-target="qalab">Practical Sim</button>
   <button class="tab" data-subject="chem" data-group="salts" data-target="salts">Salt Prep</button>
   <button class="tab" data-subject="chem" data-group="salts" data-target="solubility">Solubility Rules</button>
   <button class="tab" data-subject="chem" data-group="salts" data-target="ph">pH Indicators</button>
@@ -1555,6 +1581,25 @@ html { background: var(--color-bg); }
  <tr><td>SO₄²⁻ vs CO₃²⁻</td><td>Add dilute acid</td><td>CO₃²⁻ gives effervescence of CO₂ (white ppt with limewater). SO₄²⁻ does not react with dilute acid.</td></tr>
  </tbody>
  </table>
+</div>
+
+<!-- QA PRACTICAL SIMULATOR -->
+<div id="qalab" class="section" data-subject="chem">
+ <h2>Practical Sim — Qualitative Analysis</h2>
+ <p class="qa-intro">Work the unknown out the way you would in the lab. The bench shows you what
+  happens; writing down what you saw is your job.</p>
+
+ <div class="qa-modes">
+  <button class="qa-modebtn qa-on" id="qaModePractice" onclick="qaSetMode('practice')">Practice</button>
+  <button class="qa-modebtn" id="qaModeReplay" onclick="qaSetMode('replay')">Replay a practical</button>
+  <select id="qaReplayPick" class="qa-select" onchange="qaStart('replay', this.value)" style="display:none;"></select>
+  <button class="qa-modebtn qa-new" onclick="qaStart()">New unknown</button>
+ </div>
+
+ <div class="qa-split">
+  <div class="qa-pane qa-paper" id="qaPaper"></div>
+  <div class="qa-pane qa-bench" id="qaBench"></div>
+ </div>
 </div>
 
 <!-- SOLUBILITY -->
