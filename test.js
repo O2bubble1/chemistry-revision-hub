@@ -387,4 +387,37 @@ check('an insoluble solid may be described as a suspension', function () {
   assert.strictEqual(M.qaCheckRow('It dissolved completely.', mk).pass, false);
 });
 
+/* ---- replay papers ---- */
+var P = load(['QA-ENGINE', 'QA-PAPERS'], ['QA_PAPERS', 'qaPaperById', 'qaSaltById']);
+
+check('all three practicals are available', function () {
+  assert.strictEqual(P.QA_PAPERS.length, 3);
+  ['e35', 'e37', 'e39'].forEach(function (id) {
+    assert.ok(P.qaPaperById(id), 'missing paper ' + id);
+  });
+});
+
+check('the replay answers match the real practicals', function () {
+  assert.strictEqual(P.qaPaperById('e35').saltId, 'Ca2+|Cl', 'E3.5 FA1 is calcium chloride');
+  assert.strictEqual(P.qaPaperById('e37').saltId, 'Cu2+|NO3', 'E3.7 FA2 is copper(II) nitrate');
+  assert.strictEqual(P.qaPaperById('e39').saltId, 'Zn2+|CO3', 'E3.9 FA2 is zinc carbonate');
+});
+
+check('E3.9 uses an insoluble unknown so the acid-dissolve path is exercised', function () {
+  assert.strictEqual(P.qaSaltById(P.qaPaperById('e39').saltId).soluble, false);
+});
+
+check('every paper has rows with unique ids and real procedure text', function () {
+  P.QA_PAPERS.forEach(function (p) {
+    assert.ok(p.rows.length >= 4, p.id + ' has too few rows');
+    var seen = {};
+    p.rows.forEach(function (r) {
+      assert.ok(!seen[r.id], p.id + ' has duplicate row id ' + r.id);
+      seen[r.id] = 1;
+      assert.ok(r.test && r.proc && r.proc.length > 20, p.id + '/' + r.id + ' is under-specified');
+    });
+    assert.ok(p.label && p.aim, p.id + ' is missing a label or aim');
+  });
+});
+
 console.log('\n' + checks + ' checks passed');

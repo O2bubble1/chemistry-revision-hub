@@ -7920,6 +7920,22 @@ function qaPaperRender() {
   html += '<div class="qa-actions"><button class="qa-modebtn" onclick="qaAddRow()">' +
           '+ Add a test</button></div>';
 
+  if (s.paperId) {
+    var paper = qaPaperById(s.paperId);
+    if (paper && paper.questions.length) {
+      html += '<div class="qa-actions" style="flex-direction:column;align-items:stretch;">';
+      html += '<h3 style="margin-top:var(--space-4);">Questions</h3>';
+      paper.questions.forEach(function (q, i) {
+        var key = 'q' + i;
+        var val = (s.rows[key] || {}).obs || '';
+        html += '<p class="qa-intro">' + (i + 1) + '. ' + qaEsc(q) + '</p>';
+        html += '<textarea class="qa-obs" oninput="qaField(\'' + key +
+                '\',\'obs\',this.value)">' + qaEsc(val) + '</textarea>';
+      });
+      html += '</div>';
+    }
+  }
+
   html += '<div class="qa-final"><span>' + qaEsc(s.label) + ' contains cation</span>' +
           qaSelect('cat', QA_CATIONS, s.final.cat) +
           '<span>and anion</span>' + qaSelect('an', QA_ANIONS, s.final.an) + '</div>';
@@ -7976,7 +7992,73 @@ function qaCheckPaper() {
   qaPaperRender();
 }
 
+/* == QA-PAPERS-START == */
+/* Transcribed from the 2026 HCI Sec 3 practicals. Answers: E3.5 FA1 calcium chloride,
+   E3.7 FA2 copper(II) nitrate, E3.9 FA1 calcium chloride and FA2 zinc carbonate. */
+var QA_PAPERS = [
+  { id:'e35', name:'E3.5 — Unknown salt FA1', label:'FA1', saltId:'Ca2+|Cl',
+    aim:'To identify salt FA1 and determine the substance used for swimming pools.',
+    rows:[
+      { id:'r1',  test:'1',    proc:'Add 1 spatula of FA1 to a boiling tube and add deionised water till about one-third filled. Stir with a glass rod. Divide the solution into at least six portions (of 1 cm depth) in separate test tubes for subsequent tests.' },
+      { id:'r2a', test:'2(a)', proc:'To a fresh portion, add aqueous sodium hydroxide gradually until no further change.' },
+      { id:'r2b', test:'2(b)', proc:'To a fresh portion, add aqueous ammonia gradually until no further change.' },
+      { id:'r3a', test:'3(a)', proc:'To a fresh portion, add 1 cm depth of nitric acid.' },
+      { id:'r3b', test:'3(b)', proc:'To a fresh portion, add 1 cm depth of aqueous barium nitrate.' },
+      { id:'r3c', test:'3(c)', proc:'To a fresh portion, add 1 cm depth of aqueous silver nitrate.' },
+      { id:'r4',  test:'4',    proc:'To a fresh portion, add an equal volume of aqueous sodium carbonate.' }
+    ],
+    questions:[
+      'Identify FA1 from your observations above.',
+      'Suggest why the solutions in Tests 3(b) and 3(c) do not need to be acidified, unlike the usual instructions for such tests.'
+    ] },
+
+  { id:'e37', name:'E3.7 — Unknown salt FA2', label:'FA2', saltId:'Cu2+|NO3',
+    aim:'To identify the cation and anion of salt FA2 and determine the material for a water pipe.',
+    rows:[
+      { id:'r1',  test:'1',    proc:'Add 1 spatula of FA2 to a boiling tube and add deionised water till one-third filled. Stir with a glass rod. Separate the solution into several portions in separate test tubes for subsequent tests.' },
+      { id:'r2a', test:'2(a)', proc:'To 1 cm depth of a fresh portion, add aqueous sodium hydroxide gradually until no further change.' },
+      { id:'r2b', test:'2(b)', proc:'To 1 cm depth of a fresh portion, add aqueous ammonia gradually until no further change.' },
+      { id:'r3a', test:'3(a)', proc:'To 1 cm depth of a fresh portion, add a few drops of acidified barium nitrate.' },
+      { id:'r3b', test:'3(b)', proc:'To 1 cm depth of a fresh portion, add a few drops of acidified silver nitrate.' },
+      { id:'r3c', test:'3(c)', proc:'To 1 cm depth of a fresh portion, add an excess of aqueous sodium hydroxide, a piece of aluminium foil, and heat the mixture gently (stop heating before the mixture boils). Use a boiling tube for this test.' }
+    ],
+    questions:[
+      'Identify salt FA2 and deduce the material which the pipe is made of.',
+      'Suggest why an excess of aqueous sodium hydroxide is added for Test 3(c).'
+    ] },
+
+  { id:'e39', name:'E3.9 — Two unknowns (insoluble FA2)', label:'FA2', saltId:'Zn2+|CO3',
+    aim:'The labels of two bottles have fallen off. One solid is soluble in water, the other is not. Identify the insoluble unknown FA2.',
+    rows:[
+      { id:'r1',  test:'1',    proc:'Add 1 spatula of FA2 to a boiling tube. Add deionised water till about one-third filled and mix well with a glass rod. Determine whether the unknown is soluble in water.' },
+      { id:'r3a', test:'3(a)', proc:'Add one spatula of a FRESH sample of the insoluble unknown to a test tube. Add a minimum volume of dilute nitric acid to completely dissolve the solid. Add deionised water till about one-third filled and stir thoroughly with a clean glass rod.' },
+      { id:'r3b', test:'3(b)', proc:'To a fresh portion of the solution from Test 3(a), add dilute sodium hydroxide gradually until no further change.' },
+      { id:'r3c', test:'3(c)', proc:'To a fresh portion of the solution from Test 3(a), add aqueous ammonia gradually until no further change.' }
+    ],
+    questions:[
+      'Determine the unknown FA2.',
+      'Write a balanced ionic equation for the reaction taking place in Test 3(a).'
+    ] }
+];
+
+function qaPaperById(id) {
+  for (var i = 0; i < QA_PAPERS.length; i++) { if (QA_PAPERS[i].id === id) return QA_PAPERS[i]; }
+  return undefined;
+}
+/* == QA-PAPERS-END == */
+
+function qaBuildReplayPicker() {
+  var sel = document.getElementById('qaReplayPick');
+  sel.innerHTML = '';
+  QA_PAPERS.forEach(function (p) {
+    var o = document.createElement('option');
+    o.value = p.id; o.textContent = p.name;
+    sel.appendChild(o);
+  });
+}
+
 if (!qaLoad()) qaStart('practice');
+qaBuildReplayPicker();
 qaPaperRender();
 qaBenchRender();
 </script>
