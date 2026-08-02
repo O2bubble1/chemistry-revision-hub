@@ -1,14 +1,23 @@
-node_modules/
-dist/
-dist-ssr/
-coverage/
-*.local
-.env
-.env.*
-!.env.example
+# Editor / OS
 .DS_Store
+Thumbs.db
 .vscode/
 .idea/
+
+# Secrets — nothing here needs them today, but the rule costs nothing
+.env
+.env.*
+
+# Node — nothing generates this now; kept in case tooling is ever added back
+node_modules/
+
+# Agent scratch, never part of the product
+.superpowers/
 .worktrees/
-chemistry-revision-hub/
-xd:/
+
+# Source practicals — carry a real student name and marked work. Never publish.
+Chemistry_Practical/
+*.pdf
+
+# Planning docs live outside the repo — they carry absolute paths and a real name.
+docs/superpowers/
