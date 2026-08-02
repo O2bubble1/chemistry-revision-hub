@@ -369,4 +369,22 @@ check('qaCheckRow reports how much was hit', function () {
   assert.ok(g.hit > 0 && g.missing > 0, JSON.stringify(g));
 });
 
+check('a dissolve is marked as a positive observation, not a no-change', function () {
+  var mk = M.qaMarkFor(M.qaRunTest(M.qaSaltById('Ca2+|Cl'), 'water', null, M.qaNewPortion()));
+  assert.strictEqual(M.qaCheckRow('The solid dissolved to form a colourless solution.', mk).pass, true);
+  assert.strictEqual(M.qaCheckRow('No change was observed.', mk).pass, false);
+});
+
+check('a coloured solution must be named', function () {
+  var mk = M.qaMarkFor(M.qaRunTest(M.qaSaltById('Cu2+|SO4'), 'water', null, M.qaNewPortion()));
+  assert.strictEqual(M.qaCheckRow('The solid dissolved to form a blue solution.', mk).pass, true);
+  assert.strictEqual(M.qaCheckRow('The solid dissolved to form a solution.', mk).pass, false);
+});
+
+check('an insoluble solid may be described as a suspension', function () {
+  var mk = M.qaMarkFor(M.qaRunTest(M.qaSaltById('Zn2+|CO3'), 'water', null, M.qaNewPortion()));
+  assert.strictEqual(M.qaCheckRow('The solid did not dissolve. A white suspension was formed.', mk).pass, true);
+  assert.strictEqual(M.qaCheckRow('It dissolved completely.', mk).pass, false);
+});
+
 console.log('\n' + checks + ' checks passed');

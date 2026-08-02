@@ -7637,7 +7637,13 @@ function qaMarkFor(result) {
     /* "red-brown" should also match "red brown" and "reddish brown". */
     var colour = result.ppt.colour.replace(/[- ]/g, '[- ]?\\w*\\s?');
     required.push(new RegExp(colour, 'i'));
-    required.push(/precipitat|ppt/i);
+    /* solutionColour === null means the solid never dissolved — the model answer calls
+       that a suspension, so accept that wording alongside "precipitate". */
+    if (result.solutionColour === null) {
+      required.push(/precipitat|ppt|suspension|insolubl|did ?n[o']?t dissolv/i);
+    } else {
+      required.push(/precipitat|ppt/i);
+    }
 
     if (result.ppt.excess === 'insoluble') {
       required.push(/insolubl|does ?n[o']?t dissolv|did ?n[o']?t dissolv|no further change|remain/i);
@@ -7650,6 +7656,10 @@ function qaMarkFor(result) {
     }
   } else if (result.gas) {
     required.push(/effervescen|gas|bubbl|fizz/i);
+  } else if (result.solutionColour) {
+    /* A dissolve is a positive observation, not "nothing happened". */
+    required.push(new RegExp(result.solutionColour.replace(/[- ]/g, '[- ]?\\w*\\s?'), 'i'));
+    required.push(/dissolv|solution/i);
   } else {
     required.push(/no |not |nothing|absen/i);
     forbidden.push(/(?<!no |not |n't )\b(white|green|blue|yellow|red)\b/i);
@@ -7814,7 +7824,7 @@ function qaSave() {
 function qaLoad() {
   try {
     var s = JSON.parse(window.localStorage.getItem(QA_KEY) || 'null');
-    if (!s || !qaSaltById(s.saltId)) return false;
+    if (!s || !qaSaltById(s.saltId) || !Array.isArray(s.script) || !s.script.length) return false;
     qaState = { mode:s.mode || 'practice', saltId:s.saltId, script:s.script || QA_PRACTICE_ROWS,
       rows:s.rows || {}, final:s.final || {}, activeRow:s.activeRow || 'r1',
       label:s.label || 'FA1', aim:s.aim || '', portions:{}, rowResult:{},
