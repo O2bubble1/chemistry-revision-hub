@@ -909,6 +909,31 @@ html { background: var(--color-bg); }
 .qa-note.qa-bad { color:var(--color-accent-600); font-weight:700; }
 .qa-gastools { display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3);
   padding-top:var(--space-3); border-top:1px dashed var(--color-divider); }
+
+.qa-paper h3 { margin-bottom:var(--space-3); }
+.qa-table { width:100%; border-collapse:collapse; font-size:0.78em; }
+.qa-table th { text-align:left; padding:8px; border-bottom:2px solid var(--color-divider);
+  font-family:var(--font-heading); font-weight:400; }
+.qa-table td { padding:8px; border-bottom:1px solid var(--color-divider);
+  vertical-align:top; }
+.qa-table tr.qa-active td { background:var(--color-accent-100); }
+.qa-test { width:44px; font-weight:700; }
+.qa-proc { width:38%; color:var(--color-neutral-700); }
+.qa-obs, .qa-inf { width:100%; font-family:inherit; font-size:1em; color:var(--color-text);
+  background:var(--color-neutral-100); border:1px solid var(--color-divider);
+  border-radius:var(--radius-sm); padding:6px 8px; resize:vertical; }
+.qa-obs { min-height:62px; }
+.qa-mark { display:block; margin-top:4px; font-size:0.9em; font-weight:700; }
+.qa-mark.ok  { color:var(--color-accent-2-700); }
+.qa-mark.bad { color:var(--color-accent-600); }
+.qa-model { display:block; margin-top:4px; font-size:0.9em; color:var(--color-neutral-700);
+  font-style:italic; }
+.qa-final { margin-top:var(--space-4); padding-top:var(--space-4);
+  border-top:2px solid var(--color-divider); display:flex; flex-wrap:wrap;
+  gap:var(--space-2); align-items:center; font-size:0.82em; }
+.qa-score { font-family:var(--font-heading); font-size:1.5em; margin-top:var(--space-3); }
+.qa-actions { display:flex; gap:var(--space-2); margin-top:var(--space-3); flex-wrap:wrap; }
+
 .font-panel { position:absolute; z-index:9000; margin-top:8px; min-width:262px;
   background:var(--color-surface); border:1px solid var(--color-divider);
   border-radius:var(--radius-md); box-shadow:var(--shadow-sm);
@@ -7769,6 +7794,181 @@ function qaEsc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
                   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
+
+var QA_PRACTICE_ROWS = [
+  { id:'r1',  test:'1',    proc:'Add 1 spatula of the unknown to a boiling tube and add deionised water till about one-third filled. Stir with a glass rod. Divide the solution into at least six portions in separate test tubes.' },
+  { id:'r2a', test:'2(a)', proc:'To a fresh portion, add aqueous sodium hydroxide gradually until no further change.' },
+  { id:'r2b', test:'2(b)', proc:'To a fresh portion, add aqueous ammonia gradually until no further change.' },
+  { id:'r3a', test:'3(a)', proc:'To a fresh portion, add 1 cm depth of dilute nitric acid.' },
+  { id:'r3b', test:'3(b)', proc:'To a fresh portion, add 1 cm depth of aqueous barium nitrate.' },
+  { id:'r3c', test:'3(c)', proc:'To a fresh portion, add 1 cm depth of aqueous silver nitrate.' }
+];
+
+function qaSave() {
+  try { window.localStorage.setItem(QA_KEY, JSON.stringify({
+    mode: qaState.mode, saltId: qaState.saltId, script: qaState.script,
+    rows: qaState.rows, final: qaState.final, activeRow: qaState.activeRow,
+    label: qaState.label, aim: qaState.aim })); } catch (e) {}
+}
+
+function qaLoad() {
+  try {
+    var s = JSON.parse(window.localStorage.getItem(QA_KEY) || 'null');
+    if (!s || !qaSaltById(s.saltId)) return false;
+    qaState = { mode:s.mode || 'practice', saltId:s.saltId, script:s.script || QA_PRACTICE_ROWS,
+      rows:s.rows || {}, final:s.final || {}, activeRow:s.activeRow || 'r1',
+      label:s.label || 'FA1', aim:s.aim || '', portions:{}, rowResult:{},
+      dissolvedOnce:false, lastResult:null, gasLine:'' };
+    return true;
+  } catch (e) { return false; }
+}
+
+function qaStart(mode, id) {
+  var m = mode || (qaState && qaState.mode) || 'practice';
+  var salt;
+  if (m === 'replay') {
+    var paper = qaPaperById(id || 'e35');
+    qaState = { mode:'replay', saltId:paper.saltId, script:paper.rows, label:paper.label,
+      aim:paper.aim, paperId:paper.id, rows:{}, final:{}, activeRow:paper.rows[0].id,
+      portions:{}, rowResult:{}, dissolvedOnce:false, lastResult:null, gasLine:'' };
+  } else {
+    salt = QA_SALTS[Math.floor(Math.random() * QA_SALTS.length)];
+    qaState = { mode:'practice', saltId:salt.id, script:QA_PRACTICE_ROWS.slice(),
+      label:'FA1', aim:'To identify the cation and the anion in FA1.',
+      rows:{}, final:{}, activeRow:'r1', portions:{}, rowResult:{},
+      dissolvedOnce:false, lastResult:null, gasLine:'' };
+  }
+  qaSave();
+  qaPaperRender();
+  qaBenchRender();
+}
+
+function qaSetMode(mode) {
+  document.getElementById('qaModePractice').className =
+    'qa-modebtn' + (mode === 'practice' ? ' qa-on' : '');
+  document.getElementById('qaModeReplay').className =
+    'qa-modebtn' + (mode === 'replay' ? ' qa-on' : '');
+  document.getElementById('qaReplayPick').style.display = mode === 'replay' ? '' : 'none';
+  qaStart(mode, mode === 'replay' ? document.getElementById('qaReplayPick').value : null);
+}
+
+/* Swap the highlight class rather than re-rendering. A full re-render here would
+   destroy the textarea the student just clicked into and steal their focus. */
+function qaSetActiveRow(id) {
+  if (qaState.activeRow === id) return;
+  qaState.activeRow = id;
+  qaState.gasLine = '';
+  var rows = document.querySelectorAll('#qaPaper tbody tr');
+  for (var i = 0; i < rows.length; i++) rows[i].className = '';
+  var el = document.getElementById('qarow-' + id);
+  if (el) el.className = 'qa-active';
+}
+
+function qaField(rowId, field, value) {
+  if (!qaState.rows[rowId]) qaState.rows[rowId] = { obs:'', inf:'' };
+  qaState.rows[rowId][field] = value;
+  qaSave();
+}
+
+function qaAddRow() {
+  qaState.script.push({ id:'x' + qaState.script.length, test:'+',
+    proc:'Your own test — describe what you did.' });
+  qaSave();
+  qaPaperRender();
+}
+
+function qaPaperRender() {
+  var s = qaState, html = '';
+  html += '<h3>' + qaEsc(s.label) + ' — practical paper</h3>';
+  if (s.aim) html += '<p class="qa-intro"><strong>Aim</strong> ' + qaEsc(s.aim) + '</p>';
+  html += '<table class="qa-table"><thead><tr><th class="qa-test">Test</th>' +
+          '<th class="qa-proc">Procedure</th><th>Observations</th>' +
+          '<th>Inference / Conclusion</th></tr></thead><tbody>';
+
+  s.script.forEach(function (row) {
+    var v = s.rows[row.id] || { obs:'', inf:'' };
+    var g = s.graded && s.graded[row.id];
+    html += '<tr id="qarow-' + row.id + '" class="' +
+            (s.activeRow === row.id ? 'qa-active' : '') +
+            '" onclick="qaSetActiveRow(\'' + row.id + '\')">';
+    html += '<td class="qa-test">' + qaEsc(row.test) + '</td>';
+    html += '<td class="qa-proc">' + qaEsc(row.proc) + '</td>';
+    html += '<td><textarea class="qa-obs" oninput="qaField(\'' + row.id +
+            '\',\'obs\',this.value)">' + qaEsc(v.obs) + '</textarea>';
+    if (g) {
+      html += '<span class="qa-mark ' + (g.pass ? 'ok' : 'bad') + '">' +
+              (g.pass ? '✓ correct' : '✗ ' + g.missing + ' point(s) missing') + '</span>';
+      html += '<span class="qa-model">Model: ' + qaEsc(g.model) + '</span>';
+    }
+    html += '</td>';
+    html += '<td><input class="qa-inf" value="' + qaEsc(v.inf) +
+            '" oninput="qaField(\'' + row.id + '\',\'inf\',this.value)"></td>';
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+
+  html += '<div class="qa-actions"><button class="qa-modebtn" onclick="qaAddRow()">' +
+          '+ Add a test</button></div>';
+
+  html += '<div class="qa-final"><span>' + qaEsc(s.label) + ' contains cation</span>' +
+          qaSelect('cat', QA_CATIONS, s.final.cat) +
+          '<span>and anion</span>' + qaSelect('an', QA_ANIONS, s.final.an) + '</div>';
+
+  html += '<div class="qa-actions">' +
+          '<button class="qa-modebtn qa-on" onclick="qaCheckPaper()">Check my work</button>' +
+          '<button class="qa-modebtn" onclick="qaStart()">Reset</button></div>';
+
+  if (s.score) {
+    html += '<div class="qa-score">' + s.score.got + ' / ' + s.score.total + '</div>';
+    html += '<p class="qa-intro">' + qaEsc(s.score.verdict) + '</p>';
+  }
+
+  document.getElementById('qaPaper').innerHTML = html;
+}
+
+function qaSelect(field, table, current) {
+  var h = '<select class="qa-select" onchange="qaFinal(\'' + field + '\',this.value)">' +
+          '<option value="">— choose —</option>';
+  for (var k in table) {
+    if (!table.hasOwnProperty(k)) continue;
+    h += '<option value="' + k + '"' + (current === k ? ' selected' : '') + '>' +
+         qaEsc(table[k].name + ' (' + table[k].label + ')') + '</option>';
+  }
+  return h + '</select>';
+}
+
+function qaFinal(field, value) { qaState.final[field] = value; qaSave(); }
+
+function qaCheckPaper() {
+  var s = qaState, salt = qaSaltById(s.saltId);
+  s.graded = {};
+  var got = 0, total = 0;
+
+  s.script.forEach(function (row) {
+    var res = s.rowResult[row.id];
+    if (!res) return;                       /* not attempted on the bench — not marked */
+    var v = s.rows[row.id] || { obs:'' };
+    var g = qaCheckRow(v.obs, qaMarkFor(res));
+    s.graded[row.id] = { pass:g.pass, missing:g.missing, model:res.text };
+    total++; if (g.pass) got++;
+  });
+
+  total += 2;
+  if (s.final.cat === salt.cat) got++;
+  if (s.final.an === salt.an) got++;
+
+  var right = s.final.cat === salt.cat && s.final.an === salt.an;
+  s.score = { got:got, total:total,
+    verdict: right
+      ? 'Correct — ' + s.label + ' is ' + salt.name + '.'
+      : s.label + ' is ' + salt.name + '. Compare each model observation with what you wrote.' };
+  qaSave();
+  qaPaperRender();
+}
+
+if (!qaLoad()) qaStart('practice');
+qaPaperRender();
+qaBenchRender();
 </script>
 
 </body></html>
