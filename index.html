@@ -7551,7 +7551,7 @@ function qaMarkFor(result) {
     required.push(/effervescen|gas|bubbl|fizz/i);
   } else {
     required.push(/no |not |nothing|absen/i);
-    forbidden.push(/\ba (white|green|blue|yellow|red)/i);
+    forbidden.push(/(?<!no |not |n't )\b(white|green|blue|yellow|red)\b/i);
   }
 
   return { required: required, forbidden: forbidden };

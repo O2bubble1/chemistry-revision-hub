@@ -330,7 +330,7 @@ check('a missing excess observation fails', function () {
 
 check('"insoluble" is never accepted as "dissolves"', function () {
   assert.strictEqual(graded('Zn2+|Cl', 'naoh', 'excess',
-    'White precipitate formed, insoluble in excess.').pass, false,
+    'White precipitate formed, dissolves in excess to give a colourless solution, but is insoluble.').pass, false,
     '"insoluble" contains "soluble" — the forbidden list must catch this');
   assert.strictEqual(graded('Zn2+|Cl', 'naoh', 'excess',
     'White precipitate formed, dissolves in excess to give a colourless solution.').pass, true);
@@ -346,6 +346,8 @@ check('the copper ammonia answer needs the dark blue solution', function () {
 check('a no-change result needs a negative observation', function () {
   assert.strictEqual(graded('Ca2+|Cl', 'nh3', 'excess', 'No precipitate is formed.').pass, true);
   assert.strictEqual(graded('Ca2+|Cl', 'nh3', 'excess', 'A white precipitate formed.').pass, false);
+  assert.strictEqual(graded('Ca2+|Cl', 'nh3', 'excess',
+    'White precipitate formed but nothing dissolved.').pass, false);
 });
 
 check('a gas result needs effervescence or a named gas', function () {
