@@ -7818,7 +7818,7 @@ function qaSave() {
   try { window.localStorage.setItem(QA_KEY, JSON.stringify({
     mode: qaState.mode, saltId: qaState.saltId, script: qaState.script,
     rows: qaState.rows, final: qaState.final, activeRow: qaState.activeRow,
-    label: qaState.label, aim: qaState.aim })); } catch (e) {}
+    label: qaState.label, aim: qaState.aim, paperId: qaState.paperId })); } catch (e) {}
 }
 
 function qaLoad() {
@@ -7827,7 +7827,7 @@ function qaLoad() {
     if (!s || !qaSaltById(s.saltId) || !Array.isArray(s.script) || !s.script.length) return false;
     qaState = { mode:s.mode || 'practice', saltId:s.saltId, script:s.script || QA_PRACTICE_ROWS,
       rows:s.rows || {}, final:s.final || {}, activeRow:s.activeRow || 'r1',
-      label:s.label || 'FA1', aim:s.aim || '', portions:{}, rowResult:{},
+      label:s.label || 'FA1', aim:s.aim || '', paperId:s.paperId, portions:{}, rowResult:{},
       dissolvedOnce:false, lastResult:null, gasLine:'' };
     return true;
   } catch (e) { return false; }
@@ -7837,7 +7837,7 @@ function qaStart(mode, id) {
   var m = mode || (qaState && qaState.mode) || 'practice';
   var salt;
   if (m === 'replay') {
-    var paper = qaPaperById(id || 'e35');
+    var paper = qaPaperById(id || (qaState && qaState.paperId) || 'e35');
     qaState = { mode:'replay', saltId:paper.saltId, script:paper.rows, label:paper.label,
       aim:paper.aim, paperId:paper.id, rows:{}, final:{}, activeRow:paper.rows[0].id,
       portions:{}, rowResult:{}, dissolvedOnce:false, lastResult:null, gasLine:'' };
@@ -8055,6 +8055,7 @@ function qaBuildReplayPicker() {
     o.value = p.id; o.textContent = p.name;
     sel.appendChild(o);
   });
+  if (qaState && qaState.paperId) sel.value = qaState.paperId;
 }
 
 if (!qaLoad()) qaStart('practice');
