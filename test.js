@@ -296,4 +296,75 @@ check('every salt survives every reagent without throwing', function () {
   });
 });
 
+/* ---- marking ---- */
+var M = load(['QA-ENGINE'], ['qaMarkFor', 'qaCheckRow', 'qaRunTest', 'qaNewPortion', 'qaSaltById']);
+
+function mark(saltId, reagent, mode) {
+  var p = M.qaNewPortion();
+  M.qaRunTest(M.qaSaltById(saltId), 'water', null, p);
+  return M.qaMarkFor(M.qaRunTest(M.qaSaltById(saltId), reagent, mode, p));
+}
+function graded(saltId, reagent, mode, answer) {
+  return M.qaCheckRow(answer, mark(saltId, reagent, mode));
+}
+
+check('a full answer passes', function () {
+  assert.strictEqual(graded('Ca2+|Cl', 'naoh', 'excess',
+    'A white precipitate is formed, insoluble in excess aqueous sodium hydroxide.').pass, true);
+});
+
+check('loose but correct phrasing still passes', function () {
+  assert.strictEqual(graded('Ca2+|Cl', 'naoh', 'excess',
+    'white ppt formed, does not dissolve in excess').pass, true);
+});
+
+check('a missing colour fails', function () {
+  assert.strictEqual(graded('Ca2+|Cl', 'naoh', 'excess',
+    'A precipitate is formed, insoluble in excess.').pass, false);
+});
+
+check('a missing excess observation fails', function () {
+  assert.strictEqual(graded('Ca2+|Cl', 'naoh', 'excess',
+    'A white precipitate is formed.').pass, false);
+});
+
+check('"insoluble" is never accepted as "dissolves"', function () {
+  assert.strictEqual(graded('Zn2+|Cl', 'naoh', 'excess',
+    'White precipitate formed, insoluble in excess.').pass, false,
+    '"insoluble" contains "soluble" — the forbidden list must catch this');
+  assert.strictEqual(graded('Zn2+|Cl', 'naoh', 'excess',
+    'White precipitate formed, dissolves in excess to give a colourless solution.').pass, true);
+});
+
+check('the copper ammonia answer needs the dark blue solution', function () {
+  assert.strictEqual(graded('Cu2+|SO4', 'nh3', 'excess',
+    'Light blue precipitate formed which dissolves in excess.').pass, false);
+  assert.strictEqual(graded('Cu2+|SO4', 'nh3', 'excess',
+    'Light blue ppt formed, dissolves in excess ammonia to form a dark blue solution.').pass, true);
+});
+
+check('a no-change result needs a negative observation', function () {
+  assert.strictEqual(graded('Ca2+|Cl', 'nh3', 'excess', 'No precipitate is formed.').pass, true);
+  assert.strictEqual(graded('Ca2+|Cl', 'nh3', 'excess', 'A white precipitate formed.').pass, false);
+});
+
+check('a gas result needs effervescence or a named gas', function () {
+  var p = M.qaNewPortion();
+  M.qaRunTest(M.qaSaltById('Ca2+|CO3'), 'water', null, p);
+  var res = M.qaRunTest(M.qaSaltById('Ca2+|CO3'), 'hno3', null, p);
+  assert.strictEqual(M.qaCheckRow('Effervescence of a colourless gas observed.',
+    M.qaMarkFor(res)).pass, true);
+  assert.strictEqual(M.qaCheckRow('Nothing happened.', M.qaMarkFor(res)).pass, false);
+});
+
+check('an empty answer never passes', function () {
+  assert.strictEqual(graded('Ca2+|Cl', 'naoh', 'excess', '').pass, false);
+  assert.strictEqual(graded('Ca2+|Cl', 'naoh', 'excess', '   ').pass, false);
+});
+
+check('qaCheckRow reports how much was hit', function () {
+  var g = graded('Ca2+|Cl', 'naoh', 'excess', 'A white precipitate is formed.');
+  assert.ok(g.hit > 0 && g.missing > 0, JSON.stringify(g));
+});
+
 console.log('\n' + checks + ' checks passed');

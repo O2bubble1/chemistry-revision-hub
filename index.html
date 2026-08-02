@@ -7526,6 +7526,50 @@ function qaRunTest(salt, reagent, mode, portion) {
   out.text = 'Nothing happens.';
   return out;
 }
+
+/* Marking patterns are derived from the result object, not authored per salt, so
+   they cannot drift out of sync with the truth table. */
+function qaMarkFor(result) {
+  var required = [], forbidden = [];
+
+  if (result.ppt) {
+    /* "red-brown" should also match "red brown" and "reddish brown". */
+    var colour = result.ppt.colour.replace(/[- ]/g, '[- ]?\\w*\\s?');
+    required.push(new RegExp(colour, 'i'));
+    required.push(/precipitat|ppt/i);
+
+    if (result.ppt.excess === 'insoluble') {
+      required.push(/insolubl|does ?n[o']?t dissolv|did ?n[o']?t dissolv|no further change|remain/i);
+    } else if (result.ppt.excess === 'dissolves') {
+      required.push(/dissolv/i);
+      forbidden.push(/insolubl/i);
+      if (result.solutionColour) {
+        required.push(new RegExp(result.solutionColour.replace(/ /g, '\\s+'), 'i'));
+      }
+    }
+  } else if (result.gas) {
+    required.push(/effervescen|gas|bubbl|fizz/i);
+  } else {
+    required.push(/no |not |nothing|absen/i);
+    forbidden.push(/\ba (white|green|blue|yellow|red)/i);
+  }
+
+  return { required: required, forbidden: forbidden };
+}
+
+function qaCheckRow(text, mark) {
+  var t = String(text || '').trim();
+  if (!t) return { pass: false, missing: mark.required.length, hit: 0 };
+
+  var hit = 0;
+  for (var i = 0; i < mark.required.length; i++) {
+    if (mark.required[i].test(t)) hit++;
+  }
+  for (var j = 0; j < mark.forbidden.length; j++) {
+    if (mark.forbidden[j].test(t)) return { pass: false, missing: mark.required.length - hit, hit: hit };
+  }
+  return { pass: hit === mark.required.length, missing: mark.required.length - hit, hit: hit };
+}
 /* == QA-ENGINE-END == */
 </script>
 
