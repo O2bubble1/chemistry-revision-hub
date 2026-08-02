@@ -878,6 +878,37 @@ html { background: var(--color-bg); }
   .qa-bench { position:static; order:-1; }
   .qa-result { position:sticky; top:0; z-index:20; }
 }
+
+.qa-reagents { display:flex; flex-wrap:wrap; gap:var(--space-2); margin-bottom:var(--space-4); }
+.qa-rgt { border:1px solid var(--color-divider); background:var(--color-neutral-100);
+  color:var(--color-text); border-radius:var(--radius-sm); padding:8px 12px; cursor:pointer;
+  font-family:inherit; font-size:0.76em; text-align:left; }
+.qa-rgt:hover { border-color:var(--color-accent); }
+.qa-rgt[disabled] { opacity:0.4; cursor:not-allowed; }
+.qa-rgt .qa-sub { display:block; font-size:0.85em; color:var(--color-neutral-600); }
+
+.qa-tube { width:74px; height:186px; margin:0 auto var(--space-3); position:relative;
+  border:2px solid var(--color-neutral-400); border-top:none;
+  border-radius:0 0 37px 37px; overflow:hidden; background:var(--color-neutral-100); }
+.qa-liquid { position:absolute; left:0; right:0; bottom:0; height:64%;
+  background:var(--qa-liquid, transparent); transition:background 0.3s, height 0.3s; }
+.qa-ppt { position:absolute; left:0; right:0; bottom:0; height:26%;
+  background:var(--qa-ppt, transparent); filter:blur(2px); opacity:0.92;
+  transition:background 0.3s; }
+.qa-bubble { position:absolute; bottom:8%; width:7px; height:7px; border-radius:50%;
+  background:rgba(255,255,255,0.85); animation:qaRise 1.3s linear infinite; }
+.qa-bubble:nth-child(2) { left:38%; animation-delay:0.35s; }
+.qa-bubble:nth-child(3) { left:60%; animation-delay:0.7s; }
+@keyframes qaRise { from { transform:translateY(0); opacity:0.9; }
+                    to   { transform:translateY(-120px); opacity:0; } }
+
+.qa-result { background:var(--color-neutral-100); border-left:3px solid var(--color-accent);
+  border-radius:var(--radius-sm); padding:var(--space-3); font-size:0.84em;
+  line-height:1.55; margin-bottom:var(--space-3); }
+.qa-note { margin-top:var(--space-2); font-size:0.92em; color:var(--color-accent-700); }
+.qa-note.qa-bad { color:#b2622d; font-weight:700; }
+.qa-gastools { display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3);
+  padding-top:var(--space-3); border-top:1px dashed var(--color-divider); }
 .font-panel { position:absolute; z-index:9000; margin-top:8px; min-width:262px;
   background:var(--color-surface); border:1px solid var(--color-divider);
   border-radius:var(--radius-md); box-shadow:var(--shadow-sm);
@@ -7616,6 +7647,127 @@ function qaCheckRow(text, mark) {
   return { pass: hit === mark.required.length, missing: mark.required.length - hit, hit: hit };
 }
 /* == QA-ENGINE-END == */
+</script>
+<script>
+var QA_KEY = 'hciRevisionHub.qalab';
+
+var QA_REAGENTS = [
+  { id:'water',  label:'Deionised water',        sub:'dissolve the solid' },
+  { id:'hno3',   label:'Dilute nitric acid',     sub:'acidify / dissolve' },
+  { id:'naoh',   label:'Aq. sodium hydroxide',   sub:'dropwise or to excess', modes:true },
+  { id:'nh3',    label:'Aqueous ammonia',        sub:'dropwise or to excess', modes:true },
+  { id:'agno3',  label:'Aq. silver nitrate',     sub:'halide test' },
+  { id:'bano3',  label:'Aq. barium nitrate',     sub:'sulfate test' },
+  { id:'na2co3', label:'Aq. sodium carbonate',   sub:'metal carbonate' },
+  { id:'alfoil', label:'Excess NaOH + Al foil',  sub:'warm — nitrate test' },
+  { id:'warm',   label:'Warm the tube',          sub:'' }
+];
+
+var QA_GAS_TOOLS = [
+  { id:'splint',     label:'Lighted splint' },
+  { id:'glowing',    label:'Glowing splint' },
+  { id:'limewater',  label:'Limewater' },
+  { id:'redlitmus',  label:'Moist red litmus' },
+  { id:'bluelitmus', label:'Moist blue litmus' },
+  { id:'kmno4',      label:'Acidified KMnO₄' }
+];
+
+var qaState = null;
+
+function qaColourCss(name) {
+  var map = { 'colourless':'rgba(210,230,240,0.35)', 'white':'#f2f2f0', 'green':'#7fae7f',
+    'yellow-brown':'#c79a4a', 'yellow':'#ecd268', 'blue':'#5b8fd6',
+    'light blue':'#9dc4e8', 'dark blue':'#274b91', 'red-brown':'#a4552c' };
+  return map[name] || 'transparent';
+}
+
+/* Each test is run on a fresh portion unless the student is continuing the same row. */
+function qaPortion(rowId) {
+  if (!qaState.portions[rowId]) qaState.portions[rowId] = qaNewPortion();
+  return qaState.portions[rowId];
+}
+
+function qaDoTest(reagent, mode) {
+  var salt = qaSaltById(qaState.saltId);
+  var rowId = qaState.activeRow;
+  var portion = qaPortion(rowId);
+  /* Test 1 dissolves the sample; every other row inherits that starting state. */
+  if (reagent !== 'water' && !portion.dissolved && qaState.dissolvedOnce) {
+    portion.dissolved = true;
+  }
+  var res = qaRunTest(salt, reagent, mode || 'excess', portion);
+  if (reagent === 'water' && portion.dissolved) qaState.dissolvedOnce = true;
+  if (reagent === 'hno3' && portion.dissolved) qaState.dissolvedOnce = true;
+  qaState.lastResult = res;
+  qaState.rowResult[rowId] = res;
+  qaSave();
+  qaBenchRender();
+}
+
+function qaDoGasTest(toolId) {
+  var g = qaState.lastResult && qaState.lastResult.gas;
+  var line = g && QA_GAS_TESTS[g] ? QA_GAS_TESTS[g][toolId] : 'No gas was collected to test.';
+  qaState.gasLine = line;
+  qaBenchRender();
+}
+
+function qaBenchRender() {
+  var r = qaState.lastResult || {};
+  var liquid = r.solutionColour === undefined ? 'colourless' : r.solutionColour;
+  var html = '';
+
+  html += '<h3 class="qa-benchhead">Bench</h3>';
+  html += '<div class="qa-tube" style="--qa-liquid:' + qaColourCss(liquid) +
+          ';--qa-ppt:' + (r.ppt ? qaColourCss(r.ppt.colour) : 'transparent') + '">' +
+          '<div class="qa-liquid"></div>' +
+          (r.ppt ? '<div class="qa-ppt"></div>' : '') +
+          (r.gas ? '<span class="qa-bubble" style="left:20%"></span>' +
+                   '<span class="qa-bubble"></span><span class="qa-bubble"></span>' : '') +
+          '</div>';
+
+  if (r.text) {
+    html += '<div class="qa-result">' + qaEsc(r.text);
+    if (r.note) {
+      html += '<div class="qa-note' + (r.falsePositive || r.blocked ? ' qa-bad' : '') + '">' +
+              qaEsc(r.note) + '</div>';
+    }
+    if (qaState.gasLine) html += '<div class="qa-note">' + qaEsc(qaState.gasLine) + '</div>';
+    html += '</div>';
+  }
+
+  html += '<div class="qa-reagents">';
+  QA_REAGENTS.forEach(function (rg) {
+    if (rg.modes) {
+      html += qaRgtBtn(rg.id, rg.label + ' — dropwise', rg.sub, 'dropwise');
+      html += qaRgtBtn(rg.id, rg.label + ' — to excess', rg.sub, 'excess');
+    } else {
+      html += qaRgtBtn(rg.id, rg.label, rg.sub, null);
+    }
+  });
+  html += '</div>';
+
+  html += '<div class="qa-gastools">';
+  QA_GAS_TOOLS.forEach(function (t) {
+    html += '<button class="qa-rgt" onclick="qaDoGasTest(\'' + t.id + '\')"' +
+            (r.gas ? '' : ' disabled') + '>' + qaEsc(t.label) + '</button>';
+  });
+  html += '</div>';
+
+  document.getElementById('qaBench').innerHTML = html;
+}
+
+function qaRgtBtn(id, label, sub, mode) {
+  return '<button class="qa-rgt" onclick="qaDoTest(\'' + id + '\'' +
+         (mode ? ',\'' + mode + '\'' : '') + ')">' + qaEsc(label) +
+         (sub ? '<span class="qa-sub">' + qaEsc(sub) + '</span>' : '') + '</button>';
+}
+
+/* Escapes quotes too — student text goes into `value="…"` attributes on the paper,
+   and a single typed double-quote would otherwise break out of the attribute. */
+function qaEsc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                  .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 </script>
 
 </body></html>
