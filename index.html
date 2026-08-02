@@ -7827,7 +7827,8 @@ function qaLoad() {
     if (!s || !qaSaltById(s.saltId) || !Array.isArray(s.script) || !s.script.length) return false;
     qaState = { mode:s.mode || 'practice', saltId:s.saltId, script:s.script || QA_PRACTICE_ROWS,
       rows:s.rows || {}, final:s.final || {}, activeRow:s.activeRow || 'r1',
-      label:s.label || 'FA1', aim:s.aim || '', paperId:s.paperId, portions:{}, rowResult:{},
+      label:s.label || 'FA1', aim:s.aim || '',
+      paperId: qaPaperById(s.paperId) ? s.paperId : undefined, portions:{}, rowResult:{},
       dissolvedOnce:false, lastResult:null, gasLine:'' };
     return true;
   } catch (e) { return false; }
