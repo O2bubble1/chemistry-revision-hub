@@ -1,6 +1,6 @@
 # Chemistry Revision Hub
 
-A single-file revision hub for O-Level / IP Chemistry and Physics.
+A single-file revision hub for O-Level / IP Chemistry, Physics and Computing.
 Live at <https://o2bubble1.github.io/chemistry-revision-hub/>.
 
 Everything is `index.html` — open it in a browser and it works. No build step, no
@@ -12,6 +12,9 @@ dependencies, no server. Fonts are inlined as data URIs so it works offline.
   salt preparation, solubility rules, pH indicators, oxides, bonding, a clickable periodic table
 - **Physics** — kinematics, motion graphs, equations of motion, forces, Newton's laws,
   friction, work/energy/power
+- **Computing** — Python data structures (lists, tuples, dictionaries, sets, equality vs
+  identity), file operations and CSV handling, sorting and searching algorithms, complexity,
+  and a code memorisation drill
 - **Tools** — flashcards, quizzes, model answers, a typography panel, and a light/dark theme
 
 ## Practical simulator
@@ -40,6 +43,23 @@ you dissolve it in a minimum volume of dilute nitric acid.
   original procedures and questions.
 
 Your attempt is saved as you type, so a reload does not lose it.
+
+## Memorise the Code
+
+Computing is examined on writing sort algorithms from memory, so reading them is not
+enough. The `Memorise the Code` tab shows each function with its load-bearing tokens
+blanked out — loop bounds, comparisons, the swap, the base case, the pivot partition —
+and you tap a blank to reveal it. It reuses the same reveal system as the Chemistry and
+Physics model-answer pages.
+
+Required: all seven sort functions — bubble sort (plain and the improved version with the
+`swapped` flag), insertion, selection, `merge`, merge sort and quick sort. A second tier
+covers the four search functions: unordered and ordered linear search, and binary search
+both iteratively and recursively.
+
+Each function carries a short note on what the loops actually count and where the
+off-by-one lives, and the Complexity page tabulates best, average, worst, space and
+in-place for every algorithm on one table.
 
 ## Typography
 

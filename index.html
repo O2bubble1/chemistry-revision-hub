@@ -555,6 +555,21 @@ textarea.input { min-height: 90px; resize: vertical; }
   .reveal-btn.show:hover { background:var(--color-accent-600); }
   .reveal-btn.hide { background:var(--color-neutral-200); color:var(--color-neutral-700); }
   .reveal-btn.hide:hover { background:var(--color-neutral-300); }
+  /* Computing: code blocks and code-line blanks */
+  code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+         font-size:0.9em; background:var(--color-neutral-200); border-radius:var(--radius-sm);
+         padding:1px 5px; white-space:nowrap; }
+  .code { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+          font-size:0.84em; line-height:1.75; background:var(--color-neutral-100);
+          border:1px solid var(--color-divider); border-left:4px solid var(--color-accent-500);
+          border-radius:var(--radius-md); padding:14px 16px; margin:0 0 16px;
+          overflow-x:auto; white-space:pre; color:var(--color-text); }
+  .code code { background:none; padding:0; font-size:1em; }
+  .code .cm { color:var(--color-neutral-500); font-style:italic; }
+  .code-cap { font-size:0.8em; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+              color:var(--color-neutral-600); margin:0 0 6px; }
+  .blank.bk { min-width:0; padding:0 7px; border-radius:var(--radius-sm);
+              font-family:inherit; font-size:1em; vertical-align:baseline; }
   .qa-block { background:var(--color-neutral-100); border-radius:var(--radius-md); padding:20px 24px; box-shadow:var(--shadow-sm); margin-bottom:16px; line-height:2.1; font-size:0.92em; }
   .qa-block p { margin-bottom:12px; }
   .qa-block p:last-child { margin-bottom:0; }
@@ -988,6 +1003,7 @@ html { background: var(--color-bg); }
   .dk-badge-phys { background:var(--color-accent-200); color:var(--color-accent-800); }
   .dk-badge-chem { background:var(--color-accent-2-200); color:var(--color-accent-2-800); }
   .dk-badge-rec { background:var(--color-accent); color:#fff; margin-left:5px; }
+  .dk-badge-comp { background:var(--color-neutral-300); color:var(--color-neutral-800); }
   .dk-filter { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; }
   .dk-chip { border:1.5px solid var(--color-neutral-300); background:transparent;
     color:var(--color-neutral-700); border-radius:999px; padding:6px 14px;
@@ -1247,6 +1263,7 @@ html { background: var(--color-bg); }
   <select id="subjectSelect" class="subject-select" onchange="setSubject(this.value)">
    <option value="chem">Chemistry</option>
    <option value="phys">Physics</option>
+   <option value="comp">Computing</option>
   </select>
  </span>
  <button id="zapToggle" class="tool-btn" onclick="toggleZapMode()">Zap tabs</button>
@@ -1294,6 +1311,20 @@ html { background: var(--color-bg); }
   <button class="tab" data-subject="phys" data-group="tools" data-target="p-worked">Worked Examples</button>
   <button class="tab" data-subject="phys" data-group="tools" data-target="quiz">Kahoot Quiz</button>
   <button class="tab" data-subject="phys" data-group="tools" data-target="cards">Flashcards</button>
+  <button class="tab" data-subject="comp" data-group="ds" data-target="cs-list">Lists</button>
+  <button class="tab" data-subject="comp" data-group="ds" data-target="cs-tuple">Tuples</button>
+  <button class="tab" data-subject="comp" data-group="ds" data-target="cs-dict">Dictionaries</button>
+  <button class="tab" data-subject="comp" data-group="ds" data-target="cs-set">Sets</button>
+  <button class="tab" data-subject="comp" data-group="ds" data-target="cs-identity">Equality &amp; Identity</button>
+  <button class="tab" data-subject="comp" data-group="files" data-target="cs-files">File Operations</button>
+  <button class="tab" data-subject="comp" data-group="files" data-target="cs-csv">CSV &amp; Errors</button>
+  <button class="tab" data-subject="comp" data-group="algo" data-target="cs-sorts-simple">Simple Sorts</button>
+  <button class="tab" data-subject="comp" data-group="algo" data-target="cs-sorts-efficient">Efficient Sorts</button>
+  <button class="tab" data-subject="comp" data-group="algo" data-target="cs-search">Searching</button>
+  <button class="tab" data-subject="comp" data-group="algo" data-target="cs-complexity">Complexity</button>
+  <button class="tab" data-subject="comp" data-group="tools" data-target="cs-memorise">Memorise the Code</button>
+  <button class="tab" data-subject="comp" data-group="tools" data-target="quiz">Kahoot Quiz</button>
+  <button class="tab" data-subject="comp" data-group="tools" data-target="cards">Flashcards</button>
  </div>
 </div>
 
@@ -4417,6 +4448,1448 @@ html { background: var(--color-bg); }
 </div>
 
 
+
+<!-- ═══════════ COMPUTING ═══════════ -->
+<!-- LISTS -->
+<div id="cs-list" class="section" data-subject="comp">
+
+ <h2>Lists</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>The big idea:</strong> a list is a collection that is <strong>ordered</strong>,
+  <strong>changeable</strong> and <strong>allows duplicates</strong>. Written with
+  <code>[ ]</code>. It is the only one of the four collections that is both ordered and
+  mutable — which is why every sorting algorithm in this syllabus sorts a list.
+ </div>
+
+ <h3>Creating, accessing, updating</h3>
+<div class="code">lst_a = [1, 2, 3]
+lst_b = ["x", "y", "z"]
+lst_c = ["1", True, 1002, 1002]   <span class="cm"># mixed types and duplicates are both fine</span>
+lst_d = []                        <span class="cm"># empty list</span>
+
+print(lst_a[0])       <span class="cm"># 1   — index from 0</span>
+lst_a[0] = 100        <span class="cm"># lists are mutable, so this is allowed</span>
+print(lst_c[4])       <span class="cm"># IndexError — index >= len(lst)</span></div>
+
+ <h3>The functions you are expected to know</h3>
+ <table class="info-table">
+  <thead>
+   <tr><th style="width:20%;">Function</th><th style="width:46%;">What it does</th><th>Raises</th></tr>
+  </thead>
+  <tbody>
+   <tr><td><strong>len(lst)</strong></td><td>Number of elements</td><td>—</td></tr>
+   <tr class="row-highlight"><td><strong>append(x)</strong></td><td>Adds <strong>x as a single element</strong> to the end</td><td>—</td></tr>
+   <tr><td><strong>extend(it)</strong></td><td>Adds <strong>every element of it</strong> to the end</td><td>—</td></tr>
+   <tr class="row-highlight"><td><strong>remove(v)</strong></td><td>Removes the <strong>first occurrence</strong> of value <em>v</em></td><td><strong>ValueError</strong> if v is absent</td></tr>
+   <tr><td><strong>pop(i)</strong></td><td>Removes and returns the element <strong>at index i</strong>; with no argument, the last one</td><td><strong>IndexError</strong> if i is out of range</td></tr>
+   <tr class="row-highlight"><td><strong>insert(i, x)</strong></td><td>Inserts x at index i; everything from i onward shifts right</td><td>— (an oversized i just appends)</td></tr>
+   <tr><td><strong>index(v)</strong></td><td>Index of the <strong>first occurrence</strong> of value <em>v</em></td><td><strong>ValueError</strong> if v is absent</td></tr>
+  </tbody>
+ </table>
+
+ <h3>append() vs extend() — the one they always test</h3>
+ <div class="sol-grid">
+  <div class="sol-card soluble-card">
+   <h4>append() adds one thing</h4>
+<div class="code">fruits = ["apple", "orange"]
+fruits.append(["kiwi", "pear"])
+<span class="cm"># ['apple', 'orange', ['kiwi', 'pear']]</span>
+<span class="cm"># length 3 — the list went in whole</span></div>
+  </div>
+  <div class="sol-card except-card">
+   <h4>extend() adds each element</h4>
+<div class="code">fruits = ["apple", "orange"]
+fruits.extend("pineapple")
+<span class="cm"># ['apple','orange','p','i','n',...]</span>
+<span class="cm"># a string is iterable — you get letters!</span></div>
+  </div>
+ </div>
+
+ <h3>Slicing and concatenation build NEW lists</h3>
+<div class="code">lst_c = [1, 2, 3, 'x', 'y', 'z']
+lst_d = lst_c[1::2]      <span class="cm"># [2, 'x', 'z']  — start 1, step 2</span>
+lst_e = lst_a + lst_b    <span class="cm"># a brand new list; lst_a and lst_b are unchanged</span></div>
+
+ <h3>Traversing — three forms, know all three</h3>
+<div class="code">fruits = ["apple", "orange", "banana", "kiwi"]
+
+<span class="cm"># while loop</span>
+index = 0
+while index &lt; len(fruits):
+    print(fruits[index])
+    index += 1
+
+<span class="cm"># for loop using the index — use this when you need i</span>
+for i in range(len(fruits)):
+    print(fruits[i])
+
+<span class="cm"># for loop over the items — use this when you only need the value</span>
+for fruit in fruits:
+    print(fruit)</div>
+
+ <div class="tip-box" style="margin:22px 0;">
+  <strong>Passing a list into a function passes a reference, not a copy.</strong>
+  Anything the function does to the list is visible outside it. This is the mechanism
+  every in-place sort relies on.
+ </div>
+<div class="code">fruits = ["apple", "orange", "banana", "kiwi"]
+
+def update_list(lst):
+    lst[0] = "watermelon"
+    lst.append("strawberry")
+
+update_list(fruits)
+print(fruits)   <span class="cm"># ['watermelon', 'orange', 'banana', 'kiwi', 'strawberry']</span></div>
+
+ <h3>Nested lists and 2D traversal</h3>
+<div class="code">lst = [[1, 2, 3], [4, 5, [6, 7, 8]], ["a", "b", "c", "d"]]
+
+for i in range(len(lst)):
+    for j in range(len(lst[i])):
+        print(i, j, lst[i][j])
+
+<span class="cm"># rows can be different lengths — that is why the inner loop</span>
+<span class="cm"># uses len(lst[i]), never len(lst[0])</span></div>
+
+ <h3>Exam traps to watch</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:42%;">The trap</th><th>What is actually true</th></tr></thead>
+  <tbody>
+   <tr><td>Using <code>append()</code> when you meant <code>extend()</code></td><td><code>append</code> nests, <code>extend</code> flattens one level. Check the length of the result.</td></tr>
+   <tr class="row-highlight"><td>Writing <code>len(lst[0])</code> for the inner loop of a 2D list</td><td>Use <code>len(lst[i])</code>. Rows are not guaranteed to be equal length.</td></tr>
+   <tr><td>Expecting <code>remove(2)</code> to delete index 2</td><td><code>remove</code> takes a <strong>value</strong>, <code>pop</code> takes an <strong>index</strong>.</td></tr>
+   <tr class="row-highlight"><td>Thinking a function cannot change the caller's list</td><td>It can, and normally does. Slice a copy (<code>lst[:]</code>) if you need to protect it.</td></tr>
+   <tr><td>Assuming <code>lst.index(v)</code> returns every match</td><td>It returns the <strong>first</strong> only, and raises <code>ValueError</code> if there is none.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<!-- TUPLES -->
+<div id="cs-tuple" class="section" data-subject="comp">
+
+ <h2>Tuples</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>The big idea:</strong> a tuple is <strong>ordered</strong> like a list but
+  <strong>immutable</strong> — once built it cannot be changed. Written with
+  <code>( )</code>. Because it is immutable it is <strong>hashable</strong>, which is the
+  reason a tuple can be a dictionary key and a list cannot.
+ </div>
+
+ <h3>Creating — and the singleton trap</h3>
+<div class="code">tup_1 = (1, 2, 3)
+tup_2 = ()        <span class="cm"># empty tuple</span>
+tup_3 = (1,)      <span class="cm"># ONE element — the trailing comma is what makes it a tuple</span>
+
+not_a_tuple = (1) <span class="cm"># this is just the integer 1 in brackets!</span></div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Remember:</strong> <code>(1,)</code> is a tuple of length 1. <code>(1)</code> is
+  the number 1. The comma, not the bracket, makes the tuple.
+ </div>
+
+ <h3>What you can and cannot do</h3>
+<div class="code">print(tup_1[2])   <span class="cm"># 3   — indexing works exactly like a list</span>
+tup_1[0] = 99     <span class="cm"># TypeError — tuples are immutable</span>
+print(tup_1[9])   <span class="cm"># IndexError — index >= len(tup)</span>
+
+<span class="cm"># + and slicing do not modify — they build a NEW tuple</span>
+tup_c = tup_a + tup_b
+tup_d = tup_c[1::2]</div>
+
+ <h3>Comparing tuples with relational operators</h3>
+ <p>Comparison runs <strong>element by element from the left</strong>, and stops at the first
+ difference. Everything after that first difference is ignored.</p>
+<div class="code">tpl1 = (1, 2, 3)
+tpl2 = (1, 2, 3)
+tpl3 = (1, 2, 4)
+
+print(tpl1 == tpl2)   <span class="cm"># True</span>
+print(tpl1 &lt; tpl3)    <span class="cm"># True  — first difference is 3 < 4</span>
+
+tpl4 = ("abc", "def")
+tpl5 = ("abc", "dee")
+print(tpl4 &gt; tpl5)    <span class="cm"># True  — "def" > "dee" on the third letter</span></div>
+
+ <h3>Traversing — identical to a list</h3>
+<div class="code">fruits = ("apple", "orange", "banana", "kiwi")
+
+index = 0
+while index &lt; len(fruits):
+    print(fruits[index])
+    index += 1
+
+for i in range(len(fruits)):
+    print(fruits[i])
+
+for fruit in fruits:
+    print(fruit)</div>
+
+ <h3>List vs tuple — the comparison to reproduce</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:28%;">Property</th><th style="width:36%;">List</th><th>Tuple</th></tr></thead>
+  <tbody>
+   <tr><td><strong>Brackets</strong></td><td><code>[ ]</code></td><td><code>( )</code></td></tr>
+   <tr class="row-highlight"><td><strong>Ordered</strong></td><td>Yes</td><td>Yes</td></tr>
+   <tr><td><strong>Mutable</strong></td><td><strong>Yes</strong></td><td><strong>No</strong></td></tr>
+   <tr class="row-highlight"><td><strong>Duplicates</strong></td><td>Allowed</td><td>Allowed</td></tr>
+   <tr><td><strong>Hashable</strong> (usable as a dict key / set element)</td><td>No</td><td>Yes</td></tr>
+   <tr class="row-highlight"><td><strong>Methods</strong></td><td>append, extend, remove, pop, insert, index…</td><td>index only (plus <code>len()</code>)</td></tr>
+  </tbody>
+ </table>
+
+ <h3>Exam traps to watch</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:42%;">The trap</th><th>What is actually true</th></tr></thead>
+  <tbody>
+   <tr><td>Writing <code>(5)</code> for a one-element tuple</td><td>That is the integer 5. You need <code>(5,)</code>.</td></tr>
+   <tr class="row-highlight"><td>Saying "tuples cannot be changed, so <code>+</code> fails"</td><td><code>+</code> works fine — it builds a <strong>new</strong> tuple and leaves both originals alone.</td></tr>
+   <tr><td>Expecting <code>tup.append(...)</code></td><td>Tuples have no <code>append</code>. Only <code>index()</code> and <code>len()</code>.</td></tr>
+   <tr class="row-highlight"><td>Comparing tuples of different lengths carelessly</td><td>If one is a prefix of the other, the shorter one is smaller: <code>(1,2) &lt; (1,2,0)</code>.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<!-- DICTIONARIES -->
+<div id="cs-dict" class="section" data-subject="comp">
+
+ <h2>Dictionaries</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>The big idea:</strong> a dictionary maps <strong>unique keys</strong> to values.
+  Written with <code>{ }</code>. It is <strong>mutable</strong>, and since Python 3.7 it is
+  <strong>ordered</strong> (in 3.6 and earlier it was unordered — say the version if you are
+  asked).
+ </div>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>Keys must be hashable</strong>, which in practice means immutable.<br>
+  Immutable (usable as keys): <code>int, float, bool, string, tuple</code><br>
+  Mutable (NOT usable as keys): <code>list, dict, set</code>
+ </div>
+
+ <h3>Defining and accessing</h3>
+<div class="code">my_dict = {
+    "name": "Xiao Ming",
+    "class": "3A3",
+    "year": 2023,
+}
+
+print(my_dict["name"])           <span class="cm"># "Xiao Ming"</span>
+print(my_dict.get("name"))       <span class="cm"># "Xiao Ming"</span>
+
+print(my_dict["index_num"])      <span class="cm"># KeyError — crashes the program</span>
+print(my_dict.get("index_num"))  <span class="cm"># None — no error</span></div>
+
+ <div class="sol-grid">
+  <div class="sol-card soluble-card">
+   <h4>Square brackets <code>[ ]</code></h4>
+   <p>Fast and direct, but <strong>raises <code>KeyError</code></strong> if the key is missing.
+   Use it when the key is guaranteed to exist.</p>
+  </div>
+  <div class="sol-card except-card">
+   <h4><code>.get()</code></h4>
+   <p>Returns <strong><code>None</code></strong> instead of raising when the key is missing.
+   Use it when the key might not be there.</p>
+  </div>
+ </div>
+
+ <h3>Checking, inserting, updating, removing</h3>
+<div class="code">if "name" in my_dict:            <span class="cm"># `in` checks KEYS, not values</span>
+    print("valid key")
+
+my_dict["hobby"] = "Computer Games"   <span class="cm"># key absent  -> INSERT</span>
+my_dict["hobby"] = "Badminton"        <span class="cm"># key present -> UPDATE</span>
+
+my_dict.pop("year")              <span class="cm"># remove one key/value pair</span>
+my_dict.clear()                  <span class="cm"># remove everything</span>
+print(len(my_dict))              <span class="cm"># number of key/value pairs</span></div>
+
+ <h3>keys(), values(), items()</h3>
+<div class="code">for key in my_dict:              <span class="cm"># looping a dict gives you its KEYS</span>
+    print(key, ":", my_dict[key])
+
+for key in my_dict.keys():       <span class="cm"># same thing, said explicitly</span>
+    print(key)
+
+for value in my_dict.values():
+    print(value)
+
+for pair in my_dict.items():     <span class="cm"># each pair is a (key, value) TUPLE</span>
+    print(pair)</div>
+
+ <div class="worked">
+  <div class="worked-head">Worked example — counting with a dictionary <span class="badge badge-star">S02a exercise</span></div>
+  <p>Given a 2D list where each row is <code>[name, subject, subject, subject]</code>, count how
+  many students take each subject.</p>
+<div class="code">students_data = [
+    ["John", "Math", "English", "Science"],
+    ["Jane", "Chinese", "Math", "History"],
+    ["Alex", "English", "Chinese", "Math"],
+]
+
+my_dict = {}
+for stu in students_data:
+    for subj in stu[1:]:         <span class="cm"># stu[1:] skips the name</span>
+        if subj not in my_dict:
+            my_dict[subj] = 1    <span class="cm"># first time seen — start the count</span>
+        else:
+            my_dict[subj] += 1   <span class="cm"># seen before — increment</span>
+
+print(my_dict)  <span class="cm"># {'Math': 3, 'English': 2, 'Science': 1, 'Chinese': 2, 'History': 1}</span></div>
+  <div class="step"><strong>The pattern to memorise:</strong> <em>if the key is not in the
+  dictionary, create it with the starting value; otherwise update it.</em> Every counting or
+  tallying question is this shape.</div>
+ </div>
+
+ <h3>Exam traps to watch</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:42%;">The trap</th><th>What is actually true</th></tr></thead>
+  <tbody>
+   <tr><td>Thinking <code>"x" in my_dict</code> searches the values</td><td>It searches the <strong>keys</strong>. For values use <code>in my_dict.values()</code>.</td></tr>
+   <tr class="row-highlight"><td>Using a list as a key</td><td><code>TypeError: unhashable type</code>. Convert it to a tuple first.</td></tr>
+   <tr><td>Using <code>[ ]</code> on a key that might be missing</td><td><code>KeyError</code> terminates the program. Use <code>.get()</code> or guard with <code>in</code>.</td></tr>
+   <tr class="row-highlight"><td>Forgetting to initialise the count</td><td><code>my_dict[subj] += 1</code> on an unseen key raises <code>KeyError</code>. The <code>if not in</code> branch exists for exactly this.</td></tr>
+   <tr><td>Saying dictionaries are unordered</td><td>True only for Python ≤ 3.6. From 3.7 they preserve insertion order.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<!-- SETS -->
+<div id="cs-set" class="section" data-subject="comp">
+
+ <h2>Sets</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>The big idea:</strong> a set is an <strong>unordered</strong> collection of
+  <strong>unique</strong> items. Written with <code>{ }</code>. Each <em>element</em> must be
+  immutable, but <strong>the set itself is mutable</strong> — you can add and remove. No
+  order means <strong>no indexing</strong>.
+ </div>
+
+ <h3>Defining, membership, looping</h3>
+<div class="code">my_set = {1, 2, 3, 4, 5}
+
+print(1 in my_set)   <span class="cm"># True</span>
+print(6 in my_set)   <span class="cm"># False</span>
+
+print(my_set[0])     <span class="cm"># TypeError — sets are not subscriptable</span>
+
+for item in my_set:  <span class="cm"># looping works, but the order is not guaranteed</span>
+    print(item)</div>
+
+ <h3>add() / update() / remove() / discard()</h3>
+<div class="code">my_set.add(6)              <span class="cm"># insert ONE item</span>
+my_set.update([7, 8, 9])   <span class="cm"># insert EVERY item of an iterable</span>
+
+my_set.remove(1)           <span class="cm"># removes 1 …</span>
+my_set.remove(1)           <span class="cm"># … KeyError the second time</span>
+
+my_set.discard(2)          <span class="cm"># removes 2 …</span>
+my_set.discard(2)          <span class="cm"># … and stays silent the second time</span></div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>remove() vs discard():</strong> both delete the item, but <code>remove()</code>
+  <strong>raises <code>KeyError</code></strong> if it was not there and <code>discard()</code>
+  does not. Same relationship as <code>[ ]</code> vs <code>.get()</code> on a dictionary.
+ </div>
+
+ <h3>Set operations — operator and method both work</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:24%;">Operation</th><th style="width:14%;">Operator</th><th style="width:30%;">Method</th><th>Meaning</th></tr></thead>
+  <tbody>
+   <tr><td><strong>Union</strong></td><td><code>a | b</code></td><td><code>a.union(b)</code></td><td>In <strong>either</strong> set</td></tr>
+   <tr class="row-highlight"><td><strong>Intersection</strong></td><td><code>a &amp; b</code></td><td><code>a.intersection(b)</code></td><td>In <strong>both</strong> sets</td></tr>
+   <tr><td><strong>Difference</strong></td><td><code>a - b</code></td><td><code>a.difference(b)</code></td><td>In <strong>a but not b</strong></td></tr>
+   <tr class="row-highlight"><td><strong>Symmetric difference</strong></td><td><code>a ^ b</code></td><td><code>a.symmetric_difference(b)</code></td><td>In either, <strong>but not both</strong></td></tr>
+  </tbody>
+ </table>
+
+ <h3>The other methods</h3>
+<div class="code">print(len(my_set))                 <span class="cm"># number of elements</span>
+
+set_a = {1, 2, 3, 4, 5}
+set_b = {1, 2, 3}
+
+print(set_b.issubset(set_a))       <span class="cm"># True  — every b is inside a</span>
+print(set_a.issuperset(set_b))     <span class="cm"># True  — a contains all of b</span>
+print(set_a.isdisjoint({6, 7}))    <span class="cm"># True  — no elements in common</span>
+set_a.clear()                      <span class="cm"># empties the set</span>
+
+print({1,3,5} == {5,3,1})          <span class="cm"># True — order is irrelevant to equality</span></div>
+
+ <div class="worked">
+  <div class="worked-head">Worked example — unique subjects <span class="badge badge-star">S02b exercise</span></div>
+  <p>Find the set of unique subjects across all students.</p>
+<div class="code">def unique_subj(data):
+    unique = set()               <span class="cm"># set() — NOT {} , which makes an empty dict!</span>
+    for row in data:
+        unique.update(row[1:])   <span class="cm"># update() adds every subject in the row</span>
+    return unique
+
+print(unique_subj(students_data))
+<span class="cm"># {'Chinese', 'History', 'Math', 'Science', 'English'}</span></div>
+  <div class="step"><strong>Why a set is the right tool:</strong> duplicates are discarded
+  automatically, so there is no need to check whether you have seen the subject before.</div>
+ </div>
+
+ <h3>Exam traps to watch</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:42%;">The trap</th><th>What is actually true</th></tr></thead>
+  <tbody>
+   <tr><td>Writing <code>{}</code> for an empty set</td><td><code>{}</code> is an empty <strong>dictionary</strong>. An empty set is <code>set()</code>.</td></tr>
+   <tr class="row-highlight"><td>Indexing a set</td><td>Sets are unordered, so <code>my_set[0]</code> is a <code>TypeError</code>.</td></tr>
+   <tr><td>Putting a list inside a set</td><td>Elements must be immutable. Use a tuple.</td></tr>
+   <tr class="row-highlight"><td>Using <code>add()</code> when you meant <code>update()</code></td><td><code>add</code> inserts the whole object as one element; <code>update</code> inserts each element of it.</td></tr>
+   <tr><td>Expecting a printed set to keep your insertion order</td><td>It will not. Never rely on set ordering in an answer.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<!-- EQUALITY & IDENTITY -->
+<div id="cs-identity" class="section" data-subject="comp">
+
+ <h2>Equality, Membership &amp; Identity</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>The big idea:</strong> <code>==</code> asks "<em>do these hold the same value?</em>".
+  <code>is</code> asks "<em>are these the same object in memory?</em>". Two variables can be
+  equal without being identical. <code>id()</code> prints the memory identity so you can see
+  which is which.
+ </div>
+
+ <h3>Equality and membership</h3>
+<div class="code">string_1 = "apple orange banana kiwi"
+list_1   = ["apple", "orange", "banana", "kiwi"]
+tup_1    = ("apple", "orange", "banana", "kiwi")
+
+print("banana" in string_1)   <span class="cm"># True — substring of the string</span>
+print("banana" in list_1)     <span class="cm"># True — an element of the list</span>
+print("banana" in tup_1)      <span class="cm"># True — an element of the tuple</span>
+print(list_1[1] == tup_1[1])  <span class="cm"># True — a list item can equal a tuple item</span></div>
+
+ <h3>Identity on creation — it depends on the type</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:30%;">Written twice as…</th><th style="width:16%;"><code>==</code></th><th style="width:16%;"><code>is</code></th><th>Why</th></tr></thead>
+  <tbody>
+   <tr><td><code>a = 257</code> / <code>b = 257</code></td><td>True</td><td><strong>False</strong></td><td>Outside the small-integer cache, each literal makes its own object</td></tr>
+   <tr class="row-highlight"><td><code>a = 10</code> / <code>b = 10</code></td><td>True</td><td><strong>True</strong></td><td>Small integers are pre-made and shared by Python</td></tr>
+   <tr><td><code>a = 10.0</code> / <code>b = 10.0</code></td><td>True</td><td><strong>False</strong></td><td>Floats are not cached</td></tr>
+   <tr class="row-highlight"><td><code>a = "hello world"</code> / <code>b = "hello world"</code></td><td>True</td><td><strong>True</strong></td><td>Identical string literals are interned</td></tr>
+   <tr><td><code>a = "hello world"</code> / <code>c = " ".join([...])</code></td><td>True</td><td><strong>False</strong></td><td>A string built at run time is a new object</td></tr>
+   <tr class="row-highlight"><td><code>a = [1,2,3]</code> / <code>b = [1,2,3]</code></td><td>True</td><td><strong>False</strong></td><td>Every list literal builds a fresh list</td></tr>
+  </tbody>
+ </table>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>The safe generalisation:</strong> equal values, different objects — unless Python
+  happens to cache them. Never write <code>is</code> when you mean <code>==</code>. Reserve
+  <code>is</code> for <code>x is None</code>.
+ </div>
+
+ <h3>Identity on modification — rebinding vs mutating</h3>
+ <div class="sol-grid">
+  <div class="sol-card except-card">
+   <h4>Immutable → new id every time</h4>
+<div class="code">a = 10
+a += 3       <span class="cm"># id CHANGES</span>
+
+a = 10.0
+a += 3.0     <span class="cm"># id CHANGES</span>
+
+a = "haha"
+a = a + "hehe"
+<span class="cm"># id CHANGES</span></div>
+   <p>An int, float or string can never be edited in place, so the name is
+   <strong>rebound</strong> to a brand new object.</p>
+  </div>
+  <div class="sol-card soluble-card">
+   <h4>Lists → it depends how you write it</h4>
+<div class="code">a = [1, 2, 3]
+a = a + [4, 5, 6]   <span class="cm"># id CHANGES (new list)</span>
+a = a[1:]           <span class="cm"># id CHANGES (slice = new list)</span>
+
+a += [4, 5, 6]      <span class="cm"># id SAME  (in place)</span>
+a.extend([4, 5, 6]) <span class="cm"># id SAME  (in place)</span>
+a.append(4)         <span class="cm"># id SAME  (in place)</span></div>
+   <p>For a list, <code>+</code> and slicing <strong>build</strong>; <code>+=</code>,
+   <code>extend</code> and <code>append</code> <strong>mutate</strong>.</p>
+  </div>
+ </div>
+
+ <div class="eq-box" style="margin:22px 0;">
+  <strong>a = a + [x]</strong> makes a new list &nbsp;·&nbsp;
+  <strong>a += [x]</strong> changes the one you already have
+ </div>
+
+ <h3>Initialising a 2D array — the classic disaster</h3>
+ <p>This is the single most-tested consequence of identity in the whole topic.</p>
+<p class="code-cap">✗ WRONG</p><div class="code">array_length = 5
+
+<span class="cm"># Something we should NEVER do</span>
+new_2d_array = [[None] * array_length] * array_length
+new_2d_array[0][0] = "haha"
+print(new_2d_array)
+<span class="cm"># EVERY row shows 'haha' — the outer * copied the SAME row</span></div>
+<p class="code-cap">✓ CORRECT</p><div class="code"><span class="cm"># Fix 1 — build each row separately</span>
+new_2d = []
+for _ in range(5):
+    row = []
+    for _ in range(5):
+        row.append(None)
+    new_2d.append(row)
+
+<span class="cm"># Fix 2 — the same thing as a comprehension (recommended)</span>
+new_2d_array = [[None for _ in range(array_length)]
+                for _ in range(array_length)]</div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Why it breaks:</strong> <code>[row] * 5</code> does not copy the row five times — it
+  stores <strong>five references to one row</strong>. All five have the same <code>id()</code>,
+  so writing through any one of them is visible through all of them. Note that
+  <code>[None] * 5</code> is perfectly safe: <code>None</code> is immutable, so sharing it
+  cannot hurt. The bug only appears once the repeated element is <strong>mutable</strong>.
+ </div>
+
+ <h3>Exam traps to watch</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:42%;">The trap</th><th>What is actually true</th></tr></thead>
+  <tbody>
+   <tr><td>Using <code>is</code> to compare values</td><td>It compares identity. <code>[1,2] is [1,2]</code> is <code>False</code> even though they are equal.</td></tr>
+   <tr class="row-highlight"><td>Concluding "<code>is</code> works for numbers" from <code>a = 10</code></td><td>That only worked because small ints are cached. Try 257 and it fails.</td></tr>
+   <tr><td>Building a grid with <code>[[0]*n]*n</code></td><td>All rows are the same object. Use a nested comprehension.</td></tr>
+   <tr class="row-highlight"><td>Thinking <code>a += [x]</code> and <code>a = a + [x]</code> are the same</td><td>Same result, different object. Only the first keeps the original <code>id()</code> — and so only the first is visible to other names bound to that list.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<!-- FILE OPERATIONS -->
+<div id="cs-files" class="section" data-subject="comp">
+
+ <h2>File Operations</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>Syllabus 2.3.4:</strong> store data in and retrieve data from serial and sequential
+  text files. Everything below is one of three moves — <strong>open</strong> the file, do
+  something with the <strong>text</strong>, let it <strong>close</strong>.
+ </div>
+
+ <h3>File paths</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:22%;">Notation</th><th style="width:34%;">Means</th><th>Example</th></tr></thead>
+  <tbody>
+   <tr><td><strong>Absolute path</strong></td><td>Full location from the root / drive</td><td><code>C:\Users\Student\Documents\file.txt</code></td></tr>
+   <tr class="row-highlight"><td><strong><code>.</code></strong></td><td>Current folder (usually omitted)</td><td><code>./file.txt</code> — same as <code>file.txt</code></td></tr>
+   <tr><td><strong>child folder</strong></td><td>Down one level</td><td><code>data_files/file_01.txt</code></td></tr>
+   <tr class="row-highlight"><td><strong><code>..</code></strong></td><td>Parent folder, one level up; chainable</td><td><code>../other/file.txt</code>, <code>../../file.txt</code></td></tr>
+   <tr><td><strong>Separator</strong></td><td>Windows uses <code>\</code>, but Python accepts <code>/</code> everywhere</td><td>Always write <code>/</code> — it is cross-platform</td></tr>
+  </tbody>
+ </table>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Every "file not found" in this tutorial is a path mistake, not a code mistake:</strong>
+  omitting the folder (<code>file_01.txt</code> when it lives in <code>data_files/</code>),
+  misspelling the folder (<code>files/</code> instead of <code>data_files/</code>), skipping an
+  intermediate folder (<code>raw_data/</code> instead of <code>static/raw_data/</code>), or
+  using a backslash on Mac/Linux.
+ </div>
+
+ <h3>Access modes</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:12%;">Mode</th><th style="width:30%;">Opens for</th><th>Behaviour</th></tr></thead>
+  <tbody>
+   <tr><td><strong>r</strong></td><td>Reading only <em>(the default)</em></td><td>Pointer at the beginning. Errors if the file does not exist.</td></tr>
+   <tr class="row-highlight"><td><strong>rb</strong></td><td>Reading only, binary</td><td>Pointer at the beginning.</td></tr>
+   <tr><td><strong>r+</strong></td><td>Reading <em>and</em> writing</td><td>Pointer at the beginning.</td></tr>
+   <tr class="row-highlight"><td><strong>w</strong></td><td>Writing only</td><td><strong>Overwrites everything</strong> if the file exists; creates it if not.</td></tr>
+   <tr><td><strong>a</strong></td><td>Appending</td><td>Pointer at the <strong>end</strong>; existing content is kept. Creates the file if not present.</td></tr>
+  </tbody>
+ </table>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>The destructive one is <code>"w"</code>.</strong> Opening an existing file with
+  <code>"w"</code> empties it the moment it opens — before you have written a single thing.
+  If you meant to add to a file, the mode is <code>"a"</code>.
+ </div>
+
+ <h3>Two ways to open — and why one is preferred</h3>
+ <div class="sol-grid">
+  <div class="sol-card except-card">
+   <h4>Method 1 — open() / close()</h4>
+<div class="code">f = open("data_files/hello.txt", "r")
+print(f.read())
+f.close()   <span class="cm"># you MUST remember this</span></div>
+   <p>Forget <code>close()</code> and the file stays open.</p>
+  </div>
+  <div class="sol-card soluble-card">
+   <h4>Method 2 — with open() <em>(recommended)</em></h4>
+<div class="code">with open("data_files/hello.txt", "r") as f:
+    print(f.read())
+<span class="cm"># closed automatically at the end of the block</span></div>
+   <p>The <code>with</code> statement closes the file for you, even if an error occurs.</p>
+  </div>
+ </div>
+
+ <h3>Reading — read() vs readline() vs looping the file</h3>
+<div class="code"><span class="cm"># read() gives ONE string containing the whole file</span>
+with open("data_files/file_01.txt", "r") as f:
+    content = f.read()
+data = content.split("\n")
+<span class="cm"># content is '12\n32\n134\n...' — split turns it into a list</span></div>
+<div class="code"><span class="cm"># readline() with a while loop</span>
+with open("data_files/file_01.txt", "r") as f:
+    line = f.readline()
+    data = []
+    while line:              <span class="cm"># an empty string means end of file</span>
+        data.append(line)
+        line = f.readline()</div>
+<div class="code"><span class="cm"># looping the file object directly — the neatest form</span>
+with open("data_files/file_01.txt", "r") as f:
+    data = []
+    for line in f:
+        data.append(line)</div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Which is better?</strong> <code>read()</code> is convenient — one string, then
+  <code>split()</code>. But it loads the <strong>entire file into memory</strong>, so on a file
+  larger than the machine's memory it fails. <code>readline()</code> (or looping the file) reads
+  one line at a time, so <strong>the tutorial recommends the loop form</strong>.
+ </div>
+
+ <h3>Processing what you read — stripping the newline</h3>
+ <p>Every line you read back still carries its trailing <code>"\n"</code>. Removing it is a
+ step in almost every file question.</p>
+<div class="code">processed_strings = []
+for raw_s in raw_data:
+    if raw_s != "\n":               <span class="cm"># skip blank lines entirely</span>
+        if raw_s[-1] == "\n":       <span class="cm"># last character is a newline?</span>
+            processed_strings.append(raw_s[:-1])   <span class="cm"># drop it</span>
+        else:
+            processed_strings.append(raw_s)        <span class="cm"># last line may have none</span></div>
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Why the <code>else</code> matters:</strong> the final line of a file often has no
+  trailing newline. Slicing <code>[:-1]</code> unconditionally would eat a real character off
+  the end of it. <code>.strip()</code> is the shorter alternative and also removes stray spaces.
+ </div>
+
+ <h3>Writing and appending</h3>
+<div class="code"><span class="cm"># "w" — creates, or wipes and recreates</span>
+with open("data_files/file_04.txt", "w") as f:
+    f.write("Hello World!\n")     <span class="cm"># write() does NOT add a newline for you</span>
+    f.write("My name is Xiao Ming")
+
+<span class="cm"># "a" — adds to the end, keeps what is already there</span>
+results = [['Xiao Ming', '20J13', '89'], ['Xiao Hong', '20J13', '76']]
+
+with open("data_files/file_04.txt", "a") as f:
+    for personal_result in results:
+        for s in personal_result:
+            f.write(s + ", ")
+        f.write("\n")</div>
+
+ <div class="worked">
+  <div class="worked-head">Small challenge — the trailing comma <span class="badge badge-star">P08 §3.2</span></div>
+  <p>The loop above leaves <code>", "</code> dangling at the end of every line. Build the line
+  first, chop the last two characters, then write.</p>
+<div class="code">with open("data_files/file_04.txt", "a") as f:
+    output = ''
+    for row in results:
+        for item in row:
+            output += item + ", "
+        output = output[:-2] + "\n"   <span class="cm"># remove the final ", " and end the line</span>
+    f.write(output)</div>
+ </div>
+
+ <h3>Exam traps to watch</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:42%;">The trap</th><th>What is actually true</th></tr></thead>
+  <tbody>
+   <tr><td>Using <code>"w"</code> to add to a file</td><td><code>"w"</code> destroys the existing contents. Appending is <code>"a"</code>.</td></tr>
+   <tr class="row-highlight"><td>Forgetting <code>f.close()</code> with method 1</td><td>Use <code>with open(...)</code> and the problem cannot happen.</td></tr>
+   <tr><td>Forgetting the <code>"\n"</code> in <code>write()</code></td><td><code>write()</code> adds nothing. Everything lands on one line.</td></tr>
+   <tr class="row-highlight"><td>Comparing a read line to <code>"12"</code> and getting <code>False</code></td><td>The line is <code>"12\n"</code>. Strip it before comparing or converting.</td></tr>
+   <tr><td>Reading again after the <code>with</code> block ends</td><td>The file is already closed — <code>ValueError</code>.</td></tr>
+   <tr class="row-highlight"><td>Using <code>read()</code> on a very large file</td><td>It loads the whole thing into memory. Loop the lines instead.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<!-- CSV & ERRORS -->
+<div id="cs-csv" class="section" data-subject="comp">
+
+ <h2>CSV, Error Handling &amp; os.path</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>Three practical tools</strong> that turn a raw text file into usable data and stop a
+  missing file from killing the program.
+ </div>
+
+ <h3>Splitting a CSV by hand</h3>
+ <p>A CSV is just a text file whose lines are separated by commas. Once the newline is gone,
+ <code>split(",")</code> turns each line into a list.</p>
+<div class="code">with open("data_files/file_03.csv", "r") as f:
+    raw_data = f.read()
+raw_list = raw_data.split("\n")
+
+processed_list = []
+for row in raw_list:
+    if len(row) &gt; 0:                     <span class="cm"># skip blank lines</span>
+        temp = row.split(",")
+        for i in range(len(temp)):
+            temp[i] = temp[i].strip()    <span class="cm"># strip() kills stray spaces</span>
+        processed_list.append(temp)</div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Why <code>.strip()</code> and not <code>split(", ")</code>:</strong> splitting on
+  <code>", "</code> only works if every file uses exactly one space after each comma.
+  <code>file_03s.csv</code> does not. Split on the comma alone and <code>strip()</code> each
+  field, and both formats work.
+ </div>
+
+ <h3>Separating the header row</h3>
+<div class="code">header_string = processed_strings.pop(0)   <span class="cm"># pop(0) removes AND returns row 0</span>
+headers = header_string.split(", ")
+
+processed_data = []
+for s in processed_strings:               <span class="cm"># the header is already gone</span>
+    processed_data.append(s.split(", "))</div>
+
+ <h3>The <code>csv</code> library — for well-formatted files</h3>
+<div class="code">import csv
+
+headers = []
+processed_data = []
+
+with open(filename, 'r') as csvfile:
+    csvreader = csv.reader(csvfile)      <span class="cm"># a reader object, not a list</span>
+    headers = next(csvreader)            <span class="cm"># next() pulls the FIRST row off = the header</span>
+    for row in csvreader:                <span class="cm"># the loop continues from row 2</span>
+        processed_data.append(row)</div>
+ <div class="tip-box" style="margin:18px 0;">
+  <code>csv.reader</code> splits each row for you and removes the newline — no
+  <code>strip()</code> needed. The catch is in the name: it is for <strong>well-formatted</strong>
+  CSVs. It also handles commas inside quoted fields, which hand-rolled <code>split(",")</code>
+  does not.
+ </div>
+
+ <h3>try–except — surviving a missing file</h3>
+<div class="code">try:
+    with open("somefile.txt") as f:
+        print(f.read())
+except IOError:
+    print("File not found or path is incorrect")</div>
+ <p>Without the <code>try</code>, an <code>IOError</code> ends the program on the spot. With it,
+ the program reports the problem and carries on.</p>
+
+ <h3>os.path — building a path that always works</h3>
+ <p>In a large project, the same relative path resolves differently depending on which folder the
+ program was launched from. Building an <strong>absolute</strong> path from the file's own
+ location removes the guesswork.</p>
+<div class="code">import os
+
+<span class="cm"># in a normal .py file:</span>
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+<span class="cm"># in a Jupyter notebook, use "" instead of __file__:</span>
+<span class="cm"># basedir = os.path.abspath(os.path.dirname(""))</span>
+
+data_file_name = os.path.join(basedir, "static/raw_data/my_data.txt")
+
+def read_data_file(file_name):
+    try:
+        with open(file_name) as f:
+            return f.read()
+    except IOError:
+        print("File not found or path is incorrect.")
+
+print(read_data_file(data_file_name))</div>
+
+ <table class="info-table">
+  <thead><tr><th style="width:34%;">Call</th><th>Gives you</th></tr></thead>
+  <tbody>
+   <tr><td><code>os.path.dirname(p)</code></td><td>The folder part of a path</td></tr>
+   <tr class="row-highlight"><td><code>os.path.abspath(p)</code></td><td>The full absolute version of a path</td></tr>
+   <tr><td><code>os.path.join(a, b)</code></td><td><code>a</code> and <code>b</code> joined with the correct separator for the OS</td></tr>
+   <tr class="row-highlight"><td><code>os.path.exists(p)</code></td><td><code>True</code> if the file or folder is there</td></tr>
+   <tr><td><code>os.makedirs(p)</code></td><td>Creates the folder, including any missing parents</td></tr>
+  </tbody>
+ </table>
+
+ <h3>Exam traps to watch</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:42%;">The trap</th><th>What is actually true</th></tr></thead>
+  <tbody>
+   <tr><td>Splitting on <code>", "</code> and losing fields</td><td>Split on <code>","</code>, then <code>.strip()</code> each field. Works with or without the space.</td></tr>
+   <tr class="row-highlight"><td>Treating the header as data</td><td><code>pop(0)</code> or <code>next(csvreader)</code> takes it off first.</td></tr>
+   <tr><td>Forgetting numbers from a file are strings</td><td><code>"89"</code> is text. <code>int()</code> it before doing arithmetic.</td></tr>
+   <tr class="row-highlight"><td>Catching the wrong exception</td><td>The tutorial catches <code>IOError</code> for file problems. <code>FileNotFoundError</code> is a more specific subclass of it.</td></tr>
+   <tr><td>Hard-coding an absolute path from your own machine</td><td>It breaks on every other computer. Build it with <code>os.path.join</code> from <code>__file__</code>.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<!-- SIMPLE SORTS -->
+<div id="cs-sorts-simple" class="section" data-subject="comp">
+
+ <h2>Simple Sorts</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>Syllabus 1.2.1 / 1.2.2:</strong> implement sort algorithms, and use examples to
+  explain them. Simple sorts are efficient on small data and poor on large data. All three
+  below are <strong>in-place</strong>, so all three have space complexity <code>O(1)</code>.
+ </div>
+
+ <h3>What sorting means</h3>
+ <p>Putting the elements of a list into a defined order. It works on anything comparable, not
+ just numbers — sorting <code>["cat","boy","an","egg"]</code> gives
+ <code>["an","boy","cat","egg"]</code>.</p>
+
+ <h3>Bubble Sort</h3>
+ <p>Also called <em>sinking sort</em>. Step through the list, compare <strong>each pair of
+ adjacent items</strong>, and swap them if they are in the wrong order. Repeat until a pass
+ causes no swaps. The name comes from larger elements "bubbling" up to the end on each pass.</p>
+
+ <div class="eq-box" style="margin:16px 0;">
+  Outer loop = <strong>which pass</strong> you are on &nbsp;·&nbsp;
+  Inner loop = <strong>how far along</strong> that pass has got &nbsp;·&nbsp;
+  after pass <em>i</em>, the last <em>i</em> elements are already correct
+ </div>
+
+<p class="code-cap">Bubble sort — the plain version</p><div class="code">def bubble_sort(lst):
+    for i in range(len(lst) - 1):          <span class="cm"># N-1 passes for N numbers</span>
+        for j in range(len(lst)-i-1):      <span class="cm"># -i skips the sorted tail</span>
+            if lst[j] &gt; lst[j+1]:
+                temp = lst[j]              <span class="cm"># swap via a temp variable</span>
+                lst[j] = lst[j+1]
+                lst[j+1] = temp
+    return lst</div>
+
+ <p>The <code>-i-1</code> is the part people lose marks on. After pass <code>i</code> the last
+ <code>i</code> elements are in their final place, so the inner loop only needs to reach
+ <code>len(lst)-i-1</code>. The extra <code>-1</code> is because <code>j</code> compares against
+ <code>j+1</code> and must not run off the end.</p>
+
+ <h3>Improved Bubble Sort</h3>
+ <p>If a full pass makes <strong>no swaps at all</strong>, the list is already sorted and every
+ remaining pass is wasted work. A boolean flag lets the algorithm stop early.</p>
+
+<p class="code-cap">Bubble sort — the improved version</p><div class="code">def imp_bsort(lst):
+    for i in range(len(lst)-1):
+        swapped = False                    <span class="cm"># reset at the START of every pass</span>
+        for j in range(len(lst)-i-1):
+            if lst[j] &gt; lst[j+1]:
+                lst[j], lst[j+1] = lst[j+1], lst[j]   <span class="cm"># tuple swap</span>
+                swapped = True
+        if not swapped:                    <span class="cm"># a clean pass means we are done</span>
+            break
+    return lst</div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>This is the difference that changes the best case.</strong> The plain version always
+  runs all <code>N-1</code> passes, so its best case is still <code>O(n²)</code>. The improved
+  version finishes an already-sorted list in <strong>one pass</strong>, giving a best case of
+  <code>O(n)</code>. Worst and average are <code>O(n²)</code> for both.
+ </div>
+
+ <h3>Insertion Sort</h3>
+ <p>Builds the sorted list <strong>one item at a time</strong>. Take the next element, and shift
+ every larger element in the sorted part one place right until the gap is in the correct spot.
+ Like dealing cards into a hand you already hold in order.</p>
+
+<div class="code">def insertion_sort(lst):
+    for i in range(1, len(lst)):       <span class="cm"># start at 1 — element 0 is 'already sorted'</span>
+        temp = lst[i]                  <span class="cm"># hold the element being inserted</span>
+        j = i - 1                      <span class="cm"># last index of the sorted part</span>
+        while j &gt;= 0 and lst[j] &gt; temp:
+            lst[j+1] = lst[j]          <span class="cm"># shift right</span>
+            j -= 1
+        lst[j+1] = temp                <span class="cm"># drop it into the gap</span>
+    return lst</div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Why <code>lst[j+1] = temp</code> and not <code>lst[j] = temp</code>:</strong> the
+  <code>while</code> loop only exits <em>after</em> <code>j</code> has been decremented one step
+  too far (or has hit −1). The correct slot is always the one just to its right. The
+  <code>j &gt;= 0</code> test must come <strong>first</strong> in the condition, or a
+  fully-shifted element causes an <code>IndexError</code> on <code>lst[-1]</code>.
+ </div>
+
+ <h3>Selection Sort</h3>
+ <p>Find the <strong>smallest</strong> element in the unsorted part, swap it into the leftmost
+ unsorted position, then move the boundary one place right.</p>
+
+<div class="code">def selection(lst):
+    for i in range(len(lst)):
+        minIndex = i                       <span class="cm"># assume the first unsorted one is smallest</span>
+        for j in range(i+1, len(lst)):     <span class="cm"># search only the UNSORTED part</span>
+            if lst[j] &lt; lst[minIndex]:
+                minIndex = j               <span class="cm"># track the INDEX, not the value</span>
+        lst[i], lst[minIndex] = lst[minIndex], lst[i]
+    return lst</div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Selection sort has no best case.</strong> The inner loop always scans the whole
+  unsorted section to be certain it has found the minimum, so an already-sorted list costs
+  exactly as much as a reversed one — <code>O(n²)</code> every time. It does, however, make the
+  fewest <strong>swaps</strong> of the three: at most one per pass.
+ </div>
+
+ <h3>Telling the three apart in an exam</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:22%;">Algorithm</th><th style="width:40%;">Give-away in the code</th><th>Give-away in a trace</th></tr></thead>
+  <tbody>
+   <tr><td><strong>Bubble</strong></td><td>Compares <code>lst[j]</code> with <code>lst[j+1]</code> — <strong>adjacent pairs</strong></td><td>The largest value reaches the far right after pass 1</td></tr>
+   <tr class="row-highlight"><td><strong>Insertion</strong></td><td>A <code>while</code> loop inside a <code>for</code>, plus a <code>temp</code></td><td>The <strong>left</strong> end is sorted early, but not with final values</td></tr>
+   <tr><td><strong>Selection</strong></td><td>Tracks a <code>minIndex</code>; exactly one swap per pass</td><td>The <strong>left</strong> end is sorted and those values never move again</td></tr>
+  </tbody>
+ </table>
+
+ <p style="margin-top:18px;"><strong>Ready to write them from memory?</strong> Go to the
+ <em>Memorise the Code</em> page — every one of these is drilled there with the key tokens
+ blanked out.</p>
+</div>
+
+<!-- EFFICIENT SORTS -->
+<div id="cs-sorts-efficient" class="section" data-subject="comp">
+
+ <h2>Efficient Sorts</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>Syllabus 1.2.1:</strong> quick sort and merge sort. Both are
+  <strong>divide and conquer</strong> — split the problem, solve the pieces recursively,
+  combine. Both average <code>O(n log n)</code>, which is why they scale where the simple sorts
+  do not.
+ </div>
+
+ <h3>Merge Sort — the idea</h3>
+ <ol style="margin:0 0 18px 22px;">
+  <li>Divide the unsorted list into <em>n</em> sublists of one element each — a one-element list
+  is already sorted.</li>
+  <li>Repeatedly merge sublists to make new sorted sublists, until only one list remains.</li>
+ </ol>
+
+ <h3>Step 1 — merging two already-sorted lists</h3>
+ <p>You cannot write merge sort until you can write this. Repeatedly take the smaller of the two
+ front elements.</p>
+
+<div class="code">def merge(lst_a, lst_b):
+    <span class="cm"># assumes lst_a and lst_b are each already sorted ascending</span>
+    lst_c = []
+    while len(lst_a) &gt; 0 and len(lst_b) &gt; 0:   <span class="cm"># while BOTH still have elements</span>
+        if lst_a[0] &lt; lst_b[0]:
+            lst_c.append(lst_a.pop(0))         <span class="cm"># pop(0) removes AND returns index 0</span>
+        else:
+            lst_c.append(lst_b.pop(0))
+
+    lst_c += lst_a      <span class="cm"># whichever list still has elements…</span>
+    lst_c += lst_b      <span class="cm"># …gets appended whole. One of these adds nothing.</span>
+
+    return lst_c</div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Both trailing lines are needed.</strong> The <code>while</code> stops as soon as
+  <em>either</em> list empties, so exactly one of them still holds items — but you do not know
+  which. Adding both costs nothing, because <code>+=</code> on an empty list is a no-op.
+ </div>
+
+ <h3>Step 2 — merge sort itself</h3>
+<div class="code">def merge_sort(lst):
+    <span class="cm"># Base case: empty or one element — already sorted</span>
+    if len(lst) &lt;= 1:
+        return lst
+    else:
+        mid_index = len(lst)//2          <span class="cm"># // is integer division</span>
+        orig_left = lst[:mid_index]
+        orig_right = lst[mid_index:]
+
+        left = merge_sort(orig_left)     <span class="cm"># recurse on each half…</span>
+        right = merge_sort(orig_right)
+
+        return merge(left, right)        <span class="cm"># …then merge the two sorted halves</span></div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Why <code>O(n log n)</code>:</strong> halving the list repeatedly gives
+  <strong>log n levels</strong> of recursion, and merging everything at each level costs
+  <strong>n</strong> operations. n × log n.<br>
+  <strong>Out-of-place:</strong> the slices and <code>lst_c</code> are new lists, so merge sort
+  needs <code>O(n)</code> extra space — unlike every simple sort.
+ </div>
+
+ <h3>Quick Sort — the idea</h3>
+ <ol style="margin:0 0 18px 22px;">
+  <li>Pick an element, the <strong>pivot</strong>.</li>
+  <li>Split the rest into those <strong>≤ pivot</strong> and those <strong>&gt; pivot</strong>.</li>
+  <li>Recursively sort both sublists.</li>
+  <li>Join: sorted-left + pivot + sorted-right.</li>
+ </ol>
+
+<div class="code">def quick_sort(lst):
+    if len(lst) &lt;= 1:            <span class="cm"># base case</span>
+        return lst
+    else:
+        pivot = lst[0]           <span class="cm"># this implementation always picks the FIRST element</span>
+        left = []
+        right = []
+        for item in lst[1:]:     <span class="cm"># [1:] — everything except the pivot itself</span>
+            if item &lt;= pivot:
+                left.append(item)
+            else:
+                right.append(item)
+
+    sorted_left = quick_sort(left)
+    sorted_right = quick_sort(right)
+
+    return sorted_left + [pivot] + sorted_right</div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>Two details worth marks.</strong> First, <code>[pivot]</code> is a <strong>list</strong>
+  — <code>sorted_left + pivot + sorted_right</code> is a <code>TypeError</code>. Second, the
+  comparison is <code>&lt;=</code>, not <code>&lt;</code>: with <code>&lt;</code>, a value equal
+  to the pivot is dropped from both halves and lost.
+ </div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>A note on the tutorial's indentation.</strong> In A03b the two recursive calls sit
+  <em>outside</em> the <code>else</code> block, unlike the pseudocode above them. It still works,
+  because the base case returns early — but it is fragile. Write them inside the
+  <code>else</code>, as the pseudocode does.
+ </div>
+
+ <h3>Why quick sort has an O(n²) worst case</h3>
+ <p>Quick sort is fast when the pivot lands near the middle, splitting the list roughly in half.
+ Since this implementation always takes <code>lst[0]</code> as the pivot, an
+ <strong>already-sorted list</strong> gives the worst possible split every time — one empty side
+ and one side of <code>n-1</code> — producing <code>n</code> levels of recursion instead of
+ <code>log n</code>.</p>
+
+ <table class="info-table">
+  <thead><tr><th style="width:24%;"></th><th style="width:38%;">Merge sort</th><th>Quick sort</th></tr></thead>
+  <tbody>
+   <tr><td><strong>Best</strong></td><td>O(n log n)</td><td>O(n log n)</td></tr>
+   <tr class="row-highlight"><td><strong>Average</strong></td><td>O(n log n)</td><td>O(n log n)</td></tr>
+   <tr><td><strong>Worst</strong></td><td><strong>O(n log n)</strong> — always splits evenly</td><td><strong>O(n²)</strong> — a bad pivot every time</td></tr>
+   <tr class="row-highlight"><td><strong>Space</strong></td><td>O(n)</td><td>O(n) as written here</td></tr>
+   <tr><td><strong>In-place?</strong></td><td>No — builds new lists</td><td>No, as written here (builds <code>left</code>/<code>right</code>)</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<!-- SEARCHING -->
+<div id="cs-search" class="section" data-subject="comp">
+
+ <h2>Searching Algorithms</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>Syllabus 1.2.3 / 1.2.4 and 2.3.2:</strong> implement and explain linear search and
+  binary search. Every function here returns the <strong>index</strong> of the item, or
+  <strong>−1</strong> if it is not found.
+ </div>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>Note on the tutorial:</strong> A04 leaves these functions as <code>pass</code> for you
+  to complete, and gives full pseudocode only for <code>binary_search</code>. The code below is
+  written from that pseudocode and the descriptions in the notebook.
+ </div>
+
+ <h3>Unordered linear search</h3>
+ <p>Check each item in turn until you find it or run out. Works on <strong>any</strong> list —
+ sorted or not.</p>
+
+<div class="code">def unordered_ls(lst, item):
+    for i in range(len(lst)):
+        if lst[i] == item:
+            return i        <span class="cm"># found — return the index immediately</span>
+    return -1               <span class="cm"># fell out of the loop = not present</span></div>
+
+ <h3>Ordered linear search</h3>
+ <p>Same idea, but on a <strong>sorted</strong> list you can give up early: once the current item
+ is larger than the target, the target cannot appear later.</p>
+
+<div class="code">def ordered_ls(lst, item):
+    for i in range(len(lst)):
+        if lst[i] == item:
+            return i
+        elif lst[i] &gt; item:
+            return -1       <span class="cm"># everything after this is even bigger — stop</span>
+    return -1</div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>The early exit does not change the Big O.</strong> Both linear searches are
+  <code>O(n)</code> in the worst case — the item could still be the very last element. Ordered
+  linear search only improves the <em>average</em> cost of an unsuccessful search.
+ </div>
+
+ <h3>Binary search — iterative</h3>
+ <p>On a <strong>sorted</strong> list, check the middle item. If it is the target, done. If the
+ target is smaller, repeat on the left half; if larger, on the right half. Each step throws away
+ half of what remains.</p>
+
+<div class="code">def binary_search(lst, item):
+    low = 0
+    high = len(lst) - 1            <span class="cm"># -1 because it is an INDEX, not a length</span>
+    while low &lt;= high:             <span class="cm"># <= : a single remaining element still needs checking</span>
+        mid = (low + high) // 2
+        if lst[mid] == item:
+            return mid
+        elif item &lt; lst[mid]:
+            high = mid - 1         <span class="cm"># discard mid and everything right of it</span>
+        else:
+            low = mid + 1          <span class="cm"># discard mid and everything left of it</span>
+
+    return -1                      <span class="cm"># low passed high — the item is not there</span></div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>The two off-by-ones that cause infinite loops.</strong> <code>high = mid - 1</code> and
+  <code>low = mid + 1</code> must both exclude <code>mid</code> — it has already been tested. If
+  you write <code>high = mid</code>, a two-element search can loop forever. And the loop
+  condition must be <code>&lt;=</code>, not <code>&lt;</code>, or a target sitting at
+  <code>low == high</code> is never compared.
+ </div>
+
+ <h3>Binary search — recursive</h3>
+ <p>A helper carries <code>low</code> and <code>high</code> through the recursion. The helper
+ exists so the returned index refers to the <strong>original</strong> list rather than to a
+ slice of it.</p>
+
+<div class="code">def rec_bin_search(lst, item):
+    <span class="cm"># helper needed so the index is relative to the ORIGINAL list</span>
+    def helper(lst, item, low, high):
+        if low &gt; high:
+            return -1                                  <span class="cm"># base case: nothing left</span>
+        mid = (low + high) // 2
+        if lst[mid] == item:
+            return mid
+        elif item &lt; lst[mid]:
+            return helper(lst, item, low, mid - 1)     <span class="cm"># search the left half</span>
+        else:
+            return helper(lst, item, mid + 1, high)    <span class="cm"># search the right half</span>
+
+    return helper(lst, item, 0, len(lst)-1)</div>
+
+ <h3>Linear vs binary</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:24%;"></th><th style="width:38%;">Linear search</th><th>Binary search</th></tr></thead>
+  <tbody>
+   <tr><td><strong>List must be sorted?</strong></td><td>No (ordered variant: yes)</td><td><strong>Yes — always</strong></td></tr>
+   <tr class="row-highlight"><td><strong>Best case</strong></td><td>O(1) — first element</td><td>O(1) — middle element</td></tr>
+   <tr><td><strong>Worst case</strong></td><td>O(n)</td><td><strong>O(log n)</strong></td></tr>
+   <tr class="row-highlight"><td><strong>Each step…</strong></td><td>eliminates <strong>one</strong> item</td><td>eliminates <strong>half</strong> the remaining items</td></tr>
+   <tr><td><strong>Good for</strong></td><td>Short or unsorted data</td><td>Large sorted data, searched repeatedly</td></tr>
+  </tbody>
+ </table>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong>The trade-off question:</strong> binary search is far faster, but the list must be
+  sorted first — and sorting costs at least <code>O(n log n)</code>. For a <strong>single</strong>
+  search of unsorted data, a linear scan wins. Sorting pays off when you will search the same
+  data many times.
+ </div>
+</div>
+
+<!-- COMPLEXITY -->
+<div id="cs-complexity" class="section" data-subject="comp">
+
+ <h2>Complexity &amp; Comparison</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>Time complexity</strong> is how the running time grows with the size of the input,
+  <em>n</em>. It is not a measurement in seconds — <code>O(n)</code> means the time grows
+  linearly, not that the algorithm takes <em>n</em> seconds.
+ </div>
+
+ <h3>Reading complexity off the code</h3>
+<div class="code"><span class="cm"># Complexity: O(n) — one loop over n items</span>
+def print_list(lst):
+    for i in range(len(lst)):
+        print(lst[i])</div>
+<div class="code"><span class="cm"># Complexity: O(n^2) — a loop inside a loop</span>
+def print_list(lst):
+    for i in range(len(lst)):
+        for j in range(len(lst[i])):
+            print(lst[i][j])</div>
+
+ <h3>The five rules</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:26%;">Rule</th><th>What it means</th></tr></thead>
+  <tbody>
+   <tr><td><strong>Single loop</strong></td><td>One loop over <em>n</em> items with constant work inside → <code>O(n)</code></td></tr>
+   <tr class="row-highlight"><td><strong>Nested loops</strong></td><td><em>k</em> nested loops each running <em>n</em> times → <code>O(n^k)</code>. Two nested loops → <code>O(n²)</code></td></tr>
+   <tr><td><strong>Divide and conquer</strong></td><td>Halving the problem and recombining → <code>O(n log n)</code> (merge sort, quick sort)</td></tr>
+   <tr class="row-highlight"><td><strong>Ignore constants</strong></td><td><code>O(2n)</code> → <code>O(n)</code>; <code>O(3n²)</code> → <code>O(n²)</code></td></tr>
+   <tr><td><strong>Highest term dominates</strong></td><td><code>O(n) + O(n²)</code> → <code>O(n²)</code></td></tr>
+  </tbody>
+ </table>
+
+ <h3>Space complexity</h3>
+ <p>The same idea applied to <strong>memory</strong> rather than time.</p>
+<div class="code"><span class="cm"># Space Complexity: O(n)</span>
+def example_O_n(n):
+    data = [0 for i in range(n)]
+    return data</div>
+<div class="code"><span class="cm"># Space Complexity: O(n^2)</span>
+def example_O_n_squared(n):
+    data = [[0 for i in range(n)] for j in range(n)]
+    return data</div>
+
+ <h3>Best, worst and average case</h3>
+ <div class="sol-grid">
+  <div class="sol-card soluble-card">
+   <h4>Best case</h4>
+   <p>The input needing the <strong>fewest</strong> operations. For improved bubble sort and
+   insertion sort, an <strong>already-sorted</strong> list.</p>
+  </div>
+  <div class="sol-card except-card">
+   <h4>Worst case</h4>
+   <p>The input needing the <strong>most</strong> operations. For bubble sort, a list in
+   <strong>reverse order</strong>.</p>
+  </div>
+ </div>
+ <p style="margin-top:14px;"><strong>Average case</strong> sits between the two — for bubble
+ sort, a randomly ordered list. It is still <code>O(n²)</code>.</p>
+
+ <h3>In-place vs out-of-place</h3>
+ <p>An <strong>in-place</strong> algorithm transforms its input using only a small
+ (<strong>constant</strong>) amount of extra storage. Anything else is
+ <strong>out-of-place</strong>.</p>
+ <ul style="margin:0 0 18px 22px;">
+  <li><strong>In-place:</strong> bubble, insertion and selection sort — they only ever swap
+  within the original list, so space is <code>O(1)</code>.</li>
+  <li><strong>Out-of-place:</strong> merge sort and this implementation of quick sort — both
+  build new lists, so space is <code>O(n)</code>.</li>
+ </ul>
+
+ <h3>Every algorithm in the syllabus, on one table</h3>
+ <table class="info-table">
+  <thead>
+   <tr><th style="width:23%;">Algorithm</th><th style="width:14%;">Best</th><th style="width:15%;">Average</th><th style="width:14%;">Worst</th><th style="width:12%;">Space</th><th>In-place</th></tr>
+  </thead>
+  <tbody>
+   <tr><td><strong>Bubble sort</strong> (plain)</td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td></tr>
+   <tr class="row-highlight"><td><strong>Bubble sort</strong> (improved)</td><td><strong>O(n)</strong></td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td></tr>
+   <tr><td><strong>Insertion sort</strong></td><td><strong>O(n)</strong></td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td></tr>
+   <tr class="row-highlight"><td><strong>Selection sort</strong></td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td></tr>
+   <tr><td><strong>Merge sort</strong></td><td>O(n log n)</td><td>O(n log n)</td><td><strong>O(n log n)</strong></td><td>O(n)</td><td>No</td></tr>
+   <tr class="row-highlight"><td><strong>Quick sort</strong></td><td>O(n log n)</td><td>O(n log n)</td><td><strong>O(n²)</strong></td><td>O(n)</td><td>No</td></tr>
+   <tr><td><strong>Linear search</strong></td><td>O(1)</td><td>O(n)</td><td>O(n)</td><td>O(1)</td><td>—</td></tr>
+   <tr class="row-highlight"><td><strong>Binary search</strong></td><td>O(1)</td><td>O(log n)</td><td><strong>O(log n)</strong></td><td>O(1)</td><td>—</td></tr>
+  </tbody>
+ </table>
+
+ <h3>The four facts most likely to be asked</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:46%;">Question</th><th>Answer</th></tr></thead>
+  <tbody>
+   <tr><td>Which sort has a best case of O(n), and why?</td><td><strong>Improved bubble</strong> and <strong>insertion</strong>. Improved bubble stops after one swap-free pass; insertion sort's <code>while</code> never runs on sorted data.</td></tr>
+   <tr class="row-highlight"><td>Why is selection sort O(n²) even on sorted data?</td><td>The inner loop must scan the entire unsorted part to be sure it has the minimum. There is no early exit.</td></tr>
+   <tr><td>Why is merge sort's worst case better than quick sort's?</td><td>Merge sort always splits exactly in half. Quick sort's split depends on the pivot, and a bad pivot gives an n−1 / 0 split every time.</td></tr>
+   <tr class="row-highlight"><td>Which sorts are in-place, and what does that give you?</td><td>Bubble, insertion, selection. Space complexity <code>O(1)</code> — no extra list proportional to the input.</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<!-- MEMORISE THE CODE -->
+<div id="cs-memorise" class="section" data-subject="comp">
+
+ <h2>Memorise the Code</h2>
+
+ <div class="tip-box" style="margin-bottom:18px;">
+  <strong>How to use this page.</strong> Each function is shown with its load-bearing tokens
+  blanked out — the loop bounds, the comparisons, the swap, the base case. Try to say each blank
+  before you tap it. <strong>Tap a blank to reveal it; tap again to hide it.</strong> If you can
+  fill every blank on this page without help, you can write all seven sort functions from
+  memory.
+ </div>
+
+ <div class="reveal-controls">
+  <button class="reveal-btn show" onclick="revealAll('cs-memorise', true)">Reveal all answers</button>
+  <button class="reveal-btn hide" onclick="revealAll('cs-memorise', false)">Hide all answers</button>
+ </div>
+
+ <div class="eq-box" style="margin-bottom:24px;">
+  <strong>Required:</strong> the seven sort functions from A03a and A03b &nbsp;·&nbsp;
+  <strong>Also worth knowing:</strong> the four search functions from A04
+ </div>
+
+ <h3>1 · Bubble sort — the plain version</h3>
+ <p class="text-muted" style="margin-bottom:10px;">Outer loop counts <strong>passes</strong>.
+ Inner loop counts <strong>adjacent comparisons</strong>, and shrinks by one each pass. Swap uses
+ a <code>temp</code> variable.</p>
+<div class="code">def bubble_sort(lst):
+    for i in range(<span class="blank bk" data-ans="len(lst) - 1">?</span>):
+        for j in range(<span class="blank bk" data-ans="len(lst)-i-1">?</span>):
+            if <span class="blank bk" data-ans="lst[j] &gt; lst[j+1]">?</span>:
+                temp = lst[j]
+                lst[j] = <span class="blank bk" data-ans="lst[j+1]">?</span>
+                lst[j+1] = <span class="blank bk" data-ans="temp">?</span>
+    return lst</div>
+
+ <h3>2 · Bubble sort — the improved version</h3>
+ <p class="text-muted" style="margin-bottom:10px;">Identical, plus a flag. The flag is reset at
+ the <strong>start of every pass</strong> and checked <strong>after</strong> the inner loop.</p>
+<div class="code">def imp_bsort(lst):
+    for i in range(<span class="blank bk" data-ans="len(lst)-1">?</span>):
+        <span class="blank bk" data-ans="swapped = False">?</span>
+        for j in range(<span class="blank bk" data-ans="len(lst)-i-1">?</span>):
+            if lst[j] &gt; lst[j+1]:
+                lst[j], lst[j+1] = <span class="blank bk" data-ans="lst[j+1], lst[j]">?</span>
+                <span class="blank bk" data-ans="swapped = True">?</span>
+        if <span class="blank bk" data-ans="not swapped">?</span>:
+            <span class="blank bk" data-ans="break">?</span>
+    return lst</div>
+
+ <h3>3 · Insertion sort</h3>
+ <p class="text-muted" style="margin-bottom:10px;">Starts at index <strong>1</strong>. Holds the
+ element in <code>temp</code>, walks <strong>backwards</strong> shifting larger elements right,
+ then drops <code>temp</code> into the gap at <code>j+1</code>.</p>
+<div class="code">def insertion_sort(lst):
+    for i in range(<span class="blank bk" data-ans="1, len(lst)">?</span>):
+        temp = <span class="blank bk" data-ans="lst[i]">?</span>
+        j = <span class="blank bk" data-ans="i - 1">?</span>
+        while <span class="blank bk" data-ans="j &gt;= 0 and lst[j] &gt; temp">?</span>:
+            lst[j+1] = <span class="blank bk" data-ans="lst[j]">?</span>
+            <span class="blank bk" data-ans="j -= 1">?</span>
+        lst[<span class="blank bk" data-ans="j+1">?</span>] = temp
+    return lst</div>
+
+ <h3>4 · Selection sort</h3>
+ <p class="text-muted" style="margin-bottom:10px;">Tracks the <strong>index</strong> of the
+ smallest, not its value. Inner loop starts at <code>i+1</code>. Exactly one swap per pass,
+ after the inner loop finishes.</p>
+<div class="code">def selection(lst):
+    for i in range(len(lst)):
+        minIndex = <span class="blank bk" data-ans="i">?</span>
+        for j in range(<span class="blank bk" data-ans="i+1, len(lst)">?</span>):
+            if <span class="blank bk" data-ans="lst[j] &lt; lst[minIndex]">?</span>:
+                minIndex = <span class="blank bk" data-ans="j">?</span>
+        lst[i], lst[minIndex] = <span class="blank bk" data-ans="lst[minIndex], lst[i]">?</span>
+    return lst</div>
+
+ <h3>5 · Merge — combining two sorted lists</h3>
+ <p class="text-muted" style="margin-bottom:10px;">Loop while <strong>both</strong> have
+ elements. <code>pop(0)</code> removes and returns the front. Both tails are appended at the
+ end, because you do not know which list emptied.</p>
+<div class="code">def merge(lst_a, lst_b):
+    lst_c = []
+    while <span class="blank bk" data-ans="len(lst_a) &gt; 0 and len(lst_b) &gt; 0">?</span>:
+        if <span class="blank bk" data-ans="lst_a[0] &lt; lst_b[0]">?</span>:
+            lst_c.append(<span class="blank bk" data-ans="lst_a.pop(0)">?</span>)
+        else:
+            lst_c.append(<span class="blank bk" data-ans="lst_b.pop(0)">?</span>)
+
+    <span class="blank bk" data-ans="lst_c += lst_a">?</span>
+    <span class="blank bk" data-ans="lst_c += lst_b">?</span>
+
+    return lst_c</div>
+
+ <h3>6 · Merge sort</h3>
+ <p class="text-muted" style="margin-bottom:10px;">Base case first. Integer-divide to find the
+ midpoint, slice two halves, recurse on each, then <code>merge</code> the results.</p>
+<div class="code">def merge_sort(lst):
+    if <span class="blank bk" data-ans="len(lst) &lt;= 1">?</span>:
+        return lst
+    else:
+        mid_index = <span class="blank bk" data-ans="len(lst)//2">?</span>
+        orig_left = <span class="blank bk" data-ans="lst[:mid_index]">?</span>
+        orig_right = <span class="blank bk" data-ans="lst[mid_index:]">?</span>
+
+        left = <span class="blank bk" data-ans="merge_sort(orig_left)">?</span>
+        right = <span class="blank bk" data-ans="merge_sort(orig_right)">?</span>
+
+        return <span class="blank bk" data-ans="merge(left, right)">?</span></div>
+
+ <h3>7 · Quick sort</h3>
+ <p class="text-muted" style="margin-bottom:10px;">Pivot is the <strong>first</strong> element.
+ Partition <code>lst[1:]</code> — the pivot itself is excluded. Note <code>&lt;=</code>, and note
+ that the pivot is rejoined as a <strong>list</strong>.</p>
+<div class="code">def quick_sort(lst):
+    if <span class="blank bk" data-ans="len(lst) &lt;= 1">?</span>:
+        return lst
+    else:
+        pivot = <span class="blank bk" data-ans="lst[0]">?</span>
+        left = []
+        right = []
+        for item in <span class="blank bk" data-ans="lst[1:]">?</span>:
+            if <span class="blank bk" data-ans="item &lt;= pivot">?</span>:
+                left.append(item)
+            else:
+                right.append(item)
+
+    sorted_left = quick_sort(left)
+    sorted_right = quick_sort(right)
+
+    return <span class="blank bk" data-ans="sorted_left + [pivot] + sorted_right">?</span></div>
+
+ <div class="eq-box" style="margin:30px 0 24px;">
+  Above this line is the required set. Below it are the search functions — worth knowing, and
+  built from the same habits.
+ </div>
+
+ <h3>8 · Unordered linear search</h3>
+<div class="code">def unordered_ls(lst, item):
+    for i in range(len(lst)):
+        if <span class="blank bk" data-ans="lst[i] == item">?</span>:
+            return <span class="blank bk" data-ans="i">?</span>
+    return <span class="blank bk" data-ans="-1">?</span></div>
+
+ <h3>9 · Ordered linear search</h3>
+ <p class="text-muted" style="margin-bottom:10px;">The extra <code>elif</code> is the whole
+ difference — stop as soon as you pass where the item would have been.</p>
+<div class="code">def ordered_ls(lst, item):
+    for i in range(len(lst)):
+        if lst[i] == item:
+            return i
+        elif <span class="blank bk" data-ans="lst[i] &gt; item">?</span>:
+            return <span class="blank bk" data-ans="-1">?</span>
+    return -1</div>
+
+ <h3>10 · Binary search — iterative</h3>
+ <p class="text-muted" style="margin-bottom:10px;"><code>high</code> is an <strong>index</strong>,
+ so it starts at <code>len(lst) - 1</code>. The loop condition is <code>&lt;=</code>. Both
+ reassignments must <strong>exclude</strong> <code>mid</code>.</p>
+<div class="code">def binary_search(lst, item):
+    low = <span class="blank bk" data-ans="0">?</span>
+    high = <span class="blank bk" data-ans="len(lst) - 1">?</span>
+    while <span class="blank bk" data-ans="low &lt;= high">?</span>:
+        mid = <span class="blank bk" data-ans="(low + high) // 2">?</span>
+        if lst[mid] == item:
+            return <span class="blank bk" data-ans="mid">?</span>
+        elif item &lt; lst[mid]:
+            high = <span class="blank bk" data-ans="mid - 1">?</span>
+        else:
+            low = <span class="blank bk" data-ans="mid + 1">?</span>
+
+    return -1</div>
+
+ <h3>11 · Binary search — recursive</h3>
+ <p class="text-muted" style="margin-bottom:10px;">The base case is <code>low &gt; high</code>.
+ The helper exists so the index refers to the original list.</p>
+<div class="code">def rec_bin_search(lst, item):
+    def helper(lst, item, low, high):
+        if <span class="blank bk" data-ans="low &gt; high">?</span>:
+            return -1
+        mid = (low + high) // 2
+        if lst[mid] == item:
+            return mid
+        elif item &lt; lst[mid]:
+            return <span class="blank bk" data-ans="helper(lst, item, low, mid - 1)">?</span>
+        else:
+            return <span class="blank bk" data-ans="helper(lst, item, mid + 1, high)">?</span>
+
+    return helper(lst, item, <span class="blank bk" data-ans="0, len(lst)-1">?</span>)</div>
+
+ <h3>If you only remember four things</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:34%;">Pattern</th><th>Where it appears</th></tr></thead>
+  <tbody>
+   <tr><td><code>range(len(lst)-i-1)</code></td><td>Both bubble sorts. The <code>-i</code> skips the sorted tail; the <code>-1</code> protects <code>lst[j+1]</code>.</td></tr>
+   <tr class="row-highlight"><td><code>a, b = b, a</code></td><td>The tuple swap — improved bubble and selection. Plain bubble uses the three-line <code>temp</code> form instead.</td></tr>
+   <tr><td><code>if len(lst) &lt;= 1: return lst</code></td><td>The base case of <strong>both</strong> recursive sorts. Write it before anything else.</td></tr>
+   <tr class="row-highlight"><td><code>(low + high) // 2</code></td><td>Both binary searches. Integer division — a float index is a <code>TypeError</code>.</td></tr>
+  </tbody>
+ </table>
+</div>
+
 <!-- EQUATION PICKER QUIZ -->
 <div id="quiz" class="section" data-subject="both">
  <h2>Kahoot-Style Quiz</h2>
@@ -4479,6 +5952,7 @@ html { background: var(--color-bg); }
     <select id="qbSubject" class="qb-input" onchange="qbTouch()">
      <option value="phys">Physics</option>
      <option value="chem">Chemistry</option>
+     <option value="comp">Computing</option>
      <option value="other">Other</option>
     </select>
    </label>
@@ -4545,7 +6019,222 @@ html { background: var(--color-bg); }
 
 <script>
 /* ── Equation Picker quiz ─────────────────────────────────────────── */
+/* One place that knows a subject's display name. Defined here because the
+   quiz code below runs before HUB_META is declared. */
+var SUBJ_LABEL = { chem: 'Chemistry', phys: 'Physics', comp: 'Computing' };
+function subjLabel(s) { return SUBJ_LABEL[s] || 'Other'; }
+
 var QUIZ_DATA = {
+ comp: {
+ easy: [
+  {
+   s: "You need an empty collection that will automatically discard duplicates as you add to it. How do you create it?",
+   o: ["my_set = {}",
+       "my_set = set()",
+       "my_set = []",
+       "my_set = ()"],
+   c: 1,
+   w: "<strong>{} creates an empty dictionary</strong>, not an empty set \u2014 this is the single most common set mistake. Only <code>set()</code> gives you an empty set. <code>[]</code> is a list and keeps duplicates; <code>()</code> is an immutable tuple you could not add to anyway."
+  },
+  {
+   s: "Which of these creates a tuple containing exactly one element?",
+   o: ["(5)",
+       "(5,)",
+       "[5]",
+       "{5}"],
+   c: 1,
+   w: "<strong>The comma makes the tuple, not the bracket.</strong> <code>(5)</code> is just the integer 5 in brackets. <code>[5]</code> is a list and <code>{5}</code> is a set."
+  },
+  {
+   s: "fruits = [\"apple\", \"orange\"] then fruits.append([\"kiwi\", \"pear\"]). What is len(fruits)?",
+   o: ["2", "3", "4", "It raises a TypeError"],
+   c: 1,
+   w: "<code>append()</code> adds its argument as <strong>one single element</strong>, so the list <code>['kiwi','pear']</code> goes in whole and the length becomes 3. <code>extend()</code> would have added each element separately, giving 4."
+  },
+  {
+   s: "You want to add a line to the end of a file that already has data in it, keeping everything that is already there. Which access mode?",
+   o: ["\"w\"", "\"r\"", "\"a\"", "\"r+\""],
+   c: 2,
+   w: "<code>\"a\"</code> is append \u2014 the pointer starts at the end and existing content is kept. <strong><code>\"w\"</code> wipes the file the moment it opens</strong>, before you write anything. <code>\"r\"</code> cannot write at all."
+  },
+  {
+   s: "my_dict has no key \"index_num\". What does my_dict.get(\"index_num\") do?",
+   o: ["Raises KeyError",
+       "Returns None",
+       "Returns an empty string",
+       "Creates the key with value None"],
+   c: 1,
+   w: "<code>.get()</code> returns <strong>None</strong> for a missing key instead of raising. It is <code>my_dict[\"index_num\"]</code> that raises <code>KeyError</code> and terminates the program. <code>.get()</code> does not create anything."
+  },
+  {
+   s: "You call my_set.remove(1) twice in a row on a set that contained 1. What happens the second time?",
+   o: ["Nothing \u2014 it is silently ignored",
+       "It raises KeyError",
+       "It removes the next element",
+       "It returns False"],
+   c: 1,
+   w: "<code>remove()</code> <strong>raises KeyError</strong> if the item is not there. <code>discard()</code> is the one that stays silent. Same relationship as <code>[ ]</code> versus <code>.get()</code> on a dictionary."
+  },
+  {
+   s: "A sorting algorithm compares lst[j] with lst[j+1] and swaps them if they are the wrong way round. Which is it?",
+   o: ["Insertion sort", "Selection sort", "Bubble sort", "Merge sort"],
+   c: 2,
+   w: "Comparing <strong>adjacent pairs</strong> is bubble sort's signature. Insertion sort compares against a held <code>temp</code>, selection sort tracks a <code>minIndex</code>, and merge sort compares the fronts of two separate lists."
+  },
+  {
+   s: "What must be true of a list before binary_search() can be used on it?",
+   o: ["It must contain only numbers",
+       "It must be sorted",
+       "It must have an odd number of elements",
+       "It must contain no duplicates"],
+   c: 1,
+   w: "Binary search discards half the list based on the assumption that everything left of <code>mid</code> is smaller and everything right is larger. <strong>That is only true if the list is sorted.</strong> It works fine on sorted strings, and duplicates and length are irrelevant."
+  },
+  {
+   s: "lst = [3, 1, 0, 5]. What does lst.remove(0) do?",
+   o: ["Removes the element at index 0, leaving [1, 0, 5]",
+       "Removes the value 0, leaving [3, 1, 5]",
+       "Removes and returns 3",
+       "Raises ValueError"],
+   c: 1,
+   w: "<strong><code>remove()</code> takes a value, <code>pop()</code> takes an index.</strong> So <code>remove(0)</code> deletes the value 0. <code>lst.pop(0)</code> is the one that would remove and return the element at index 0."
+  },
+  {
+   s: "grid = [[0] * 3] * 3, then grid[0][0] = 9. What does grid look like?",
+   o: ["[[9,0,0],[0,0,0],[0,0,0]]",
+       "[[9,0,0],[9,0,0],[9,0,0]]",
+       "[[9,9,9],[0,0,0],[0,0,0]]",
+       "It raises an IndexError"],
+   c: 1,
+   w: "The outer <code>* 3</code> stores <strong>three references to the same row</strong>, not three copies, so writing through one is visible through all of them. Build it with <code>[[0 for _ in range(3)] for _ in range(3)]</code> instead."
+  },
+  {
+   s: "What is the best case time complexity of the IMPROVED bubble sort (the version with the swapped flag)?",
+   o: ["O(1)", "O(n)", "O(n log n)", "O(n\u00b2)"],
+   c: 1,
+   w: "On an already-sorted list the first pass makes no swaps, <code>swapped</code> stays <code>False</code> and the loop breaks \u2014 one pass over n elements, so <strong>O(n)</strong>. Without the flag the plain version still runs all N-1 passes, so its best case remains O(n\u00b2)."
+  },
+  {
+   s: "In bubble sort's inner loop, range(len(lst)-i-1), what is the -i doing?",
+   o: ["Skipping the last i elements, which are already sorted",
+       "Preventing lst[j+1] from going out of range",
+       "Counting how many swaps have been made",
+       "Making the loop run backwards"],
+   c: 0,
+   w: "After pass <em>i</em>, the largest <em>i</em> elements have bubbled to the end and are final, so there is no need to look at them again \u2014 that is the <strong>-i</strong>. The separate <strong>-1</strong> is what stops <code>lst[j+1]</code> running off the end."
+  }
+ ],
+ hard: [
+  {
+   s: "Selection sort is given a list that is already perfectly sorted. Why is it still O(n\u00b2)?",
+   o: ["Because it still performs a swap on every pass",
+       "Because the inner loop must scan the whole unsorted part to be sure it has the minimum",
+       "Because it copies the list before sorting",
+       "It is not \u2014 its best case is O(n)"],
+   c: 1,
+   w: "Selection sort has <strong>no early exit</strong>. To know that <code>lst[i]</code> really is the smallest remaining value it must compare it against every other unsorted element, sorted input or not. The swaps are cheap \u2014 at most one per pass \u2014 it is the comparisons that cost O(n\u00b2)."
+  },
+  {
+   s: "The quick_sort in the tutorial always picks pivot = lst[0]. Which input triggers its O(n\u00b2) worst case?",
+   o: ["A list in random order",
+       "A list already sorted in ascending order",
+       "A list containing many duplicates of the pivot",
+       "A list of length 1"],
+   c: 1,
+   w: "With <code>lst[0]</code> as pivot, an ascending list makes the pivot the <strong>smallest</strong> element every time, so <code>left</code> is empty and <code>right</code> holds n-1 items. That gives n levels of recursion instead of log n. Random order is the good case, and length 1 hits the base case immediately."
+  },
+  {
+   s: "In merge(), why are BOTH lst_c += lst_a and lst_c += lst_b written after the while loop?",
+   o: ["To sort the leftover elements",
+       "Because the loop stops when either list empties, and you do not know which one still has items",
+       "Because += is faster than append",
+       "To remove duplicates between the two lists"],
+   c: 1,
+   w: "The condition is <code>while len(lst_a) &gt; 0 <strong>and</strong> len(lst_b) &gt; 0</code>, so it exits the moment <em>one</em> of them runs out \u2014 leaving the other with items still in it. Writing both lines covers either case, and the empty one contributes nothing. No sorting is needed: the leftovers were already in order."
+  },
+  {
+   s: "Insertion sort ends each pass with lst[j+1] = temp rather than lst[j] = temp. Why?",
+   o: ["Because j is always negative at that point",
+       "Because the while loop exits only after j has been decremented one step past the correct slot",
+       "Because temp must go at the end of the list",
+       "Because lst[j] has already been overwritten by temp"],
+   c: 1,
+   w: "The <code>while</code> keeps shifting and doing <code>j -= 1</code> until either <code>lst[j] &lt;= temp</code> or <code>j</code> reaches -1. Either way <strong>j has gone one step too far</strong>, so the gap waiting for <code>temp</code> is at <code>j+1</code>. j is only negative in the case where temp is the new smallest."
+  },
+  {
+   s: "A student writes high = mid instead of high = mid - 1 in binary_search. What is the consequence?",
+   o: ["The search returns the wrong index",
+       "It can loop forever when low and high are adjacent",
+       "It raises an IndexError on the last element",
+       "Nothing \u2014 both versions are correct"],
+   c: 1,
+   w: "<code>mid</code> has already been tested and ruled out, so it must be excluded. With <code>high = mid</code> and two elements left, <code>mid</code> can keep evaluating to the same index and neither bound ever moves \u2014 an <strong>infinite loop</strong>. The same applies to <code>low = mid</code> instead of <code>mid + 1</code>."
+  },
+  {
+   s: "A file contains the line 12. After line = f.readline(), the test if line == \"12\" is False. Why?",
+   o: ["readline() returns a list, not a string",
+       "line is \"12\\n\" \u2014 it still carries the newline character",
+       "line is the integer 12, not a string",
+       "readline() strips the digits"],
+   c: 1,
+   w: "Every line read back <strong>keeps its trailing newline</strong>, so the string is <code>\"12\\n\"</code>. Use <code>line.strip()</code> before comparing, or <code>int(line)</code> before doing arithmetic. Note that even after stripping, <code>\"12\" == 12</code> would still be False \u2014 text from a file is always a string."
+  },
+  {
+   s: "a = [1,2,3]. Which of these leaves id(a) UNCHANGED?",
+   o: ["a = a + [4]",
+       "a = a[1:]",
+       "a += [4]",
+       "a = list(a) + [4]"],
+   c: 2,
+   w: "<strong><code>+=</code> mutates the list in place</strong>, keeping the same object \u2014 as do <code>append()</code> and <code>extend()</code>. <code>a + [4]</code>, slicing and <code>list(a)</code> all build a <strong>new</strong> list and rebind the name. It matters when another variable also points at the original list."
+  },
+  {
+   s: "A CSV file has inconsistent spacing after its commas. Which approach handles both \"a, b\" and \"a,b\"?",
+   o: ["row.split(\", \")",
+       "row.split(\",\") then .strip() each field",
+       "row.split(\" \")",
+       "row.replace(\",\", \"\").split()"],
+   c: 1,
+   w: "Splitting on <code>\", \"</code> only works when every comma is followed by exactly one space. Splitting on the <strong>comma alone</strong> and then stripping each field handles both layouts \u2014 this is the fix for the file_03s.csv challenge. Splitting on a space would break any field containing one, and removing the commas destroys the field boundaries."
+  },
+  {
+   s: "Which pair of algorithms is OUT-OF-PLACE, i.e. needs O(n) extra space?",
+   o: ["Bubble sort and insertion sort",
+       "Selection sort and bubble sort",
+       "Merge sort and quick sort (as implemented in the tutorial)",
+       "Binary search and linear search"],
+   c: 2,
+   w: "Merge sort builds <code>lst_c</code> plus two slices at every level, and the tutorial's quick sort builds fresh <code>left</code> and <code>right</code> lists \u2014 both O(n) extra space. The three simple sorts only ever swap <strong>within</strong> the original list, so they are in-place at O(1). Both searches are O(1) space too, but they do not sort."
+  },
+  {
+   s: "Counting items into a dictionary, a student writes only my_dict[subj] += 1 with no if. What happens?",
+   o: ["Every count comes out as 1",
+       "KeyError the first time each new subject appears",
+       "The counts are all one too low",
+       "It works correctly"],
+   c: 1,
+   w: "<code>+= 1</code> has to <strong>read</strong> the existing value first, and there is nothing to read for a key that does not exist yet \u2014 so it raises <code>KeyError</code> on the first sighting of every subject. That is exactly what the <code>if subj not in my_dict:</code> branch is for."
+  },
+  {
+   s: "a = 10; b = 10 gives a is b as True, but a = 257; b = 257 gives False. What does this show?",
+   o: ["is compares values for small numbers and identity for large ones",
+       "Small integers are cached and shared by Python, so identity is an unreliable value test",
+       "257 is too large to store in an integer",
+       "The second example has a syntax error"],
+   c: 1,
+   w: "Python pre-creates a cache of small integers, so both names point at the <strong>same</strong> object \u2014 an implementation detail, not a rule about equality. 257 falls outside that cache and each literal builds its own object. The lesson: <strong>use <code>==</code> for values and reserve <code>is</code> for <code>None</code></strong>."
+  },
+  {
+   s: "Ordered linear search can stop early once lst[i] > item. Does that improve its worst-case Big O?",
+   o: ["Yes \u2014 it becomes O(log n)",
+       "Yes \u2014 it becomes O(n/2), which is O(n) but faster",
+       "No \u2014 it is still O(n), because the item may be the very last element",
+       "No \u2014 it becomes O(n\u00b2)"],
+   c: 2,
+   w: "Big O describes the <strong>worst</strong> case, and the worst case is unchanged: an item at or beyond the final position still requires scanning everything. The early exit improves the <em>average</em> cost of an unsuccessful search only. Getting to O(log n) requires binary search, which halves the data rather than stepping through it."
+  }
+ ]
+ },
  phys: {
  easy: [
   {
@@ -5245,7 +6934,8 @@ var quiz = { subj: 'phys', set: null, ask: '', qs: [], i: 0, score: 0, answers: 
              tleft: 0, locked: false, len: 10 };
 var QZ_ASK = {
   phys: 'Which equation(s) are to be used to solve this question?',
-  chem: 'Which test, reagent or method would you use?'
+  chem: 'Which test, reagent or method would you use?',
+  comp: 'Which data structure, function or algorithm is correct here?'
 };
 var QZ_BLURB = {
   phys: { easy: 'One or two steps each. Tests whether you can spot the quantity you were '
@@ -5255,10 +6945,13 @@ var QZ_BLURB = {
   chem: { easy: 'One test or one decision each. Tests whether you can match an observation '
                 + 'to the right reagent, and pick the right salt-preparation method.',
           hard: 'Two observations to combine, false positives to spot, and the traps that '
-                + 'come from using the wrong acid or the wrong indicator.' }
+                + 'come from using the wrong acid or the wrong indicator.' },
+  comp: { easy: 'One idea each. Tests whether you know what a function actually returns, which collection has which property, and what each loop bound is for.',
+          hard: 'Traps, off-by-ones, and questions that ask why rather than what. Several look like the standard answer until you check the edge case. Read every option to the end.' }
 };
 function qzSubject() {
-  return (typeof hub !== 'undefined' && hub.subject === 'chem') ? 'chem' : 'phys';
+  var s = (typeof hub !== 'undefined') ? hub.subject : 'phys';
+  return QUIZ_DATA[s] ? s : 'phys';
 }
 var QZ_TIME = 25;
 var QZ_BEST_KEY = 'hciRevisionHub.quizBest';
@@ -5460,7 +7153,7 @@ function qzCopyBuiltIn(set) {
   var subj = qzSubject();
   var src = QUIZ_DATA[subj][set];
   var z = { id: qbId(),
-            name: (subj === 'chem' ? 'Chemistry ' : 'Physics ') +
+            name: subjLabel(subj) + ' ' +
                   (set === 'easy' ? 'Set A' : 'Set B') + ' (my copy)',
             subject: subj, ask: QZ_ASK[subj], qs: [] };
   for (var i = 0; i < src.length; i++) {
@@ -5638,9 +7331,14 @@ function qbPlay() {
 
 function qzSyncHome() {
   var s = qzSubject();
-  var label = (s === 'chem') ? 'Chemistry' : 'Physics';
+  var label = subjLabel(s);
   var line = document.getElementById('qzSubjLine');
-  if (line) line.textContent = label + ' \u00b7 two sets, 20 questions in each pool';
+  var nEasy = QUIZ_DATA[s].easy.length, nHard = QUIZ_DATA[s].hard.length;
+  var poolText = (nEasy === nHard) ? (nEasy + ' questions in each pool')
+                                   : (nEasy + ' and ' + nHard + ' questions in the two pools');
+  if (line) line.textContent = label + ' \u00b7 two sets, ' + poolText;
+  var lenAll = document.getElementById('qzLen20');
+  if (lenAll) lenAll.textContent = 'All ' + Math.max(nEasy, nHard);
   var de = document.getElementById('qzDescEasy'), dh = document.getElementById('qzDescHard');
   if (de) de.textContent = QZ_BLURB[s].easy;
   if (dh) dh.textContent = QZ_BLURB[s].hard;
@@ -5872,6 +7570,7 @@ qzSyncHome();
    <button class="dk-chip dk-chip-on" data-f="all" onclick="dkFilter('all')">All</button>
    <button class="dk-chip" data-f="phys" onclick="dkFilter('phys')">Physics</button>
    <button class="dk-chip" data-f="chem" onclick="dkFilter('chem')">Chemistry</button>
+   <button class="dk-chip" data-f="comp" onclick="dkFilter('comp')">Computing</button>
    <button class="dk-chip" data-f="rec" onclick="dkFilter('rec')">Recommended</button>
    <button class="dk-chip" data-f="mine" onclick="dkFilter('mine')">My own</button>
   </div>
@@ -5902,6 +7601,7 @@ qzSyncHome();
     <select id="dkSubject" class="dk-input" onchange="dkTouch()">
      <option value="phys">Physics</option>
      <option value="chem">Chemistry</option>
+     <option value="comp">Computing</option>
      <option value="other">Other</option>
     </select>
    </label>
@@ -5949,7 +7649,7 @@ qzSyncHome();
 <script>
 /* ── Flashcard studio ─────────────────────────────────────────────── */
 var DK_KEY = 'hciRevisionHub.decks';
-var DK_VER = 2;
+var DK_VER = 3;
 
 function dkStarters() {
   return [
@@ -6235,7 +7935,81 @@ function dkStarters() {
     { f: "(d) Sodium ethanoate: CH\u2083CO\u2082H(aq) + _____", b: "NaOH(aq)" },
     { f: "(e) Potassium phosphate: _____ + KOH(aq)", b: "H\u2083PO\u2084(aq)" },
     { f: "(e) Potassium phosphate: H\u2083PO\u2084(aq) + _____", b: "KOH(aq)" }
-   ]}
+   ]},
+   { id: 'cs-sortcode', name: 'Sort code \u2014 the lines you must reproduce', subject: 'comp', starter: true, cards: [
+    { f: 'bubble_sort \u2014 outer loop', b: 'for i in range(len(lst) - 1):\nN-1 passes for N elements' },
+    { f: 'bubble_sort \u2014 inner loop', b: 'for j in range(len(lst)-i-1):\n-i skips the sorted tail, -1 protects lst[j+1]' },
+    { f: 'bubble_sort \u2014 the comparison', b: 'if lst[j] > lst[j+1]:\nadjacent pair, swap if out of order' },
+    { f: 'imp_bsort \u2014 what makes it "improved"?', b: 'swapped = False at the start of every pass,\nswapped = True on each swap,\nif not swapped: break after the inner loop' },
+    { f: 'imp_bsort \u2014 the tuple swap', b: 'lst[j], lst[j+1] = lst[j+1], lst[j]' },
+    { f: 'insertion_sort \u2014 the loop header', b: 'for i in range(1, len(lst)):\nstarts at 1 \u2014 element 0 counts as already sorted' },
+    { f: 'insertion_sort \u2014 the while condition', b: 'while j >= 0 and lst[j] > temp:\nthe j >= 0 test must come FIRST' },
+    { f: 'insertion_sort \u2014 the final line of the pass', b: 'lst[j+1] = temp\nj has gone one step too far, so the gap is at j+1' },
+    { f: 'selection \u2014 the inner loop', b: 'for j in range(i+1, len(lst)):\nsearches only the unsorted part' },
+    { f: 'selection \u2014 what is tracked?', b: 'minIndex \u2014 the INDEX of the smallest, not its value.\nOne swap per pass, after the inner loop.' },
+    { f: 'merge \u2014 the while condition', b: 'while len(lst_a) > 0 and len(lst_b) > 0:\nAND \u2014 stops as soon as either empties' },
+    { f: 'merge \u2014 what comes after the while loop?', b: 'lst_c += lst_a\nlst_c += lst_b\nBoth, because you do not know which one still has items' },
+    { f: 'merge_sort \u2014 the base case', b: 'if len(lst) <= 1:\n    return lst' },
+    { f: 'merge_sort \u2014 splitting', b: 'mid_index = len(lst)//2\norig_left = lst[:mid_index]\norig_right = lst[mid_index:]' },
+    { f: 'quick_sort \u2014 pivot and partition', b: 'pivot = lst[0]\nfor item in lst[1:]:   # excludes the pivot\n    if item <= pivot:   # <= , not <' },
+    { f: 'quick_sort \u2014 the return line', b: 'return sorted_left + [pivot] + sorted_right\n[pivot] is a LIST \u2014 bare pivot is a TypeError' },
+    { f: 'binary_search \u2014 the setup', b: 'low = 0\nhigh = len(lst) - 1   # an INDEX, so -1\nwhile low <= high:' },
+    { f: 'binary_search \u2014 narrowing', b: 'mid = (low + high) // 2\nhigh = mid - 1  (target smaller)\nlow  = mid + 1  (target larger)\nBoth EXCLUDE mid' },
+    { f: 'rec_bin_search \u2014 base case, and why a helper?', b: 'if low > high: return -1\nThe helper carries low/high so the index returned refers to the ORIGINAL list' }
+   ]},
+   { id: 'cs-complexity', name: 'Complexity \u2014 best, worst, space', subject: 'comp', starter: true, cards: [
+    { f: 'Bubble sort (plain) \u2014 best / average / worst', b: 'O(n\u00b2) / O(n\u00b2) / O(n\u00b2)\nNo early exit, so even sorted input costs N-1 full passes' },
+    { f: 'Bubble sort (improved) \u2014 best / average / worst', b: 'O(n) / O(n\u00b2) / O(n\u00b2)\nThe swapped flag ends a sorted list after one pass' },
+    { f: 'Insertion sort \u2014 best / average / worst', b: 'O(n) / O(n\u00b2) / O(n\u00b2)\nBest case: the while loop never runs' },
+    { f: 'Selection sort \u2014 best / average / worst', b: 'O(n\u00b2) / O(n\u00b2) / O(n\u00b2)\nNo early exit \u2014 must scan to be sure of the minimum' },
+    { f: 'Merge sort \u2014 best / average / worst', b: 'O(n log n) in every case.\nIt always splits exactly in half.' },
+    { f: 'Quick sort \u2014 best / average / worst', b: 'O(n log n) / O(n log n) / O(n\u00b2)\nWorst case: a bad pivot every time, e.g. sorted input with pivot = lst[0]' },
+    { f: 'Linear search \u2014 best / worst', b: 'O(1) / O(n)' },
+    { f: 'Binary search \u2014 best / worst', b: 'O(1) / O(log n)\nRequires a sorted list' },
+    { f: 'Which sorts are in-place, and what is their space complexity?', b: 'Bubble, insertion, selection \u2014 O(1).\nThey only swap within the original list.' },
+    { f: 'Which sorts are out-of-place, and why?', b: 'Merge sort and quick sort \u2014 O(n).\nBoth build new lists (slices, lst_c, left/right).' },
+    { f: 'Define time complexity', b: 'How the running time of an algorithm grows as a function of the input size n, written in big O notation. Not a measurement in seconds.' },
+    { f: 'Big O rule \u2014 nested loops', b: 'k nested loops each running n times = O(n^k).\nTwo nested loops = O(n\u00b2).' },
+    { f: 'Big O rule \u2014 constants and lower terms', b: 'Ignore constants: O(2n) \u2192 O(n).\nHighest term dominates: O(n) + O(n\u00b2) \u2192 O(n\u00b2).' },
+    { f: 'Define in-place', b: 'An algorithm that transforms its input using only a small (constant) amount of extra storage. Anything else is out-of-place.' },
+    { f: 'Best vs worst vs average case', b: 'Best = the input needing the fewest operations.\nWorst = the input needing the most.\nAverage = between the two (for bubble sort, random order).' }
+   ]},
+   { id: 'cs-datastructures', name: 'Data structures \u2014 properties and methods', subject: 'comp', starter: true, cards: [
+    { f: 'List \u2014 the three properties', b: 'Ordered, changeable (mutable), allows duplicates. Written with [ ].' },
+    { f: 'Tuple \u2014 the three properties', b: 'Ordered, IMMUTABLE, allows duplicates. Written with ( ).\nBeing immutable makes it hashable, so it can be a dict key.' },
+    { f: 'Dictionary \u2014 the properties', b: 'Maps unique keys to values, mutable, and ordered from Python 3.7 (unordered in 3.6 and earlier). Written with { }.' },
+    { f: 'Set \u2014 the properties', b: 'Unordered, unique elements, no indexing. Elements must be immutable but the set itself is mutable. Written with { } \u2014 but empty is set().' },
+    { f: 'append() vs extend()', b: 'append(x) adds x as ONE element.\nextend(it) adds EVERY element of it.\nfruits.extend("pineapple") adds 9 letters!' },
+    { f: 'remove() vs pop()', b: 'remove(v) deletes the first occurrence of the VALUE v \u2014 ValueError if absent.\npop(i) removes and returns the element at INDEX i \u2014 IndexError if out of range.' },
+    { f: 'Dictionary: [ ] vs .get()', b: 'my_dict["k"] raises KeyError if k is missing.\nmy_dict.get("k") returns None instead.' },
+    { f: 'Set: remove() vs discard()', b: 'remove(x) raises KeyError if x is absent.\ndiscard(x) does nothing.' },
+    { f: 'The four set operations', b: 'Union a | b  \u00b7  a.union(b)\nIntersection a & b  \u00b7  a.intersection(b)\nDifference a - b  \u00b7  a.difference(b)\nSymmetric difference a ^ b  \u00b7  a.symmetric_difference(b)' },
+    { f: 'What does `in` check on a dictionary?', b: 'The KEYS, not the values. For values use `in my_dict.values()`.' },
+    { f: 'Which types can be dictionary keys?', b: 'Immutable/hashable ones: int, float, bool, string, tuple.\nNOT list, dict or set.' },
+    { f: '== vs is', b: '== compares VALUES.\nis compares IDENTITY (same object in memory), which id() reveals.\nUse == for values; reserve is for None.' },
+    { f: 'Why is [[0]*3]*3 dangerous?', b: 'The outer * stores three references to the SAME row, so writing to one row writes to all three.\nUse [[0 for _ in range(3)] for _ in range(3)].' },
+    { f: 'Which list operations keep the same id()?', b: 'In place (same id): += , extend(), append().\nNew object (new id): a + b, slicing a[1:], list(a).' },
+    { f: 'What happens when you pass a list into a function?', b: 'A reference is passed, not a copy \u2014 changes made inside the function are visible outside it. Pass lst[:] to protect the original.' },
+    { f: 'The dictionary counting pattern', b: 'if key not in d:\n    d[key] = 1\nelse:\n    d[key] += 1\nWithout the if, the first += raises KeyError.' },
+    { f: 'The one-element tuple', b: '(5,) is a tuple. (5) is the integer 5.\nThe comma makes it, not the bracket.' }
+   ]},
+   { id: 'cs-fileops', name: 'File operations \u2014 modes and functions', subject: 'comp', starter: true, cards: [
+    { f: 'Access mode "r"', b: 'Read only, pointer at the beginning. The default. Errors if the file does not exist.' },
+    { f: 'Access mode "w"', b: 'Write only. OVERWRITES everything if the file exists, creates it if not. Destructive the moment it opens.' },
+    { f: 'Access mode "a"', b: 'Append. Pointer at the END, existing content kept. Creates the file if it does not exist.' },
+    { f: 'Access modes "rb" and "r+"', b: 'rb = read only in binary, pointer at the beginning.\nr+ = read AND write, pointer at the beginning.' },
+    { f: 'Why prefer `with open(...)` over `open(...)`?', b: 'The with statement closes the file automatically at the end of the block, even if an error occurs. Method 1 needs an explicit f.close().' },
+    { f: 'read() vs readline()', b: 'read() returns the whole file as ONE string \u2014 convenient, but loads everything into memory.\nreadline() returns one line at a time \u2014 recommended for large files.' },
+    { f: 'How does the readline() while loop know to stop?', b: 'At end of file readline() returns an empty string, which is falsy \u2014 so `while line:` ends.' },
+    { f: 'What is still attached to every line you read?', b: 'The trailing "\\n". Strip it before comparing or converting, or "12\\n" != "12".' },
+    { f: 'Why the else branch when stripping newlines?', b: 'The last line of a file often has no trailing newline, so an unconditional [:-1] would cut off a real character.' },
+    { f: 'Does write() add a newline?', b: 'No. You must write "\\n" yourself or everything lands on one line.' },
+    { f: 'Reading a well-formatted CSV with the csv library', b: 'import csv\ncsvreader = csv.reader(csvfile)\nheaders = next(csvreader)   # takes the first row\nfor row in csvreader: ...' },
+    { f: 'Handling a file that might not exist', b: 'try:\n    with open("f.txt") as f:\n        print(f.read())\nexcept IOError:\n    print("File not found or path is incorrect")' },
+    { f: 'Building a reliable absolute path', b: 'basedir = os.path.abspath(os.path.dirname(__file__))\npath = os.path.join(basedir, "static/raw_data/my_data.txt")\n(in a notebook, use "" instead of __file__)' },
+    { f: 'What do . and .. mean in a path?', b: '. is the current folder (usually omitted).\n.. is the parent folder, one level up, and can be chained: ../../file.txt' },
+    { f: 'Which path separator should you write in Python?', b: 'Forward slash /. Windows uses \\ but Python accepts / everywhere, so / is cross-platform.' }
+   ]},
   ];
 }
 
@@ -6326,7 +8100,7 @@ function dkFilter(f) {
 
 function dkShowList() {
   dkShow('list');
-  var labels = { phys: 'Physics', chem: 'Chemistry', other: 'Other' };
+  var labels = { phys: 'Physics', chem: 'Chemistry', comp: 'Computing', other: 'Other' };
   var html = '', shown = 0;
   for (var i = 0; i < dk.decks.length; i++) {
     var d = dk.decks[i];
@@ -6361,8 +8135,8 @@ function dkShowList() {
 /* ── editor ───────────────────────────────────────────────────── */
 function dkNew() {
   /* tag the new deck with the subject you are actually in, not always Physics */
-  var subj = (dk.filter === 'chem' || dk.filter === 'phys') ? dk.filter
-           : ((typeof hub !== 'undefined' && hub.subject === 'chem') ? 'chem' : 'phys');
+  var subj = SUBJ_LABEL[dk.filter] ? dk.filter
+           : ((typeof hub !== 'undefined' && SUBJ_LABEL[hub.subject]) ? hub.subject : 'phys');
   var d = { id: dkId(), name: '', subject: subj, cards: [{ f: '', b: '' }] };
   dk.decks.unshift(d);
   dkSave();
@@ -6621,7 +8395,7 @@ function dkImport(input) {
         var d = incoming[i];
         if (!d || typeof d !== 'object' || !Array.isArray(d.cards)) continue;
         var clean = { id: dkId(), name: String(d.name || 'Imported deck'),
-                      subject: (d.subject === 'chem' || d.subject === 'other') ? d.subject : 'phys',
+                      subject: (SUBJ_LABEL[d.subject] || d.subject === 'other') ? d.subject : 'phys',
                       cards: [] };
         for (var j = 0; j < d.cards.length; j++) {
           var c = d.cards[j];
@@ -6664,6 +8438,9 @@ var HUB_META = {
   chem: { title: 'Chemistry Revision',
           sub: 'Qualitative Analysis + Chemical Bonding \u00b7 colour-coded study aid \u00b7 Hwa Chong Institution 2026',
           foot: 'Chemistry \u2013 Qualitative Analysis Visual Aid \u00b7 Hwa Chong Institution 2026 \u00b7 Generated for study purposes' },
+  comp: { title: 'Computing Revision',
+          sub: 'Data structures + File operations + Sorting & searching algorithms \u00b7 Python study aid \u00b7 Hwa Chong Institution 2026',
+          foot: 'Computing \u2013 Data Structures, File Operations, Algorithms \u00b7 Hwa Chong Institution 2026 \u00b7 Generated for study purposes' },
   phys: { title: 'Physics Revision',
           sub: 'Kinematics + Dynamics + Work, Energy & Power \u00b7 colour-coded study aid \u00b7 Hwa Chong Institution 2026',
           foot: 'Physics \u2013 Kinematics, Dynamics, Work Energy Power \u00b7 Hwa Chong Institution 2026 \u00b7 Generated for study purposes' }
@@ -6672,9 +8449,9 @@ var HUB_META = {
 var hub = {
   subject: 'chem',
   zapMode: false,
-  zapped: { chem: [], phys: [] },
-  active: { chem: 'mnemonics', phys: 'p-mnemonics' },
-  group:  { chem: null, phys: null }
+  zapped: { chem: [], phys: [], comp: [] },
+  active: { chem: 'mnemonics', phys: 'p-mnemonics', comp: 'cs-list' },
+  group:  { chem: null, phys: null, comp: null }
 };
 
 /* Topic groups. Each .tab carries data-group matching one of these ids. */
@@ -6686,6 +8463,10 @@ var HUB_GROUPS = {
   phys: [ { id: 'kin',   name: 'Kinematics' },
           { id: 'dyn',   name: 'Dynamics' },
           { id: 'wep',   name: 'Work, Energy & Power' },
+          { id: 'tools', name: 'Revision Tools' } ],
+  comp: [ { id: 'ds',    name: 'Data Structures' },
+          { id: 'files', name: 'File Operations' },
+          { id: 'algo',  name: 'Algorithms' },
           { id: 'tools', name: 'Revision Tools' } ]
 };
 
@@ -6700,14 +8481,13 @@ function hubLoad() {
     var raw = window.localStorage.getItem(HUB_KEY);
     if (!raw) return;
     var s = JSON.parse(raw);
-    if (s.subject === 'chem' || s.subject === 'phys') hub.subject = s.subject;
-    if (s.zapped && Array.isArray(s.zapped.chem)) hub.zapped.chem = s.zapped.chem;
-    if (s.zapped && Array.isArray(s.zapped.phys)) hub.zapped.phys = s.zapped.phys;
-    if (s.active && s.active.chem) hub.active.chem = s.active.chem;
-    if (s.active && s.active.phys) hub.active.phys = s.active.phys;
-    if (s.group) {
-      if (s.group.chem !== undefined) hub.group.chem = s.group.chem;
-      if (s.group.phys !== undefined) hub.group.phys = s.group.phys;
+    if (HUB_META[s.subject]) hub.subject = s.subject;
+    var subs = ['chem', 'phys', 'comp'], k, sb;
+    for (k = 0; k < subs.length; k++) {
+      sb = subs[k];
+      if (s.zapped && Array.isArray(s.zapped[sb])) hub.zapped[sb] = s.zapped[sb];
+      if (s.active && s.active[sb]) hub.active[sb] = s.active[sb];
+      if (s.group && s.group[sb] !== undefined) hub.group[sb] = s.group[sb];
     }
   } catch (e) {}
 }
@@ -7016,7 +8796,7 @@ function hsRun() {
       var sub = (e.subs.indexOf(hub.subject) !== -1) ? hub.subject : e.subs[0];
       var hidden = hub.zapped[sub].indexOf(e.id) !== -1;
       html += '<button class="hs-hit" data-i="' + i + '" role="option">' +
-        '<span class="hs-crumb">' + (sub === 'chem' ? 'Chemistry' : 'Physics') +
+        '<span class="hs-crumb">' + subjLabel(sub) +
         (e.group ? ' \u203a ' + hsEsc(e.group) : '') + ' \u203a ' + hsEsc(e.tab) +
         (hidden ? ' <span class="hs-zap">\u00b7 zapped</span>' : '') + '</span>' +
         '<span class="hs-title">' + hsMark(e.head, words) + '</span>' +
