@@ -14,7 +14,7 @@ dependencies, no server. Fonts are inlined as data URIs so it works offline.
   friction, work/energy/power
 - **Computing** — Python data structures (lists, tuples, dictionaries, sets, equality vs
   identity), file operations and CSV handling, sorting and searching algorithms, complexity,
-  and a code memorisation drill
+  a built-in function reference, and a code memorisation drill
 - **Tools** — flashcards, quizzes, model answers, a typography panel, and a light/dark theme
 
 ## Practical simulator
@@ -43,6 +43,18 @@ you dissolve it in a minimum volume of dilute nitric acid.
   original procedures and questions.
 
 Your attempt is saved as you type, so a reload does not lose it.
+
+## Useful Functions
+
+A reference for the built-ins and methods that save the most time: conversions, `round` /
+`sum` / `min` / `max`, `enumerate` / `zip` / `any` / `all`, the string methods that do the
+work in every file-parsing question, and the list, dictionary, set and file methods worth
+knowing by heart. It ends with a table of the mistakes these functions cause — `.sort()`
+returning `None`, `int()` truncating rather than rounding, `str(4.5)` not giving `4.50` —
+and a set of one-liners worth memorising.
+
+It opens with the rule that matters most: these are banned in any task that says *implement
+the algorithm yourself*, and free everywhere else.
 
 ## Memorise the Code
 

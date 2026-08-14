@@ -1322,6 +1322,7 @@ html { background: var(--color-bg); }
   <button class="tab" data-subject="comp" data-group="algo" data-target="cs-sorts-efficient">Efficient Sorts</button>
   <button class="tab" data-subject="comp" data-group="algo" data-target="cs-search">Searching</button>
   <button class="tab" data-subject="comp" data-group="algo" data-target="cs-complexity">Complexity</button>
+  <button class="tab" data-subject="comp" data-group="tools" data-target="cs-functions">Useful Functions</button>
   <button class="tab" data-subject="comp" data-group="tools" data-target="cs-memorise">Memorise the Code</button>
   <button class="tab" data-subject="comp" data-group="tools" data-target="quiz">Kahoot Quiz</button>
   <button class="tab" data-subject="comp" data-group="tools" data-target="cards">Flashcards</button>
@@ -5689,6 +5690,304 @@ def example_O_n_squared(n):
 </div>
 
 <!-- MEMORISE THE CODE -->
+<!-- USEFUL FUNCTIONS -->
+<div id="cs-functions" class="section" data-subject="comp">
+ <h2>Useful Functions to Remember</h2>
+
+ <div class="tip-box" style="margin-bottom:20px;">
+  <strong>The one rule that matters in an exam.</strong> These functions save enormous amounts of
+  time &mdash; but when a question says <em>&ldquo;implement a sort algorithm&rdquo;</em> or
+  <em>&ldquo;you may not use built-in sorting functions&rdquo;</em>, using
+  <code>sorted()</code> or <code>.sort()</code> scores <strong>zero</strong>. The same applies to
+  <code>in</code> when you are asked to write a search. Everywhere else, reach for them freely.
+ </div>
+
+ <h3>The handful you use in almost every program</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:22%;">Function</th><th style="width:40%;">What it does</th><th>Example</th></tr></thead>
+  <tbody>
+   <tr><td><code>len(x)</code></td><td>Number of items in a string, list, tuple, dict or set</td><td><code>len([4, 5, 6])</code> &rarr; <code>3</code></td></tr>
+   <tr class="row-highlight"><td><code>range(a, b, step)</code></td><td>Counts from <em>a</em> up to <strong>but not including</strong> <em>b</em></td><td><code>range(1, 4)</code> &rarr; 1, 2, 3</td></tr>
+   <tr><td><code>print(*args)</code></td><td>Displays values, separated by spaces</td><td><code>print("x =", 5)</code></td></tr>
+   <tr class="row-highlight"><td><code>input(prompt)</code></td><td>Reads a line of text. <strong>Always returns a string</strong></td><td><code>int(input("Age: "))</code></td></tr>
+   <tr><td><code>type(x)</code></td><td>The type of a value &mdash; useful when debugging</td><td><code>type(3.0)</code> &rarr; <code>&lt;class 'float'&gt;</code></td></tr>
+  </tbody>
+ </table>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong><code>range()</code> is exclusive at the top.</strong> <code>range(5)</code> gives
+  <code>0,1,2,3,4</code> &mdash; five numbers, ending at 4. This is exactly why bubble sort's inner
+  loop is <code>range(len(lst)-i-1)</code> and not <code>-i</code>.
+ </div>
+
+ <h3>Converting between types</h3>
+<div class="code">int("42")        <span class="cm"># 42      — text to whole number</span>
+int(3.9)         <span class="cm"># 3       — TRUNCATES, does not round!</span>
+float("3.14")    <span class="cm"># 3.14</span>
+str(42)          <span class="cm"># "42"    — needed before joining with +</span>
+
+list("abc")      <span class="cm"># ['a', 'b', 'c']</span>
+list((1, 2))     <span class="cm"># [1, 2]  — tuple to list</span>
+tuple([1, 2])    <span class="cm"># (1, 2)  — list to tuple, e.g. to use as a dict key</span>
+set([1, 2, 2])   <span class="cm"># {1, 2}  — the one-line way to remove duplicates</span>
+
+bool(0)          <span class="cm"># False   — 0, 0.0, "", [], {} and None are all falsy</span></div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong><code>int()</code> truncates, it does not round.</strong> <code>int(3.9)</code> is
+  <code>3</code>, and <code>int(-3.9)</code> is <code>-3</code>. If you want rounding, use
+  <code>round()</code>. And <code>int("3.9")</code> raises <code>ValueError</code> &mdash; go via
+  <code>int(float("3.9"))</code>.
+ </div>
+
+ <h3>Numbers</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:24%;">Function</th><th style="width:38%;">What it does</th><th>Example</th></tr></thead>
+  <tbody>
+   <tr><td><code>abs(x)</code></td><td>Distance from zero, always positive</td><td><code>abs(-7)</code> &rarr; <code>7</code></td></tr>
+   <tr class="row-highlight"><td><code>round(x, dp)</code></td><td>Rounds to <em>dp</em> decimal places</td><td><code>round(3.14159, 2)</code> &rarr; <code>3.14</code></td></tr>
+   <tr><td><code>min(seq)</code> / <code>max(seq)</code></td><td>Smallest / largest item</td><td><code>max([3, 9, 4])</code> &rarr; <code>9</code></td></tr>
+   <tr class="row-highlight"><td><code>sum(seq)</code></td><td>Adds every number in a sequence</td><td><code>sum([1, 2, 3])</code> &rarr; <code>6</code></td></tr>
+   <tr><td><code>pow(a, b)</code></td><td>Same as <code>a ** b</code></td><td><code>pow(2, 10)</code> &rarr; <code>1024</code></td></tr>
+   <tr class="row-highlight"><td><code>divmod(a, b)</code></td><td>Quotient <strong>and</strong> remainder in one go</td><td><code>divmod(17, 5)</code> &rarr; <code>(3, 2)</code></td></tr>
+  </tbody>
+ </table>
+
+ <p><code>sum()</code>, <code>min()</code>, <code>max()</code> and <code>len()</code> together turn a
+ four-line loop into one line:</p>
+<div class="code">temps = [31.2, 30.8, 33.5, 32.1, 34.6]
+
+average = round(sum(temps) / len(temps), 1)   <span class="cm"># 32.4</span>
+coldest = min(temps)                          <span class="cm"># 30.8</span>
+hottest = max(temps)                          <span class="cm"># 34.6</span></div>
+
+ <h3>Looping over things properly</h3>
+ <p>These four remove almost every clumsy index-counter loop you would otherwise write.</p>
+<div class="code">fruits = ["apple", "banana", "cherry"]
+
+<span class="cm"># enumerate() — index AND value together</span>
+for i, fruit in enumerate(fruits):
+    print(i, fruit)          <span class="cm"># 0 apple / 1 banana / 2 cherry</span>
+
+<span class="cm"># zip() — walk two lists side by side, stops at the shorter one</span>
+prices = [1.20, 0.50, 3.00]
+for fruit, price in zip(fruits, prices):
+    print(fruit, price)
+
+<span class="cm"># reversed() — back to front, without touching the original</span>
+for fruit in reversed(fruits):
+    print(fruit)             <span class="cm"># cherry / banana / apple</span>
+
+<span class="cm"># any() / all() — is one True? are they all True?</span>
+marks = [55, 72, 68]
+print(any(m &gt;= 70 for m in marks))   <span class="cm"># True  — at least one passed</span>
+print(all(m &gt;= 50 for m in marks))   <span class="cm"># True  — nobody failed</span></div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong><code>enumerate()</code> replaces the counter you keep forgetting to increment.</strong>
+  Instead of <code>i = 0</code> &hellip; <code>i += 1</code> at the bottom of the loop, let Python
+  count for you. Start elsewhere with <code>enumerate(fruits, 1)</code>.
+ </div>
+
+ <h3>Sorting &mdash; and when you are not allowed to</h3>
+<div class="code">nums = [5, 2, 9, 1]
+
+sorted(nums)                  <span class="cm"># [1, 2, 5, 9]  — returns a NEW list</span>
+nums.sort()                   <span class="cm"># sorts IN PLACE, returns None</span>
+sorted(nums, reverse=True)    <span class="cm"># [9, 5, 2, 1]</span>
+
+<span class="cm"># key= sorts by something derived from each item</span>
+reviews = [("Pizza Place", 4.5), ("Burger Joint", 4.0)]
+sorted(reviews, key=lambda r: r[1])              <span class="cm"># by rating, ascending</span>
+sorted(reviews, key=lambda r: (-r[1], r[0]))     <span class="cm"># rating desc, then name A-Z</span></div>
+
+ <div class="tip-box" style="margin:18px 0; border-left-color:var(--color-accent-2-500);">
+  <strong>Read the question first.</strong> <code>x = lst.sort()</code> sets <code>x</code> to
+  <code>None</code>, because <code>.sort()</code> changes the list and returns nothing &mdash;
+  <code>sorted()</code> is the one that hands you a list back. And in any task that says
+  <em>&ldquo;implement bubble / insertion / selection / merge / quick sort&rdquo;</em>, both of these
+  are banned. The <code>key=</code> trick above is still worth knowing for coursework and projects.
+ </div>
+
+ <h3>String methods &mdash; the file-parsing toolkit</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:26%;">Method</th><th style="width:36%;">What it does</th><th>Example</th></tr></thead>
+  <tbody>
+   <tr><td><code>.strip()</code></td><td>Removes whitespace, <code>\n</code> and <code>\r</code> from both ends</td><td><code>" hi \n".strip()</code> &rarr; <code>"hi"</code></td></tr>
+   <tr class="row-highlight"><td><code>.split(sep)</code></td><td>Text &rarr; list. No argument splits on any whitespace</td><td><code>"a,b".split(",")</code> &rarr; <code>['a','b']</code></td></tr>
+   <tr><td><code>.join(list)</code></td><td>List &rarr; text. The separator is the string you call it on</td><td><code>", ".join(['a','b'])</code> &rarr; <code>"a, b"</code></td></tr>
+   <tr class="row-highlight"><td><code>.replace(a, b)</code></td><td>Swaps every occurrence</td><td><code>"a-b".replace("-", " ")</code></td></tr>
+   <tr><td><code>.upper()</code> / <code>.lower()</code></td><td>Case conversion &mdash; ideal for case-insensitive comparison</td><td><code>"Yes".lower() == "yes"</code></td></tr>
+   <tr class="row-highlight"><td><code>.count(x)</code></td><td>How many times <em>x</em> appears</td><td><code>"*****".count("*")</code> &rarr; <code>5</code></td></tr>
+   <tr><td><code>.find(x)</code></td><td>Index of <em>x</em>, or <strong><code>-1</code></strong> if absent</td><td><code>"hello".find("z")</code> &rarr; <code>-1</code></td></tr>
+   <tr class="row-highlight"><td><code>.startswith(x)</code> / <code>.endswith(x)</code></td><td>Prefix / suffix test, returns a bool</td><td><code>name.endswith(".txt")</code></td></tr>
+   <tr><td><code>.isdigit()</code> / <code>.isalpha()</code></td><td>Is every character a digit / letter?</td><td><code>"42".isdigit()</code> &rarr; <code>True</code></td></tr>
+  </tbody>
+ </table>
+
+ <div class="sol-grid" style="margin-top:16px;">
+  <div class="sol-card soluble-card">
+   <h4><code>.count()</code> counts the stars for you</h4>
+<div class="code">line = "Service *****"
+stars = line.count("*")   <span class="cm"># 5</span>
+<span class="cm"># beats looping character by character</span></div>
+  </div>
+  <div class="sol-card except-card">
+   <h4><code>.find()</code> returns &minus;1, it does not raise</h4>
+<div class="code">"hello".find("z")    <span class="cm"># -1</span>
+"hello".index("z")   <span class="cm"># ValueError!</span>
+<span class="cm"># .find() is the safe one</span></div>
+  </div>
+ </div>
+
+ <h3>Formatting output</h3>
+<div class="code">name, score = "Ana", 4.5
+
+<span class="cm"># f-string — clearest, and what you should default to</span>
+print(f"{name} scored {score}")
+
+<span class="cm"># fixed decimal places — essential for money and averages</span>
+print(f"{score:.2f}")            <span class="cm"># 4.50</span>
+print("{:.2f}".format(score))    <span class="cm"># 4.50  — same thing, older style</span>
+
+<span class="cm"># padding, for lining up columns</span>
+print(f"{name:<10}|")            <span class="cm"># Ana       |   left  align</span>
+print(f"{name:>10}|")            <span class="cm"># .......Ana|   right align</span></div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong><code>str(4.5)</code> gives <code>"4.5"</code>, not <code>"4.50"</code>.</strong> Any
+  question asking for a fixed number of decimal places needs <code>f"{x:.2f}"</code> or
+  <code>"{:.2f}".format(x)</code>. This is the single most common formatting mark lost.
+ </div>
+
+ <h3>List methods</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:26%;">Method</th><th style="width:42%;">What it does</th><th>Watch out</th></tr></thead>
+  <tbody>
+   <tr><td><code>.append(x)</code></td><td>Adds <em>x</em> as <strong>one</strong> item</td><td>Adding a list nests it</td></tr>
+   <tr class="row-highlight"><td><code>.extend(it)</code></td><td>Adds <strong>every</strong> item of <em>it</em></td><td>A string is iterable &mdash; you get letters</td></tr>
+   <tr><td><code>.insert(i, x)</code></td><td>Inserts at index <em>i</em>, shifting the rest right</td><td>An oversized <em>i</em> just appends</td></tr>
+   <tr class="row-highlight"><td><code>.remove(v)</code></td><td>Deletes the first item <strong>equal to <em>v</em></strong></td><td><code>ValueError</code> if absent</td></tr>
+   <tr><td><code>.pop(i)</code></td><td>Removes <strong>and returns</strong> the item at index <em>i</em></td><td>No argument &rarr; the last item</td></tr>
+   <tr class="row-highlight"><td><code>.index(v)</code></td><td>Index of the first item equal to <em>v</em></td><td><code>ValueError</code> if absent</td></tr>
+   <tr><td><code>.count(v)</code></td><td>How many items equal <em>v</em></td><td>&mdash;</td></tr>
+   <tr class="row-highlight"><td><code>.reverse()</code></td><td>Reverses <strong>in place</strong></td><td>Returns <code>None</code></td></tr>
+   <tr><td><code>.copy()</code> or <code>lst[:]</code></td><td>A separate list with the same items</td><td>Use this before mutating someone else's list</td></tr>
+  </tbody>
+ </table>
+
+ <h3>Dictionary methods</h3>
+<div class="code">d = {"name": "Ana", "score": 90}
+
+d["name"]                <span class="cm"># "Ana"   — KeyError if the key is missing</span>
+d.get("age")             <span class="cm"># None    — no error</span>
+d.get("age", 0)          <span class="cm"># 0       — your own default</span>
+
+"name" in d              <span class="cm"># True    — `in` checks KEYS, not values</span>
+
+for key in d.keys(): ...
+for value in d.values(): ...
+for key, value in d.items(): ...   <span class="cm"># the one you want most often</span>
+
+d.pop("score")           <span class="cm"># removes and returns 90</span>
+d.update({"age": 15})    <span class="cm"># merges another dict in</span>
+d.setdefault("tags", []) <span class="cm"># creates the key only if missing, then returns it</span></div>
+
+ <div class="tip-box" style="margin:18px 0;">
+  <strong><code>.setdefault()</code> collapses the counting pattern.</strong> Instead of
+  <code>if k not in d: d[k] = []</code> then <code>d[k].append(v)</code>, write
+  <code>d.setdefault(k, []).append(v)</code>. Both are accepted &mdash; write whichever you can
+  reproduce correctly under pressure.
+ </div>
+
+ <h3>Set methods</h3>
+<div class="code">a = {1, 2, 3}
+b = {3, 4}
+
+a.add(4)                 <span class="cm"># one item</span>
+a.update([5, 6])         <span class="cm"># many items</span>
+a.discard(9)             <span class="cm"># silent if absent</span>
+a.remove(9)              <span class="cm"># KeyError if absent</span>
+
+a | b   <span class="cm"># union            — in either</span>
+a &amp; b   <span class="cm"># intersection     — in both</span>
+a - b   <span class="cm"># difference       — in a only</span>
+a ^ b   <span class="cm"># symmetric diff   — in one but not both</span>
+
+len(set(names))          <span class="cm"># how many DISTINCT names — a one-line classic</span></div>
+
+ <h3>Files</h3>
+<div class="code"><span class="cm"># always prefer `with` — it closes the file for you, even on error</span>
+with open("data.txt") as f:
+    for line in f:                  <span class="cm"># memory-friendly, one line at a time</span>
+        print(line.strip())
+
+with open("out.txt", "w") as f:     <span class="cm"># "w" WIPES the file, "a" appends</span>
+    f.write("hello\n")             <span class="cm"># write() adds no newline for you</span>
+    f.writelines(["a\n", "b\n"])  <span class="cm"># writes a list of strings</span>
+
+<span class="cm"># surviving a missing file</span>
+try:
+    with open("maybe.txt") as f:
+        data = f.read()
+except IOError:
+    print("File not found or path is incorrect")</div>
+
+ <h3>A few more worth knowing</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:26%;">Function</th><th style="width:38%;">What it does</th><th>Handy for</th></tr></thead>
+  <tbody>
+   <tr><td><code>isinstance(x, int)</code></td><td>Type test that also accepts subclasses</td><td>Validating input</td></tr>
+   <tr class="row-highlight"><td><code>ord(c)</code> / <code>chr(n)</code></td><td>Character &harr; its code number</td><td>Ciphers, check digits</td></tr>
+   <tr><td><code>id(x)</code></td><td>The object's identity in memory</td><td>Proving two names share one list</td></tr>
+   <tr class="row-highlight"><td><code>os.path.join(a, b)</code></td><td>Builds a path with the right separator</td><td>Code that runs on any machine</td></tr>
+   <tr><td><code>os.path.exists(p)</code></td><td><code>True</code> if the file or folder is there</td><td>Checking before you open</td></tr>
+  </tbody>
+ </table>
+
+ <h3>The ones that will burn you</h3>
+ <table class="cation-table">
+  <thead><tr><th style="width:40%;">You wrote</th><th>What actually happens</th></tr></thead>
+  <tbody>
+   <tr><td><code>x = lst.sort()</code></td><td><code>x</code> is <code>None</code>. <code>.sort()</code> sorts in place. Use <code>sorted(lst)</code>.</td></tr>
+   <tr class="row-highlight"><td><code>x = lst.reverse()</code></td><td>Same trap. Use <code>reversed(lst)</code> or <code>lst[::-1]</code>.</td></tr>
+   <tr><td><code>int("3.9")</code></td><td><code>ValueError</code>. Go through <code>float()</code> first.</td></tr>
+   <tr class="row-highlight"><td><code>int(3.9)</code></td><td><code>3</code>, not <code>4</code> &mdash; it truncates. Use <code>round()</code>.</td></tr>
+   <tr><td><code>str(4.5)</code> for money</td><td><code>"4.5"</code>. For 2 dp you need <code>f"{x:.2f}"</code>.</td></tr>
+   <tr class="row-highlight"><td><code>"5" + 3</code></td><td><code>TypeError</code>. Convert first: <code>int("5") + 3</code>.</td></tr>
+   <tr><td><code>lst.remove(0)</code></td><td>Removes the <strong>value</strong> 0, not index 0. That is <code>lst.pop(0)</code>.</td></tr>
+   <tr class="row-highlight"><td><code>d["missing"]</code></td><td><code>KeyError</code> stops the program. <code>d.get("missing")</code> returns <code>None</code>.</td></tr>
+   <tr><td><code>{}</code> for an empty set</td><td>That is an empty <strong>dict</strong>. Use <code>set()</code>.</td></tr>
+   <tr class="row-highlight"><td><code>line == "12"</code> after reading a file</td><td>The line is <code>"12\n"</code>. <code>.strip()</code> it first.</td></tr>
+   <tr><td><code>[[0]*3]*3</code></td><td>Three references to <strong>one</strong> row. Use a nested comprehension.</td></tr>
+   <tr class="row-highlight"><td><code>range(1, 5)</code> expecting 1&ndash;5</td><td>Gives 1, 2, 3, 4. The top end is excluded.</td></tr>
+  </tbody>
+ </table>
+
+ <h3>One-liners worth memorising</h3>
+ <table class="info-table">
+  <thead><tr><th style="width:46%;">Task</th><th>The one-liner</th></tr></thead>
+  <tbody>
+   <tr><td>Average of a list</td><td><code>round(sum(v) / len(v), 1)</code></td></tr>
+   <tr class="row-highlight"><td>Remove duplicates</td><td><code>list(set(items))</code></td></tr>
+   <tr><td>Count distinct items</td><td><code>len(set(items))</code></td></tr>
+   <tr class="row-highlight"><td>Reverse a string or list</td><td><code>s[::-1]</code></td></tr>
+   <tr><td>Clean every field of a split row</td><td><code>[p.strip() for p in row.split(",")]</code></td></tr>
+   <tr class="row-highlight"><td>Turn a list back into a CSV line</td><td><code>", ".join(fields)</code></td></tr>
+   <tr><td>Read a whole file into a list of lines</td><td><code>[l.strip() for l in open(f)]</code></td></tr>
+   <tr class="row-highlight"><td>Sum a column of a 2D list</td><td><code>sum(row[2] for row in table)</code></td></tr>
+   <tr><td>Copy a list safely</td><td><code>new = old[:]</code></td></tr>
+   <tr class="row-highlight"><td>Swap two variables</td><td><code>a, b = b, a</code></td></tr>
+  </tbody>
+ </table>
+
+ <div class="eq-box" style="margin-top:24px;">
+  Reach for these everywhere &mdash; <strong>except</strong> when the question says
+  <em>implement the algorithm yourself</em>. Then it is back to
+  <a href="#" onclick="showSection('cs-memorise'); return false;">Memorise the Code</a>.
+ </div>
+</div>
+
 <div id="cs-memorise" class="section" data-subject="comp">
 
  <h2>Memorise the Code</h2>
