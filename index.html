@@ -1261,9 +1261,11 @@ html { background: var(--color-bg); }
  <span class="tool-label">Subject</span>
  <span class="select-wrap">
   <select id="subjectSelect" class="subject-select" onchange="setSubject(this.value)">
+   <!-- HUB:SUBJECTS:START - hub_insert.py appends <option> lines here -->
    <option value="chem">Chemistry</option>
    <option value="phys">Physics</option>
    <option value="comp">Computing</option>
+   <!-- HUB:SUBJECTS:END -->
   </select>
  </span>
  <button id="zapToggle" class="tool-btn" onclick="toggleZapMode()">Zap tabs</button>
@@ -1282,6 +1284,7 @@ html { background: var(--color-bg); }
 <div class="tabs" id="tabBar">
  <div class="tabgroup-heads" id="tabGroupHeads"></div>
  <div class="tabgroup-tabs" id="tabGroupTabs">
+  <!-- HUB:TABS:START - hub_insert.py appends .tab buttons here -->
   <button class="tab" data-subject="chem" data-group="qa" data-target="cations">Cation Tests</button>
   <button class="tab" data-subject="chem" data-group="qa" data-target="anions">Anion Tests</button>
   <button class="tab" data-subject="chem" data-group="qa" data-target="gases">Gas Tests</button>
@@ -1326,6 +1329,7 @@ html { background: var(--color-bg); }
   <button class="tab" data-subject="comp" data-group="tools" data-target="cs-memorise">Memorise the Code</button>
   <button class="tab" data-subject="comp" data-group="tools" data-target="quiz">Kahoot Quiz</button>
   <button class="tab" data-subject="comp" data-group="tools" data-target="cards">Flashcards</button>
+  <!-- HUB:TABS:END -->
  </div>
 </div>
 
@@ -1335,6 +1339,7 @@ html { background: var(--color-bg); }
  <p style="margin-top:16px;"><button class="tool-btn restore" onclick="restoreZapped()">Restore hidden tabs</button></p>
 </div>
 
+<!-- HUB:SECTIONS:START - hub_insert.py appends .section panels before the END marker -->
 <!-- MNEMONICS -->
 <div id="mnemonics" class="section" data-subject="chem">
  <h2> Mnemonics &amp; Memory Tricks</h2>
@@ -8727,13 +8732,17 @@ dkLoad();
 dkShowList();
 </script>
 
+<!-- HUB:SECTIONS:END -->
+
 <footer>
   <p id="footText">Chemistry &ndash; Qualitative Analysis Visual Aid &middot; Hwa Chong Institution 2026 &middot; Generated for study purposes</p>
 </footer>
 
 <script>
 /* ── Revision Hub controller: subjects + zappable tabs ───────────── */
+/* == HUB-SUBJECTS-START == */
 var HUB_META = {
+  /* HUB:META:START - hub_insert.py appends subject entries before the END marker */
   chem: { title: 'Chemistry Revision',
           sub: 'Qualitative Analysis + Chemical Bonding \u00b7 colour-coded study aid \u00b7 Hwa Chong Institution 2026',
           foot: 'Chemistry \u2013 Qualitative Analysis Visual Aid \u00b7 Hwa Chong Institution 2026 \u00b7 Generated for study purposes' },
@@ -8742,7 +8751,8 @@ var HUB_META = {
           foot: 'Computing \u2013 Data Structures, File Operations, Algorithms \u00b7 Hwa Chong Institution 2026 \u00b7 Generated for study purposes' },
   phys: { title: 'Physics Revision',
           sub: 'Kinematics + Dynamics + Work, Energy & Power \u00b7 colour-coded study aid \u00b7 Hwa Chong Institution 2026',
-          foot: 'Physics \u2013 Kinematics, Dynamics, Work Energy Power \u00b7 Hwa Chong Institution 2026 \u00b7 Generated for study purposes' }
+          foot: 'Physics \u2013 Kinematics, Dynamics, Work Energy Power \u00b7 Hwa Chong Institution 2026 \u00b7 Generated for study purposes' },
+  /* HUB:META:END */
 };
 
 var hub = {
@@ -8755,6 +8765,7 @@ var hub = {
 
 /* Topic groups. Each .tab carries data-group matching one of these ids. */
 var HUB_GROUPS = {
+  /* HUB:GROUPS:START - hub_insert.py appends subject entries before the END marker */
   chem: [ { id: 'qa',    name: 'Qualitative Analysis' },
           { id: 'salts', name: 'Salts & Solutions' },
           { id: 'bond',  name: 'Structure & Bonding' },
@@ -8766,8 +8777,10 @@ var HUB_GROUPS = {
   comp: [ { id: 'ds',    name: 'Data Structures' },
           { id: 'files', name: 'File Operations' },
           { id: 'algo',  name: 'Algorithms' },
-          { id: 'tools', name: 'Revision Tools' } ]
+          { id: 'tools', name: 'Revision Tools' } ],
+  /* HUB:GROUPS:END */
 };
+/* == HUB-SUBJECTS-END == */
 
 var HUB_KEY = 'hciRevisionHub.v2';
 function hubSave() {
@@ -8781,7 +8794,7 @@ function hubLoad() {
     if (!raw) return;
     var s = JSON.parse(raw);
     if (HUB_META[s.subject]) hub.subject = s.subject;
-    var subs = ['chem', 'phys', 'comp'], k, sb;
+    var subs = Object.keys(HUB_META), k, sb;
     for (k = 0; k < subs.length; k++) {
       sb = subs[k];
       if (s.zapped && Array.isArray(s.zapped[sb])) hub.zapped[sb] = s.zapped[sb];

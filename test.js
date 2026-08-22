@@ -420,4 +420,104 @@ check('every paper has rows with unique ids and real procedure text', function (
   });
 });
 
+/* ---- subject wiring ----
+   Every subject the hub offers must be declared in all five places a subject
+   touches. bin/hub_insert.py in the AgenticOS repo writes four of them from a
+   generated fragment, so these checks are what catch a half-applied insert. */
+var H = load(['HUB-SUBJECTS'], ['HUB_META', 'HUB_GROUPS']);
+
+function optionKeys() {
+  var m = html.match(/<!-- HUB:SUBJECTS:START[\s\S]*?<!-- HUB:SUBJECTS:END -->/);
+  assert.ok(m, 'the HUB:SUBJECTS marker pair is missing');
+  return (m[0].match(/<option value="([a-z0-9-]+)"/g) || []).map(function (s) {
+    return s.replace(/.*value="/, '').replace(/"$/, '');
+  });
+}
+
+/* data-subject="both" marks a panel shared by every subject (quiz, flashcards),
+   so it is never expected to be a key in HUB_META. */
+function subjectAttrs(re) {
+  var out = {}, m;
+  while ((m = re.exec(html)) !== null) { if (m[1] !== 'both') out[m[1]] = 1; }
+  return Object.keys(out);
+}
+
+check('every insertion marker pair is present and correctly ordered', function () {
+  [['<!-- HUB:SUBJECTS:START', '<!-- HUB:SUBJECTS:END -->'],
+   ['<!-- HUB:TABS:START', '<!-- HUB:TABS:END -->'],
+   ['<!-- HUB:SECTIONS:START', '<!-- HUB:SECTIONS:END -->'],
+   ['/* HUB:META:START', '/* HUB:META:END */'],
+   ['/* HUB:GROUPS:START', '/* HUB:GROUPS:END */']].forEach(function (pair) {
+    var a = html.indexOf(pair[0]), b = html.indexOf(pair[1]);
+    assert.ok(a !== -1, 'missing start marker ' + pair[0]);
+    assert.ok(b !== -1, 'missing end marker ' + pair[1]);
+    assert.ok(a < b, pair[0] + ' appears after its END marker');
+  });
+});
+
+check('the subject dropdown and HUB_META name the same subjects', function () {
+  assert.deepStrictEqual(optionKeys().slice().sort(), Object.keys(H.HUB_META).sort());
+});
+
+check('every subject in HUB_META has topic groups, and vice versa', function () {
+  assert.deepStrictEqual(Object.keys(H.HUB_META).sort(), Object.keys(H.HUB_GROUPS).sort());
+});
+
+check('every subject has a title, a subtitle and a footer line', function () {
+  Object.keys(H.HUB_META).forEach(function (k) {
+    ['title', 'sub', 'foot'].forEach(function (f) {
+      assert.ok(H.HUB_META[k][f], k + ' is missing ' + f);
+    });
+  });
+});
+
+check('every group id is unique within its subject and has a name', function () {
+  Object.keys(H.HUB_GROUPS).forEach(function (k) {
+    var seen = {};
+    H.HUB_GROUPS[k].forEach(function (g) {
+      assert.ok(g.id && g.name, k + ' has a group missing id or name');
+      assert.ok(!seen[g.id], k + ' has duplicate group id ' + g.id);
+      seen[g.id] = 1;
+    });
+  });
+});
+
+check('every tab belongs to a declared subject and a declared group', function () {
+  var re = /<button class="tab" data-subject="([a-z0-9-]+)" data-group="([a-z0-9-]+)" data-target="([a-z0-9-]+)"/g, m;
+  var n = 0;
+  while ((m = re.exec(html)) !== null) {
+    n++;
+    assert.ok(H.HUB_META[m[1]], 'tab ' + m[3] + ' names unknown subject ' + m[1]);
+    var ids = H.HUB_GROUPS[m[1]].map(function (g) { return g.id; });
+    assert.ok(ids.indexOf(m[2]) !== -1, 'tab ' + m[3] + ' names unknown group ' + m[1] + '/' + m[2]);
+  }
+  assert.ok(n >= 40, 'expected the full tab set, found ' + n);
+});
+
+check('every tab points at a section that exists', function () {
+  var re = /<button class="tab" [^>]*data-target="([a-z0-9-]+)"/g, m;
+  while ((m = re.exec(html)) !== null) {
+    assert.ok(html.indexOf('id="' + m[1] + '" class="section"') !== -1,
+      'tab points at missing section #' + m[1]);
+  }
+});
+
+check('every section belongs to a declared subject', function () {
+  subjectAttrs(/<div id="[a-z0-9-]+" class="section" data-subject="([a-z0-9-]+)"/g).forEach(function (s) {
+    assert.ok(H.HUB_META[s], 'a section names unknown subject ' + s);
+  });
+});
+
+check('saved state restores for every subject, not a hardcoded three', function () {
+  assert.ok(/var subs = Object\.keys\(HUB_META\)/.test(html),
+    'hubLoad still carries its own subject list, so a new subject cannot restore');
+});
+
+check('every blank carries an answer', function () {
+  var re = /<span class="blank([^"]*)"([^>]*)>/g, m;
+  while ((m = re.exec(html)) !== null) {
+    assert.ok(/data-ans="[^"]/.test(m[2]), 'a .blank span has no data-ans: ' + m[0]);
+  }
+});
+
 console.log('\n' + checks + ' checks passed');
