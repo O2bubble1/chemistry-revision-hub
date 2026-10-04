@@ -10,8 +10,10 @@ dependencies, no server. Fonts are inlined as data URIs so it works offline.
 
 - **Chemistry** — qualitative analysis (cations, anions, gases), a practical simulator,
   salt preparation, solubility rules, pH indicators, oxides, bonding, a clickable periodic table
-- **Physics** — kinematics, motion graphs, equations of motion, forces, Newton's laws,
-  friction, work/energy/power
+- **Physics** — the full Sec 3 syllabus: physical quantities and measurement, scalars and
+  vectors, reflection, refraction and lenses, kinematics, dynamics, work/energy/power, density
+  and pressure, the kinetic particle model, thermal energy transfer, and specific heat and latent
+  heat — with model answers, worked examples, flashcards and equation-picker quiz questions
 - **Computing** — Python data structures (lists, tuples, dictionaries, sets, equality vs
   identity), file operations and CSV handling, sorting and searching algorithms, complexity,
   a built-in function reference, and a code memorisation drill
